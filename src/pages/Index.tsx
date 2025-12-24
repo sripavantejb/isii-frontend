@@ -38,13 +38,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-start">
+      <section className="relative h-screen flex items-start overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-top md:hidden"
           style={{ 
             backgroundImage: `url(${mobileImage})`,
-            height: '100vh',
-            backgroundPosition: 'top center'
+            backgroundPosition: 'top center',
+            backgroundSize: 'cover',
+            minHeight: '100vh',
+            width: '100%'
           }}
         />
         <div 
