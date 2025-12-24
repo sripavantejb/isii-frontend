@@ -8,6 +8,7 @@ const whiteHouseHero = "https://res.cloudinary.com/dqataciy5/image/upload/v17665
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554875/Main_3_mgq0be.png";
 const tabletImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554969/Main_4_moupgm.png";
 const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766555015/Main_5_g6lkoh.png";
+const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766557543/Frame_1707482985_z3u8u7.png";
 
 const Index = () => {
   const capabilities = [
@@ -71,13 +72,30 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="relative min-h-[60vh] py-32">
+      <section className="relative min-h-[60vh] py-32 flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url(${whiteHouseHero})`,
+            backgroundImage: `url(${bannerImage})`,
           }}
         />
+        <div className="relative z-10 w-full">
+          <div className="container-custom section-padding">
+            <div className="text-left max-w-4xl">
+              <span className="inline-block bg-primary px-4 py-1 text-xs text-primary-foreground uppercase tracking-wider mb-6">
+                Our Latest Pivotal Thinking
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl text-primary-foreground mb-4 max-w-xl text-left">
+                America the Merchant Power, The National Security Strategy 2025
+              </h2>
+              <div className="text-left">
+                <Button variant="outline-light" asChild>
+                  <Link to="/capabilities/pivotal-thinking">Read More</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Capabilities Section */}
