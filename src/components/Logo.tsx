@@ -1,15 +1,15 @@
-import { Globe, Shield } from "lucide-react";
-
 const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => {
   const textColor = variant === "light" ? "text-primary-foreground" : "text-primary";
-  const iconColor = variant === "light" ? "text-accent" : "text-accent";
-  const iconBorderColor = variant === "light" ? "border-accent" : "border-accent";
+  const logoImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766555222/Frame_qsaw3j.png";
   
   return (
-    <div className="flex items-center gap-4">
-      <div className={`relative ${iconColor} p-1.5 border-2 ${iconBorderColor} rounded-lg`}>
-        <Globe className="w-6 h-6" strokeWidth={1.5} />
-        <Shield className="w-3 h-3 absolute -bottom-1 -right-1 bg-primary rounded-sm p-0.5" strokeWidth={1.5} />
+    <div className="flex items-center gap-2">
+      <div className="relative">
+        <img 
+          src={logoImage} 
+          alt="ISII Logo" 
+          className="w-12 h-12 object-contain"
+        />
       </div>
       <div className={`${textColor}`}>
         <div className="font-serif text-lg font-bold leading-tight">ISII</div>
