@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
-import { Brain, Shield, TrendingUp } from "lucide-react";
+import { Brain } from "lucide-react";
 
 const whiteHouseHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png";
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554875/Main_3_mgq0be.png";
 const tabletImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554969/Main_4_moupgm.png";
-const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766555015/Main_5_g6lkoh.png";
+const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766585947/Gradient_1_mebclo.png";
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
 
 const Index = () => {
@@ -19,28 +19,22 @@ const Index = () => {
       buttonText: "ALL PIVOTAL THINKING",
       buttonLink: "/capabilities/pivotal-thinking",
     },
-    {
-      icon: Shield,
-      title: "Strategic Counsel",
-      description: "Supporting governments, blocs and institutions as they navigate structural change.",
-      buttonText: "SEE OUR MANDATES",
-      buttonLink: "/capabilities/strategic-counsel",
-    },
-    {
-      icon: TrendingUp,
-      title: "Systemic Intervention and Strategic Investment",
-      description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
-      buttonText: "EXPLORE CAPABILITIES",
-      buttonLink: "/capabilities/systemic-intervention",
-    },
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center">
+      <section className="relative h-screen flex items-start">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-top md:hidden"
+          style={{ 
+            backgroundImage: `url(${mobileImage})`,
+            height: '100vh',
+            backgroundPosition: 'top center'
+          }}
+        />
+        <div 
+          className="absolute inset-0 bg-cover bg-center hidden md:block"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div 
@@ -51,19 +45,20 @@ const Index = () => {
           />
         </div>
         
-        <div className="relative z-10 container-custom section-padding py-24">
+        <div className="relative z-10 container-custom section-padding pt-16 pb-12 md:pt-24 md:pb-24">
           <div className="max-w-2xl">
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-accent mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               ISII
             </h1>
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-foreground mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-              Institute for Strategic Intelligence and Intervention
+              Institute for Strategic Intelligence<br />
+              and Intervention
             </h2>
             <p className="text-primary-foreground/90 leading-relaxed mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               The Institute for Strategic Intelligence and Intervention (ISII) exists to understand and shape the system-level transitions, major events, and strategic turning points affecting nations, regions, and global structures. Its mission is to generate the strategic intelligence required for high-stakes decision-making, and to design and execute interventions that stabilise environments, reposition sovereigns, mobilise capital and technology, and enable societies to transition securely and prosperously into the Information Era.
             </p>
             <div className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
-              <Button variant="hero" size="lg" asChild>
+              <Button variant="hero" size="lg" className="text-primary" asChild>
                 <Link to="/about">About us</Link>
               </Button>
             </div>
@@ -85,9 +80,16 @@ const Index = () => {
               <span className="inline-block bg-primary px-4 py-1 text-xs text-primary-foreground uppercase tracking-wider mb-6">
                 Our Latest Pivotal Thinking
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 max-w-2xl text-left">
-                America the Merchant Power,<br />
-                The National Security Strategy 2025
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 text-left">
+                <span className="md:hidden block">
+                  <span style={{ display: 'block', whiteSpace: 'nowrap' }}>America the Merchant Power,</span>
+                  <span style={{ display: 'block', whiteSpace: 'nowrap' }}>The National Security</span>
+                  <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Strategy 2025</span>
+                </span>
+                <span className="hidden md:block max-w-2xl">
+                  America the Merchant Power,<br />
+                  The National Security Strategy 2025
+                </span>
               </h2>
               <div className="text-left">
                 <Button variant="outline-light" asChild>
@@ -106,7 +108,7 @@ const Index = () => {
             Our Capabilities
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             {capabilities.map((capability) => (
               <CapabilityCard key={capability.title} {...capability} />
             ))}

@@ -29,11 +29,9 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
     { label: "About Us", path: "/about" },
     { 
       label: "Capabilities", 
-      path: "/capabilities",
+      path: "/capabilities/pivotal-thinking",
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
-        { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
-        { label: "Systemic Intervention", path: "/capabilities/systemic-intervention" },
       ]
     },
     { label: "Engage", path: "/engage" },
@@ -55,9 +53,9 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
         <div className="container-custom section-padding flex justify-end">
           <span className="text-primary-foreground/80">
             Need to get in touch with us?{" "}
-            <Link to="/engage" className="underline">
+            <a href="mailto:test@gmail.com" className="underline">
               Contact us here
-            </Link>
+            </a>
           </span>
         </div>
       </div>
@@ -99,7 +97,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
               )
             ))}
             <Button variant="outline-light" size="sm" asChild>
-              <Link to="/engage">Contact us</Link>
+              <a href="mailto:test@gmail.com">Contact us</a>
             </Button>
           </nav>
 

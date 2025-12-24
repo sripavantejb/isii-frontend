@@ -28,7 +28,7 @@ const PersonCard = ({ category, name, title, description, drawingOn, image }: Pe
       </div>
 
       {/* Card Content */}
-      <div className="bg-card pt-20 pb-6 px-6 border-l-4 border-l-accent border-t border-r border-b border-border animate-fade-in h-full flex flex-col">
+      <div className="bg-card pt-20 pb-6 px-6 border-l-4 border-t border-r border-b border-border animate-fade-in h-full flex flex-col" style={{ borderLeftColor: '#d6795a' }}>
         <p className="text-xs text-accent font-medium uppercase tracking-wider mb-3">
           {category}
         </p>

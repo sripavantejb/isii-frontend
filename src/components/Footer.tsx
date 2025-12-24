@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Accent line */}
-      <div className="h-1 bg-accent" />
+      <div className="h-1" style={{ backgroundColor: '#d6795a' }} />
       
       <div className="container-custom section-padding py-12">
         <div className="flex items-center justify-between relative">
