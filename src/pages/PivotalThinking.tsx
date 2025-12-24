@@ -73,7 +73,7 @@ const PivotalThinking = () => {
       </section>
 
       {/* Banner Section */}
-      <section className="relative py-24">
+      <section className="relative py-36 md:py-18">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${pivotalHero})` }}

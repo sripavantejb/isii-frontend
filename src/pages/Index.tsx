@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
 import { Brain, Shield, TrendingUp } from "lucide-react";
-import whiteHouseHero from "@/assets/white-house-hero.jpg";
+
+const whiteHouseHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554875/Main_3_mgq0be.png";
+const tabletImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554969/Main_4_moupgm.png";
+const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766555015/Main_5_g6lkoh.png";
 
 const Index = () => {
   const capabilities = [
@@ -36,7 +40,7 @@ const Index = () => {
       <section className="relative min-h-[70vh] flex items-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${whiteHouseHero})` }}
+          style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div 
             className="absolute inset-0"
@@ -67,36 +71,13 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="relative py-24">
+      <section className="relative min-h-[60vh] py-32">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${whiteHouseHero})` }}
+          style={{ 
+            backgroundImage: `url(${whiteHouseHero})`,
+          }}
         />
-        <div className="relative z-10 container-custom section-padding">
-          <span className="inline-block bg-primary px-4 py-1 text-xs text-primary-foreground uppercase tracking-wider mb-6">
-            Our Latest Pivotal Thinking
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl text-primary-foreground mb-4 max-w-xl">
-            America the Merchant Power, The National Security Strategy 2025
-          </h2>
-          <Button variant="outline-light" asChild>
-            <Link to="/capabilities/pivotal-thinking">Read More</Link>
-          </Button>
-        </div>
-        
-        {/* Scrolling ticker */}
-        <div className="absolute bottom-0 left-0 right-0 bg-primary/50 py-3 overflow-hidden">
-          <div className="whitespace-nowrap animate-marquee">
-            <span className="text-primary-foreground/60 text-sm mx-8">Signs of the Times</span>
-            <span className="text-primary-foreground/80 text-sm italic mx-8">
-              America the Merchant Power, The National Security Strategy 2025
-            </span>
-            <span className="text-primary-foreground/60 text-sm mx-8">Signs of the Times</span>
-            <span className="text-primary-foreground/80 text-sm italic mx-8">
-              America the Merchant Power, The National Security Strategy 2025
-            </span>
-          </div>
-        </div>
       </section>
 
       {/* Capabilities Section */}
