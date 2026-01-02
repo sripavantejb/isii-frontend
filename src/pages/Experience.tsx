@@ -11,31 +11,43 @@ const Experience = () => {
       number: 1,
       title: "Highly sensitive state-level challenges,",
       description: "creating stabilising frameworks across security, governance, climate, and regional systems.",
+      buttonLink: "/engage",
+      buttonText: "SEE OUR MANDATES",
     },
     {
       number: 2,
       title: "Transition architectures,",
       description: "guiding sovereign shifts into the Information Era across major world powers.",
+      buttonLink: "/capabilities/strategic-counsel",
+      buttonText: "SEE OUR MANDATES",
     },
     {
       number: 3,
       title: "Sovereign and private capital allocation strategy,",
       description: "mass capital allocation strategies based on thematics",
+      buttonLink: "/capabilities/systemic-intervention",
+      buttonText: "EXPLORE CAPABILITIES",
     },
     {
       number: 4,
       title: "AI and Technology strategy,",
       description: "converting development gaps into profitable, scalable engines of prosperity.",
+      buttonLink: "/capabilities/systemic-intervention",
+      buttonText: "EXPLORE CAPABILITIES",
     },
     {
       number: 5,
       title: "Economic & industrial systems,",
       description: "strengthening national competitiveness, productivity, and long-term growth across continents.",
+      buttonLink: "/capabilities/strategic-counsel",
+      buttonText: "SEE OUR MANDATES",
     },
     {
       number: 6,
       title: "Human security and societal resilience,",
       description: "reshaping education, inclusion, and workforce adaptation for technological disruption.",
+      buttonLink: "/engage",
+      buttonText: "EXPLORE CAPABILITIES",
     },
   ];
 
@@ -73,6 +85,8 @@ const Experience = () => {
                 number={project.number}
                 title={project.title}
                 description={project.description}
+                buttonLink={project.buttonLink}
+                buttonText={project.buttonText}
               />
             ))}
           </div>

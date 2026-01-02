@@ -1,53 +1,36 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
-import article1 from "@/assets/article-1.jpg";
-import article2 from "@/assets/article-2.jpg";
-import article3 from "@/assets/article-3.jpg";
-import article4 from "@/assets/article-4.jpg";
-import article5 from "@/assets/article-5.jpg";
-import article6 from "@/assets/article-6.jpg";
+import { articlesAPI } from "@/services/api";
 import pivotalHero from "@/assets/pivotal-thinking-hero.jpg";
 
+interface Article {
+  _id: string;
+  title: string;
+  date: string;
+  imageUrl: string;
+  pdfUrl: string;
+}
+
 const PivotalThinking = () => {
-  const articles = [
-    {
-      image: article1,
-      date: "December 2025",
-      title: "America the Merchant Power, The National Security Strategy 2025",
-      link: "#",
-    },
-    {
-      image: article2,
-      date: "November 2025",
-      title: "The Tech-Leveraged Empire: Strategic Limits of U.S. Power",
-      link: "#",
-    },
-    {
-      image: article3,
-      date: "October 2025",
-      title: "America's New Golden Age or a Gilded One?",
-      link: "#",
-    },
-    {
-      image: article4,
-      date: "September 2025",
-      title: "The World Investment Plan: Leveraging Capital Markets for a Peaceful Transition to the Information Era",
-      link: "#",
-    },
-    {
-      image: article5,
-      date: "August 2025",
-      title: "Turbulent Times: A Framework for Navigating Global Crisis Through Conscious Transformation",
-      link: "#",
-    },
-    {
-      image: article6,
-      date: "July 2025",
-      title: "Project 2025, Trump, and the Remaking of the World",
-      link: "#",
-    },
-  ];
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const data = await articlesAPI.getAll();
+      setArticles(data);
+    } catch (error) {
+      console.error('Failed to fetch articles:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Layout>
@@ -86,13 +69,28 @@ const PivotalThinking = () => {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* Left Column - Article Cards */}
             <div className="flex-1">
-              <div className="grid md:grid-cols-3 gap-8">
-                {articles.map((article) => (
-                  <div key={article.title} className="h-full">
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
+              {loading ? (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">Loading articles...</p>
+                </div>
+              ) : articles.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">No articles available yet.</p>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-3 gap-8">
+                  {articles.map((article) => (
+                    <div key={article._id} className="h-full">
+                      <ArticleCard 
+                        image={article.imageUrl}
+                        date={article.date}
+                        title={article.title}
+                        link={article.pdfUrl}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             
             {/* Right Column - Content Library Sidebar */}
@@ -100,18 +98,26 @@ const PivotalThinking = () => {
               <h2 className="font-serif text-2xl md:text-3xl text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
                 Content Library
               </h2>
-              <ol className="space-y-4">
-                {articles.map((article, index) => (
-                  <li key={article.title} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
-                    <Link 
-                      to={article.link}
-                      className="text-primary underline hover:text-primary/80 transition-colors"
-                    >
-                      {index + 1}. {article.title}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
+              {loading ? (
+                <p className="text-muted-foreground">Loading...</p>
+              ) : articles.length === 0 ? (
+                <p className="text-muted-foreground">No articles available yet.</p>
+              ) : (
+                <ol className="space-y-4">
+                  {articles.map((article, index) => (
+                    <li key={article._id} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
+                      <a 
+                        href={article.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline hover:text-primary/80 transition-colors"
+                      >
+                        {index + 1}. {article.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              )}
             </div>
           </div>
         </div>

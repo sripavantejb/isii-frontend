@@ -1,0 +1,162 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { articlesAPI } from '@/services/api';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { toast } from 'sonner';
+import { Plus, Edit, Trash2, LogOut } from 'lucide-react';
+import Layout from '@/components/Layout';
+import ProtectedRoute from '@/components/admin/ProtectedRoute';
+
+interface Article {
+  _id: string;
+  title: string;
+  date: string;
+  imageUrl: string;
+  pdfUrl: string;
+}
+
+const Dashboard = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      setLoading(true);
+      const data = await articlesAPI.getAll();
+      setArticles(data);
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to fetch articles');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this article?')) {
+      return;
+    }
+
+    try {
+      await articlesAPI.delete(id);
+      toast.success('Article deleted successfully');
+      fetchArticles();
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to delete article');
+    }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/admin/login');
+    toast.success('Logged out successfully');
+  };
+
+  return (
+    <ProtectedRoute>
+      <Layout>
+        <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
+          <div className="container-custom section-padding py-10">
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#1b315b' }}>
+                  Admin Dashboard
+                </h1>
+                <p className="text-sm" style={{ color: '#1b315b' }}>
+                  Manage Pivotal Thinking articles
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => navigate('/admin/articles/new')}
+                  style={{ backgroundColor: '#1b315b', color: '#ffffff' }}
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  New Article
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={handleLogout}
+                  style={{ borderColor: '#1b315b', color: '#1b315b' }}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </Button>
+              </div>
+            </div>
+
+            {loading ? (
+              <div className="text-center py-12">
+                <p style={{ color: '#1b315b' }}>Loading articles...</p>
+              </div>
+            ) : articles.length === 0 ? (
+              <Card style={{ backgroundColor: '#ffffff' }}>
+                <CardContent className="py-12 text-center">
+                  <p className="text-muted-foreground mb-4">No articles found</p>
+                  <Button
+                    onClick={() => navigate('/admin/articles/new')}
+                    style={{ backgroundColor: '#1b315b', color: '#ffffff' }}
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Create First Article
+                  </Button>
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articles.map((article) => (
+                  <Card key={article._id} style={{ backgroundColor: '#ffffff' }}>
+                    <CardHeader>
+                      <div className="aspect-video overflow-hidden rounded-lg mb-4">
+                        <img
+                          src={article.imageUrl}
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <CardTitle className="text-lg line-clamp-2" style={{ color: '#1b315b' }}>
+                        {article.title}
+                      </CardTitle>
+                      <p className="text-sm text-muted-foreground">{article.date}</p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => navigate(`/admin/articles/edit/${article._id}`)}
+                          className="flex-1"
+                          style={{ borderColor: '#1b315b', color: '#1b315b' }}
+                        >
+                          <Edit className="h-4 w-4 mr-2" />
+                          Edit
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => handleDelete(article._id)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </Layout>
+    </ProtectedRoute>
+  );
+};
+
+export default Dashboard;
+

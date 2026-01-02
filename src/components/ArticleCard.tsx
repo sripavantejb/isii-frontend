@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 interface ArticleCardProps {
   image: string;
@@ -24,12 +23,16 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
         <h3 className="font-serif text-lg font-bold text-primary mb-4 leading-snug flex-grow">
           {title}
         </h3>
-        <Link 
-          to={link}
-          className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto"
-        >
-          Read more <ArrowRight className="w-4 h-4" />
-        </Link>
+        {link && (
+          <a 
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto"
+          >
+            Read more <ArrowRight className="w-4 h-4" />
+          </a>
+        )}
       </div>
     </div>
   );
