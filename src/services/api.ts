@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || 'https://isii-backend.onrender.com/api';
+// Always use Render backend for production
+const API_URL = 'https://isii-backend.onrender.com/api';
 
 // Log API URL for debugging (remove in production)
 if (import.meta.env.DEV) {
