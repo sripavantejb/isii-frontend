@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://isii-backend.onrender.com/api';
 
 // Get token from localStorage
 const getToken = () => {
@@ -22,7 +22,12 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
   
   if (!response.ok) {
     const error = await response.json().catch(() => ({ message: 'An error occurred' }));
-    throw new Error(error.message || 'Request failed');
+    console.error('❌ API Error:', {
+      endpoint,
+      status: response.status,
+      error: error,
+    });
+    throw new Error(error.message || error.error || 'Request failed');
   }
 
   return response.json();

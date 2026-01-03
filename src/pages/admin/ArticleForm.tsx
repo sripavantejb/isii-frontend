@@ -77,17 +77,34 @@ const ArticleForm = () => {
 
       // Upload files if new ones are selected
       if (imageFile || pdfFile) {
+        console.log('📤 Uploading files to S3...', {
+          hasImage: !!imageFile,
+          hasPdf: !!pdfFile,
+        });
+        
         const uploadResult = await uploadAPI.uploadMultiple(
           imageFile || undefined,
           pdfFile || undefined
         );
 
+        console.log('✅ Upload result:', uploadResult);
+
         if (uploadResult.imageUrl) {
           imageUrl = uploadResult.imageUrl;
+          console.log('📷 Image URL:', imageUrl);
         }
         if (uploadResult.pdfUrl) {
           pdfUrl = uploadResult.pdfUrl;
+          console.log('📄 PDF URL:', pdfUrl);
         }
+      }
+
+      // Validate we have URLs before saving
+      if (!imageUrl || !pdfUrl) {
+        console.error('❌ Missing URLs:', { imageUrl, pdfUrl });
+        toast.error('Please upload both image and PDF files');
+        setLoading(false);
+        return;
       }
 
       // Save article
@@ -97,6 +114,13 @@ const ArticleForm = () => {
         imageUrl,
         pdfUrl,
       };
+
+      console.log('💾 Saving article with data:', {
+        title: articleData.title,
+        date: articleData.date,
+        hasImageUrl: !!articleData.imageUrl,
+        hasPdfUrl: !!articleData.pdfUrl,
+      });
 
       if (isEdit) {
         await articlesAPI.update(id!, articleData);
@@ -146,7 +170,7 @@ const ArticleForm = () => {
               </h1>
             </div>
 
-            <form onSubmit={handleSubmit} className="max-w-2xl space-y-6" style={{ backgroundColor: '#ffffff', padding: '2rem', borderRadius: '0.5rem' }}>
+            <form onSubmit={handleSubmit} className="max-w-2xl space-y-6 p-4 md:p-6 lg:p-8 rounded-lg" style={{ backgroundColor: '#ffffff' }}>
               <div className="space-y-2">
                 <Label htmlFor="title" style={{ color: '#1b315b' }}>
                   Title *
@@ -193,11 +217,11 @@ const ArticleForm = () => {
                 onChange={setPdfFile}
               />
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="flex-1"
+                  className="flex-1 w-full sm:w-auto"
                   style={{ backgroundColor: '#1b315b', color: '#ffffff' }}
                 >
                   <Save className="h-4 w-4 mr-2" />
@@ -207,6 +231,7 @@ const ArticleForm = () => {
                   type="button"
                   variant="outline"
                   onClick={() => navigate('/admin')}
+                  className="w-full sm:w-auto"
                   style={{ borderColor: '#1b315b', color: '#1b315b' }}
                 >
                   Cancel

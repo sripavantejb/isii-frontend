@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <Layout>
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
-        <div className="w-full max-w-md p-8" style={{ backgroundColor: '#ffffff' }}>
+        <div className="w-full max-w-md p-4 sm:p-6 md:p-8" style={{ backgroundColor: '#ffffff' }}>
           <div className="mb-8">
             <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#1b315b' }}>
               Admin Login

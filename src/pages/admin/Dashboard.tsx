@@ -63,19 +63,20 @@ const Dashboard = () => {
     <ProtectedRoute>
       <Layout>
         <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
-          <div className="container-custom section-padding py-10">
-            <div className="flex justify-between items-center mb-8">
+          <div className="container-custom section-padding py-6 md:py-10">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
               <div>
-                <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#1b315b' }}>
+                <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#1b315b' }}>
                   Admin Dashboard
                 </h1>
                 <p className="text-sm" style={{ color: '#1b315b' }}>
                   Manage Pivotal Thinking articles
                 </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <Button
                   onClick={() => navigate('/admin/articles/new')}
+                  className="w-full sm:w-auto"
                   style={{ backgroundColor: '#1b315b', color: '#ffffff' }}
                 >
                   <Plus className="h-4 w-4 mr-2" />
@@ -84,6 +85,7 @@ const Dashboard = () => {
                 <Button
                   variant="outline"
                   onClick={handleLogout}
+                  className="w-full sm:w-auto"
                   style={{ borderColor: '#1b315b', color: '#1b315b' }}
                 >
                   <LogOut className="h-4 w-4 mr-2" />

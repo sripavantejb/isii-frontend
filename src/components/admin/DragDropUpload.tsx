@@ -101,7 +101,7 @@ const DragDropUpload = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         className={`
-          border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors
+          border-2 border-dashed rounded-lg p-4 md:p-6 text-center cursor-pointer transition-colors
           ${isDragging ? 'border-primary bg-primary/5' : 'border-gray-300 hover:border-primary/50'}
           ${error ? 'border-red-500' : ''}
         `}
@@ -123,7 +123,7 @@ const DragDropUpload = ({
                 <img
                   src={previewUrl}
                   alt="Preview"
-                  className="max-h-48 rounded-lg"
+                  className="max-h-32 sm:max-h-40 md:max-h-48 rounded-lg"
                 />
                 <Button
                   type="button"
@@ -162,7 +162,7 @@ const DragDropUpload = ({
           </div>
         ) : (
           <div className="space-y-2">
-            <Upload className="mx-auto h-12 w-12" style={{ color: '#1b315b' }} />
+            <Upload className="mx-auto h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" style={{ color: '#1b315b' }} />
             <div>
               <p className="text-sm font-medium" style={{ color: '#1b315b' }}>
                 Drag and drop or click to upload
