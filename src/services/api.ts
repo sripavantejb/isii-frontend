@@ -1,4 +1,9 @@
-const API_URL = 'https://isii-backend.onrender.com/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://isii-backend.onrender.com/api';
+
+// Log API URL for debugging (remove in production)
+if (import.meta.env.DEV) {
+  console.log('🌐 API URL:', API_URL);
+}
 
 // Get token from localStorage
 const getToken = () => {

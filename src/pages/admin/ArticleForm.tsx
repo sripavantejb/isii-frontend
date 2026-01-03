@@ -118,10 +118,10 @@ const ArticleForm = () => {
         }
       }
 
-      // Validate we have URLs before saving
-      if (!imageUrl || !pdfUrl) {
-        console.error('❌ Missing URLs:', { imageUrl, pdfUrl });
-        toast.error('Please upload both image and PDF files');
+      // Validate we have PDF URL before saving
+      if (!pdfUrl) {
+        console.error('❌ Missing PDF URL:', { pdfUrl });
+        toast.error('Please upload PDF file');
         setLoading(false);
         return;
       }
@@ -136,16 +136,19 @@ const ArticleForm = () => {
       const articleData = {
         title: formData.title,
         date: formattedDate,
-        imageUrl,
+        imageUrl: imageUrl || '',
         pdfUrl,
       };
 
       console.log('💾 Saving article with data:', {
         title: articleData.title,
         date: articleData.date,
+        imageUrl: articleData.imageUrl || '(empty)',
+        pdfUrl: articleData.pdfUrl,
         hasImageUrl: !!articleData.imageUrl,
         hasPdfUrl: !!articleData.pdfUrl,
       });
+      console.log('📤 Full payload:', JSON.stringify(articleData, null, 2));
 
       if (isEdit) {
         await articlesAPI.update(id!, articleData);
@@ -296,6 +299,11 @@ const ArticleForm = () => {
                           setFormData({ ...formData, date: format(date, 'MMMM yyyy') });
                         }
                       }}
+                      onMonthChange={(date) => {
+                        // When month/year changes via dropdown, update the selected date
+                        setSelectedDate(date);
+                        setFormData({ ...formData, date: format(date, 'MMMM yyyy') });
+                      }}
                       captionLayout="dropdown-buttons"
                       fromYear={1990}
                       toYear={2030}
@@ -331,7 +339,7 @@ const ArticleForm = () => {
               <DragDropUpload
                 accept="image/jpeg,image/jpg,image/png"
                 maxSize={5}
-                label="Article Image *"
+                label="Article Image"
                 value={imageFile}
                 onChange={handleImageChange}
                 previewUrl={imagePreview}
