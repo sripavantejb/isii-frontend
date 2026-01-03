@@ -38,24 +38,27 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden">
+      <section className="relative h-[100vh] overflow-hidden" style={{ marginTop: '-80px' }}>
         <div 
           className="absolute inset-0 bg-cover bg-top md:hidden"
           style={{ 
             backgroundImage: `url(${mobileImage})`,
             backgroundPosition: 'top center',
             backgroundSize: 'cover',
-            minHeight: '100vh',
+            height: '100vh',
             width: '100%'
           }}
         />
         <div 
           className="absolute inset-0 bg-cover bg-center hidden md:block"
-          style={{ backgroundImage: `url(${heroImage})` }}
+          style={{ 
+            backgroundImage: `url(${heroImage})`,
+            height: '100vh'
+          }}
         />
         
-        <div className="relative z-10 container-custom section-padding w-full">
-          <div className="max-w-[775px]">
+        <div className="relative z-10 container-custom section-padding w-full flex items-center" style={{ paddingTop: '80px', height: 'calc(100vh - 80px)' }}>
+          <div className="max-w-[600px]">
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-accent mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               ISII
             </h1>

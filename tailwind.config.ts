@@ -60,8 +60,8 @@ export default {
         "gray-light": "hsl(var(--gray-light))",
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['Calibri', 'Calibri Light', 'Calibri Bold', 'Candara', 'Segoe UI', 'Arial', 'sans-serif'],
+        sans: ['Heebo', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
