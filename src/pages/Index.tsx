@@ -5,9 +5,9 @@ import CapabilityCard from "@/components/CapabilityCard";
 import { Brain, Shield, TrendingUp } from "lucide-react";
 
 const whiteHouseHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png";
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554875/Main_3_mgq0be.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767439020/Main_6_vn2com.png";
 const tabletImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554969/Main_4_moupgm.png";
-const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766585947/Gradient_1_mebclo.png";
+const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767439020/Main_6_vn2com.png";
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
 
 const Index = () => {
@@ -38,7 +38,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-start overflow-hidden">
+      <section className="relative h-screen flex items-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-top md:hidden"
           style={{ 
@@ -52,16 +52,9 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center hidden md:block"
           style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(27, 49, 91, 0.7), rgba(27, 49, 91, 0.9))'
-            }}
-          />
-        </div>
+        />
         
-        <div className="relative z-10 container-custom section-padding pt-16 pb-12 md:pt-24 md:pb-24">
+        <div className="relative z-10 container-custom section-padding w-full">
           <div>
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-accent mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               ISII

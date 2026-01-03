@@ -23,7 +23,7 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
       
       <div className="p-5 flex flex-col flex-grow">
         <p className="text-xs italic text-muted-foreground mb-2">{date}</p>
-        <h3 className="font-serif text-base font-bold text-primary mb-4 leading-snug flex-grow line-clamp-3">
+        <h3 className="font-serif text-sm font-bold text-primary mb-4 leading-snug flex-grow line-clamp-3">
           {truncatedTitle}
         </h3>
         {link && (
