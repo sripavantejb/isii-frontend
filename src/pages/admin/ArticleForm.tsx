@@ -5,11 +5,16 @@ import { articlesAPI, uploadAPI } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { format, parse } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { ArrowLeft, Save } from 'lucide-react';
 import Layout from '@/components/Layout';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import DragDropUpload from '@/components/admin/DragDropUpload';
+import { cn } from '@/lib/utils';
 
 const ArticleForm = () => {
   const { id } = useParams();
@@ -28,6 +33,7 @@ const ArticleForm = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   useEffect(() => {
     if (isEdit) {
@@ -46,6 +52,18 @@ const ArticleForm = () => {
         pdfUrl: article.pdfUrl,
       });
       setImagePreview(article.imageUrl);
+      
+      // Parse existing date string to Date object
+      if (article.date) {
+        try {
+          const parsedDate = parse(article.date, 'MMMM yyyy', new Date());
+          if (!isNaN(parsedDate.getTime())) {
+            setSelectedDate(parsedDate);
+          }
+        } catch (error) {
+          console.error('Failed to parse date:', error);
+        }
+      }
     } catch (error: any) {
       toast.error(error.message || 'Failed to fetch article');
       navigate('/admin');
@@ -107,10 +125,16 @@ const ArticleForm = () => {
         return;
       }
 
+      // Format date from selectedDate or use formData.date
+      let formattedDate = formData.date;
+      if (selectedDate) {
+        formattedDate = format(selectedDate, 'MMMM yyyy');
+      }
+
       // Save article
       const articleData = {
         title: formData.title,
-        date: formData.date,
+        date: formattedDate,
         imageUrl,
         pdfUrl,
       };
@@ -189,15 +213,37 @@ const ArticleForm = () => {
                 <Label htmlFor="date" style={{ color: '#1b315b' }}>
                   Date *
                 </Label>
-                <Input
-                  id="date"
-                  type="text"
-                  value={formData.date}
-                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  required
-                  placeholder="e.g., December 2025"
-                  style={{ borderColor: '#1b315b' }}
-                />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !selectedDate && "text-muted-foreground"
+                      )}
+                      style={{ borderColor: '#1b315b', color: '#1b315b' }}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {selectedDate ? format(selectedDate, 'MMMM yyyy') : <span>Pick a month and year</span>}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={(date) => {
+                        setSelectedDate(date);
+                        if (date) {
+                          setFormData({ ...formData, date: format(date, 'MMMM yyyy') });
+                        }
+                      }}
+                      captionLayout="dropdown-buttons"
+                      fromYear={2020}
+                      toYear={2030}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               <DragDropUpload

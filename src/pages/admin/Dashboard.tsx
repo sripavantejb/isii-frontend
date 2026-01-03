@@ -153,7 +153,7 @@ const Dashboard = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => navigate(`/admin/articles/edit/${article._id}`)}
-                          className="flex-1"
+                          className="flex-1 hover:bg-[#1b315b] hover:text-white"
                           style={{ borderColor: '#1b315b', color: '#1b315b' }}
                         >
                           <Edit className="h-4 w-4 mr-2" />
