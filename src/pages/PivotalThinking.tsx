@@ -79,7 +79,7 @@ const PivotalThinking = () => {
                 </div>
               ) : (
                 <div className="grid md:grid-cols-3 gap-8">
-                  {articles.map((article) => (
+                  {articles.slice(0, 6).map((article) => (
                     <div key={article._id} className="h-full">
                       <ArticleCard 
                         image={article.imageUrl}
@@ -102,9 +102,11 @@ const PivotalThinking = () => {
                 <p className="text-muted-foreground">Loading...</p>
               ) : articles.length === 0 ? (
                 <p className="text-muted-foreground">No articles available yet.</p>
+              ) : articles.slice(6).length === 0 ? (
+                <p className="text-muted-foreground">No additional articles.</p>
               ) : (
                 <ol className="space-y-4">
-                  {articles.map((article, index) => (
+                  {articles.slice(6).map((article, index) => (
                     <li key={article._id} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
                       <a 
                         href={article.pdfUrl}
@@ -112,7 +114,7 @@ const PivotalThinking = () => {
                         rel="noopener noreferrer"
                         className="text-primary underline hover:text-primary/80 transition-colors"
                       >
-                        {index + 1}. {article.title}
+                        {index + 7}. {article.title}
                       </a>
                     </li>
                   ))}

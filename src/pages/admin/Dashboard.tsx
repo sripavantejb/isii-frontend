@@ -4,6 +4,16 @@ import { useAuth } from '@/contexts/AuthContext';
 import { articlesAPI } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
 import { Plus, Edit, Trash2, LogOut } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -20,6 +30,8 @@ interface Article {
 const Dashboard = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [articleToDelete, setArticleToDelete] = useState<string | null>(null);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
@@ -39,17 +51,24 @@ const Dashboard = () => {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this article?')) {
-      return;
-    }
+  const handleDeleteClick = (id: string) => {
+    setArticleToDelete(id);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!articleToDelete) return;
 
     try {
-      await articlesAPI.delete(id);
+      await articlesAPI.delete(articleToDelete);
       toast.success('Article deleted successfully');
+      setDeleteDialogOpen(false);
+      setArticleToDelete(null);
       fetchArticles();
     } catch (error: any) {
       toast.error(error.message || 'Failed to delete article');
+      setDeleteDialogOpen(false);
+      setArticleToDelete(null);
     }
   };
 
@@ -143,7 +162,7 @@ const Dashboard = () => {
                         <Button
                           variant="destructive"
                           size="sm"
-                          onClick={() => handleDelete(article._id)}
+                          onClick={() => handleDeleteClick(article._id)}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -155,6 +174,28 @@ const Dashboard = () => {
             )}
           </div>
         </div>
+
+        <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete the article.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => setArticleToDelete(null)}>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleDeleteConfirm}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </Layout>
     </ProtectedRoute>
   );
