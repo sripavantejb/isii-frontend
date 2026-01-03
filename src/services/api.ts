@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'https://isii-backend.onrender.com/api';
+const API_URL = 'https://isii-backend.onrender.com/api';
 
 // Get token from localStorage
 const getToken = () => {
