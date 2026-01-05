@@ -1,5 +1,5 @@
-// Always use Render backend for production
-const API_URL = 'https://isii-backend.onrender.com/api';
+// Always use Vercel backend for production
+const API_URL = 'https://isii-backend.vercel.app/api';
 
 // Log API URL for debugging (remove in production)
 if (import.meta.env.DEV) {
