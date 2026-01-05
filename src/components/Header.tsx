@@ -37,7 +37,6 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
         { label: "Experience", path: "/capabilities/experience" },
       ]
     },
-    { label: "Engage", path: "/engage" },
   ];
 
   const isActive = (path: string) => {
@@ -57,7 +56,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
           <span className="text-primary-foreground/80">
             Need to get in touch with us?{" "}
             <a href="mailto:test@gmail.com" className="underline">
-              Contact us here
+              Contact Us
             </a>
           </span>
         </div>

@@ -2,8 +2,8 @@ import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 
 // Hero banner images
-const heroBackgroundDesktop = "https://res.cloudinary.com/dqataciy5/image/upload/v1767372426/Frame_1707483135_1_aa8n1n.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767373126/Frame_1707483148_2_lb3w4k.png";
+const heroBackgroundDesktop = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
 
 const Experience = () => {
   const projects = [
@@ -11,7 +11,7 @@ const Experience = () => {
       number: 1,
       title: "Highly sensitive state-level challenges,",
       description: "creating stabilising frameworks across security, governance, climate, and regional systems.",
-      buttonLink: "/engage",
+      buttonLink: "/about",
       buttonText: "SEE OUR MANDATES",
     },
     {
@@ -46,7 +46,7 @@ const Experience = () => {
       number: 6,
       title: "Human security and societal resilience,",
       description: "reshaping education, inclusion, and workforce adaptation for technological disruption.",
-      buttonLink: "/engage",
+      buttonLink: "/capabilities/pivotal-thinking",
       buttonText: "EXPLORE CAPABILITIES",
     },
   ];
@@ -55,20 +55,44 @@ const Experience = () => {
     <Layout>
       {/* Banner Section */}
       <section className="relative w-full overflow-hidden">
-        {/* Mobile Banner Image */}
-        <img 
-          src={heroBackgroundMobile}
-          alt="Experience Banner"
-          className="block md:hidden w-full h-auto"
-          style={{ maxHeight: '240px', objectFit: 'contain', objectPosition: 'center' }}
-        />
-        {/* Desktop Banner Image */}
-        <img 
-          src={heroBackgroundDesktop}
-          alt="Experience Banner"
-          className="hidden md:block w-full h-auto"
-          style={{ maxHeight: '240px', objectFit: 'contain', objectPosition: 'center' }}
-        />
+        {/* Mobile Background - shown only on screens smaller than md (768px) */}
+        <div 
+          className="block md:hidden w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackgroundMobile})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-2xl font-bold">
+                Experience
+              </h1>
+            </div>
+          </div>
+        </div>
+        {/* Desktop Background - shown only on md screens and larger (768px+) */}
+        <div 
+          className="hidden md:block w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackgroundDesktop})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-2xl md:text-3xl lg:text-4xl font-bold">
+                Experience
+              </h1>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Portfolio Section */}

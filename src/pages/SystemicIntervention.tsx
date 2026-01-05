@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 
-const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767363392/Frame_1707483125_1_hsfyqs.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767368695/Frame_1707483148_fddy7f.png";
+const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
 
 // Card data array
 const interventionCards = [
@@ -35,21 +35,49 @@ const SystemicIntervention = () => {
         }
       `}</style>
       {/* Hero Section - Small Banner */}
-      <section className="relative h-[120px] md:h-[220px] overflow-hidden">
-        {/* Mobile Banner Image */}
+      <section className="relative w-full overflow-hidden">
+        {/* Mobile Background - shown only on screens smaller than md (768px) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center md:hidden"
-          style={{ backgroundImage: `url(${heroBackgroundMobile})` }}
-        />
-        {/* Desktop Banner Image */}
+          className="block md:hidden w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackgroundMobile})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-xl font-bold">
+                Systemic Interventions and Investments
+              </h1>
+            </div>
+          </div>
+        </div>
+        {/* Desktop Background - shown only on md screens and larger (768px+) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center hidden md:block"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        />
+          className="hidden md:block w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-2xl md:text-3xl lg:text-4xl font-bold">
+                Systemic Interventions and Investments
+              </h1>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Main Content Section */}
-      <section className="py-16 md:py-20 relative" style={{ backgroundColor: '#F3F5F7' }}>
+      <section className="pt-8 md:pt-10 pb-16 md:pb-20 relative" style={{ backgroundColor: '#F3F5F7' }}>
         {/* Pink vertical strip on the left */}
         <div 
           className="absolute left-0 top-0 bottom-0 w-1 md:w-2"
@@ -58,7 +86,7 @@ const SystemicIntervention = () => {
         
         <div className="container-custom section-padding">
           {/* Prioritized Label */}
-          <div className="max-w-[1420px] mx-auto mb-10 md:mb-14 flex justify-start" style={{ gap: '10px' }}>
+          <div className="max-w-[1420px] mx-auto mb-6 md:mb-8 flex justify-start" style={{ gap: '10px' }}>
             <span 
               className="inline-flex items-center justify-center font-medium"
               style={{ 

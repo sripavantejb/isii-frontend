@@ -27,7 +27,7 @@ const MandateCard = ({ image, title, description, buttonLink = "#" }: MandateCar
       {/* Content */}
       <div className="p-4 md:p-6 flex flex-col flex-grow">
         {/* Title - bold dark blue */}
-        <h3 className="font-sans text-lg md:text-xl text-primary mb-4 md:mb-6 leading-tight">
+        <h3 className="font-sans text-base md:text-lg text-primary mb-4 md:mb-6 leading-tight">
           {title}
         </h3>
         

@@ -11,7 +11,6 @@ import PivotalThinking from "./pages/PivotalThinking";
 import StrategicCounsel from "./pages/StrategicCounsel";
 import SystemicIntervention from "./pages/SystemicIntervention";
 import Experience from "./pages/Experience";
-import Engage from "./pages/Engage";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
@@ -34,7 +33,6 @@ const App = () => (
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />
             <Route path="/capabilities/systemic-intervention" element={<SystemicIntervention />} />
             <Route path="/capabilities/experience" element={<Experience />} />
-            <Route path="/engage" element={<Engage />} />
             {/* Admin Routes */}
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin" element={<Dashboard />} />

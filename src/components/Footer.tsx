@@ -1,13 +1,6 @@
-import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
 
 const Footer = () => {
-  const footerLinks = [
-    { label: "About Us", path: "/about" },
-    { label: "Capabilities", path: "/capabilities/pivotal-thinking" },
-    { label: "Engage", path: "/engage" },
-  ];
-
   return (
     <footer className="bg-primary text-primary-foreground relative">
       {/* Accent line */}
@@ -20,19 +13,6 @@ const Footer = () => {
           <div className="flex-shrink-0 z-10">
             <Logo variant="light" />
           </div>
-          
-          {/* Navigation links in the center */}
-          <nav className="flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline hover:no-underline"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
           
           {/* Copyright on the right */}
           <div className="flex-shrink-0 z-10">
@@ -48,19 +28,6 @@ const Footer = () => {
           <div className="mb-6">
             <Logo variant="light" />
           </div>
-          
-          {/* Navigation links centered */}
-          <nav className="flex items-center justify-center gap-6 mb-6">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline hover:no-underline"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
           
           {/* Copyright centered at bottom */}
           <p className="text-sm text-primary-foreground/60">

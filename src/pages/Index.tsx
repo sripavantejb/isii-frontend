@@ -4,11 +4,12 @@ import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
 import { Brain, Shield, TrendingUp } from "lucide-react";
 
-const whiteHouseHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png";
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767439020/Main_6_vn2com.png";
-const tabletImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554969/Main_4_moupgm.png";
-const mobileImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767439839/Main_7_azvz6z.png";
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
+// Hero section images for different screen sizes
+const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613670/Main_8_aqwndf.png"; // Large screens
+const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613686/Main_9_ntohbn.png"; // Tablet screens
+const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613703/Main_11_bak61u.png"; // Medium mobiles
+const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613701/Main_10_dytk39.png"; // Small mobiles
 
 const Index = () => {
   const capabilities = [
@@ -24,14 +25,14 @@ const Index = () => {
       title: "Strategic Counsel",
       description: "Supporting governments, blocs and institutions as they navigate structural change.",
       buttonText: "SEE OUR MANDATES",
-      buttonLink: "#",
+      buttonLink: "/capabilities/strategic-counsel",
     },
     {
       icon: TrendingUp,
       title: "Systemic Intervention and Strategic Investment",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
       buttonText: "EXPLORE CAPABILITIES",
-      buttonLink: "#",
+      buttonLink: "/capabilities/systemic-intervention",
     },
   ];
 
@@ -39,21 +40,48 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden">
+        {/* Small mobiles - default (below 640px) */}
         <div 
-          className="absolute inset-0 bg-cover bg-top md:hidden"
+          className="absolute inset-0 bg-cover bg-center sm:hidden"
           style={{ 
-            backgroundImage: `url(${mobileImage})`,
+            backgroundImage: `url(${heroImageMobileSmall})`,
             backgroundPosition: 'top center',
             backgroundSize: 'cover',
             height: 'calc(100vh - 80px)',
             width: '100%'
           }}
         />
+        {/* Medium mobiles - sm: (640px+) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center hidden md:block"
+          className="absolute inset-0 bg-cover bg-center hidden sm:block md:hidden"
           style={{ 
-            backgroundImage: `url(${heroImage})`,
-            height: 'calc(100vh - 80px)'
+            backgroundImage: `url(${heroImageMobileMedium})`,
+            backgroundPosition: 'top center',
+            backgroundSize: 'cover',
+            height: 'calc(100vh - 80px)',
+            width: '100%'
+          }}
+        />
+        {/* Tablet screens - md: (768px+) */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center hidden md:block lg:hidden"
+          style={{ 
+            backgroundImage: `url(${heroImageTablet})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            height: 'calc(100vh - 80px)',
+            width: '100%'
+          }}
+        />
+        {/* Large screens - lg: (1024px+) */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center hidden lg:block"
+          style={{ 
+            backgroundImage: `url(${heroImageLarge})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            height: 'calc(100vh - 80px)',
+            width: '100%'
           }}
         />
         
@@ -79,21 +107,21 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="relative pt-20 pb-8 flex items-center overflow-hidden" style={{ minHeight: '384px' }}>
+      <section className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px]">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${bannerImage})`,
-            height: '384px',
+            height: '100%',
           }}
         />
-        <div className="relative z-10 w-full">
-          <div className="container-custom section-padding">
-            <div className="text-left">
-              <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground uppercase tracking-wider mb-6">
+        <div className="relative z-10 w-full h-full flex items-center">
+          <div className="container-custom section-padding w-full py-16 md:py-20">
+            <div className="text-left flex flex-col" style={{ gap: '10px' }}>
+              <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground uppercase tracking-wider w-fit font-bold">
                 Our Latest Pivotal Thinking
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 text-left leading-relaxed">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground text-left leading-relaxed">
                 <span className="md:hidden">
                   America the Merchant Power, The National Security Strategy 2025
                 </span>

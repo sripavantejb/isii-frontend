@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
@@ -91,14 +90,6 @@ const PivotalThinking = () => {
       {/* Hero Section */}
       <section className="py-12 bg-primary">
         <div className="container-custom section-padding">
-          <div className="flex items-center gap-2 text-sm text-primary-foreground/60 mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            <Link to="/capabilities/pivotal-thinking" className="hover:text-primary-foreground">
-              Capabilities
-            </Link>
-            <span>/</span>
-            <span className="text-primary-foreground">Pivotal Thinking</span>
-          </div>
-          
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
             Pivotal Thinking
           </h1>

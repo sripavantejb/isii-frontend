@@ -3,8 +3,8 @@ import Layout from "@/components/Layout";
 import MandateCard from "@/components/MandateCard";
 
 // Cloudinary URLs for images
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362733/Frame_1707483135_mis0te.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767364371/Frame_1707483125_2_aosqli.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
 const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362594/Rectangle_3463579_zpi2mc.png";
 const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362661/Rectangle_3463579_1_d7dslx.png";
 const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362666/Rectangle_3463579_2_pabgfw.png";
@@ -54,26 +54,50 @@ const StrategicCounsel = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative w-full overflow-hidden">
-        {/* Mobile Image - shown only on screens smaller than md (768px) */}
-        <img 
-          src={heroImageMobile}
-          alt="Strategic Counsel Banner"
-          className="block md:hidden w-full h-auto"
-          style={{ maxHeight: '384px', objectFit: 'contain', objectPosition: 'center' }}
-        />
-        {/* Desktop Image - shown only on md screens and larger (768px+) */}
-        <img 
-          src={heroImage}
-          alt="Strategic Counsel Banner"
-          className="hidden md:block w-full h-auto"
-          style={{ maxHeight: '384px', objectFit: 'contain', objectPosition: 'center' }}
-        />
+        {/* Mobile Background - shown only on screens smaller than md (768px) */}
+        <div 
+          className="block md:hidden w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroImageMobile})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-2xl font-bold">
+                Strategic Counsel
+              </h1>
+            </div>
+          </div>
+        </div>
+        {/* Desktop Background - shown only on md screens and larger (768px+) */}
+        <div 
+          className="hidden md:block w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-2xl md:text-3xl lg:text-4xl font-bold">
+                Strategic Counsel
+              </h1>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Targeted Strategic Mandates Section */}
       <section className="pt-10 md:pt-11 pb-8" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="container-custom section-padding">
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary mb-4 md:mb-8 font-bold">
+          <h2 className="font-sans text-lg md:text-xl text-primary mb-4 md:mb-8 font-bold">
             Targeted Strategic Mandates
           </h2>
           
@@ -89,13 +113,13 @@ const StrategicCounsel = () => {
       <section className="pt-0 pb-6 md:pb-12" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="container-custom section-padding">
           <div className="border-t border-b border-border py-4 md:py-6">
-            <p className="font-sans text-base md:text-lg text-primary leading-relaxed font-bold">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
               Intractable Problems
             </p>
           </div>
           {problems.map((problem, index) => (
             <div key={index} className={`border-t ${index === problems.length - 1 ? '' : 'border-b'} border-border py-4 md:py-6`}>
-              <p className="font-sans text-base md:text-lg text-primary leading-relaxed font-bold">
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
                 {problem}
               </p>
             </div>

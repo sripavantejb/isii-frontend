@@ -22,7 +22,7 @@ const ProjectCard = ({ number, title, description, buttonLink = "#", buttonText 
       </div>
       
       {/* Content */}
-      <div className="pt-20 md:pt-24 flex flex-col flex-grow">
+      <div className="pt-16 md:pt-20 flex flex-col flex-grow">
         {/* Title and Description - inline bold title with regular description */}
         <p className="text-base md:text-lg leading-relaxed font-sans" style={{ color: '#1b315b' }}>
           <span className="font-bold">{title}</span> {description}
