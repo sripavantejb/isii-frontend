@@ -26,6 +26,14 @@ const interventionCards = [
 const SystemicIntervention = () => {
   return (
     <Layout>
+      <style>{`
+        @media (min-width: 1440px) {
+          .intervention-card {
+            height: 266px !important;
+            width: 1420px !important;
+          }
+        }
+      `}</style>
       {/* Hero Section - Small Banner */}
       <section className="relative h-[120px] md:h-[220px] overflow-hidden">
         {/* Mobile Banner Image */}
@@ -41,15 +49,31 @@ const SystemicIntervention = () => {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-16 md:py-20" style={{ backgroundColor: '#f4f6f7' }}>
+      <section className="py-16 md:py-20 relative" style={{ backgroundColor: '#F3F5F7' }}>
+        {/* Pink vertical strip on the left */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-1 md:w-2"
+          style={{ backgroundColor: '#f8d7da' }}
+        />
+        
         <div className="container-custom section-padding">
-          {/* Prioritized Label - Centered above cards */}
-          <div className="max-w-[1240px] mx-auto mt-2 md:mt-3 mb-10 md:mb-14 flex justify-start">
+          {/* Prioritized Label */}
+          <div className="max-w-[1420px] mx-auto mb-10 md:mb-14 flex justify-start" style={{ gap: '10px' }}>
             <span 
-              className="inline-block px-5 py-2 text-sm font-medium rounded-full shadow-sm"
+              className="inline-flex items-center justify-center font-medium"
               style={{ 
+                width: '159px',
+                height: '56px',
                 backgroundColor: '#FFFFFF',
-                color: '#7a7a7a'
+                color: '#000000',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: '#e5e7eb',
+                borderRadius: '100px',
+                paddingTop: '10px',
+                paddingRight: '24px',
+                paddingBottom: '10px',
+                paddingLeft: '24px'
               }}
             >
               Prioritized
@@ -57,43 +81,66 @@ const SystemicIntervention = () => {
           </div>
 
           {/* Cards Container */}
-          <div className="max-w-[1240px] mx-auto space-y-6 md:space-y-8">
+          <div className="max-w-[1420px] mx-auto" style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {interventionCards.map((card) => (
               <div
                 key={card.id}
-                className="bg-white rounded-lg p-6 md:p-8 border border-gray-200"
+                className="bg-white rounded-lg border border-gray-200 mx-auto"
                 style={{
+                  width: '100%',
+                  maxWidth: '1420px',
+                  height: 'auto',
+                  minHeight: '266px',
+                  padding: '32px',
                   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)'
                 }}
               >
-                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                <div className="flex flex-col md:flex-row h-full" style={{ gap: '32px' }}>
                   {/* Image - Left side */}
-                  <div className="w-full md:w-[38%] flex-shrink-0">
-                    <img 
-                      src={card.image} 
-                      alt={card.alt}
-                      className="w-full rounded-lg"
-                      style={{ aspectRatio: '16 / 9', objectFit: 'cover', maxHeight: '180px' }}
-                    />
+                  <div className="flex-shrink-0 w-full md:w-auto">
+                    <div 
+                      className="rounded-lg overflow-hidden mx-auto md:mx-0"
+                      style={{ 
+                        width: '100%',
+                        maxWidth: '397.33px',
+                        height: '202px'
+                      }}
+                    >
+                      <img 
+                        src={card.image} 
+                        alt={card.alt}
+                        className="w-full h-full rounded-lg"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                   </div>
                   
                   {/* Content - Right side */}
-                  <div className="w-full md:w-[62%] flex-1">
+                  <div 
+                    className="flex flex-col justify-center w-full md:w-auto flex-1"
+                    style={{
+                      width: '100%',
+                      maxWidth: '926.67px',
+                      height: 'auto',
+                      minHeight: '202px',
+                      gap: '16px'
+                    }}
+                  >
                     <h2 
-                      className="font-serif text-xl md:text-2xl lg:text-2xl font-bold mb-3 leading-tight"
-                      style={{ color: '#1b315b' }}
+                      className="font-serif text-xl md:text-2xl font-bold leading-tight"
+                      style={{ color: '#1b315b', margin: 0 }}
                     >
                       {card.heading}
                     </h2>
                     <p 
-                      className="leading-relaxed mb-3 text-base md:text-lg"
-                      style={{ color: '#4a4a4a', fontWeight: 400 }}
+                      className="leading-relaxed text-base"
+                      style={{ color: '#4a4a4a', fontWeight: 400, margin: 0 }}
                     >
                       {card.description}
                     </p>
                     <p 
-                      className="text-sm md:text-sm"
-                      style={{ color: '#4a4a4a', fontWeight: 500 }}
+                      className="text-sm"
+                      style={{ color: '#4a4a4a', fontWeight: 500, margin: 0 }}
                     >
                       {card.path}
                     </p>
