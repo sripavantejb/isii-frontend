@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
@@ -67,6 +67,7 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
 const PivotalThinking = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -84,6 +85,46 @@ const PivotalThinking = () => {
 
     fetchArticles();
   }, []);
+
+  // Force scrollbar to always be visible
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const element = scrollContainerRef.current;
+      // Force scrollbar to be visible
+      element.style.overflowY = 'scroll';
+      
+      // Function to keep scrollbar visible
+      const keepScrollbarVisible = () => {
+        if (element) {
+          // Store current scroll position
+          const currentScroll = element.scrollTop;
+          // Temporarily scroll 1px down and back to trigger scrollbar visibility
+          element.scrollTop = currentScroll + 1;
+          setTimeout(() => {
+            element.scrollTop = currentScroll;
+          }, 10);
+        }
+      };
+      
+      // Trigger immediately
+      keepScrollbarVisible();
+      
+      // Set up interval to keep scrollbar visible (every 500ms)
+      const interval = setInterval(keepScrollbarVisible, 500);
+      
+      // Also trigger on mouse enter to ensure visibility
+      const handleMouseEnter = () => {
+        keepScrollbarVisible();
+      };
+      
+      element.addEventListener('mouseenter', handleMouseEnter);
+      
+      return () => {
+        clearInterval(interval);
+        element.removeEventListener('mouseenter', handleMouseEnter);
+      };
+    }
+  }, [articles]);
 
   return (
     <Layout>
@@ -149,38 +190,71 @@ const PivotalThinking = () => {
               ) : articles.slice(6).length === 0 ? (
                 <p className="text-muted-foreground">No additional articles.</p>
               ) : (
-                <div className="max-h-[600px] overflow-y-scroll pr-2 transition-shadow duration-300 hover:shadow-lg rounded-lg p-2" style={{ scrollbarWidth: 'thin', scrollbarColor: '#1b315b #f3f5f7' }}>
+                <>
                   <style>{`
-                    div::-webkit-scrollbar {
-                      width: 4px;
+                    .content-library-scroll {
+                      scrollbar-width: thin;
+                      scrollbar-color: #1b315b #f3f5f7;
+                      scrollbar-gutter: stable;
                     }
-                    div::-webkit-scrollbar-track {
+                    .content-library-scroll::-webkit-scrollbar {
+                      width: 14px;
+                      -webkit-appearance: none;
+                      background: transparent;
+                    }
+                    .content-library-scroll::-webkit-scrollbar:vertical {
+                      width: 14px;
+                    }
+                    .content-library-scroll::-webkit-scrollbar-track {
                       background: #f3f5f7;
-                      border-radius: 2px;
+                      border-radius: 7px;
+                      border: 1px solid #e5e7eb;
+                      -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
                     }
-                    div::-webkit-scrollbar-thumb {
-                      background: #1b315b;
-                      border-radius: 2px;
+                    .content-library-scroll::-webkit-scrollbar-thumb {
+                      background-color: #1b315b;
+                      border-radius: 7px;
+                      border: 2px solid #f3f5f7;
+                      min-height: 30px;
+                      background-clip: padding-box;
                     }
-                    div::-webkit-scrollbar-thumb:hover {
-                      background: #0f1f3d;
+                    .content-library-scroll::-webkit-scrollbar-thumb:hover {
+                      background-color: #0f1f3d;
+                    }
+                    .content-library-scroll::-webkit-scrollbar-thumb:active {
+                      background-color: #0a1629;
+                    }
+                    .content-library-scroll::-webkit-scrollbar-corner {
+                      background: #f3f5f7;
                     }
                   `}</style>
-                  <ol className="space-y-4">
-                    {articles.slice(6).map((article, index) => (
-                      <li key={article._id} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
-                        <a 
-                          href={article.pdfUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-primary underline hover:text-primary/80 transition-colors"
-                        >
-                          {index + 1}. {article.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
+                  <div 
+                    ref={scrollContainerRef}
+                    className="content-library-scroll border border-border rounded-lg p-4"
+                    style={{ 
+                      height: '530px',
+                      overflowY: 'scroll',
+                      overflowX: 'hidden',
+                      scrollbarGutter: 'stable',
+                      WebkitOverflowScrolling: 'touch'
+                    }}
+                  >
+                    <ol className="space-y-4 pr-2">
+                      {articles.slice(6).map((article, index) => (
+                        <li key={article._id} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
+                          <a 
+                            href={article.pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-primary underline hover:text-primary/80 transition-colors"
+                          >
+                            {index + 1}. {article.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </>
               )}
             </div>
           </div>

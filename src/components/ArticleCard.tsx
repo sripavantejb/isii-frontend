@@ -12,12 +12,7 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
   const truncatedTitle = title.length > 60 ? title.substring(0, 60) + '...' : title;
 
   return (
-    <a 
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 cursor-pointer block"
-    >
+    <div className="bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1">
       <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
         <img 
           src={image} 
@@ -31,11 +26,18 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
         <h3 className="font-serif text-sm font-bold text-primary mb-4 leading-snug flex-grow line-clamp-3">
           {truncatedTitle}
         </h3>
-        <div className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto">
-          Read more <ArrowRight className="w-4 h-4" />
-        </div>
+        {link && (
+          <a 
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto"
+          >
+            Read more <ArrowRight className="w-4 h-4" />
+          </a>
+        )}
       </div>
-    </a>
+    </div>
   );
 };
 
