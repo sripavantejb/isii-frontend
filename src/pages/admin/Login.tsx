@@ -34,17 +34,17 @@ const Login = () => {
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="w-full max-w-md p-4 sm:p-6 md:p-8" style={{ backgroundColor: '#ffffff' }}>
           <div className="mb-8">
-            <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#1b315b' }}>
+            <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#040750' }}>
               Admin Login
             </h1>
-            <p className="text-sm" style={{ color: '#1b315b' }}>
+            <p className="text-sm" style={{ color: '#040750' }}>
               Sign in to manage content
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" style={{ color: '#1b315b' }}>
+              <Label htmlFor="email" style={{ color: '#040750' }}>
                 Email
               </Label>
               <Input
@@ -54,12 +54,12 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="admin@isii.com"
-                style={{ borderColor: '#1b315b' }}
+                style={{ borderColor: '#040750' }}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" style={{ color: '#1b315b' }}>
+              <Label htmlFor="password" style={{ color: '#040750' }}>
                 Password
               </Label>
               <Input
@@ -69,13 +69,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Enter your password"
-                style={{ borderColor: '#1b315b' }}
+                style={{ borderColor: '#040750' }}
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-[#1b315b] text-white hover:bg-[#1b315b]/90 hover:text-white"
+              className="w-full bg-[#040750] text-white hover:bg-[#040750]/90 hover:text-white"
               disabled={loading}
             >
               {loading ? 'Logging in...' : 'Login'}

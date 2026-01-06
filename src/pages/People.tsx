@@ -8,25 +8,6 @@ const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1766
 const People = () => {
   const people = [
     {
-      category: "Economic & Climate Transition",
-      name: "Phoebe Koundouri",
-      title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565203/unnamed_nnjx6n.png",
-      drawingOn: [
-        "SDSN network of 1,700 members in 144 countries",
-        "200 multi-disciplinary sustainability scholars"
-      ],
-    },
-    {
-      category: "Peace and Social Transition",
-      name: "Garry Jacobs",
-      title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
-      drawingOn: [
-        "800 leading scientists and scholars",
-        "5 key programmes of peaceful social change"
-      ],
-    },
-    {
       category: "Global Transition Architecture",
       name: "Ketan Patel",
       title: "Chair, Force for Good; CEO, Greater Pacific Capital; Former Head, Strategic Group, Goldman Sachs",
@@ -34,6 +15,16 @@ const People = () => {
       drawingOn: [
         "100 leading financial institutions strategies",
         "125 leading technology company strategies"
+      ],
+    },
+    {
+      category: "Tech Security Transition",
+      name: "Glenn Gaffney",
+      title: "Former Director, Science and Technology, CIA; EVP, IQT; Founder NobleReach",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565187/unnamed_3_vjxsqa.png",
+      drawingOn: [
+        "Major US science and technology labs and experts",
+        "International network of science and tech expertise"
       ],
     },
     {
@@ -47,13 +38,22 @@ const People = () => {
       ],
     },
     {
-      category: "Tech Security Transition",
-      name: "Glenn Gaffney",
-      title: "Former Director, Science and Technology, CIA; EVP, IQT; Founder NobleReach",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565187/unnamed_3_vjxsqa.png",
+      category: "Peace and Social Transition",
+      name: "Garry Jacobs",
+      title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
       drawingOn: [
-        "Major US science and technology labs and experts",
-        "International network of science and tech expertise"
+        "800 leading scientists and scholars",
+        "5 key programmes of peaceful social change"
+      ],
+    },
+    {
+      category: "Economic & Climate Transition",
+      name: "Phoebe Koundouri",
+      title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565203/unnamed_nnjx6n.png",
+      drawingOn: [
+        "SDSN network of 1,700 members in 144 countries",
+        "200 multi-disciplinary sustainability scholars"
       ],
     },
     {

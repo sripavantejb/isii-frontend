@@ -162,7 +162,7 @@ const SystemicIntervention = () => {
                   >
                     <h2 
                       className="font-serif text-xl md:text-2xl font-bold leading-tight"
-                      style={{ color: '#1b315b', margin: 0 }}
+                      style={{ color: '#040750', margin: 0 }}
                     >
                       {card.heading}
                     </h2>

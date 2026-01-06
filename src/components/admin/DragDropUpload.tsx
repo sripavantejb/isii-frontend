@@ -92,7 +92,7 @@ const DragDropUpload = ({
 
   return (
     <div className="space-y-2">
-      <label className="text-sm font-medium" style={{ color: '#1b315b' }}>
+      <label className="text-sm font-medium" style={{ color: '#040750' }}>
         {label}
       </label>
       <div
@@ -140,7 +140,7 @@ const DragDropUpload = ({
               </div>
             ) : (
               <div className="flex items-center justify-center gap-2">
-                <p className="text-sm" style={{ color: '#1b315b' }}>
+                <p className="text-sm" style={{ color: '#040750' }}>
                   {value?.name || 'File selected'}
                 </p>
                 <Button
@@ -162,9 +162,9 @@ const DragDropUpload = ({
           </div>
         ) : (
           <div className="space-y-2">
-            <Upload className="mx-auto h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" style={{ color: '#1b315b' }} />
+            <Upload className="mx-auto h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" style={{ color: '#040750' }} />
             <div>
-              <p className="text-sm font-medium" style={{ color: '#1b315b' }}>
+              <p className="text-sm font-medium" style={{ color: '#040750' }}>
                 Drag and drop or click to upload
               </p>
               <p className="text-xs text-muted-foreground mt-1">
