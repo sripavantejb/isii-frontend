@@ -35,15 +35,25 @@ const Footer = () => {
             <div className="flex gap-16 z-10 absolute left-1/2 transform -translate-x-1/2">
               {/* Left Column */}
               <div className="flex flex-col gap-4">
-                {leftColumnLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {leftColumnLinks.map((link) => 
+                  link.isExternal ? (
+                    <a
+                      key={link.path}
+                      href={link.path}
+                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </div>
               
               {/* Right Column */}
@@ -84,15 +94,25 @@ const Footer = () => {
           <div className="flex flex-col items-center gap-6 mb-8">
             {/* Left Column Links */}
             <div className="flex flex-col items-center gap-4">
-              {leftColumnLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {leftColumnLinks.map((link) => 
+                link.isExternal ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </div>
             
             {/* Right Column Links */}
