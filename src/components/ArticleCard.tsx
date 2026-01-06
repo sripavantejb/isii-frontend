@@ -14,7 +14,7 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
   return (
     <div 
       className="bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 rounded-none"
-      style={{ backgroundColor: '#e8e7e7' }}
+      style={{ backgroundColor: '#f1f1f1' }}
     >
       <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
         <img 

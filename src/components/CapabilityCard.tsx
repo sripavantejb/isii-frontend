@@ -14,7 +14,7 @@ const CapabilityCard = ({ icon: Icon, title, description, buttonText, buttonLink
   return (
     <div
       className="bg-card border border-border rounded-none shadow-sm p-4 md:p-6 flex flex-col h-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1"
-      style={{ backgroundColor: '#e8e7e7' }}
+      style={{ backgroundColor: '#f1f1f1' }}
     >
       {/* Icon at top center with light gray background */}
       <div className="mb-4 md:mb-6 flex justify-center">

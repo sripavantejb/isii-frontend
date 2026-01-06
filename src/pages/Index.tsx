@@ -178,7 +178,7 @@ const Index = () => {
             </p>
             <div className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
               <Button variant="hero" size="lg" className="text-primary" asChild>
-                <Link to="/about/mission">About us</Link>
+                <Link to="/about/mission">About Us</Link>
               </Button>
             </div>
           </div>
