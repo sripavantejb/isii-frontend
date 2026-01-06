@@ -6,12 +6,14 @@ const Footer = () => {
     { label: "Home", path: "/" },
     { label: "Mission", path: "/about/mission" },
     { label: "People", path: "/about/people" },
+    { label: "Contact Us", path: "mailto:test@gmail.com", isExternal: true },
   ];
 
   const rightColumnLinks = [
     { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
     { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
     { label: "Systemic Investments", path: "/capabilities/systemic-intervention" },
+    { label: "Experience", path: "/capabilities/experience" },
   ];
 
   return (
@@ -24,8 +26,9 @@ const Footer = () => {
         <div className="hidden md:block">
           <div className="flex items-start justify-between mb-8">
             {/* Logo on the left */}
-            <div className="flex-shrink-0 z-10">
+            <div className="flex-shrink-0 z-10 flex flex-col">
               <Logo variant="light" />
+              <p className="text-xs text-white mt-1 font-sans">Part of Force For Good Group</p>
             </div>
             
             {/* Navigation Links - 3-3 Layout - Centered */}
@@ -64,7 +67,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="flex justify-end">
             <p className="text-sm text-primary-foreground/60">
-              © 2025 ISII. All rights reserved.
+              © 2026 ISII. All rights reserved.
             </p>
           </div>
         </div>
@@ -72,8 +75,9 @@ const Footer = () => {
         {/* Mobile Layout - Centered */}
         <div className="md:hidden flex flex-col items-center">
           {/* Logo centered at top */}
-          <div className="mb-8">
+          <div className="mb-8 flex flex-col items-center">
             <Logo variant="light" />
+            <p className="text-xs text-white mt-1 font-sans">Part of Force For Good Group</p>
           </div>
           
           {/* Navigation Links - Stacked */}
@@ -107,7 +111,7 @@ const Footer = () => {
           
           {/* Copyright centered at bottom */}
           <p className="text-sm text-primary-foreground/60">
-            © 2025 ISII. All Rights Reserved.
+            © 2026 ISII. All Rights Reserved.
           </p>
         </div>
       </div>

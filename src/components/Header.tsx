@@ -65,8 +65,9 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       {/* Main header */}
       <div className={`${bgClass} py-4 border-b border-border`}>
         <div className="container-custom section-padding flex items-center justify-between">
-          <Link to="/">
+          <Link to="/" className="flex flex-col">
             <Logo variant="dark" />
+            <p className="text-xs text-primary/60 mt-1 font-sans">Part of Force For Good Group</p>
           </Link>
 
           {/* Desktop Navigation */}
@@ -98,7 +99,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 </Link>
               )
             ))}
-            <Button variant="default" size="sm" asChild className="bg-transparent border border-primary/80 text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm">
+            <Button variant="default" size="sm" asChild className="bg-transparent border border-primary/80 text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm tracking-normal">
               <a href="mailto:test@gmail.com">Contact Us</a>
             </Button>
           </nav>
