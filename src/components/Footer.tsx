@@ -1,6 +1,19 @@
+import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
 
 const Footer = () => {
+  const leftColumnLinks = [
+    { label: "Home", path: "/" },
+    { label: "Mission", path: "/about/mission" },
+    { label: "People", path: "/about/people" },
+  ];
+
+  const rightColumnLinks = [
+    { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
+    { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
+    { label: "Systemic Investments", path: "/capabilities/systemic-intervention" },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground relative">
       {/* Accent line */}
@@ -8,14 +21,48 @@ const Footer = () => {
       
       <div className="container-custom section-padding py-12 relative">
         {/* Desktop Layout */}
-        <div className="hidden md:flex items-center justify-between relative">
-          {/* Logo on the left */}
-          <div className="flex-shrink-0 z-10">
-            <Logo variant="light" />
+        <div className="hidden md:block">
+          <div className="flex items-start justify-between mb-8">
+            {/* Logo on the left */}
+            <div className="flex-shrink-0 z-10">
+              <Logo variant="light" />
+            </div>
+            
+            {/* Navigation Links - 3-3 Layout - Centered */}
+            <div className="flex gap-16 z-10 absolute left-1/2 transform -translate-x-1/2">
+              {/* Left Column */}
+              <div className="flex flex-col gap-4">
+                {leftColumnLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              
+              {/* Right Column */}
+              <div className="flex flex-col gap-4">
+                {rightColumnLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            
+            {/* Spacer to balance layout */}
+            <div className="flex-shrink-0 w-[120px]"></div>
           </div>
           
-          {/* Copyright on the right */}
-          <div className="flex-shrink-0 z-10">
+          {/* Copyright */}
+          <div className="flex justify-end">
             <p className="text-sm text-primary-foreground/60">
               © 2025 ISII. All rights reserved.
             </p>
@@ -25,8 +72,37 @@ const Footer = () => {
         {/* Mobile Layout - Centered */}
         <div className="md:hidden flex flex-col items-center">
           {/* Logo centered at top */}
-          <div className="mb-6">
+          <div className="mb-8">
             <Logo variant="light" />
+          </div>
+          
+          {/* Navigation Links - Stacked */}
+          <div className="flex flex-col items-center gap-6 mb-8">
+            {/* Left Column Links */}
+            <div className="flex flex-col items-center gap-4">
+              {leftColumnLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            
+            {/* Right Column Links */}
+            <div className="flex flex-col items-center gap-4">
+              {rightColumnLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
           
           {/* Copyright centered at bottom */}

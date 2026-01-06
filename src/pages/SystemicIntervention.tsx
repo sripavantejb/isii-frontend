@@ -91,7 +91,7 @@ const SystemicIntervention = () => {
         />
         
         <div className="container-custom section-padding">
-          {/* Prioritized Label */}
+          {/* Prioritised Label */}
           <div className="max-w-[1420px] mx-auto mb-6 md:mb-8 flex justify-start" style={{ gap: '10px' }}>
             <span 
               className="inline-flex items-center justify-center font-medium"
@@ -110,7 +110,7 @@ const SystemicIntervention = () => {
                 paddingLeft: '24px'
               }}
             >
-              Prioritized
+              Prioritised
             </span>
           </div>
 
