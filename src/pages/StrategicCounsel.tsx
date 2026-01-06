@@ -19,7 +19,7 @@ const StrategicCounsel = () => {
         </>
       ),
       description: "",
-      buttonLink: "#",
+      buttonLink: "/capabilities/strategic-counsel/growth-and-prosperity",
     },
     {
       image: mandateImage2,
