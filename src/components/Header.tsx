@@ -65,9 +65,8 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       {/* Main header */}
       <div className={`${bgClass} py-4 border-b border-border`}>
         <div className="container-custom section-padding flex items-center justify-between">
-          <Link to="/" className="flex flex-col">
+          <Link to="/">
             <Logo variant="dark" />
-            <p className="text-xs text-primary/60 mt-1 font-sans">Part of Force For Good Group</p>
           </Link>
 
           {/* Desktop Navigation */}
