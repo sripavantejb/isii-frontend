@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 import pivotalHero from "@/assets/pivotal-thinking-hero.jpg";
 import ArticleLoader from "@/components/ArticleLoader";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { ArrowRight } from "lucide-react";
 
 interface Article {
   _id: string;
@@ -67,7 +68,6 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
 const PivotalThinking = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -86,52 +86,15 @@ const PivotalThinking = () => {
     fetchArticles();
   }, []);
 
-  // Force scrollbar to always be visible
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      const element = scrollContainerRef.current;
-      // Force scrollbar to be visible
-      element.style.overflowY = 'scroll';
-      
-      // Function to keep scrollbar visible
-      const keepScrollbarVisible = () => {
-        if (element) {
-          // Store current scroll position
-          const currentScroll = element.scrollTop;
-          // Temporarily scroll 1px down and back to trigger scrollbar visibility
-          element.scrollTop = currentScroll + 1;
-          setTimeout(() => {
-            element.scrollTop = currentScroll;
-          }, 10);
-        }
-      };
-      
-      // Trigger immediately
-      keepScrollbarVisible();
-      
-      // Set up interval to keep scrollbar visible (every 500ms)
-      const interval = setInterval(keepScrollbarVisible, 500);
-      
-      // Also trigger on mouse enter to ensure visibility
-      const handleMouseEnter = () => {
-        keepScrollbarVisible();
-      };
-      
-      element.addEventListener('mouseenter', handleMouseEnter);
-      
-      return () => {
-        clearInterval(interval);
-        element.removeEventListener('mouseenter', handleMouseEnter);
-      };
-    }
-  }, [articles]);
-
   return (
     <Layout>
       {/* Hero Section */}
       <section className="py-12 bg-primary">
         <div className="container-custom section-padding">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+          <p className="text-primary-foreground/70 text-xl md:text-2xl font-bold mb-2 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            ISII Labs
+          </p>
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
             Pivotal Thinking
           </h1>
           
@@ -150,114 +113,40 @@ const PivotalThinking = () => {
         />
       </section>
 
-      {/* Content Library */}
-      <section id="content-library" className="py-24 bg-background">
+      {/* Article Cards Section */}
+      <section className="pt-8 pb-24 bg-background">
         <div className="container-custom section-padding">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-            {/* Left Column - Article Cards */}
-            <div className="flex-1">
-              {loading ? (
-                <ArticleLoader count={6} columns={3} variant="public" />
-              ) : articles.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">No articles available yet.</p>
-                </div>
-              ) : (
-                <div className="grid md:grid-cols-3 gap-8">
-                  {articles.slice(0, 6).map((article) => (
-                    <div key={article._id} className="h-full">
-                      <ArticleCard 
-                        image={article.imageUrl}
-                        date={article.date}
-                        title={article.title}
-                        link={article.pdfUrl}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
+          {loading ? (
+            <ArticleLoader count={6} columns={3} variant="public" />
+          ) : articles.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No articles available yet.</p>
             </div>
-            
-            {/* Right Column - Content Library Sidebar */}
-            <div className="lg:w-80 flex-shrink-0">
-              <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-                Content Library
-              </h2>
-              {loading ? (
-                <LoadingSpinner text="Loading..." />
-              ) : articles.length === 0 ? (
-                <p className="text-muted-foreground">No articles available yet.</p>
-              ) : articles.slice(6).length === 0 ? (
-                <p className="text-muted-foreground">No additional articles.</p>
-              ) : (
-                <>
-                  <style>{`
-                    .content-library-scroll {
-                      scrollbar-width: thin;
-                      scrollbar-color: #1b315b #f3f5f7;
-                      scrollbar-gutter: stable;
-                    }
-                    .content-library-scroll::-webkit-scrollbar {
-                      width: 14px;
-                      -webkit-appearance: none;
-                      background: transparent;
-                    }
-                    .content-library-scroll::-webkit-scrollbar:vertical {
-                      width: 14px;
-                    }
-                    .content-library-scroll::-webkit-scrollbar-track {
-                      background: #f3f5f7;
-                      border-radius: 7px;
-                      border: 1px solid #e5e7eb;
-                      -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
-                    }
-                    .content-library-scroll::-webkit-scrollbar-thumb {
-                      background-color: #1b315b;
-                      border-radius: 7px;
-                      border: 2px solid #f3f5f7;
-                      min-height: 30px;
-                      background-clip: padding-box;
-                    }
-                    .content-library-scroll::-webkit-scrollbar-thumb:hover {
-                      background-color: #0f1f3d;
-                    }
-                    .content-library-scroll::-webkit-scrollbar-thumb:active {
-                      background-color: #0a1629;
-                    }
-                    .content-library-scroll::-webkit-scrollbar-corner {
-                      background: #f3f5f7;
-                    }
-                  `}</style>
-                  <div 
-                    ref={scrollContainerRef}
-                    className="content-library-scroll border border-border rounded-lg p-4"
-                    style={{ 
-                      height: '530px',
-                      overflowY: 'scroll',
-                      overflowX: 'hidden',
-                      scrollbarGutter: 'stable',
-                      WebkitOverflowScrolling: 'touch'
-                    }}
-                  >
-                    <ol className="space-y-4 pr-2">
-                      {articles.slice(6).map((article, index) => (
-                        <li key={article._id} className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
-                          <a 
-                            href={article.pdfUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-primary underline hover:text-primary/80 transition-colors"
-                          >
-                            {index + 1}. {article.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ol>
+          ) : (
+            <>
+              <div className="grid md:grid-cols-3 gap-8">
+                {articles.slice(0, 6).map((article) => (
+                  <div key={article._id} className="h-full">
+                    <ArticleCard 
+                      image={article.imageUrl}
+                      date={article.date}
+                      title={article.title}
+                      link={article.pdfUrl}
+                    />
                   </div>
-                </>
-              )}
-            </div>
-          </div>
+                ))}
+              </div>
+              {/* Content Library Link */}
+              <div className="mt-12">
+                <Link 
+                  to="/capabilities/pivotal-thinking/content-library"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium text-lg"
+                >
+                  Content Library <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </section>
     </Layout>

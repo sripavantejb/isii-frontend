@@ -67,7 +67,10 @@ const StrategicCounsel = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <h1 className="text-white font-sans text-2xl font-bold">
+              <p className="text-white/70 text-xl font-bold mb-1">
+                ISII Labs
+              </p>
+              <h1 className="text-white font-sans text-xl font-bold">
                 Strategic Counsel
               </h1>
             </div>
@@ -86,7 +89,10 @@ const StrategicCounsel = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <h1 className="text-white font-sans text-2xl md:text-3xl lg:text-4xl font-bold">
+              <p className="text-white/70 text-xl md:text-2xl font-bold mb-1">
+                ISII Labs
+              </p>
+              <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
                 Strategic Counsel
               </h1>
             </div>

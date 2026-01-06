@@ -23,12 +23,20 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
+  const [aboutUsOpen, setAboutUsOpen] = useState(false);
   
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "About Us", path: "/about" },
     { 
-      label: "Capabilities", 
+      label: "About Us", 
+      path: "/about/mission",
+      dropdown: [
+        { label: "Mission", path: "/about/mission" },
+        { label: "People", path: "/about/people" },
+      ]
+    },
+    { 
+      label: "ISII Labs", 
       path: "/capabilities/pivotal-thinking",
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
@@ -44,29 +52,21 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
     return location.pathname.startsWith(path);
   };
 
+  const isAboutUsActive = () => {
+    return location.pathname.startsWith("/about");
+  };
+
   const bgClass = variant === "transparent" 
-    ? "bg-primary" 
-    : "bg-primary";
+    ? "bg-white" 
+    : "bg-white";
 
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
-      {/* Top bar */}
-      <div className="text-primary-foreground text-xs py-1" style={{ backgroundColor: '#224077' }}>
-        <div className="container-custom section-padding flex justify-end">
-          <span className="text-primary-foreground/80">
-            Need to get in touch with us?{" "}
-            <a href="mailto:test@gmail.com" className="underline">
-              Contact Us
-            </a>
-          </span>
-        </div>
-      </div>
-
       {/* Main header */}
-      <div className={`${bgClass} py-2`}>
+      <div className={`${bgClass} py-4 border-b border-border`}>
         <div className="container-custom section-padding flex items-center justify-between">
           <Link to="/">
-            <Logo variant="light" />
+            <Logo variant="dark" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -74,7 +74,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
             {navItems.map((item) => (
               item.dropdown ? (
                 <DropdownMenu key={item.path}>
-                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-primary-foreground/80 transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${isActive(item.path) ? "text-primary-foreground font-medium" : ""}`}>
+                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-primary/80 transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-primary font-medium" : ""}`}>
                     {item.label}
                     <ChevronDown className="w-4 h-4" />
                   </DropdownMenuTrigger>
@@ -92,20 +92,20 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-sm text-primary-foreground/80 transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary-foreground font-medium" : ""}`}
+                  className={`text-sm text-primary/80 transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
                 >
                   {item.label}
                 </Link>
               )
             ))}
-            <Button variant="outline-light" size="sm" asChild>
+            <Button variant="default" size="sm" asChild>
               <a href="mailto:test@gmail.com">Contact us</a>
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-primary-foreground p-2"
+            className="md:hidden text-primary p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -115,25 +115,25 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-primary border-t border-primary-foreground/20">
+          <div className="md:hidden bg-white border-t border-border">
             <nav className="container-custom section-padding py-4 flex flex-col">
               {navItems.map((item, index) => (
                 item.dropdown ? (
                   <Collapsible 
                     key={item.path} 
-                    open={capabilitiesOpen} 
-                    onOpenChange={setCapabilitiesOpen}
+                    open={item.label === "About Us" ? aboutUsOpen : capabilitiesOpen} 
+                    onOpenChange={item.label === "About Us" ? setAboutUsOpen : setCapabilitiesOpen}
                   >
-                    <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-primary-foreground/80 transition-colors border-b border-primary-foreground/10 no-underline hover:no-underline">
+                    <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-primary/80 transition-colors border-b border-border no-underline hover:no-underline">
                       <span>{item.label}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform ${capabilitiesOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown className={`w-4 h-4 transition-transform ${(item.label === "About Us" ? aboutUsOpen : capabilitiesOpen) ? "rotate-180" : ""}`} />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                       {item.dropdown.map((subItem) => (
                         <Link
                           key={subItem.path}
                           to={subItem.path}
-                          className="block py-3 text-primary-foreground/70 transition-colors no-underline hover:no-underline"
+                          className="block py-3 text-primary/70 transition-colors no-underline hover:no-underline"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.label}
@@ -145,7 +145,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`py-3 text-primary-foreground/80 transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-primary-foreground/10'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary-foreground font-medium" : ""}`}
+                    className={`py-3 text-primary/80 transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-border'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}

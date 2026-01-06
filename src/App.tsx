@@ -7,7 +7,10 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Mission from "./pages/Mission";
+import People from "./pages/People";
 import PivotalThinking from "./pages/PivotalThinking";
+import ContentLibrary from "./pages/ContentLibrary";
 import StrategicCounsel from "./pages/StrategicCounsel";
 import SystemicIntervention from "./pages/SystemicIntervention";
 import Experience from "./pages/Experience";
@@ -29,7 +32,10 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/about/mission" element={<Mission />} />
+            <Route path="/about/people" element={<People />} />
             <Route path="/capabilities/pivotal-thinking" element={<PivotalThinking />} />
+            <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />
             <Route path="/capabilities/systemic-intervention" element={<SystemicIntervention />} />
             <Route path="/capabilities/experience" element={<Experience />} />

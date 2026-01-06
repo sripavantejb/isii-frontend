@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
+import CookieBanner from "@/components/CookieBanner";
+import ArticleCard from "@/components/ArticleCard";
+import { articlesAPI } from "@/services/api";
 import { Brain, Shield, TrendingUp } from "lucide-react";
 
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
@@ -11,27 +15,102 @@ const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767
 const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613703/Main_11_bak61u.png"; // Medium mobiles
 const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613701/Main_10_dytk39.png"; // Small mobiles
 
+interface Article {
+  _id: string;
+  title: string;
+  date: string;
+  imageUrl: string;
+  pdfUrl: string;
+}
+
+// Helper function to parse "Month YYYY" format dates
+const parseDate = (dateStr: string): Date => {
+  if (!dateStr || typeof dateStr !== 'string') {
+    return new Date(0); // Invalid date - will be sorted to the end
+  }
+
+  try {
+    const months: { [key: string]: number } = {
+      'january': 0, 'february': 1, 'march': 2, 'april': 3,
+      'may': 4, 'june': 5, 'july': 6, 'august': 7,
+      'september': 8, 'october': 9, 'november': 10, 'december': 11
+    };
+
+    const trimmed = dateStr.trim().toLowerCase();
+    const parts = trimmed.split(/\s+/);
+
+    if (parts.length !== 2) {
+      return new Date(0); // Invalid format
+    }
+
+    const monthName = parts[0];
+    const month = months[monthName];
+    const year = parseInt(parts[1], 10);
+
+    if (month === undefined || isNaN(year) || year < 1900 || year > 2100) {
+      return new Date(0); // Invalid month or year
+    }
+
+    return new Date(year, month, 1);
+  } catch (error) {
+    return new Date(0); // Return epoch for invalid dates
+  }
+};
+
+// Sort articles by date (latest first)
+const sortArticlesByDate = (articles: Article[]): Article[] => {
+  return [...articles].sort((a, b) => {
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+
+    // Sort descending (newest first)
+    // Invalid dates (epoch) will be sorted to the end
+    if (dateA.getTime() === 0 && dateB.getTime() === 0) return 0;
+    if (dateA.getTime() === 0) return 1; // Invalid dates go to end
+    if (dateB.getTime() === 0) return -1; // Valid dates come first
+
+    return dateB.getTime() - dateA.getTime();
+  });
+};
+
 const Index = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const data = await articlesAPI.getAll();
+        // Sort articles by date (latest first) as a fallback
+        const sortedArticles = sortArticlesByDate(data);
+        setArticles(sortedArticles);
+      } catch (error) {
+        console.error('Failed to fetch articles:', error);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
   const capabilities = [
     {
       icon: Brain,
       title: "Pivotal Thinking",
       description: "Generating strategic intelligence to understand transitions, shocks, inflection points across geopolitics, technology, economics, climate and society.",
-      buttonText: "ALL PIVOTAL THINKING",
+      buttonText: "All Pivotal Thinking",
       buttonLink: "/capabilities/pivotal-thinking",
     },
     {
       icon: Shield,
       title: "Strategic Counsel",
       description: "Supporting governments, blocs and institutions as they navigate structural change.",
-      buttonText: "SEE OUR MANDATES",
+      buttonText: "See Our Mandates",
       buttonLink: "/capabilities/strategic-counsel",
     },
     {
       icon: TrendingUp,
       title: "Systemic Intervention and Strategic Investment",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
-      buttonText: "EXPLORE CAPABILITIES",
+      buttonText: "Explore ISII Labs",
       buttonLink: "/capabilities/systemic-intervention",
     },
   ];
@@ -99,7 +178,7 @@ const Index = () => {
             </p>
             <div className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
               <Button variant="hero" size="lg" className="text-primary" asChild>
-                <Link to="/about">About us</Link>
+                <Link to="/about/mission">About us</Link>
               </Button>
             </div>
           </div>
@@ -107,7 +186,7 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px]">
+      <section className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px] mx-4 md:mx-8 mt-6 md:mt-10">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -118,7 +197,7 @@ const Index = () => {
         <div className="relative z-10 w-full h-full flex items-center">
           <div className="container-custom section-padding w-full py-16 md:py-20">
             <div className="text-left flex flex-col" style={{ gap: '10px' }}>
-              <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground uppercase tracking-wider w-fit font-bold">
+              <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground tracking-wider w-fit font-bold">
                 Our Latest Pivotal Thinking
               </span>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground text-left leading-relaxed">
@@ -140,11 +219,34 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Capabilities Section */}
-      <section className="pt-8 pb-24 bg-gray-light">
+      {/* Pivotal Thinking Cards Section */}
+      {articles.length > 1 && (
+        <section className="pt-8 pb-8 md:pb-12 bg-background">
+          <div className="container-custom section-padding">
+            <div className="grid md:grid-cols-3 gap-8">
+              {articles.slice(1, 4).map((article) => (
+                <div key={article._id} className="h-full">
+                  <ArticleCard 
+                    image={article.imageUrl}
+                    date={article.date}
+                    title={article.title}
+                    link={article.pdfUrl}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ISII Labs Section */}
+      <section
+        className="pt-8 md:pt-12 pb-16 md:pb-24"
+        style={{ backgroundColor: '#ffffff' }}
+      >
         <div className="container-custom section-padding">
-          <h2 className="font-serif text-3xl md:text-4xl text-primary text-center mb-4 md:mb-16 font-bold">
-            Our Capabilities
+          <h2 className="font-serif text-3xl md:text-4xl text-primary text-center mb-4 md:mb-8 font-bold">
+            Our ISII Labs
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -154,6 +256,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Cookie Banner */}
+      <CookieBanner />
     </Layout>
   );
 };

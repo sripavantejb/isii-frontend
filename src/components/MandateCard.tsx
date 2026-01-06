@@ -41,7 +41,7 @@ const MandateCard = ({ image, title, description, buttonLink = "#" }: MandateCar
         {/* Button at bottom - dark blue with white text */}
         <div className="mt-auto">
           <Button variant="default" className="w-full rounded-md font-sans font-medium text-sm md:text-base" asChild>
-            <Link to={buttonLink}>KNOW MORE</Link>
+            <Link to={buttonLink}>Know More</Link>
           </Button>
         </div>
       </div>

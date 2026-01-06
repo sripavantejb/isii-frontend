@@ -12,42 +12,42 @@ const Experience = () => {
       title: "Highly sensitive state-level challenges,",
       description: "creating stabilising frameworks across security, governance, climate, and regional systems.",
       buttonLink: "/about",
-      buttonText: "SEE OUR MANDATES",
+      buttonText: "See Our Mandates",
     },
     {
       number: 2,
       title: "Transition architectures,",
       description: "guiding sovereign shifts into the Information Era across major world powers.",
       buttonLink: "/capabilities/strategic-counsel",
-      buttonText: "SEE OUR MANDATES",
+      buttonText: "See Our Mandates",
     },
     {
       number: 3,
       title: "Sovereign and private capital allocation strategy,",
       description: "mass capital allocation strategies based on thematics",
       buttonLink: "/capabilities/systemic-intervention",
-      buttonText: "EXPLORE CAPABILITIES",
+      buttonText: "Explore ISII Labs",
     },
     {
       number: 4,
       title: "AI and Technology strategy,",
       description: "converting development gaps into profitable, scalable engines of prosperity.",
       buttonLink: "/capabilities/systemic-intervention",
-      buttonText: "EXPLORE CAPABILITIES",
+      buttonText: "Explore ISII Labs",
     },
     {
       number: 5,
       title: "Economic & industrial systems,",
       description: "strengthening national competitiveness, productivity, and long-term growth across continents.",
       buttonLink: "/capabilities/strategic-counsel",
-      buttonText: "SEE OUR MANDATES",
+      buttonText: "See Our Mandates",
     },
     {
       number: 6,
       title: "Human security and societal resilience,",
       description: "reshaping education, inclusion, and workforce adaptation for technological disruption.",
       buttonLink: "/capabilities/pivotal-thinking",
-      buttonText: "EXPLORE CAPABILITIES",
+      buttonText: "Explore ISII Labs",
     },
   ];
 
@@ -68,7 +68,10 @@ const Experience = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <h1 className="text-white font-sans text-2xl font-bold">
+              <p className="text-white/70 text-xl font-bold mb-1">
+                ISII Labs
+              </p>
+              <h1 className="text-white font-sans text-xl font-bold">
                 Experience
               </h1>
             </div>
@@ -87,7 +90,10 @@ const Experience = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <h1 className="text-white font-sans text-2xl md:text-3xl lg:text-4xl font-bold">
+              <p className="text-white/70 text-xl md:text-2xl font-bold mb-1">
+                ISII Labs
+              </p>
+              <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
                 Experience
               </h1>
             </div>
