@@ -14,7 +14,7 @@ const GrowthAndProsperity = () => {
           <div className="flex justify-between items-start mb-8">
             {/* Top Left */}
             <div>
-              <p className="text-sm text-primary mb-2 font-sans">
+              <p className="text-lg md:text-xl text-primary mb-2 font-sans font-bold">
                 Making Sense of it
               </p>
               <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-black decoration-1 underline-offset-2">
@@ -23,9 +23,7 @@ const GrowthAndProsperity = () => {
             </div>
             
             {/* Top Right */}
-            <p className="text-xs text-gray-400 font-sans text-right max-w-xs">
-              Beyond Recipient from Force for Good Team
-            </p>
+           
           </div>
 
           {/* Main Layout: Earth Image Left (1/3) + Content Right (2/3) */}
@@ -55,7 +53,7 @@ const GrowthAndProsperity = () => {
                     Core question:
                   </p>
                   <p className="font-sans text-base md:text-lg text-black leading-relaxed">
-                    How does the nation renew its <em>economic engine</em>, broaden <em>prosperity</em>, and create a <em>system of enterprise</em> for prosperity at home and abroad?
+                    How does the nation renew its economic engine, broaden prosperity, and create a system of enterprise for prosperity at home and abroad?
                   </p>
                 </div>
 
