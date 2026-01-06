@@ -98,7 +98,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 </Link>
               )
             ))}
-            <Button variant="default" size="sm" asChild className="bg-transparent border border-primary text-primary hover:bg-transparent hover:text-primary">
+            <Button variant="default" size="sm" asChild className="bg-transparent border border-primary/80 text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm">
               <a href="mailto:test@gmail.com">Contact Us</a>
             </Button>
           </nav>
