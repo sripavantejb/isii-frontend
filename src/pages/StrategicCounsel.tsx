@@ -29,7 +29,7 @@ const StrategicCounsel = () => {
         </>
       ),
       description: "",
-      buttonLink: "#",
+      buttonLink: "/capabilities/strategic-counsel/securing-sovereignty",
     },
     {
       image: mandateImage3,
@@ -39,7 +39,7 @@ const StrategicCounsel = () => {
         </>
       ),
       description: "",
-      buttonLink: "#",
+      buttonLink: "/capabilities/strategic-counsel/mobilising-transition",
     },
   ];
 

@@ -1,125 +1,87 @@
 import Layout from "@/components/Layout";
-import ProjectCard from "@/components/ProjectCard";
 
-// Hero banner images
-const heroBackgroundDesktop = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
+// Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
+// The image should show a dark spherical object with intricate maze/labyrinth pattern
+const globeImage = "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&q=80";
 
 const Experience = () => {
   const projects = [
     {
-      number: 1,
       title: "Highly sensitive state-level challenges,",
       description: "creating stabilising frameworks across security, governance, climate, and regional systems.",
-      buttonLink: "/about",
-      buttonText: "See Our Mandates",
     },
     {
-      number: 2,
       title: "Transition architectures,",
       description: "guiding sovereign shifts into the Information Era across major world powers.",
-      buttonLink: "/capabilities/strategic-counsel",
-      buttonText: "See Our Mandates",
     },
     {
-      number: 3,
       title: "Sovereign and private capital allocation strategy,",
       description: "mass capital allocation strategies based on thematics",
-      buttonLink: "/capabilities/systemic-intervention",
-      buttonText: "Explore ISII Labs",
     },
     {
-      number: 4,
       title: "AI and Technology strategy,",
       description: "converting development gaps into profitable, scalable engines of prosperity.",
-      buttonLink: "/capabilities/systemic-intervention",
-      buttonText: "Explore ISII Labs",
     },
     {
-      number: 5,
-      title: "Economic & industrial systems,",
+      title: "Economic and industrial systems,",
       description: "strengthening national competitiveness, productivity, and long-term growth across continents.",
-      buttonLink: "/capabilities/strategic-counsel",
-      buttonText: "See Our Mandates",
     },
     {
-      number: 6,
       title: "Human security and societal resilience,",
       description: "reshaping education, inclusion, and workforce adaptation for technological disruption.",
-      buttonLink: "/capabilities/pivotal-thinking",
-      buttonText: "Explore ISII Labs",
     },
   ];
 
   return (
     <Layout>
-      {/* Banner Section */}
-      <section className="relative w-full overflow-hidden">
-        {/* Mobile Background - shown only on screens smaller than md (768px) */}
-        <div 
-          className="block md:hidden w-full relative"
-          style={{ 
-            backgroundImage: `url(${heroBackgroundMobile})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '180px'
-          }}
-        >
-          <div className="absolute inset-0 flex items-center">
-            <div className="container-custom section-padding w-full">
-              <p className="text-white/70 text-xl font-bold mb-1">
-                ISII Labs
-              </p>
-              <h1 className="text-white font-sans text-xl font-bold">
+      {/* Main Content Section - White Background */}
+      <section className="min-h-screen bg-white py-8 md:py-12">
+        <div className="container-custom section-padding max-w-[1400px]">
+          {/* Top Header Section */}
+          <div className="mb-6">
+            {/* Top Left - Title */}
+            <div>
+              <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-primary decoration-1 underline-offset-2">
                 Experience
               </h1>
             </div>
           </div>
-        </div>
-        {/* Desktop Background - shown only on md screens and larger (768px+) */}
-        <div 
-          className="hidden md:block w-full relative"
-          style={{ 
-            backgroundImage: `url(${heroBackgroundDesktop})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '180px'
-          }}
-        >
-          <div className="absolute inset-0 flex items-center">
-            <div className="container-custom section-padding w-full">
-              <p className="text-white/70 text-xl md:text-2xl font-bold mb-1">
-                ISII Labs
-              </p>
-              <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
-                Experience
-              </h1>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Portfolio Section */}
-      <section className="pt-10 pb-24" style={{ backgroundColor: '#F3F5F7' }}>
-        <div className="container-custom section-padding">
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary mb-6 md:mb-10 font-extrabold">
-            Portfolio of Projects & Interventions
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.number}
-                number={project.number}
-                title={project.title}
-                description={project.description}
-                buttonLink={project.buttonLink}
-                buttonText={project.buttonText}
-              />
-            ))}
+          {/* Main Layout: Globe Image Left (1/3) + Content Right (2/3) */}
+          <div className="flex gap-6 md:gap-8 items-stretch">
+            {/* Left Side - Globe Image (1/3 width) */}
+            <div className="w-1/3 flex-shrink-0 flex">
+              <div className="relative w-full h-full rounded-lg overflow-hidden">
+                <img 
+                  src={globeImage}
+                  alt="Dark spherical object with intricate maze pattern"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Side - Content (2/3 width) */}
+            <div className="w-2/3 flex-shrink-0">
+              <div className="space-y-6">
+                {/* Main Heading */}
+                <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">
+                  PROJECTS & INTERVENTION AREAS
+                </h2>
+
+                {/* Projects List */}
+                <ul className="space-y-3 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
+                  {projects.map((project, index) => (
+                    <li key={index}>
+                      <span className="font-bold">{project.title}</span> {project.description}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
+
+          {/* Bottom Red Line */}
+          <div className="mt-12 border-t border-red-500"></div>
         </div>
       </section>
     </Layout>
@@ -127,4 +89,3 @@ const Experience = () => {
 };
 
 export default Experience;
-

@@ -13,6 +13,8 @@ import PivotalThinking from "./pages/PivotalThinking";
 import ContentLibrary from "./pages/ContentLibrary";
 import StrategicCounsel from "./pages/StrategicCounsel";
 import GrowthAndProsperity from "./pages/GrowthAndProsperity";
+import SecuringSovereignty from "./pages/SecuringSovereignty";
+import MobilisingTransition from "./pages/MobilisingTransition";
 import SystemicIntervention from "./pages/SystemicIntervention";
 import Experience from "./pages/Experience";
 import NotFound from "./pages/NotFound";
@@ -39,6 +41,8 @@ const App = () => (
             <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />
             <Route path="/capabilities/strategic-counsel/growth-and-prosperity" element={<GrowthAndProsperity />} />
+            <Route path="/capabilities/strategic-counsel/securing-sovereignty" element={<SecuringSovereignty />} />
+            <Route path="/capabilities/strategic-counsel/mobilising-transition" element={<MobilisingTransition />} />
             <Route path="/capabilities/systemic-intervention" element={<SystemicIntervention />} />
             <Route path="/capabilities/experience" element={<Experience />} />
             {/* Admin Routes */}
