@@ -16,6 +16,12 @@ const Footer = () => {
     { label: "Experience", path: "/capabilities/experience" },
   ];
 
+  const mandateColumnLinks = [
+    { label: "Growth and prosperity", path: "/capabilities/strategic-counsel/growth-and-prosperity" },
+    { label: "Sovereignty", path: "/capabilities/strategic-counsel/securing-sovereignty" },
+    { label: "Strategy and mobilisation", path: "/capabilities/strategic-counsel/mobilising-transition" },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground relative">
       {/* Accent line */}
@@ -31,7 +37,7 @@ const Footer = () => {
               <p className="text-xs text-white mt-1 font-sans">Part of Force For Good Group</p>
             </div>
             
-            {/* Navigation Links - 3-3 Layout - Centered */}
+            {/* Navigation Links - 3 Columns Layout - Centered */}
             <div className="flex gap-16 z-10 absolute left-1/2 transform -translate-x-1/2">
               {/* Left Column */}
               <div className="flex flex-col gap-4">
@@ -59,6 +65,19 @@ const Footer = () => {
               {/* Right Column */}
               <div className="flex flex-col gap-4">
                 {rightColumnLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              
+              {/* Mandate Column */}
+              <div className="flex flex-col gap-4">
+                {mandateColumnLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
@@ -118,6 +137,19 @@ const Footer = () => {
             {/* Right Column Links */}
             <div className="flex flex-col items-center gap-4">
               {rightColumnLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            
+            {/* Mandate Column Links */}
+            <div className="flex flex-col items-center gap-4">
+              {mandateColumnLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
