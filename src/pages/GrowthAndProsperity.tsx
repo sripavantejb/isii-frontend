@@ -52,7 +52,7 @@ const GrowthAndProsperity = () => {
                   <p className="font-sans text-base md:text-lg font-bold text-black">
                     Core question:
                   </p>
-                  <p className="font-sans text-base md:text-lg text-black leading-relaxed font-medium">
+                  <p className="font-sans text-base md:text-lg text-black leading-relaxed">
                     How does the nation renew its economic engine, broaden prosperity, and create a system of enterprise for prosperity at home and abroad?
                   </p>
                 </div>
