@@ -1,8 +1,8 @@
 import Layout from "@/components/Layout";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766340034/Gemini_Generated_Image_uiosyuuiosyuuios_iky1pj.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1766340034/Gemini_Generated_Image_uiosyuuiosyuuios_iky1pj.png";
 
 const Mission = () => {
   return (
