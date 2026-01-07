@@ -152,6 +152,14 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                   </Link>
                 )
               ))}
+              {/* Contact Us for Mobile */}
+              <a
+                href="mailto:test@gmail.com"
+                className="py-3 text-primary/80 font-semibold transition-colors border-t border-border no-underline hover:no-underline"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us
+              </a>
             </nav>
           </div>
         )}

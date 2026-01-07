@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
-const globeImage = "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&q=80";
+const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767770805/67_eusmx6.png";
 
 const Experience = () => {
   const projects = [

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
-import CookieBanner from "@/components/CookieBanner";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 
@@ -255,9 +254,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Cookie Banner */}
-      <CookieBanner />
     </Layout>
   );
 };
