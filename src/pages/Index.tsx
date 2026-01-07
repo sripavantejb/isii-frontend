@@ -7,7 +7,7 @@ import CookieBanner from "@/components/CookieBanner";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 
-const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
+const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769831/Frame_1707482985_2_lf7hzs.png";
 // Hero section images for different screen sizes
 const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769170/V2_xh2zpa.png"; // Large screens
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769226/V2_2_afw10k.png"; // Tablet screens
@@ -99,7 +99,7 @@ const Index = () => {
       buttonLink: "/capabilities/pivotal-thinking",
     },
     {
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762857/7e2a9d90-0e1a-4235-9f95-65485e1a15e3_ombwdt.jpg",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767769363/4_quwrrz.png",
       title: "Strategic Counsel",
       description: "Supporting governments, blocs and institutions as they navigate structural change.",
       buttonText: "See Our Mandates",
