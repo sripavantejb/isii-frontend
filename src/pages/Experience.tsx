@@ -82,17 +82,12 @@ const Experience = () => {
 
       {/* Main Content Section - White Background */}
       <section className="min-h-screen bg-white py-8 md:py-12">
-        <div className="container-custom section-padding max-w-[1400px]">
-          {/* Top Header Section */}
-          <div className="mb-6">
-            {/* Top Left - Title */}
-          </div>
-
-          {/* Main Layout: Globe Image Left (1/3) + Content Right (2/3) */}
-          <div className="flex gap-6 md:gap-8 items-stretch">
-            {/* Left Side - Globe Image (1/3 width) */}
-            <div className="hidden md:flex w-1/3 flex-shrink-0">
-              <div className="relative w-full h-full rounded-lg overflow-hidden">
+        <div className="container-custom section-padding">
+          {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
+          <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
+            {/* Left Side - Globe Image (aligns with Experience heading start) */}
+            <div className="hidden md:block md:col-span-4">
+              <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '1/1' }}>
                 <img 
                   src={globeImage}
                   alt="Dark spherical object with intricate maze pattern"
@@ -101,8 +96,8 @@ const Experience = () => {
               </div>
             </div>
 
-            {/* Right Side - Content (2/3 width on desktop, full width on mobile) */}
-            <div className="w-full md:w-2/3 flex-shrink-0">
+            {/* Right Side - Content (aligns with navbar end) */}
+            <div className="md:col-span-8">
               <div className="space-y-6">
                 {/* Main Heading */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">
