@@ -11,23 +11,20 @@ const GrowthAndProsperity = () => {
       <section className="min-h-screen bg-white py-8 md:py-12">
         <div className="container-custom section-padding max-w-[1400px]">
           {/* Top Header Section */}
-          <div className="flex justify-between items-start mb-8">
+          <div className="flex justify-between items-start mb-4">
             {/* Top Left */}
-            <div>
-              <p className="text-lg md:text-xl text-primary mb-2 font-sans font-bold">
+            <div className="flex-1">
+              <p className="text-base md:text-lg text-primary mb-2 font-sans font-bold">
                 Making Sense of it
               </p>
               <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-black decoration-1 underline-offset-2">
                 Growth and Prosperity
               </h1>
             </div>
-            
-            {/* Top Right */}
-           
           </div>
 
           {/* Main Layout: Earth Image Left (1/3) + Content Right (2/3) */}
-          <div className="flex gap-6 md:gap-8 items-stretch">
+          <div className="flex gap-6 md:gap-8 items-stretch mt-6">
             {/* Left Side - Earth Image (1/3 width) */}
             <div className="w-1/3 flex-shrink-0 flex">
               <div className="relative w-full h-full rounded-lg overflow-hidden">

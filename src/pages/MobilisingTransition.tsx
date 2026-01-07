@@ -14,20 +14,13 @@ const MobilisingTransition = () => {
           <div className="flex justify-between items-start mb-4">
             {/* Top Left */}
             <div className="flex-1">
-              <p className="text-sm text-primary mb-2 font-sans">
+              <p className="text-base md:text-lg text-primary mb-2 font-sans font-bold">
                 Making Sense of it
               </p>
               <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-black decoration-1 underline-offset-2">
                 Mobilising Transition
               </h1>
-              {/* Thin black line under title */}
-              <div className="mt-2 border-t border-black"></div>
             </div>
-            
-            {/* Top Right */}
-            <p className="text-xs text-gray-400 font-sans text-right max-w-xs ml-4">
-              Beyond Recipient from Force for Good Team
-            </p>
           </div>
 
           {/* Main Layout: Earth Image Left (1/3) + Content Right (2/3) */}
@@ -48,7 +41,7 @@ const MobilisingTransition = () => {
               <div className="space-y-6">
                 {/* Main Topic */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-black">
-                  2. Designing the National Transition Strategy for the Information Era
+                  3. Designing the National Transition Strategy for the Information Era
                 </h2>
 
                 {/* Core Question */}
@@ -57,7 +50,7 @@ const MobilisingTransition = () => {
                     Core question:
                   </p>
                   <p className="font-sans text-base md:text-lg text-black leading-relaxed">
-                    How does the nation rebuild its systems - <em>technology, energy, infrastructure, finance, institutions</em> - to function and lead in the Information Age?
+                    How does the nation rebuild its systems - technology, energy, infrastructure, finance, institutions - to function and lead in the Information Age?
                   </p>
                 </div>
 
