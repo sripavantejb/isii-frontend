@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 
 // Strategic Counsel banner images (mobile / desktop)
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768646/1_pl1xvu.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
@@ -51,7 +51,7 @@ const Experience = () => {
             height: "180px",
           }}
         >
-          <div className="absolute inset-0 flex items-center bg-black/40">
+          <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl font-bold">
                 Experience
@@ -70,7 +70,7 @@ const Experience = () => {
             height: "180px",
           }}
         >
-          <div className="absolute inset-0 flex items-center bg-black/40">
+          <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
                 Experience
@@ -91,7 +91,7 @@ const Experience = () => {
           {/* Main Layout: Globe Image Left (1/3) + Content Right (2/3) */}
           <div className="flex gap-6 md:gap-8 items-stretch">
             {/* Left Side - Globe Image (1/3 width) */}
-            <div className="w-1/3 flex-shrink-0 flex">
+            <div className="hidden md:flex w-1/3 flex-shrink-0">
               <div className="relative w-full h-full rounded-lg overflow-hidden">
                 <img 
                   src={globeImage}
@@ -101,8 +101,8 @@ const Experience = () => {
               </div>
             </div>
 
-            {/* Right Side - Content (2/3 width) */}
-            <div className="w-2/3 flex-shrink-0">
+            {/* Right Side - Content (2/3 width on desktop, full width on mobile) */}
+            <div className="w-full md:w-2/3 flex-shrink-0">
               <div className="space-y-6">
                 {/* Main Heading */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">
