@@ -5,9 +5,9 @@ import MandateCard from "@/components/MandateCard";
 // Cloudinary URLs for images
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
 const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
-const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362594/Rectangle_3463579_zpi2mc.png";
-const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362661/Rectangle_3463579_1_d7dslx.png";
-const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767362666/Rectangle_3463579_2_pabgfw.png";
+const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763191/45b069aa-f21e-4757-a97f-429e4850d21a_wggjd4.png";
+const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763195/8ab5c485-095f-4c2b-af77-240ec97429e0_dd8eus.jpg";
+const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763200/e83f258e-eafe-4cd0-ac50-c1b2ede86f8a_tjst81.png";
 
 const StrategicCounsel = () => {
   const mandates = [

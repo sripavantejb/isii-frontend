@@ -7,7 +7,7 @@ const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/
 const interventionCards = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767363176/Rectangle_3463579_3_ezsfgj.png",
+    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763688/ead4e33e-a90d-4395-bdbb-145bd9cf8f70_ldxss9.jpg",
     alt: "Mass Financial Inclusion",
     heading: "Mass financial (inclusion) services, focused on the financial systems layer, internationalisation of mass inclusion",
     description: "A.I. enabled growth (development) bank through the roll-up of NBFCs to build a global financial institution through targeted acquisitions and partnerships beginning in India to roll out of mass financial inclusion platforms and solutions",
@@ -15,7 +15,7 @@ const interventionCards = [
   },
   {
     id: 2,
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767363176/Rectangle_3463579_3_ezsfgj.png",
+    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
     alt: "Digital Technologies for Mass Liberation",
     heading: "Digital technologies for mass liberation, focused on the cognitive systems layer for experiences, education, entertainment",
     description: "Delivering mass education, experiences and enlightenment to liberate minds and raise human consciousness, the enlightenment of the 21st century combining eastern and western definitions",

@@ -6,7 +6,6 @@ import CapabilityCard from "@/components/CapabilityCard";
 import CookieBanner from "@/components/CookieBanner";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
-import { Brain, Shield, TrendingUp } from "lucide-react";
 
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
 // Hero section images for different screen sizes
@@ -93,21 +92,21 @@ const Index = () => {
 
   const capabilities = [
     {
-      icon: Brain,
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762856/835eebcd-2fca-4b77-810e-cd5ed443293a_zjmxv6.jpg",
       title: "Pivotal Thinking",
       description: "Generating strategic intelligence to understand transitions, shocks, inflection points across geopolitics, technology, economics, climate and society.",
       buttonText: "All Pivotal Thinking",
       buttonLink: "/capabilities/pivotal-thinking",
     },
     {
-      icon: Shield,
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762857/7e2a9d90-0e1a-4235-9f95-65485e1a15e3_ombwdt.jpg",
       title: "Strategic Counsel",
       description: "Supporting governments, blocs and institutions as they navigate structural change.",
       buttonText: "See Our Mandates",
       buttonLink: "/capabilities/strategic-counsel",
     },
     {
-      icon: TrendingUp,
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
       title: "Systemic Intervention and Strategic Investment",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
       buttonText: "Explore ISII Labs",
