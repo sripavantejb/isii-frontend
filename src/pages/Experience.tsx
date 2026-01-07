@@ -1,5 +1,9 @@
 import Layout from "@/components/Layout";
 
+// Strategic Counsel banner images (mobile / desktop)
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768646/1_pl1xvu.png";
+
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
 const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767770805/67_eusmx6.png";
@@ -34,17 +38,54 @@ const Experience = () => {
 
   return (
     <Layout>
+      {/* Hero Banner - Strategic Counsel */}
+      <section className="relative w-full overflow-hidden">
+        {/* Mobile Background */}
+        <div
+          className="block md:hidden w-full relative"
+          style={{
+            backgroundImage: `url(${heroImageMobile})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "180px",
+          }}
+        >
+          <div className="absolute inset-0 flex items-center bg-black/40">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-xl font-bold">
+                Experience
+              </h1>
+            </div>
+          </div>
+        </div>
+        {/* Desktop Background */}
+        <div
+          className="hidden md:block w-full relative"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "180px",
+          }}
+        >
+          <div className="absolute inset-0 flex items-center bg-black/40">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
+                Experience
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Content Section - White Background */}
       <section className="min-h-screen bg-white py-8 md:py-12">
         <div className="container-custom section-padding max-w-[1400px]">
           {/* Top Header Section */}
           <div className="mb-6">
             {/* Top Left - Title */}
-            <div>
-              <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-primary decoration-1 underline-offset-2">
-                Experience
-              </h1>
-            </div>
           </div>
 
           {/* Main Layout: Globe Image Left (1/3) + Content Right (2/3) */}

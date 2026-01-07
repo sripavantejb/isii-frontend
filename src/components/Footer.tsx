@@ -12,14 +12,8 @@ const Footer = () => {
   const rightColumnLinks = [
     { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
     { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
-    { label: "Systemic Investments", path: "/capabilities/systemic-intervention" },
+    { label: "ISII Labs", path: "/capabilities/systemic-intervention" },
     { label: "Experience", path: "/capabilities/experience" },
-  ];
-
-  const mandateColumnLinks = [
-    { label: "Growth and prosperity", path: "/capabilities/strategic-counsel/growth-and-prosperity" },
-    { label: "Sovereignty", path: "/capabilities/strategic-counsel/securing-sovereignty" },
-    { label: "Strategy and mobilisation", path: "/capabilities/strategic-counsel/mobilising-transition" },
   ];
 
   return (
@@ -34,7 +28,7 @@ const Footer = () => {
             {/* Logo on the left */}
             <div className="flex-shrink-0 z-10 flex flex-col">
               <Logo variant="light" />
-              <p className="text-sm text-white mt-1 font-sans font-bold">Part of Force For Good Group</p>
+              <p className="text-sm text-white mt-1 font-sans font-bold">Part of The Force For Good Group</p>
             </div>
             
             {/* Navigation Links - 3 Columns Layout - Centered */}
@@ -74,19 +68,6 @@ const Footer = () => {
                   </Link>
                 ))}
               </div>
-              
-              {/* Mandate Column */}
-              <div className="flex flex-col gap-4">
-                {mandateColumnLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
             </div>
             
             {/* Spacer to balance layout */}
@@ -106,7 +87,7 @@ const Footer = () => {
           {/* Logo centered at top */}
           <div className="mb-8 flex flex-col items-center">
             <Logo variant="light" />
-            <p className="text-sm text-white mt-1 font-sans font-bold">Part of Force For Good Group</p>
+            <p className="text-sm text-white mt-1 font-sans font-bold">Part of The Force For Good Group</p>
           </div>
           
           {/* Navigation Links - Stacked */}
@@ -137,19 +118,6 @@ const Footer = () => {
             {/* Right Column Links */}
             <div className="flex flex-col items-center gap-4">
               {rightColumnLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            
-            {/* Mandate Column Links */}
-            <div className="flex flex-col items-center gap-4">
-              {mandateColumnLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
