@@ -28,7 +28,7 @@ const Footer = () => {
             {/* Logo on the left */}
             <div className="flex-shrink-0 z-10 flex flex-col">
               <Logo variant="light" />
-              <p className="text-sm text-white mt-1 font-sans font-bold">Part of The Force For Good Group</p>
+              <p className="text-sm text-white mt-1 font-sans font-bold">Part of the Force For Good Group</p>
             </div>
             
             {/* Navigation Links - 3 Columns Layout - Centered */}

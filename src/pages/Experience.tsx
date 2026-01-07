@@ -6,7 +6,7 @@ const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
-const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767770805/67_eusmx6.png";
+const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767779276/image1_2_iej5l1.png";
 
 const Experience = () => {
   const projects = [
@@ -84,16 +84,14 @@ const Experience = () => {
       <section className="min-h-screen bg-white py-8 md:py-12">
         <div className="container-custom section-padding">
           {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
-          <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
+          <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-stretch">
             {/* Left Side - Globe Image (aligns with Experience heading start) */}
-            <div className="hidden md:block md:col-span-4">
-              <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '1/1' }}>
-                <img 
-                  src={globeImage}
-                  alt="Dark spherical object with intricate maze pattern"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="hidden md:flex md:col-span-4">
+              <img 
+                src={globeImage}
+                alt="Dark spherical object with intricate maze pattern"
+                className="w-full h-full object-contain"
+              />
             </div>
 
             {/* Right Side - Content (aligns with navbar end) */}
@@ -115,9 +113,6 @@ const Experience = () => {
               </div>
             </div>
           </div>
-
-          {/* Bottom Red Line */}
-          <div className="mt-12 border-t border-red-500"></div>
         </div>
       </section>
     </Layout>
