@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
-import pivotalHero from "@/assets/pivotal-thinking-hero.jpg";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
+
+const pivotalHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768209/Pivotal_Thinking_1_rxboza.png";
 
 interface Article {
   _id: string;

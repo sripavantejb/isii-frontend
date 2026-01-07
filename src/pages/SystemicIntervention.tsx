@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 
-const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614174/Frame_1707483135_2_ojrdb0.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767614144/Frame_1707483125_3_d6vhau.png";
+const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768213/Systemic_Interventions_and_Investments_gkjutv.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768213/Systemic_Interventions_and_Investments_gkjutv.png";
 
 // Card data array
 const interventionCards = [
@@ -50,7 +50,7 @@ const SystemicIntervention = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-lg font-bold">
-                Systemic Interventions and Investments
+                ISII Labs
               </h1>
             </div>
           </div>
@@ -69,7 +69,7 @@ const SystemicIntervention = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
-                Systemic Interventions and Investments
+                ISII Labs
               </h1>
             </div>
           </div>
