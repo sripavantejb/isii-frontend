@@ -81,7 +81,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                   <DropdownMenuContent className="bg-card border-border">
                     {item.dropdown.map((subItem) => (
                       <DropdownMenuItem key={subItem.path} asChild className="focus:bg-transparent hover:bg-transparent focus:text-foreground">
-                        <Link to={subItem.path} className="cursor-pointer text-foreground no-underline">
+                        <Link to={subItem.path} className="cursor-pointer text-foreground no-underline font-bold">
                           {subItem.label}
                         </Link>
                       </DropdownMenuItem>
@@ -133,7 +133,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                         <Link
                           key={subItem.path}
                           to={subItem.path}
-                          className="block py-3 text-primary transition-colors no-underline hover:no-underline"
+                          className="block py-3 text-primary transition-colors no-underline hover:no-underline font-bold"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.label}

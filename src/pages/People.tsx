@@ -41,6 +41,7 @@ const People = () => {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
       title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767780415/8d971de5-d8da-4906-aacb-363f751d5f1f_sabdiq.png",
       drawingOn: [
         "800 leading scientists and scholars",
         "5 key programmes of peaceful social change"

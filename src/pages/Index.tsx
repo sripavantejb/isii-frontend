@@ -116,7 +116,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden">
+      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden" style={{ backgroundColor: '#040750' }}>
         {/* Small mobiles - default (below 640px) */}
         <div 
           className="absolute inset-0 bg-cover bg-center sm:hidden"
