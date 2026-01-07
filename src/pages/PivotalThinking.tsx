@@ -91,9 +91,6 @@ const PivotalThinking = () => {
       {/* Hero Section */}
       <section className="py-12 bg-primary">
         <div className="container-custom section-padding">
-          <p className="text-primary-foreground/70 text-xl md:text-2xl font-bold mb-2 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            ISII Labs
-          </p>
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
             Pivotal Thinking
           </h1>

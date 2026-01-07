@@ -107,7 +107,7 @@ const Index = () => {
     },
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
-      title: "Systemic Intervention and Strategic Investment",
+      title: "ISII Labs",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
       buttonText: "Explore ISII Labs",
       buttonLink: "/capabilities/systemic-intervention",
@@ -245,7 +245,7 @@ const Index = () => {
       >
         <div className="container-custom section-padding">
           <h2 className="font-serif text-3xl md:text-4xl text-primary text-center mb-4 md:mb-8 font-bold">
-            Our ISII Labs
+            Our Capabilities
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">

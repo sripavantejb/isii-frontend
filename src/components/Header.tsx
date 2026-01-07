@@ -36,7 +36,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       ]
     },
     { 
-      label: "ISII Labs", 
+      label: "Capabilities", 
       path: "/capabilities/pivotal-thinking",
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
@@ -98,7 +98,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 </Link>
               )
             ))}
-            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm tracking-normal">
+            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm tracking-normal">
               <a href="mailto:test@gmail.com">Contact Us</a>
             </Button>
           </nav>

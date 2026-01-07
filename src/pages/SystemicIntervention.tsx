@@ -49,9 +49,6 @@ const SystemicIntervention = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <p className="text-white/70 text-xl font-bold mb-1">
-                ISII Labs
-              </p>
               <h1 className="text-white font-sans text-lg font-bold">
                 Systemic Interventions and Investments
               </h1>
@@ -71,9 +68,6 @@ const SystemicIntervention = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <p className="text-white/70 text-xl md:text-2xl font-bold mb-1">
-                ISII Labs
-              </p>
               <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
                 Systemic Interventions and Investments
               </h1>
