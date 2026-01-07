@@ -2,8 +2,8 @@ import Layout from "@/components/Layout";
 import PersonCard from "@/components/PersonCard";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766340034/Gemini_Generated_Image_uiosyuuiosyuuios_iky1pj.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1766340034/Gemini_Generated_Image_uiosyuuiosyuuios_iky1pj.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768216/Our_Mission_rxtapy.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768658/3_ylqvg7.png";
 
 const People = () => {
   const people = [

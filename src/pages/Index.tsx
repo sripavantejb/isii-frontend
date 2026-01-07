@@ -11,8 +11,8 @@ const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v17665663
 // Hero section images for different screen sizes
 const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769170/V2_xh2zpa.png"; // Large screens
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769226/V2_2_afw10k.png"; // Tablet screens
-const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769264/V2_3_fuy9gi.png"; // Medium mobiles
-const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769264/V2_3_fuy9gi.png"; // Small mobiles
+const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769677/V2_4_oj7una.png"; // Medium mobiles
+const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769677/V2_4_oj7una.png"; // Small mobiles
 
 interface Article {
   _id: string;
