@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
             
             {/* Navigation Links - 3 Columns Layout - Centered */}
-            <div className="flex gap-16 z-10 absolute left-1/2 transform -translate-x-1/2">
+            <div className="flex gap-16 z-10 absolute left-[55%] -translate-x-1/2">
               {/* Left Column */}
               <div className="flex flex-col gap-4">
                 {leftColumnLinks.map((link) => 
