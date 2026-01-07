@@ -50,12 +50,6 @@ const CookieBanner = () => {
             >
               Accept
             </Button>
-            <Link 
-              to="/privacy-policy"
-              className="text-sm text-white underline hover:text-white/80 transition-colors whitespace-nowrap"
-            >
-              Learn More
-            </Link>
           </div>
         </div>
       </div>

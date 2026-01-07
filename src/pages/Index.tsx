@@ -208,9 +208,21 @@ const Index = () => {
                 </span>
               </h2>
               <div className="text-left">
-                <Button variant="outline-light" asChild>
-                  <Link to="/capabilities/pivotal-thinking">Read More</Link>
-                </Button>
+                {articles.length > 0 && articles[0]?.pdfUrl ? (
+                  <Button variant="outline-light" asChild>
+                    <a 
+                      href={articles[0].pdfUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Read More
+                    </a>
+                  </Button>
+                ) : (
+                  <Button variant="outline-light" asChild>
+                    <Link to="/capabilities/pivotal-thinking">Read More</Link>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
