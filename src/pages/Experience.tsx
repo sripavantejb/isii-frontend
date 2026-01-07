@@ -45,6 +45,7 @@ const Experience = () => {
           className="block md:hidden w-full relative"
           style={{
             backgroundImage: `url(${heroImageMobile})`,
+            backgroundColor: '#040750',
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -64,6 +65,7 @@ const Experience = () => {
           className="hidden md:block w-full relative"
           style={{
             backgroundImage: `url(${heroImage})`,
+            backgroundColor: '#040750',
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
