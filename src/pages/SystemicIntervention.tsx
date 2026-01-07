@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 
 const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768213/Systemic_Interventions_and_Investments_gkjutv.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768213/Systemic_Interventions_and_Investments_gkjutv.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768649/2_ywhv0x.png";
 
 // Card data array
 const interventionCards = [

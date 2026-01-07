@@ -6,8 +6,6 @@ import { articlesAPI } from "@/services/api";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
 
-const pivotalHero = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768209/Pivotal_Thinking_1_rxboza.png";
-
 interface Article {
   _id: string;
   title: string;
@@ -90,8 +88,28 @@ const PivotalThinking = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-12 bg-primary">
-        <div className="container-custom section-padding">
+      <section className="py-12 bg-primary relative">
+        {/* Mobile background image */}
+        <div 
+          className="md:hidden absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1767768645/Frame_1707483159_fulmwk.png)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        {/* Desktop background image */}
+        <div 
+          className="hidden md:block absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1767768209/Pivotal_Thinking_1_rxboza.png)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="container-custom section-padding relative z-10">
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
             Pivotal Thinking
           </h1>
@@ -100,15 +118,6 @@ const PivotalThinking = () => {
             Generating strategic intelligence to understand transitions, shocks, and inflection points across geopolitics, technology, economics, climate and society.
           </p>
         </div>
-      </section>
-
-      {/* Banner Section */}
-      <section className="relative w-full overflow-hidden" style={{ maxWidth: '1920px', height: '188px', opacity: 1, margin: '0 auto' }}>
-        <img 
-          src={pivotalHero}
-          alt="Pivotal Thinking Banner"
-          style={{ width: '100%', height: '288px', maxWidth: '1920px', objectFit: 'cover', opacity: 1 }}
-        />
       </section>
 
       {/* Article Cards Section */}

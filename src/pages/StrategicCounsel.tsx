@@ -4,7 +4,7 @@ import MandateCard from "@/components/MandateCard";
 
 // Cloudinary URLs for images
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768646/1_pl1xvu.png";
 const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763191/45b069aa-f21e-4757-a97f-429e4850d21a_wggjd4.png";
 const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763195/8ab5c485-095f-4c2b-af77-240ec97429e0_dd8eus.jpg";
 const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763200/e83f258e-eafe-4cd0-ac50-c1b2ede86f8a_tjst81.png";

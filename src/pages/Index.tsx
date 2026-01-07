@@ -9,10 +9,10 @@ import { articlesAPI } from "@/services/api";
 
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1766566342/Frame_1707482985_1_d51ujw.png";
 // Hero section images for different screen sizes
-const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613670/Main_8_aqwndf.png"; // Large screens
-const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613686/Main_9_ntohbn.png"; // Tablet screens
-const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613703/Main_11_bak61u.png"; // Medium mobiles
-const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767613701/Main_10_dytk39.png"; // Small mobiles
+const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769170/V2_xh2zpa.png"; // Large screens
+const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769226/V2_2_afw10k.png"; // Tablet screens
+const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769264/V2_3_fuy9gi.png"; // Medium mobiles
+const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769264/V2_3_fuy9gi.png"; // Small mobiles
 
 interface Article {
   _id: string;

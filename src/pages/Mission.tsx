@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768216/Our_Mission_rxtapy.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768216/Our_Mission_rxtapy.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768658/3_ylqvg7.png";
 
 const Mission = () => {
   return (
