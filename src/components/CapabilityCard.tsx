@@ -36,7 +36,7 @@ const CapabilityCard = ({ icon: Icon, image, title, description, buttonText, but
       {/* Content section with padding matching ArticleCard */}
       <div className="p-5 flex flex-col flex-grow">
         {/* Title - bold dark blue */}
-        <h3 className="font-serif text-sm font-bold text-primary mb-4 leading-snug">
+        <h3 className="font-serif text-lg md:text-xl font-bold text-primary mb-4 leading-snug">
           {title}
         </h3>
         

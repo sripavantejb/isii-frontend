@@ -109,7 +109,7 @@ const Index = () => {
       title: "Programmes",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
       buttonText: "Explore Programmes",
-      buttonLink: "/capabilities/systemic-intervention",
+      buttonLink: "/programmes",
     },
   ];
 

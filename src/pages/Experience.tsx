@@ -6,7 +6,7 @@ const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
-const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767779276/image1_2_iej5l1.png";
+const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767878872/67_3_n4pky9.png";
 
 const Experience = () => {
   const projects = [
@@ -83,21 +83,22 @@ const Experience = () => {
       </section>
 
       {/* Main Content Section - White Background */}
-      <section className="min-h-screen bg-white py-8 md:py-12">
+      <section className="min-h-screen bg-white pt-12 md:pt-16 pb-8 md:pb-12">
         <div className="container-custom section-padding">
           {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
-          <div className="grid md:grid-cols-12 gap-0 md:gap-2 items-stretch">
+          <div className="grid md:grid-cols-12 gap-0 items-stretch">
             {/* Left Side - Globe Image (aligns with Experience heading start) */}
-            <div className="hidden md:flex md:col-span-4">
+            <div className="hidden md:flex md:col-span-4 items-start">
               <img 
                 src={globeImage}
                 alt="Dark spherical object with intricate maze pattern"
-                className="w-full h-full object-contain"
+                className="w-full object-contain"
+                style={{ maxHeight: '80%', marginTop: '-1rem' }}
               />
             </div>
 
             {/* Right Side - Content (aligns with navbar end) */}
-            <div className="md:col-span-8">
+            <div className="md:col-span-8" style={{ marginLeft: '-1rem' }}>
               <div className="space-y-4">
                 {/* Main Heading */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">

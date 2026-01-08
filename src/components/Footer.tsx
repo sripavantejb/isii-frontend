@@ -12,7 +12,7 @@ const Footer = () => {
   const rightColumnLinks = [
     { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
     { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
-    { label: "Programmes", path: "/capabilities/systemic-intervention" },
+    { label: "Programmes", path: "/programmes" },
     { label: "Experience", path: "/capabilities/experience" },
   ];
 
