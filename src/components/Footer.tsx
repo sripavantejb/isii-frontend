@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { MapPin } from "lucide-react";
 import Logo from "@/components/Logo";
 
 const Footer = () => {
@@ -21,18 +22,18 @@ const Footer = () => {
       {/* Accent line */}
       <div className="h-1" style={{ backgroundColor: '#d6795a' }} />
       
-      <div className="container-custom section-padding py-12 relative">
+      <div className="container-custom section-padding py-12">
         {/* Desktop Layout */}
         <div className="hidden md:block">
           <div className="flex items-start justify-between mb-8">
             {/* Logo on the left */}
-            <div className="flex-shrink-0 z-10 flex flex-col">
+            <div className="flex-shrink-0 flex flex-col">
               <Logo variant="light" />
               <p className="text-sm text-white mt-3 font-sans font-bold">Part of the Force For Good Group</p>
             </div>
             
-            {/* Navigation Links - 3 Columns Layout - Centered */}
-            <div className="flex gap-16 z-10 absolute left-[55%] -translate-x-1/2">
+            {/* Navigation Links - Two Columns in the middle */}
+            <div className="flex gap-16 flex-1 justify-center">
               {/* Left Column */}
               <div className="flex flex-col gap-4">
                 {leftColumnLinks.map((link) => 
@@ -40,7 +41,7 @@ const Footer = () => {
                     <a
                       key={link.path}
                       href={link.path}
-                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                      className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                     >
                       {link.label}
                     </a>
@@ -48,7 +49,7 @@ const Footer = () => {
                     <Link
                       key={link.path}
                       to={link.path}
-                      className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                      className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                     >
                       {link.label}
                     </Link>
@@ -62,7 +63,7 @@ const Footer = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                    className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                   >
                     {link.label}
                   </Link>
@@ -70,14 +71,27 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Spacer to balance layout */}
-            <div className="flex-shrink-0 w-[120px]"></div>
+            {/* Address Section - Right */}
+            <div className="flex-shrink-0 flex flex-col">
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin className="w-4 h-4 text-white" />
+                <span className="text-sm text-white font-sans font-semibold">Address:</span>
+              </div>
+              <p className="text-sm text-white font-sans leading-relaxed">
+                NIAT, No. 144 Survey 37, Financial<br />
+                District, Nanakramguda, Telangana<br />
+                500032
+              </p>
+            </div>
           </div>
           
+          {/* Separator Line */}
+          <div className="border-t border-white/20 mb-6"></div>
+          
           {/* Copyright */}
-          <div className="flex justify-end">
-            <p className="text-sm text-primary-foreground/60">
-              © 2026 ISII. All rights reserved.
+          <div className="flex justify-center">
+            <p className="text-sm text-white/60">
+              © 2026 ISII. All Rights Reserved.
             </p>
           </div>
         </div>
@@ -99,7 +113,7 @@ const Footer = () => {
                   <a
                     key={link.path}
                     href={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                    className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                   >
                     {link.label}
                   </a>
@@ -107,7 +121,7 @@ const Footer = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                    className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                   >
                     {link.label}
                   </Link>
@@ -121,7 +135,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors no-underline"
+                  className="text-sm text-white hover:text-white/80 transition-colors no-underline"
                 >
                   {link.label}
                 </Link>
@@ -129,9 +143,25 @@ const Footer = () => {
             </div>
           </div>
           
+          {/* Address Section */}
+          <div className="mb-8 flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-2">
+              <MapPin className="w-4 h-4 text-white" />
+              <span className="text-sm text-white font-sans font-semibold">Address:</span>
+            </div>
+            <p className="text-sm text-white font-sans text-center leading-relaxed">
+              NIAT, No. 144 Survey 37, Financial<br />
+              District, Nanakramguda, Telangana<br />
+              500032
+            </p>
+          </div>
+          
+          {/* Separator Line */}
+          <div className="border-t border-white/20 w-full mb-6"></div>
+          
           {/* Copyright centered at bottom */}
-          <p className="text-sm text-primary-foreground/60">
-            © 2026 ISII. All Rights Reserved.
+          <p className="text-sm text-white/60 text-center">
+            © 2025 ISII. All Rights Reserved.
           </p>
         </div>
       </div>

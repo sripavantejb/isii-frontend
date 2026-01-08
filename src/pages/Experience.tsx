@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import ParticipationBanner from "@/components/ParticipationBanner";
 
 // Strategic Counsel banner images (mobile / desktop)
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
@@ -118,6 +119,9 @@ const Experience = () => {
           </div>
         </div>
       </section>
+
+      {/* Participation Banner */}
+      <ParticipationBanner />
     </Layout>
   );
 };

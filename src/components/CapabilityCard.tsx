@@ -38,6 +38,7 @@ const CapabilityCard = ({ icon: Icon, image, title, description, buttonText, but
         {/* Title - bold dark blue */}
         <h3 className="font-serif text-lg md:text-xl font-bold text-primary mb-4 leading-snug">
           {title}
+          
         </h3>
         
         {/* Description */}
