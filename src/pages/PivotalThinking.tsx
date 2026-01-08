@@ -149,7 +149,7 @@ const PivotalThinking = () => {
                   to="/capabilities/pivotal-thinking/content-library"
                   className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium text-lg"
                 >
-                  Content Library <ArrowRight className="w-5 h-5" />
+                  Selected Pivotal Thinking <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             </>

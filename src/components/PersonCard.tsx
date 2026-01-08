@@ -47,7 +47,6 @@ const PersonCard = ({ category, name, title, description, drawingOn, image }: Pe
         
         {drawingOn && drawingOn.length > 0 && (
           <div className="mt-auto">
-            <p className="text-xs text-black font-bold mb-2">Drawing on:</p>
             <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
               {drawingOn.map((item, index) => (
                 <li key={index}>{item}</li>

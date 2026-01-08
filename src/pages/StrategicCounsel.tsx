@@ -98,7 +98,7 @@ const StrategicCounsel = () => {
       <section className="pt-10 md:pt-11 pb-8" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="container-custom section-padding">
           <h2 className="font-sans text-lg md:text-xl text-primary mb-4 md:mb-8 font-bold">
-            Targeted Strategic Mandates
+            Key Areas of Counsel
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
