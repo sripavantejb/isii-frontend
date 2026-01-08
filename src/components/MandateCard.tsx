@@ -14,7 +14,10 @@ const MandateCard = ({ image, title, description, buttonLink = "#" }: MandateCar
   const titleText = typeof title === 'string' ? title : 'Mandate card';
   
   return (
-    <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1">
+    <Link
+      to={buttonLink}
+      className="block bg-card border border-border rounded-lg shadow-sm overflow-hidden flex flex-col h-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 no-underline"
+    >
       {/* Image at top */}
       <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
         <img 
@@ -38,14 +41,14 @@ const MandateCard = ({ image, title, description, buttonLink = "#" }: MandateCar
           </p>
         )}
         
-        {/* Button at bottom - dark blue with white text */}
+        {/* Button at bottom - dark blue with white text - styled as button but card is already clickable */}
         <div className="mt-auto">
-          <Button variant="default" className="w-full rounded-md font-sans font-medium text-sm md:text-base" asChild>
-            <Link to={buttonLink}>Know More</Link>
-          </Button>
+          <div className="w-full rounded-md font-sans font-medium text-sm md:text-base bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+            Know More
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -17,7 +17,7 @@ const interventionCards = [
     id: 2,
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
     alt: "Digital Technologies for Mass Liberation",
-    heading: "Digital technologies for mass liberation, focused on the cognitive systems layer for experiences, education, entertainment",
+    heading: "Digital technologies focused on the cognitive systems layer, unlocking human potential through experiences, education, enlightenment",
     description: "Delivering mass education, experiences and enlightenment to liberate minds and raise human consciousness, the enlightenment of the 21st century combining eastern and western definitions",
     path: "Path: Narrow → Broad → Open"
   }

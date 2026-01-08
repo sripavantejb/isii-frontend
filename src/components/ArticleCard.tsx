@@ -9,8 +9,11 @@ interface ArticleCardProps {
 
 const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
   return (
-    <div 
-      className="bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 rounded-none"
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 rounded-none no-underline"
       style={{ backgroundColor: '#f1f1f1' }}
     >
       <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
@@ -27,17 +30,12 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
           {title}
         </h3>
         {link && (
-          <a 
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto"
-          >
+          <div className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto">
             Read more <ArrowRight className="w-4 h-4" />
-          </a>
+          </div>
         )}
       </div>
-    </div>
+    </a>
   );
 };
 
