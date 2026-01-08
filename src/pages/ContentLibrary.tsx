@@ -148,7 +148,7 @@ const ContentLibrary = () => {
           {/* Header with Title and Dropdown */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-4">
             <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary">
-              Content Library
+              Selected Pivotal Thinking
             </h1>
             <div className="w-full md:w-auto md:min-w-[120px]">
               <Select value={selectedYear} onValueChange={setSelectedYear}>

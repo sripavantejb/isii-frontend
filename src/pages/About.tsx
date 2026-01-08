@@ -7,7 +7,7 @@ const About = () => {
       category: "Economic & Climate Transition",
       name: "Phoebe Koundouri",
       title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565203/unnamed_nnjx6n.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_25_eebpah.png",
       drawingOn: [
         "SDSN network of 1,700 members in 144 countries",
         "200 multi-disciplinary sustainability scholars"
@@ -17,7 +17,7 @@ const About = () => {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
       title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767780415/8d971de5-d8da-4906-aacb-363f751d5f1f_sabdiq.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
       drawingOn: [
         "800 leading scientists and scholars",
         "5 key programmes of peaceful social change"
@@ -27,7 +27,7 @@ const About = () => {
       category: "Global Transition Architecture",
       name: "Ketan Patel",
       title: "Chair, Force for Good; CEO, Greater Pacific Capital; Former Head, Strategic Group, Goldman Sachs",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565195/unnamed_1_ih4miy.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
       drawingOn: [
         "100 leading financial institutions strategies",
         "125 leading technology company strategies"
@@ -37,7 +37,7 @@ const About = () => {
       category: "Media & Technology Transition",
       name: "Jon Miller",
       title: "CEO of Integrated Media, Former Chairman and CEO of AOL; NewsCorp Online Media Group",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565190/unnamed_2_jkokbt.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
       drawingOn: [
         "Major mass mobilisation platforms",
         "Leading new media platforms"
@@ -47,7 +47,7 @@ const About = () => {
       category: "Tech Security Transition",
       name: "Glenn Gaffney",
       title: "Former Director, Science and Technology, CIA; EVP, IQT; Founder NobleReach",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565187/unnamed_3_vjxsqa.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_18_a1swd8.png",
       drawingOn: [
         "Major US science and technology labs and experts",
         "International network of science and tech expertise"
@@ -57,7 +57,7 @@ const About = () => {
       category: "Development Transition",
       name: "Shaurya Doval",
       title: "Founder India Foundation, Zeus Capital, Morgan Stanley, GE",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1766565185/unnamed_lwetam.jpg",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
       drawingOn: [
         "Development and social economics work",
         "Asia and Middle East network"
@@ -99,12 +99,20 @@ const About = () => {
             People
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {people.map((person) => (
-              <div key={person.name} className="flex">
-                <PersonCard {...person} />
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {people.map((person) => {
+              // Generate slug from name
+              const slug = person.name.toLowerCase().replace(/\s+/g, '-');
+              return (
+                <PersonCard 
+                  key={person.name}
+                  name={person.name}
+                  title={person.title}
+                  image={person.image}
+                  slug={slug}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

@@ -43,12 +43,6 @@ const StrategicCounsel = () => {
     },
   ];
 
-  const problems = [
-    "Transition the Nation to the Information Era (The National Transition Project)",
-    "Build Engines of Enterprise, Growth and Share (The Prosperity Initiative)",
-    "Guard and Protect Sovereignty Across All Domains (The National Sovereignty Security Programme)",
-    "Create a Global Investment Boom by Turning Needs Into Opportunities via Systems of Enterprise, Growth and Shared Prosperity (The World Investment Plan)",
-  ];
 
   return (
     <Layout>
@@ -113,17 +107,13 @@ const StrategicCounsel = () => {
       <section className="pt-0 pb-6 md:pb-12" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="container-custom section-padding">
           <div className="border-t border-b border-border py-4 md:py-6">
-            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold mb-4">
               Intractable Problems
             </p>
+            <p className="font-sans text-base md:text-lg text-primary leading-relaxed">
+              The Institute draws on its team's unusual thinking and extensive networks to address seemingly intractable problems on a case-by-case basis. Previous issues handled by the team have spanned national security, media, strategy, finance and environment. These tend to address sensitive and mission critical matters.
+            </p>
           </div>
-          {problems.map((problem, index) => (
-            <div key={index} className={`border-t ${index === problems.length - 1 ? '' : 'border-b'} border-border py-4 md:py-6`}>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
-                {problem}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
     </Layout>

@@ -1,7 +1,8 @@
 const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => {
+  // Use the new logo images for header (dark variant) and footer (light variant)
   const logoImage = variant === "light" 
-    ? "https://res.cloudinary.com/dqataciy5/image/upload/v1767357710/Link_1_jqegrc.png"
-    : "https://res.cloudinary.com/dqataciy5/image/upload/v1767778280/Group_1_e7fthz.png";
+    ? "https://res.cloudinary.com/dqataciy5/image/upload/v1767874970/Group_4_snw23t.png"
+    : "https://res.cloudinary.com/dqataciy5/image/upload/v1767874853/Group_8_eetvcd.png";
   
   return (
     <div className="flex items-center">

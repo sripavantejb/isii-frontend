@@ -86,7 +86,7 @@ const Experience = () => {
       <section className="min-h-screen bg-white py-8 md:py-12">
         <div className="container-custom section-padding">
           {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
-          <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-stretch">
+          <div className="grid md:grid-cols-12 gap-0 md:gap-2 items-stretch">
             {/* Left Side - Globe Image (aligns with Experience heading start) */}
             <div className="hidden md:flex md:col-span-4">
               <img 
@@ -98,14 +98,14 @@ const Experience = () => {
 
             {/* Right Side - Content (aligns with navbar end) */}
             <div className="md:col-span-8">
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* Main Heading */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">
                   Projects and Intervention Areas
                 </h2>
 
                 {/* Projects List */}
-                <ul className="space-y-3 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
+                <ul className="space-y-2 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
                   {projects.map((project, index) => (
                     <li key={index}>
                       <span className="font-bold">{project.title}</span> {project.description}

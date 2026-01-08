@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Mission from "./pages/Mission";
 import People from "./pages/People";
+import PersonProfile from "./pages/PersonProfile";
 import PivotalThinking from "./pages/PivotalThinking";
 import ContentLibrary from "./pages/ContentLibrary";
 import StrategicCounsel from "./pages/StrategicCounsel";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/about/mission" element={<Mission />} />
             <Route path="/about/people" element={<People />} />
+            <Route path="/about/people/:slug" element={<PersonProfile />} />
             <Route path="/capabilities/pivotal-thinking" element={<PivotalThinking />} />
             <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />

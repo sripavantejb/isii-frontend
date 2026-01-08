@@ -14,7 +14,7 @@ const MobilisingTransition = () => {
           <div className="flex justify-between items-start mb-4">
             {/* Top Left */}
             <div className="flex-1">
-              <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary underline decoration-black decoration-1 underline-offset-2">
+              <h1 className="font-sans text-3xl md:text-4xl font-bold text-primary">
                 Mobilising Transition
               </h1>
             </div>

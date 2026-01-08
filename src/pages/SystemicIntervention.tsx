@@ -50,7 +50,7 @@ const SystemicIntervention = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-lg font-bold">
-                ISII Labs
+                Programmes
               </h1>
             </div>
           </div>
@@ -69,7 +69,7 @@ const SystemicIntervention = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
-                ISII Labs
+                Programmes
               </h1>
             </div>
           </div>
@@ -85,27 +85,11 @@ const SystemicIntervention = () => {
         />
         
         <div className="container-custom section-padding">
-          {/* Prioritised Label */}
-          <div className="max-w-[1420px] mx-auto mb-6 md:mb-8 flex justify-start" style={{ gap: '10px' }}>
-            <span 
-              className="inline-flex items-center justify-center font-medium"
-              style={{ 
-                width: '159px',
-                height: '56px',
-                backgroundColor: '#FFFFFF',
-                color: '#000000',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: '#e5e7eb',
-                borderRadius: '100px',
-                paddingTop: '10px',
-                paddingRight: '24px',
-                paddingBottom: '10px',
-                paddingLeft: '24px'
-              }}
-            >
-              Prioritised
-            </span>
+          {/* Prioritised Programmes Heading */}
+          <div className="max-w-[1420px] mx-auto mb-6 md:mb-8">
+            <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
+              Prioritised Programmes
+            </h2>
           </div>
 
           {/* Cards Container */}
@@ -117,20 +101,17 @@ const SystemicIntervention = () => {
                 style={{
                   width: '100%',
                   maxWidth: '1420px',
-                  height: 'auto',
-                  minHeight: '266px',
                   padding: '32px',
                   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)'
                 }}
               >
-                <div className="flex flex-col md:flex-row h-full" style={{ gap: '32px' }}>
-                  {/* Image - Left side */}
-                  <div className="flex-shrink-0 w-full md:w-auto">
+                <div className="flex flex-col md:flex-row items-start" style={{ gap: '32px' }}>
+                  {/* Image - Left side - Fixed dimensions */}
+                  <div className="flex-shrink-0 w-full md:w-[397.33px]">
                     <div 
-                      className="rounded-lg overflow-hidden mx-auto md:mx-0"
+                      className="rounded-lg overflow-hidden"
                       style={{ 
                         width: '100%',
-                        maxWidth: '397.33px',
                         height: '202px'
                       }}
                     >
@@ -143,14 +124,10 @@ const SystemicIntervention = () => {
                     </div>
                   </div>
                   
-                  {/* Content - Right side */}
+                  {/* Content - Right side - Flexible width */}
                   <div 
-                    className="flex flex-col justify-center w-full md:w-auto flex-1"
+                    className="flex flex-col flex-1 w-full md:w-auto"
                     style={{
-                      width: '100%',
-                      maxWidth: '926.67px',
-                      height: 'auto',
-                      minHeight: '202px',
                       gap: '16px'
                     }}
                   >
@@ -177,6 +154,54 @@ const SystemicIntervention = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Pipeline Programmes Section */}
+      <section className="pt-0 pb-6 md:pb-12" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container-custom section-padding">
+          <div className="border-b border-border py-4 md:py-6 pt-8 md:pt-12">
+            <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
+              Pipeline Programmes
+            </h2>
+          </div>
+          <div className="border-b border-border py-4 md:py-6">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
+              – The National Transition Project – Transitioning the Nation to the Information Era
+            </p>
+          </div>
+          <div className="border-b border-border py-4 md:py-6">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
+              – The Prosperity Initiative – Building Engines of Enterprise, Growth and Share
+            </p>
+          </div>
+          <div className="border-b border-border py-4 md:py-6">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
+              – The National Sovereignty Security Programme – Guarding and Protecting Sovereignty Across All Domains
+            </p>
+          </div>
+          <div className="border-t border-border py-4 md:py-6">
+            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
+              – The World Investment Plan – Creating a Global Investment Boom by Turning Needs into Opportunities via Systems of Enterprise, Growth and Shared Prosperity
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tagline Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container-custom section-padding">
+          <p 
+            className="text-center text-sm md:text-base font-sans mx-auto leading-relaxed px-4 py-3"
+            style={{ 
+              backgroundColor: '#f4f5f7',
+              color: '#040750',
+              width: 'fit-content',
+              maxWidth: '100%'
+            }}
+          >
+            Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.
+          </p>
         </div>
       </section>
     </Layout>

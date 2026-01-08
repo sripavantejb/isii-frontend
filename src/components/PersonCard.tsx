@@ -1,62 +1,49 @@
+import { Link } from "react-router-dom";
+
 interface PersonCardProps {
-  category: string;
   name: string;
   title: string;
-  description?: string;
-  drawingOn?: string[];
   image?: string;
+  slug?: string;
 }
 
-const PersonCard = ({ category, name, title, description, drawingOn, image }: PersonCardProps) => {
-  return (
-    <div className="relative pt-20">
-      {/* Photo - half above, half inside */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-32 h-32 rounded-lg overflow-hidden border-4 border-card bg-muted">
-          {image ? (
-            <img 
-              src={image} 
-              alt={name}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-muted">
-              <span className="text-muted-foreground/40 text-xs">photo</span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Card Content */}
-      <div className="bg-card pt-20 pb-6 px-6 border-l-4 border-t border-r border-b border-border animate-fade-in h-full flex flex-col" style={{ borderLeftColor: '#d6795a' }}>
-        <p className="text-xs font-extrabold uppercase tracking-wider mb-3" style={{ color: '#d6795a' }}>
-          {category}
-        </p>
-        
-        <h3 className="font-serif text-xl text-primary font-bold mb-2">{name}</h3>
-        
-        <p className="text-sm text-muted-foreground mb-4">
-          {title}
-        </p>
-        
-        {description && (
-          <p className="text-sm text-accent mb-4">
-            {description}
-          </p>
-        )}
-        
-        {drawingOn && drawingOn.length > 0 && (
-          <div className="mt-auto">
-            <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-              {drawingOn.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
+  const CardContent = () => (
+    <div className="bg-white flex flex-col items-center text-center cursor-pointer transition-transform duration-300 hover:scale-105">
+      {/* Square Headshot */}
+      <div className="w-full aspect-square mb-4 overflow-hidden bg-muted">
+        {image ? (
+          <img 
+            src={image} 
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-muted">
+            <span className="text-muted-foreground/40 text-xs">photo</span>
           </div>
         )}
       </div>
+      
+      {/* Name */}
+      <h3 className="font-serif text-xl md:text-2xl text-primary font-bold mb-2">{name}</h3>
+      
+      {/* Title */}
+      <p className="text-sm md:text-base text-muted-foreground">
+        {title}
+      </p>
     </div>
   );
+
+  if (slug) {
+    return (
+      <Link to={`/about/people/${slug}`} className="block">
+        <CardContent />
+      </Link>
+    );
+  }
+
+  return <CardContent />;
 };
 
 export default PersonCard;

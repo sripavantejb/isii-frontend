@@ -106,9 +106,9 @@ const Index = () => {
     },
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
-      title: "ISII Labs",
+      title: "Programmes",
       description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
-      buttonText: "Explore ISII Labs",
+      buttonText: "Explore Programmes",
       buttonLink: "/capabilities/systemic-intervention",
     },
   ];
@@ -184,45 +184,49 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px] mx-4 md:mx-8 mt-6 md:mt-10">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `url(${bannerImage})`,
-            height: '100%',
-          }}
-        />
-        <div className="relative z-10 w-full h-full flex items-center">
-          <div className="container-custom section-padding w-full py-16 md:py-20">
-            <div className="text-left flex flex-col" style={{ gap: '10px' }}>
-              <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground tracking-wider w-fit font-bold">
-                Our Latest Pivotal Thinking
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground text-left leading-relaxed">
-                <span className="md:hidden">
-                  America the Merchant Power, The National Security Strategy 2025
-                </span>
-                <span className="hidden md:block">
-                  America the Merchant Power,<br />
-                  <span style={{ display: 'block', marginTop: '0.5rem' }}>The National Security Strategy 2025</span>
-                </span>
-              </h2>
-              <div className="text-left">
-                {articles.length > 0 && articles[0]?.pdfUrl ? (
-                  <Button variant="outline-light" asChild>
-                    <a 
-                      href={articles[0].pdfUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Read More
-                    </a>
-                  </Button>
-                ) : (
-                  <Button variant="outline-light" asChild>
-                    <Link to="/capabilities/pivotal-thinking">Read More</Link>
-                  </Button>
-                )}
+      <section className="mt-6 md:mt-10">
+        <div className="container-custom section-padding">
+          <div className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px]">
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ 
+                backgroundImage: `url(${bannerImage})`,
+                height: '100%',
+              }}
+            />
+            <div className="relative z-10 w-full h-full flex items-center">
+              <div className="w-full py-16 md:py-20 px-6 md:px-8">
+                <div className="text-left flex flex-col" style={{ gap: '10px' }}>
+                  <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground tracking-wider w-fit font-bold">
+                    Our Latest Pivotal Thinking
+                  </span>
+                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground text-left leading-relaxed">
+                    <span className="md:hidden">
+                      America the Merchant Power, The National Security Strategy 2025
+                    </span>
+                    <span className="hidden md:block">
+                      America the Merchant Power,<br />
+                      <span style={{ display: 'block', marginTop: '0.5rem' }}>The National Security Strategy 2025</span>
+                    </span>
+                  </h2>
+                  <div className="text-left">
+                    {articles.length > 0 && articles[0]?.pdfUrl ? (
+                      <Button variant="outline-light" asChild>
+                        <a 
+                          href={articles[0].pdfUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          Read More
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline-light" asChild>
+                        <Link to="/capabilities/pivotal-thinking">Read More</Link>
+                      </Button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -249,7 +253,7 @@ const Index = () => {
         </section>
       )}
 
-      {/* ISII Labs Section */}
+      {/* Programmes Section */}
       <section
         className="pt-8 md:pt-12 pb-16 md:pb-24"
         style={{ backgroundColor: '#ffffff' }}
