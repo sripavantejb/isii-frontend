@@ -200,7 +200,7 @@ const SystemicIntervention = () => {
               maxWidth: '100%'
             }}
           >
-            Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.
+            Participation is open for nations, blocs, institutions and major enterprises – contact us to learn more, followed by our standard contact details.
           </p>
         </div>
       </section>
