@@ -9,9 +9,9 @@ interface PersonCardProps {
 
 const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
   const CardContent = () => (
-    <div className="bg-white flex flex-col items-center text-center cursor-pointer transition-transform duration-300 hover:scale-105">
+    <div className="bg-white flex flex-col items-center text-center cursor-pointer transition-transform duration-300 hover:scale-105 h-full p-4 md:p-6">
       {/* Square Headshot */}
-      <div className="w-full aspect-square mb-4 overflow-hidden bg-muted">
+      <div className="w-full aspect-square mb-5 md:mb-6 overflow-hidden bg-muted flex-shrink-0">
         {image ? (
           <img 
             src={image} 
@@ -26,10 +26,10 @@ const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
       </div>
       
       {/* Name */}
-      <h3 className="font-serif text-xl md:text-2xl text-primary font-bold mb-2">{name}</h3>
+      <h3 className="font-serif text-xl md:text-2xl lg:text-3xl text-primary font-bold mb-3 md:mb-4 flex-shrink-0">{name}</h3>
       
-      {/* Title - Show all lines */}
-      <div className="text-xs md:text-sm text-muted-foreground">
+      {/* Title - Show all lines with fixed min-height */}
+      <div className="text-sm md:text-base text-muted-foreground min-h-[80px] flex flex-col justify-start">
         {title.split('\n').map((line, index) => (
           <p key={index} className={index > 0 ? 'mt-1' : ''}>{line}</p>
         ))}

@@ -10,7 +10,7 @@ const People = () => {
     {
       name: "Ketan Patel",
       title: "Chair, Force for Good\nCEO, Greater Pacific Capital\nFormer Head, Strategic Group, Goldman Sachs",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300213/2062_zy5udw.png",
       slug: "ketan-patel",
       category: "Global Transition Architecture",
       drawingOn: [
@@ -43,7 +43,7 @@ const People = () => {
     {
       name: "Garry Jacobs",
       title: "President, CEO, World Academy of Art & Science\nChairman, World University Consortium",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
       slug: "garry-jacobs",
       category: "Peace and Social Transition",
       drawingOn: [
@@ -54,7 +54,7 @@ const People = () => {
     {
       name: "Shaurya Doval",
       title: "Co-founder, India Foundation\nDirector, India Foundation\nSenior Team Member, Greater Pacific Capital\nFounder and Managing Director, Torch Investments",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768299980/2065_2_k6cymo.png",
       slug: "shaurya-doval",
       category: "Development Transition",
       drawingOn: [
@@ -109,9 +109,9 @@ const People = () => {
       </section>
 
       {/* People Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: '#f4f5f7' }}>
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {people.map((person) => (
               <PersonCard 
                 key={person.name}
