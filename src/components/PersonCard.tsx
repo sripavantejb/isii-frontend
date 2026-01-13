@@ -26,12 +26,17 @@ const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
       </div>
       
       {/* Name */}
-      <h3 className="font-serif text-xl md:text-2xl lg:text-3xl text-primary font-bold mb-3 md:mb-4 flex-shrink-0">{name}</h3>
+      <h3 className="font-serif text-lg md:text-xl lg:text-2xl text-primary font-bold mb-3 md:mb-4 flex-shrink-0">{name}</h3>
       
       {/* Title - Show all lines with fixed min-height */}
-      <div className="text-sm md:text-base text-muted-foreground min-h-[80px] flex flex-col justify-start">
-        {title.split('\n').map((line, index) => (
-          <p key={index} className={index > 0 ? 'mt-1' : ''}>{line}</p>
+      <div className="text-xs md:text-sm text-muted-foreground min-h-[80px] flex flex-col justify-start w-full">
+        {title.split('\n').map((line, index, array) => (
+          <div key={index}>
+            <p className={index > 0 ? 'mt-1' : ''}>{line}</p>
+            {index < array.length - 1 && (
+              <hr className="border-gray-300 my-2 w-full" />
+            )}
+          </div>
         ))}
       </div>
     </div>

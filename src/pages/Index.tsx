@@ -11,7 +11,7 @@ const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v17682946
 const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294568/V2_5_obypvm.png"; // Large screens
 const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile
 
 interface Article {
   _id: string;

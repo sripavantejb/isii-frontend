@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import ParticipationBanner from "@/components/ParticipationBanner";
 
 const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295236/Systemic_Interventions_and_Investments_2_mbzgbc.png";
 const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295238/2_2_tqljlo.png";
@@ -158,7 +159,7 @@ const SystemicIntervention = () => {
       </section>
 
       {/* Pipeline Programmes Section */}
-      <section className="pt-0 pb-6 md:pb-12" style={{ backgroundColor: '#ffffff' }}>
+      <section className="pt-0 pb-4 md:pb-6" style={{ backgroundColor: '#ffffff' }}>
         <div className="container-custom section-padding">
           <div className="border-b border-border py-4 md:py-6 pt-8 md:pt-12">
             <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
@@ -208,22 +209,8 @@ const SystemicIntervention = () => {
         </div>
       </section>
 
-      {/* Tagline Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container-custom section-padding">
-          <p 
-            className="text-center text-sm md:text-base font-sans mx-auto leading-relaxed px-4 py-3"
-            style={{ 
-              backgroundColor: '#f4f5f7',
-              color: '#001429',
-              width: 'fit-content',
-              maxWidth: '100%'
-            }}
-          >
-            Participation is open for nations, blocs, institutions and major enterprises – <a href="mailto:lesley.whittle@forcegood.org" className="text-blue-600 hover:text-blue-800 underline">contact us</a> to learn more.
-          </p>
-        </div>
-      </section>
+      {/* Participation Banner */}
+      <ParticipationBanner />
     </Layout>
   );
 };

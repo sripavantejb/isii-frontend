@@ -61,7 +61,7 @@ const peopleData = [
   },
   {
     name: "Shaurya Doval",
-    title: "Co-founder, India Foundation\nDirector, India Foundation\nSenior Team Member, Greater Pacific Capital\nFounder and Managing Director, Torch Investments",
+    title: "Co-founder & Director, India Foundation\nSenior Team Member, GPC\nFounder and MD, Torch Investments",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768299980/2065_2_k6cymo.png",
     slug: "shaurya-doval",
     category: "Development Transition",

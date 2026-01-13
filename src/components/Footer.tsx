@@ -21,8 +21,8 @@ const Footer = () => {
       {/* Accent line */}
       <div className="h-1" style={{ backgroundColor: '#d6795a' }} />
       
-      <div className="container-custom section-padding py-12">
-        {/* Desktop Layout */}
+      <div className="container-custom section-padding pt-6 pb-8 md:pt-8 md:pb-12">
+        {/* Desktop Layout (md and above) */}
         <div className="hidden md:block">
           <div className="flex items-start justify-between mb-8">
             {/* Logo on the left */}
@@ -82,18 +82,18 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Mobile Layout - Centered */}
-        <div className="md:hidden flex flex-col items-center">
-          {/* Logo centered at top */}
-          <div className="mb-8 flex flex-col items-center">
+        {/* Mobile/Tablet Layout (below md) */}
+        <div className="md:hidden">
+          {/* Logo and text at top */}
+          <div className="mb-6 flex flex-col">
             <Logo variant="light" />
             <p className="text-sm text-white mt-3 font-sans font-bold">Part of The Force For Good Group</p>
           </div>
           
-          {/* Navigation Links - Stacked */}
-          <div className="flex flex-col items-center gap-6 mb-8">
-            {/* Left Column Links */}
-            <div className="flex flex-col items-center gap-4">
+          {/* Navigation Links - Two Columns */}
+          <div className="flex gap-8 sm:gap-12 mb-6">
+            {/* Left Column */}
+            <div className="flex flex-col gap-3 sm:gap-4 flex-1">
               {leftColumnLinks.map((link) => 
                 link.isExternal ? (
                   <a
@@ -115,8 +115,8 @@ const Footer = () => {
               )}
             </div>
             
-            {/* Right Column Links */}
-            <div className="flex flex-col items-center gap-4">
+            {/* Right Column */}
+            <div className="flex flex-col gap-3 sm:gap-4 flex-1">
               {rightColumnLinks.map((link) => (
                 <Link
                   key={link.path}
