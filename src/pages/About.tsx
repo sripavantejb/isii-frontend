@@ -6,7 +6,7 @@ const About = () => {
     {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
-      title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
+      title: "Advisory Council, Member",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
       drawingOn: [
         "800 leading scientists and scholars",
@@ -16,7 +16,7 @@ const About = () => {
     {
       category: "Global Transition Architecture",
       name: "Ketan Patel",
-      title: "Chair, Force for Good; CEO, Greater Pacific Capital; Former Head, Strategic Group, Goldman Sachs",
+      title: "Chairman, and Advisory Council Chair",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
       drawingOn: [
         "100 leading financial institutions strategies",
@@ -26,7 +26,7 @@ const About = () => {
     {
       category: "Media & Technology Transition",
       name: "Jon Miller",
-      title: "CEO of Integrated Media, Former Chairman and CEO of AOL; NewsCorp Online Media Group",
+      title: "Advisory Council, Member",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
       drawingOn: [
         "Major mass mobilisation platforms",
@@ -36,8 +36,8 @@ const About = () => {
     {
       category: "Tech Security Transition",
       name: "Glenn Gaffney",
-      title: "Former Director, Science and Technology, CIA; EVP, IQT; Founder NobleReach",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_18_a1swd8.png",
+      title: "Senior Innovation Fellow, NobleReach Foundation",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768293957/Glenn_jogrhw.jpg",
       drawingOn: [
         "Major US science and technology labs and experts",
         "International network of science and tech expertise"
@@ -46,7 +46,7 @@ const About = () => {
     {
       category: "Development Transition",
       name: "Shaurya Doval",
-      title: "Founder India Foundation, Zeus Capital, Morgan Stanley, GE",
+      title: "Co-founder, India Foundation\nDirector, India Foundation\nSenior Team Member, Greater Pacific Capital\nFounder and Managing Director, Torch Investments",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
       drawingOn: [
         "Development and social economics work",

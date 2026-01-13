@@ -28,9 +28,9 @@ const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
       {/* Name */}
       <h3 className="font-serif text-xl md:text-2xl text-primary font-bold mb-2">{name}</h3>
       
-      {/* Title */}
-      <p className="text-sm md:text-base text-muted-foreground">
-        {title}
+      {/* Title - Show only first line */}
+      <p className="text-xs md:text-sm text-muted-foreground">
+        {title.split('\n')[0]}
       </p>
     </div>
   );

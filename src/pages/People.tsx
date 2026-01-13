@@ -2,14 +2,14 @@ import Layout from "@/components/Layout";
 import PersonCard from "@/components/PersonCard";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768216/Our_Mission_rxtapy.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768658/3_ylqvg7.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295137/Our_Mission_1_hkd0kr.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295139/3_1_ancnmk.png";
 
 const People = () => {
   const people = [
     {
       name: "Ketan Patel",
-      title: "Chair, Force for Good; CEO, Greater Pacific Capital; Former Head, Strategic Group, Goldman Sachs",
+      title: "Chairman, and Advisory Council Chair",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
       slug: "ketan-patel",
       category: "Global Transition Architecture",
@@ -20,8 +20,8 @@ const People = () => {
     },
     {
       name: "Glenn Gaffney",
-      title: "Former Director, Science and Technology, CIA; EVP, IQT; Founder NobleReach",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_18_a1swd8.png",
+      title: "Senior Innovation Fellow, NobleReach Foundation",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768293957/Glenn_jogrhw.jpg",
       slug: "glenn-gaffney",
       category: "Tech Security Transition",
       drawingOn: [
@@ -31,7 +31,7 @@ const People = () => {
     },
     {
       name: "Jon Miller",
-      title: "CEO of Integrated Media, Former Chairman and CEO of AOL; NewsCorp Online Media Group",
+      title: "Advisory Council, Member",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
       slug: "jon-miller",
       category: "Media & Technology Transition",
@@ -42,7 +42,7 @@ const People = () => {
     },
     {
       name: "Garry Jacobs",
-      title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
+      title: "Advisory Council, Member",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
       slug: "garry-jacobs",
       category: "Peace and Social Transition",
@@ -53,7 +53,7 @@ const People = () => {
     },
     {
       name: "Shaurya Doval",
-      title: "Founder India Foundation, Zeus Capital, Morgan Stanley, GE",
+      title: "Co-founder, India Foundation\nDirector, India Foundation\nSenior Team Member, Greater Pacific Capital\nFounder and Managing Director, Torch Investments",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
       slug: "shaurya-doval",
       category: "Development Transition",

@@ -6,12 +6,12 @@ import CapabilityCard from "@/components/CapabilityCard";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 
-const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769831/Frame_1707482985_2_lf7hzs.png";
+const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 // Hero section images for different screen sizes
-const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769170/V2_xh2zpa.png"; // Large screens
-const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769226/V2_2_afw10k.png"; // Tablet screens
-const heroImageMobileMedium = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769677/V2_4_oj7una.png"; // Medium mobiles
-const heroImageMobileSmall = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769677/V2_4_oj7una.png"; // Small mobiles
+const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294568/V2_5_obypvm.png"; // Large screens
+const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
+const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
 
 interface Article {
   _id: string;
@@ -116,30 +116,19 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden" style={{ backgroundColor: '#040750' }}>
-        {/* Small mobiles - default (below 640px) */}
+      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden" style={{ backgroundColor: '#001429' }}>
+        {/* Mobile - default (below 768px) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center sm:hidden"
+          className="absolute inset-0 bg-cover bg-center md:hidden"
           style={{ 
-            backgroundImage: `url(${heroImageMobileSmall})`,
+            backgroundImage: `url(${heroImageMobile})`,
             backgroundPosition: 'top center',
             backgroundSize: 'cover',
             height: 'calc(100vh - 80px)',
             width: '100%'
           }}
         />
-        {/* Medium mobiles - sm: (640px+) */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center hidden sm:block md:hidden"
-          style={{ 
-            backgroundImage: `url(${heroImageMobileMedium})`,
-            backgroundPosition: 'top center',
-            backgroundSize: 'cover',
-            height: 'calc(100vh - 80px)',
-            width: '100%'
-          }}
-        />
-        {/* Tablet screens - md: (768px+) */}
+        {/* Tablet screens - md: (768px - 1023px) */}
         <div 
           className="absolute inset-0 bg-cover bg-center hidden md:block lg:hidden"
           style={{ 
@@ -150,9 +139,20 @@ const Index = () => {
             width: '100%'
           }}
         />
-        {/* Large screens - lg: (1024px+) */}
+        {/* Small Monitor - lg: (1024px - 1279px) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center hidden lg:block"
+          className="absolute inset-0 bg-cover bg-center hidden lg:block xl:hidden"
+          style={{ 
+            backgroundImage: `url(${heroImageSmallMonitor})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            height: 'calc(100vh - 80px)',
+            width: '100%'
+          }}
+        />
+        {/* Large screens - xl: (1280px+) */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center hidden xl:block"
           style={{ 
             backgroundImage: `url(${heroImageLarge})`,
             backgroundPosition: 'center',

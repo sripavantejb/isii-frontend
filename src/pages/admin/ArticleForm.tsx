@@ -187,19 +187,19 @@ const ArticleForm = () => {
               <Button
                 variant="ghost"
                 onClick={() => navigate('/admin')}
-                className="mb-4 text-[#040750] hover:text-white hover:bg-[#040750]"
+                className="mb-4 text-[#001429] hover:text-white hover:bg-[#001429]"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Dashboard
               </Button>
-              <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#040750' }}>
+              <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#001429' }}>
                 {isEdit ? 'Edit Article' : 'Create New Article'}
               </h1>
             </div>
 
             <form onSubmit={handleSubmit} className="max-w-2xl space-y-6 p-4 md:p-6 lg:p-8 rounded-lg" style={{ backgroundColor: '#ffffff' }}>
               <div className="space-y-2">
-                <Label htmlFor="title" style={{ color: '#040750' }}>
+                <Label htmlFor="title" style={{ color: '#001429' }}>
                   Title *
                 </Label>
                 <Input
@@ -208,12 +208,12 @@ const ArticleForm = () => {
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
                   placeholder="Article title"
-                  style={{ borderColor: '#040750' }}
+                  style={{ borderColor: '#001429' }}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="date" style={{ color: '#040750' }}>
+                <Label htmlFor="date" style={{ color: '#001429' }}>
                   Date *
                 </Label>
                 <Popover>
@@ -221,7 +221,7 @@ const ArticleForm = () => {
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left font-normal border-[#040750] text-[#040750] hover:bg-[#040750] hover:text-white",
+                        "w-full justify-start text-left font-normal border-[#001429] text-[#001429] hover:bg-[#001429] hover:text-white",
                         !selectedDate && "text-muted-foreground"
                       )}
                     >
@@ -357,7 +357,7 @@ const ArticleForm = () => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 w-full sm:w-auto bg-[#040750] text-white hover:bg-[#040750]/90 hover:text-white"
+                  className="flex-1 w-full sm:w-auto bg-[#001429] text-white hover:bg-[#001429]/90 hover:text-white"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   {loading ? 'Saving...' : isEdit ? 'Update Article' : 'Create Article'}
@@ -366,7 +366,7 @@ const ArticleForm = () => {
                   type="button"
                   variant="outline"
                   onClick={() => navigate('/admin')}
-                  className="w-full sm:w-auto border-[#040750] text-[#040750] hover:bg-[#040750] hover:text-white"
+                  className="w-full sm:w-auto border-[#001429] text-[#001429] hover:bg-[#001429] hover:text-white"
                 >
                   Cancel
                 </Button>

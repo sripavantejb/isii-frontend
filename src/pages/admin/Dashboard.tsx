@@ -138,17 +138,17 @@ const Dashboard = () => {
           <div className="container-custom section-padding py-6 md:py-10">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
               <div>
-                <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#040750' }}>
+                <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#001429' }}>
                   Admin Dashboard
                 </h1>
-                <p className="text-sm" style={{ color: '#040750' }}>
+                <p className="text-sm" style={{ color: '#001429' }}>
                   Manage Pivotal Thinking articles
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <Button
                   onClick={() => navigate('/admin/articles/new')}
-                  className="w-full sm:w-auto bg-[#040750] text-white hover:bg-[#040750]/90 hover:text-white"
+                  className="w-full sm:w-auto bg-[#001429] text-white hover:bg-[#001429]/90 hover:text-white"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   New Article
@@ -156,7 +156,7 @@ const Dashboard = () => {
                 <Button
                   variant="outline"
                   onClick={handleLogout}
-                  className="w-full sm:w-auto border-[#040750] text-[#040750] hover:bg-[#040750] hover:text-white"
+                  className="w-full sm:w-auto border-[#001429] text-[#001429] hover:bg-[#001429] hover:text-white"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
@@ -172,7 +172,7 @@ const Dashboard = () => {
                   <p className="text-muted-foreground mb-4">No articles found</p>
                   <Button
                     onClick={() => navigate('/admin/articles/new')}
-                    className="bg-[#040750] text-white hover:bg-[#040750]/90 hover:text-white"
+                    className="bg-[#001429] text-white hover:bg-[#001429]/90 hover:text-white"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Create First Article
@@ -191,7 +191,7 @@ const Dashboard = () => {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <CardTitle className="text-lg line-clamp-2" style={{ color: '#040750' }}>
+                      <CardTitle className="text-lg line-clamp-2" style={{ color: '#001429' }}>
                         {article.title}
                       </CardTitle>
                       <p className="text-sm text-muted-foreground">{article.date}</p>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => navigate(`/admin/articles/edit/${article._id}`)}
-                          className="flex-1 border-[#040750] text-[#040750] hover:bg-[#040750] hover:text-white"
+                          className="flex-1 border-[#001429] text-[#001429] hover:bg-[#001429] hover:text-white"
                         >
                           <Edit className="h-4 w-4 mr-2" />
                           Edit

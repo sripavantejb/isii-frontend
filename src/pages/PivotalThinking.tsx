@@ -93,7 +93,7 @@ const PivotalThinking = () => {
         <div 
           className="md:hidden absolute inset-0 z-0"
           style={{
-            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1767768645/Frame_1707483159_fulmwk.png)`,
+            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1768295453/Frame_1707483159_1_bgkyib.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -103,7 +103,7 @@ const PivotalThinking = () => {
         <div 
           className="hidden md:block absolute inset-0 z-0"
           style={{
-            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1767768209/Pivotal_Thinking_1_rxboza.png)`,
+            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1768295450/Pivotal_Thinking_2_pn5aa7.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'

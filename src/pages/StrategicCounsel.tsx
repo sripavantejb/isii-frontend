@@ -3,8 +3,8 @@ import Layout from "@/components/Layout";
 import MandateCard from "@/components/MandateCard";
 
 // Cloudinary URLs for images
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768280/Strategic_Counsel_rm2e9c.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768646/1_pl1xvu.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295396/Strategic_Counsel_7_j3ou44.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295398/1_3_h04dcl.png";
 const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763191/45b069aa-f21e-4757-a97f-429e4850d21a_wggjd4.png";
 const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769363/4_quwrrz.png";
 const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763200/e83f258e-eafe-4cd0-ac50-c1b2ede86f8a_tjst81.png";

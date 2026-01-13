@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 
-const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768213/Systemic_Interventions_and_Investments_gkjutv.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1767768649/2_ywhv0x.png";
+const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295236/Systemic_Interventions_and_Investments_2_mbzgbc.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295238/2_2_tqljlo.png";
 
 // Card data array
 const interventionCards = [
@@ -133,7 +133,7 @@ const SystemicIntervention = () => {
                   >
                     <h2 
                       className="font-serif text-xl md:text-2xl font-bold leading-tight"
-                      style={{ color: '#040750', margin: 0 }}
+                      style={{ color: '#001429', margin: 0 }}
                     >
                       {card.heading}
                     </h2>
@@ -215,12 +215,12 @@ const SystemicIntervention = () => {
             className="text-center text-sm md:text-base font-sans mx-auto leading-relaxed px-4 py-3"
             style={{ 
               backgroundColor: '#f4f5f7',
-              color: '#040750',
+              color: '#001429',
               width: 'fit-content',
               maxWidth: '100%'
             }}
           >
-            Participation is open for nations, blocs, institutions and major enterprises – contact us to learn more, followed by our standard contact details.
+            Participation is open for nations, blocs, institutions and major enterprises – <a href="mailto:lesley.whittle@forcegood.org" className="text-blue-600 hover:text-blue-800 underline">contact us</a> to learn more.
           </p>
         </div>
       </section>
