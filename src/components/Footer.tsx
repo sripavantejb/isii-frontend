@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { MapPin } from "lucide-react";
 import Logo from "@/components/Logo";
 
 const Footer = () => {
@@ -7,13 +6,13 @@ const Footer = () => {
     { label: "Home", path: "/" },
     { label: "Mission", path: "/about/mission" },
     { label: "People", path: "/about/people" },
-    { label: "Contact Us", path: "mailto:test@gmail.com", isExternal: true },
+    { label: "Contact Us", path: "mailto:lesley.whittle@forcegood.org", isExternal: true },
   ];
 
   const rightColumnLinks = [
     { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
     { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
-    { label: "Programmes", path: "/programmes" },
+    { label: "Programmes", path: "/capabilities/programmes" },
     { label: "Experience", path: "/capabilities/experience" },
   ];
 
@@ -33,7 +32,7 @@ const Footer = () => {
             </div>
             
             {/* Navigation Links - Two Columns in the middle */}
-            <div className="flex gap-16 flex-1 justify-center">
+            <div className="flex gap-16 flex-1 justify-end">
               {/* Left Column */}
               <div className="flex flex-col gap-4">
                 {leftColumnLinks.map((link) => 
@@ -69,19 +68,6 @@ const Footer = () => {
                   </Link>
                 ))}
               </div>
-            </div>
-            
-            {/* Address Section - Right */}
-            <div className="flex-shrink-0 flex flex-col">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-white" />
-                <span className="text-sm text-white font-sans font-semibold">Address:</span>
-              </div>
-              <p className="text-sm text-white font-sans leading-relaxed">
-                NIAT, No. 144 Survey 37, Financial<br />
-                District, Nanakramguda, Telangana<br />
-                500032
-              </p>
             </div>
           </div>
           
@@ -141,19 +127,6 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
-          </div>
-          
-          {/* Address Section */}
-          <div className="mb-8 flex flex-col items-center">
-            <div className="flex items-center gap-2 mb-2">
-              <MapPin className="w-4 h-4 text-white" />
-              <span className="text-sm text-white font-sans font-semibold">Address:</span>
-            </div>
-            <p className="text-sm text-white font-sans text-center leading-relaxed">
-              NIAT, No. 144 Survey 37, Financial<br />
-              District, Nanakramguda, Telangana<br />
-              500032
-            </p>
           </div>
           
           {/* Separator Line */}

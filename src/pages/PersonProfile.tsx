@@ -60,18 +60,6 @@ const peopleData = [
     biography: "Garry Jacobs is President and CEO of the World Academy of Art & Science and Chairman of the World University Consortium. He brings together leading scientists and scholars from around the world to address critical challenges in peace, social transition, and human development through collaborative research and policy initiatives.",
   },
   {
-    name: "Phoebe Koundouri",
-    title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_25_eebpah.png",
-    slug: "phoebe-koundouri",
-    category: "Economic & Climate Transition",
-    drawingOn: [
-      "SDSN network of 1,700 members in 144 countries",
-      "200 multi-disciplinary sustainability scholars"
-    ],
-    biography: "Phoebe Koundouri is Professor at the School of Economics and Director of Research at Athens University, and Director of AE4RIA. She leads a global network of sustainability scholars and researchers, working at the intersection of economics, climate science, and sustainable development to address pressing environmental challenges.",
-  },
-  {
     name: "Shaurya Doval",
     title: "Founder India Foundation, Zeus Capital, Morgan Stanley, GE",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",

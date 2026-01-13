@@ -41,7 +41,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
         { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
-        { label: "Programmes", path: "/programmes" },
+        { label: "Programmes", path: "/capabilities/programmes" },
         { label: "Experience", path: "/capabilities/experience" },
       ]
     },
@@ -74,14 +74,14 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
             {navItems.map((item) => (
               item.dropdown ? (
                 <DropdownMenu key={item.path}>
-                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-primary/80 font-semibold transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-primary font-medium" : ""}`}>
+                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-foreground font-semibold transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-foreground font-medium" : ""}`}>
                     {item.label}
                     <ChevronDown className="w-4 h-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-card border-border">
                     {item.dropdown.map((subItem) => (
                       <DropdownMenuItem key={subItem.path} asChild className="focus:bg-transparent hover:bg-transparent focus:text-foreground">
-                        <Link to={subItem.path} className="cursor-pointer text-foreground no-underline font-bold">
+                        <Link to={subItem.path} className="cursor-pointer text-foreground no-underline font-semibold">
                           {subItem.label}
                         </Link>
                       </DropdownMenuItem>
@@ -92,14 +92,14 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-sm text-primary/80 font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
+                  className={`text-sm text-foreground font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-foreground font-medium" : ""}`}
                 >
                   {item.label}
                 </Link>
               )
             ))}
-            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-primary/80 hover:bg-transparent hover:text-primary/80 font-semibold text-sm tracking-normal">
-              <a href="mailto:test@gmail.com">Contact Us</a>
+            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-foreground hover:bg-transparent hover:text-foreground font-semibold text-sm tracking-normal">
+              <a href="mailto:lesley.whittle@forcegood.org">Contact Us</a>
             </Button>
           </nav>
 
@@ -124,7 +124,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                     open={item.label === "About Us" ? aboutUsOpen : capabilitiesOpen} 
                     onOpenChange={item.label === "About Us" ? setAboutUsOpen : setCapabilitiesOpen}
                   >
-                    <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-primary/80 font-semibold transition-colors border-b border-border no-underline hover:no-underline">
+                    <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-primary font-semibold transition-colors border-b border-border no-underline hover:no-underline">
                       <span>{item.label}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform ${(item.label === "About Us" ? aboutUsOpen : capabilitiesOpen) ? "rotate-180" : ""}`} />
                     </CollapsibleTrigger>
@@ -133,7 +133,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                         <Link
                           key={subItem.path}
                           to={subItem.path}
-                          className="block py-3 text-primary transition-colors no-underline hover:no-underline font-bold"
+                          className="block py-3 text-primary transition-colors no-underline hover:no-underline font-semibold"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.label}
@@ -145,7 +145,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`py-3 text-primary/80 font-semibold transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-border'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
+                    className={`py-3 text-primary font-semibold transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-border'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -154,8 +154,8 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
               ))}
               {/* Contact Us for Mobile */}
               <a
-                href="mailto:test@gmail.com"
-                className="py-3 text-primary/80 font-semibold transition-colors border-t border-border no-underline hover:no-underline"
+                href="mailto:lesley.whittle@forcegood.org"
+                className="py-3 text-primary font-semibold transition-colors border-t border-border no-underline hover:no-underline"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact Us

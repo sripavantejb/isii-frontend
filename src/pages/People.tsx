@@ -52,17 +52,6 @@ const People = () => {
       ],
     },
     {
-      name: "Phoebe Koundouri",
-      title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_25_eebpah.png",
-      slug: "phoebe-koundouri",
-      category: "Economic & Climate Transition",
-      drawingOn: [
-        "SDSN network of 1,700 members in 144 countries",
-        "200 multi-disciplinary sustainability scholars"
-      ],
-    },
-    {
       name: "Shaurya Doval",
       title: "Founder India Foundation, Zeus Capital, Morgan Stanley, GE",
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",

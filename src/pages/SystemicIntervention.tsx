@@ -166,24 +166,44 @@ const SystemicIntervention = () => {
             </h2>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
-              – The National Transition Project – Transitioning the Nation to the Information Era
-            </p>
+            <div className="flex" style={{ gap: '0.5em' }}>
+              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">1.</span>
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
+                The National Transition Project: Transitioning the Nation to the Information Era
+              </p>
+            </div>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
-              – The Prosperity Initiative – Building Engines of Enterprise, Growth and Share
-            </p>
+            <div className="flex" style={{ gap: '0.5em' }}>
+              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">2.</span>
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
+                The Prosperity Initiative: Building Engines of Enterprise, Growth and Share
+              </p>
+            </div>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
-              – The National Sovereignty Security Programme – Guarding and Protecting Sovereignty Across All Domains
-            </p>
+            <div className="flex" style={{ gap: '0.5em' }}>
+              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">3.</span>
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
+                The National Sovereignty Security Programme: Guarding and Protecting Sovereignty Across All Domains
+              </p>
+            </div>
+          </div>
+          <div className="border-b border-border py-4 md:py-6">
+            <div className="flex" style={{ gap: '0.5em' }}>
+              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">4.</span>
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
+                The World Investment Plan: Creating a Global Investment Boom by Turning Needs into Opportunities via Systems of Enterprise, Growth and Shared Prosperity
+              </p>
+            </div>
           </div>
           <div className="border-t border-border py-4 md:py-6">
-            <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold">
-              – The World Investment Plan – Creating a Global Investment Boom by Turning Needs into Opportunities via Systems of Enterprise, Growth and Shared Prosperity
-            </p>
+            <div className="flex" style={{ gap: '0.5em' }}>
+              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">5.</span>
+              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
+                Intractable Problems: Tackling Society's Toughest Challenges Requiring Bold, Cross-Sector, System-Level Solutions
+              </p>
+            </div>
           </div>
         </div>
       </section>

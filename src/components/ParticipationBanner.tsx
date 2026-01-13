@@ -22,7 +22,7 @@ const ParticipationBanner = () => {
         <p className="text-sm md:text-base text-foreground leading-relaxed whitespace-normal">
           Participation is open for nations, blocs, institutions and major enterprises –{' '}
           <a 
-            href="mailto:test@gmail.com" 
+            href="mailto:lesley.whittle@forcegood.org" 
             className="font-bold underline text-foreground hover:text-primary transition-colors"
             style={{ color: 'inherit' }}
           >

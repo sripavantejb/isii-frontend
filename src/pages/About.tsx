@@ -4,16 +4,6 @@ import PersonCard from "@/components/PersonCard";
 const About = () => {
   const people = [
     {
-      category: "Economic & Climate Transition",
-      name: "Phoebe Koundouri",
-      title: "Prof School of Economics & Director Research, Athens University; Director, AE4RIA",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_25_eebpah.png",
-      drawingOn: [
-        "SDSN network of 1,700 members in 144 countries",
-        "200 multi-disciplinary sustainability scholars"
-      ],
-    },
-    {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
       title: "President, CEO, World Academy of Art & Science; Chairman, World University Consortium",
