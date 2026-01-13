@@ -109,7 +109,7 @@ const People = () => {
       </section>
 
       {/* People Section */}
-      <section className="py-24" style={{ backgroundColor: '#f4f5f7' }}>
+      <section className="pt-8 md:pt-16 pb-24" style={{ backgroundColor: '#f4f5f7' }}>
         <div className="container-custom section-padding">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {people.map((person) => (
