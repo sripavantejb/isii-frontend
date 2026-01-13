@@ -13,7 +13,7 @@ import {
 const peopleData = [
   {
     name: "Ketan Patel",
-    title: "Chairman, and Advisory Council Chair",
+    title: "Chair, Force for Good\nCEO, Greater Pacific Capital\nFormer Head, Strategic Group, Goldman Sachs",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
     slug: "ketan-patel",
     category: "Global Transition Architecture",
@@ -25,7 +25,7 @@ const peopleData = [
   },
   {
     name: "Glenn Gaffney",
-    title: "Senior Innovation Fellow, NobleReach Foundation",
+    title: "Former Director, Science and Technology, CIA\nEVP, IQT\nFounder NobleReach",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768293957/Glenn_jogrhw.jpg",
     slug: "glenn-gaffney",
     category: "Tech Security Transition",
@@ -37,7 +37,7 @@ const peopleData = [
   },
   {
     name: "Jon Miller",
-    title: "Advisory Council, Member",
+    title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
     slug: "jon-miller",
     category: "Media & Technology Transition",
@@ -49,7 +49,7 @@ const peopleData = [
   },
   {
     name: "Garry Jacobs",
-    title: "Advisory Council, Member",
+    title: "President, CEO, World Academy of Art & Science\nChairman, World University Consortium",
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
     slug: "garry-jacobs",
     category: "Peace and Social Transition",
@@ -144,7 +144,7 @@ const PersonProfile = () => {
           {otherMembers.length > 0 && (
             <div className="mt-16">
               <h2 className="text-2xl md:text-3xl font-bold text-primary text-center mb-8">
-                Other Team Members
+                Other Members
               </h2>
               
               <div className="flex justify-center items-center">

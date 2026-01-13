@@ -28,10 +28,12 @@ const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
       {/* Name */}
       <h3 className="font-serif text-xl md:text-2xl text-primary font-bold mb-2">{name}</h3>
       
-      {/* Title - Show only first line */}
-      <p className="text-xs md:text-sm text-muted-foreground">
-        {title.split('\n')[0]}
-      </p>
+      {/* Title - Show all lines */}
+      <div className="text-xs md:text-sm text-muted-foreground">
+        {title.split('\n').map((line, index) => (
+          <p key={index} className={index > 0 ? 'mt-1' : ''}>{line}</p>
+        ))}
+      </div>
     </div>
   );
 
