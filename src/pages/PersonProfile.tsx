@@ -86,7 +86,7 @@ const PersonProfile = () => {
 
   return (
     <Layout>
-      <section className="py-16 bg-white min-h-screen">
+      <section className="py-16 min-h-screen" style={{ backgroundColor: '#f4f5f7' }}>
         <div className="container-custom section-padding">
           {/* Back Link */}
           <Link 
