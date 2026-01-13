@@ -83,30 +83,30 @@ const Experience = () => {
       </section>
 
       {/* Main Content Section - White Background */}
-      <section className="min-h-screen bg-white pt-12 md:pt-16 pb-8 md:pb-12">
+      <section className="bg-white pt-12 md:pt-16 md:min-h-screen pb-4 md:pb-12">
         <div className="container-custom section-padding">
           {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
-          <div className="grid md:grid-cols-12 gap-0 items-stretch">
+          <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-stretch">
             {/* Left Side - Globe Image (aligns with Experience heading start) */}
             <div className="hidden md:flex md:col-span-4 items-start">
               <img 
                 src={globeImage}
                 alt="Dark spherical object with intricate maze pattern"
                 className="w-full object-contain"
-                style={{ maxHeight: '80%', marginTop: '-1rem' }}
+                style={{ maxHeight: '80%' }}
               />
             </div>
 
             {/* Right Side - Content (aligns with navbar end) */}
-            <div className="md:col-span-8" style={{ marginLeft: '-1rem' }}>
-              <div className="space-y-4">
+            <div className="md:col-span-8">
+              <div className="space-y-6 md:space-y-8">
                 {/* Main Heading */}
-                <h2 className="font-sans text-xl md:text-2xl font-bold text-primary">
+                <h2 className="font-sans text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
                   Projects and Intervention Areas
                 </h2>
 
                 {/* Projects List */}
-                <ul className="space-y-2 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
+                <ul className="space-y-4 md:space-y-5 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
                   {projects.map((project, index) => (
                     <li key={index}>
                       <span className="font-bold">{project.title}</span> {project.description}

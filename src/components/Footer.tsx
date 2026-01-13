@@ -21,7 +21,7 @@ const Footer = () => {
       {/* Accent line */}
       <div className="h-1" style={{ backgroundColor: '#d6795a' }} />
       
-      <div className="container-custom section-padding pt-6 pb-8 md:pt-8 md:pb-12">
+      <div className="container-custom section-padding pt-4 pb-8 md:pt-6 md:pb-12">
         {/* Desktop Layout (md and above) */}
         <div className="hidden md:block">
           <div className="flex items-start justify-between mb-8">

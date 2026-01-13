@@ -50,7 +50,7 @@ const SystemicIntervention = () => {
         >
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
-              <h1 className="text-white font-sans text-lg font-bold">
+              <h1 className="text-white font-sans text-xl font-bold">
                 Programmes
               </h1>
             </div>
@@ -159,7 +159,7 @@ const SystemicIntervention = () => {
       </section>
 
       {/* Pipeline Programmes Section */}
-      <section className="pt-0 pb-4 md:pb-6" style={{ backgroundColor: '#ffffff' }}>
+      <section className="pt-0 pb-2 md:pb-4" style={{ backgroundColor: '#ffffff' }}>
         <div className="container-custom section-padding">
           <div className="border-b border-border py-4 md:py-6 pt-8 md:pt-12">
             <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">

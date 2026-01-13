@@ -7,11 +7,12 @@ import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
+const bannerImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile banner
 // Hero section images for different screen sizes
 const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294568/V2_5_obypvm.png"; // Large screens
 const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
 
 interface Article {
   _id: string;
@@ -187,8 +188,17 @@ const Index = () => {
       <section className="mt-6 md:mt-10">
         <div className="container-custom section-padding">
           <div className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px]">
+            {/* Mobile Banner Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center md:hidden"
+              style={{ 
+                backgroundImage: `url(${bannerImageMobile})`,
+                height: '100%',
+              }}
+            />
+            {/* Desktop Banner Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center hidden md:block"
               style={{ 
                 backgroundImage: `url(${bannerImage})`,
                 height: '100%',
