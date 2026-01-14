@@ -160,7 +160,15 @@ const ArticleForm = () => {
 
       navigate('/admin');
     } catch (error: any) {
-      toast.error(error.message || 'Failed to save article');
+      const errorMessage = error.message || 'Failed to save article';
+      toast.error(errorMessage);
+      
+      // Redirect to login if session expired
+      if (errorMessage.includes('session has expired') || errorMessage.includes('Authentication required')) {
+        setTimeout(() => {
+          navigate('/admin/login');
+        }, 2000);
+      }
     } finally {
       setLoading(false);
     }

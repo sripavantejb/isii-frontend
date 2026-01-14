@@ -85,15 +85,14 @@ const Experience = () => {
       {/* Main Content Section - White Background */}
       <section className="bg-white pt-12 md:pt-16 md:min-h-screen pb-4 md:pb-12">
         <div className="container-custom section-padding">
-          {/* Grid Layout: Image aligns with Experience heading, Text aligns with navbar */}
+          {/* Grid Layout: Image aligns with ISII logo on left, bottom aligns with text */}
           <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-stretch">
-            {/* Left Side - Globe Image (aligns with Experience heading start) */}
-            <div className="hidden md:flex md:col-span-4 items-start">
+            {/* Left Side - Globe Image (aligns with ISII logo on left, bottom aligns with text) */}
+            <div className="hidden md:flex md:col-span-4 items-end">
               <img 
                 src={globeImage}
                 alt="Dark spherical object with intricate maze pattern"
                 className="w-full object-contain"
-                style={{ maxHeight: '80%' }}
               />
             </div>
 

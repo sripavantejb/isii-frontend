@@ -10,17 +10,15 @@ const interventionCards = [
     id: 1,
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763688/ead4e33e-a90d-4395-bdbb-145bd9cf8f70_ldxss9.jpg",
     alt: "Mass Financial Inclusion",
-    heading: "Mass financial (inclusion) services, focused on the financial systems layer, internationalisation of mass inclusion",
-    description: "A.I. enabled growth (development) bank through the roll-up of NBFCs to build a global financial institution through targeted acquisitions and partnerships beginning in India to roll out of mass financial inclusion platforms and solutions",
-    path: "Path: India → Global South → Global North"
+    heading: "Mass financial inclusion services, focused on the financial systems layer, and internationalisation of mass inclusion",
+    description: "A.I. enabled growth (development) bank through the roll-up of NBFCs to build a global financial institution through targeted acquisitions and partnerships beginning in India to roll out of mass financial inclusion platforms and solutions"
   },
   {
     id: 2,
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
     alt: "Digital Technologies for Mass Liberation",
     heading: "Digital technologies focused on the cognitive systems layer, unlocking human potential through experiences, education, enlightenment",
-    description: "Delivering mass education, experiences and enlightenment to liberate minds and raise human consciousness, the enlightenment of the 21st century combining eastern and western definitions",
-    path: "Path: Narrow → Broad → Open"
+    description: "Delivering mass education, experiences and enlightenment to liberate minds and raise human consciousness, the enlightenment of the 21st century combining eastern and western definitions"
   }
 ];
 
@@ -143,12 +141,6 @@ const SystemicIntervention = () => {
                       style={{ color: '#4a4a4a', fontWeight: 400, margin: 0 }}
                     >
                       {card.description}
-                    </p>
-                    <p 
-                      className="text-sm"
-                      style={{ color: '#4a4a4a', fontWeight: 500, margin: 0 }}
-                    >
-                      {card.path}
                     </p>
                   </div>
                 </div>

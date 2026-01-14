@@ -21,7 +21,7 @@ const ParticipationBanner = () => {
         />
         <div className="flex flex-col md:block">
           <span className="text-sm md:text-base text-foreground leading-relaxed whitespace-normal">
-            Participation is open for nations, blocs, institutions and major enterprises.
+            Participation is open for nations, blocs, institutions and selected enterprises.
           </span>
           <span className="text-sm md:text-base text-foreground leading-relaxed whitespace-normal block md:inline">
             {' '}
