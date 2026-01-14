@@ -102,7 +102,7 @@ const Experience = () => {
               <div className="space-y-6 md:space-y-8">
                 {/* Main Heading */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
-                  Projects and Intervention Areas
+                Projects and Intervention Experience (Selected Areas)
                 </h2>
 
                 {/* Projects List */}
