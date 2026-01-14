@@ -7,7 +7,7 @@ const About = () => {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
       title: "Advisory Council, Member",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
       drawingOn: [
         "800 leading scientists and scholars",
         "5 key programmes of peaceful social change"

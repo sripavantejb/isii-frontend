@@ -43,7 +43,7 @@ const People = () => {
     {
       name: "Garry Jacobs",
       title: "President, CEO, World Academy of Art & Science\nChairman, World University Consortium",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874515/image_23_vvib3c.png",
+      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
       slug: "garry-jacobs",
       category: "Peace and Social Transition",
       drawingOn: [
