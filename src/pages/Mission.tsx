@@ -50,7 +50,7 @@ const Mission = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="pt-16 pb-16 bg-background">
+      <section className="pt-16 pb-4 bg-background">
         <div className="container-custom section-padding">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
             Mission Statement
@@ -60,7 +60,10 @@ const Mission = () => {
             The Institute for Strategic Intelligence and Intervention (ISII) aims to understand and support in shaping and responding to system-level transitions, major events, and strategic turning points affecting nations, regions, and global structures. Its mission is to generate the strategic intelligence required for high-stakes decision-making, and to design and execute interventions that stabilise environments, reposition sovereigns, mobilise capital and technology, and enable societies to transition securely and prosperously into the Information Era.
           </p>
           
-          <p className="font-serif text-base text-foreground leading-relaxed font-bold animate-fade-in mb-0" style={{ willChange: "opacity, transform" }}>
+          <br />
+          <br />
+          
+          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in mb-0" style={{ willChange: "opacity, transform" }}>
             The Institute for Strategic Intelligence and Intervention is an initiative of the F4G Group.
           </p>
         </div>
