@@ -3,7 +3,7 @@ const ParticipationBanner = () => {
 
   return (
     <div className="w-full flex justify-center bg-background py-3 md:py-4">
-      <div 
+      {/* <div 
         className="inline-flex items-center"
         style={{
           border: '1px solid #e5e7eb', // Light gray border
@@ -35,7 +35,7 @@ const ParticipationBanner = () => {
             {' '}to learn more.
           </span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
