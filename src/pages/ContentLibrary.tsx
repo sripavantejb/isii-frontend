@@ -196,18 +196,13 @@ const ContentLibrary = () => {
                     </p>
                   </div>
                   <div className="mb-3">
-                    <h2 className="font-serif text-xl md:text-2xl font-bold text-primary leading-tight">
-                      {article.title}
-                    </h2>
-                  </div>
-                  <div>
                     <a
                       href={article.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors underline"
+                      className="font-serif text-xl md:text-2xl font-bold text-primary leading-tight hover:text-primary/80 transition-colors no-underline hover:underline"
                     >
-                      Read more <ArrowRight className="w-4 h-4" />
+                      {article.title}
                     </a>
                   </div>
                 </div>

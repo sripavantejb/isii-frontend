@@ -6,7 +6,7 @@ const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
-const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1767878872/67_3_n4pky9.png";
+const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768367927/Atlas_ThnikingPic_lypsyh.jpg";
 
 const Experience = () => {
   const projects = [
@@ -55,7 +55,7 @@ const Experience = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl font-bold">
-                Experience
+                Projects and Intervention
               </h1>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Experience = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
-                Experience
+                Projects and Intervention
               </h1>
             </div>
           </div>

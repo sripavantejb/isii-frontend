@@ -42,7 +42,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
         { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
         { label: "Programmes", path: "/capabilities/programmes" },
-        { label: "Experience", path: "/capabilities/experience" },
+        { label: "Projects and Intervention", path: "/capabilities/experience" },
       ]
     },
   ];
