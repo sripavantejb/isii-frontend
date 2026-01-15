@@ -18,7 +18,6 @@ const PrivacyPolicy = () => {
       {/* Main Content */}
       <section className="pt-16 pb-24 bg-background">
         <div className="container-custom section-padding">
-          <div className="max-w-4xl mx-auto prose prose-lg">
             {/* Introduction */}
             <div className="mb-12 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
@@ -434,7 +433,6 @@ const PrivacyPolicy = () => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </Layout>
