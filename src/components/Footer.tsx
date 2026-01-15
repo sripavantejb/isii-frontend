@@ -19,6 +19,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground relative">
+      {/* Accent line */}
+      {/* <div className="h-1" style={{ backgroundColor: '#d6795a' }} /> */}
+      
       <div className="container-custom section-padding pt-4 pb-8 md:pt-6 md:pb-12">
         {/* Desktop Layout (md and above) */}
         <div className="hidden md:block">
