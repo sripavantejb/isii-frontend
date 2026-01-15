@@ -79,9 +79,6 @@ const GrowthAndProsperity = () => {
               </div>
             </div>
           </div>
-
-          {/* Bottom Red Line */}
-          <div className="mt-12 border-t border-red-500"></div>
         </div>
       </section>
     </Layout>

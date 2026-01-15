@@ -29,7 +29,7 @@ const Footer = () => {
             {/* Logo on the left */}
             <div className="flex-shrink-0 flex flex-col">
               <Logo variant="light" />
-              <p className="text-sm text-white mt-3 font-sans font-bold">Part of the Force For Good Group</p>
+              <p className="text-sm text-white mt-3 font-sans font-bold">The Institute for Strategic Intelligence and Intervention is an initiative of the F4G Group.</p>
             </div>
             
             {/* Navigation Links - Two Columns in the middle */}
@@ -88,7 +88,7 @@ const Footer = () => {
           {/* Logo and text at top */}
           <div className="mb-6 flex flex-col">
             <Logo variant="light" />
-            <p className="text-sm text-white mt-3 font-sans font-bold">Part of The Force For Good Group</p>
+            <p className="text-sm text-white mt-3 font-sans font-bold">The Institute for Strategic Intelligence and Intervention is an initiative of the F4G Group.</p>
           </div>
           
           {/* Navigation Links - Two Columns */}

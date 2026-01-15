@@ -5,9 +5,10 @@ interface PersonCardProps {
   title: string;
   image?: string;
   slug?: string;
+  roleTitle?: string;
 }
 
-const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
+const PersonCard = ({ name, title, image, slug, roleTitle }: PersonCardProps) => {
   const CardContent = () => (
     <div className="bg-white flex flex-col items-center text-center cursor-pointer transition-transform duration-300 hover:scale-105 h-full p-4 md:p-6">
       {/* Square Headshot */}
@@ -26,7 +27,12 @@ const PersonCard = ({ name, title, image, slug }: PersonCardProps) => {
       </div>
       
       {/* Name */}
-      <h3 className="font-serif text-lg md:text-xl lg:text-2xl text-primary font-bold mb-3 md:mb-4 flex-shrink-0">{name}</h3>
+      <h3 className="font-serif text-lg md:text-xl lg:text-2xl text-primary font-bold mb-2 flex-shrink-0">{name}</h3>
+      
+      {/* Role Title - Bold, smaller font than name */}
+      {roleTitle && (
+        <p className="font-serif text-sm md:text-base text-primary font-bold mb-3 md:mb-4 flex-shrink-0">{roleTitle}</p>
+      )}
       
       {/* Title - Show all lines with fixed min-height */}
       <div className="text-xs md:text-sm text-muted-foreground min-h-[80px] flex flex-col justify-start w-full">
