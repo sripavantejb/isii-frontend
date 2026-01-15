@@ -16,6 +16,7 @@ import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import DragDropUpload from '@/components/admin/DragDropUpload';
 import { cn } from '@/lib/utils';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import SEOHead from '@/components/SEOHead';
 
 const ArticleForm = () => {
   const { id } = useParams();
@@ -177,6 +178,7 @@ const ArticleForm = () => {
   if (fetching) {
     return (
       <ProtectedRoute>
+        <SEOHead robots="noindex, nofollow" />
         <Layout>
           <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
             <LoadingSpinner text="Loading article..." size="lg" />
@@ -188,6 +190,7 @@ const ArticleForm = () => {
 
   return (
     <ProtectedRoute>
+      <SEOHead robots="noindex, nofollow" />
       <Layout>
         <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
           <div className="container-custom section-padding py-10">

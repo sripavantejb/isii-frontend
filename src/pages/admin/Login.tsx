@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import Layout from '@/components/Layout';
+import SEOHead from '@/components/SEOHead';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -30,8 +31,10 @@ const Login = () => {
   };
 
   return (
-    <Layout>
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
+    <>
+      <SEOHead robots="noindex, nofollow" />
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="w-full max-w-md p-4 sm:p-6 md:p-8" style={{ backgroundColor: '#ffffff' }}>
           <div className="mb-8">
             <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#001429' }}>
@@ -84,6 +87,7 @@ const Login = () => {
         </div>
       </div>
     </Layout>
+    </>
   );
 };
 

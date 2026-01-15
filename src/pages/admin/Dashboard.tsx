@@ -19,6 +19,7 @@ import { Plus, Edit, Trash2, LogOut } from 'lucide-react';
 import Layout from '@/components/Layout';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import ArticleLoader from '@/components/ArticleLoader';
+import SEOHead from '@/components/SEOHead';
 
 interface Article {
   _id: string;
@@ -133,6 +134,7 @@ const Dashboard = () => {
 
   return (
     <ProtectedRoute>
+      <SEOHead robots="noindex, nofollow" />
       <Layout>
         <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
           <div className="container-custom section-padding py-6 md:py-10">
