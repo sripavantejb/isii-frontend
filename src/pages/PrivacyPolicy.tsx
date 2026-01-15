@@ -66,8 +66,8 @@ const PrivacyPolicy = () => {
                 </p>
                 <p className="font-serif text-base text-foreground">
                   <strong>Email address:</strong><br />
-                  <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">
-                    privacyofficer@greaterpacificcapital.com
+                  <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">
+                    lesley.whittle@forcegood.org
                   </a>
                 </p>
                 <p className="font-serif text-base text-foreground">
@@ -148,7 +148,7 @@ const PrivacyPolicy = () => {
                 See "Purposes for which we will use your data" to find out more about the types of lawful basis that we will rely on to process your personal data.
               </p>
               <p className="font-serif text-base text-foreground leading-relaxed">
-                Generally, we do not rely on consent as a legal basis for processing Your Data other than in relation to sending direct marketing communications to you most commonly via email. You have the right to withdraw consent to marketing at any time by using the unsubscribe button in any email communication or emailing the Privacy Officer at <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a>.
+                Generally, we do not rely on consent as a legal basis for processing Your Data other than in relation to sending direct marketing communications to you most commonly via email. You have the right to withdraw consent to marketing at any time by using the unsubscribe button in any email communication or emailing the Privacy Officer at <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a>.
               </p>
             </div>
 
@@ -161,7 +161,7 @@ const PrivacyPolicy = () => {
                 We set out, in the below table, a description of all the ways we plan to use Your Data, and which of the legal bases we rely on to do so. We have also identified what our legitimate interests are where appropriate.
               </p>
               <p className="font-serif text-base text-foreground leading-relaxed mb-6">
-                Note that we may process Your Data for more than one lawful ground depending on the specific purpose for which we are using Your Data. Please email <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a> if you need details about the specific legal ground we are relying on to process Your Data where more than one ground has been set out in the table below.
+                Note that we may process Your Data for more than one lawful ground depending on the specific purpose for which we are using Your Data. Please email <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a> if you need details about the specific legal ground we are relying on to process Your Data where more than one ground has been set out in the table below.
               </p>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse border border-border">
@@ -235,7 +235,7 @@ const PrivacyPolicy = () => {
                 <div>
                   <h3 className="font-serif text-xl font-bold text-primary mb-2">Opting out</h3>
                   <p className="font-serif text-base text-foreground leading-relaxed">
-                    You can ask us or third parties to stop sending you marketing messages at any time by emailing <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a> or by clicking on an email unsubscribe link.
+                    You can ask us or third parties to stop sending you marketing messages at any time by emailing <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a> or by clicking on an email unsubscribe link.
                   </p>
                   <p className="font-serif text-base text-foreground leading-relaxed mt-2">
                     Where you opt out of receiving these marketing messages, this will not apply to personal data provided to us as a result of a service purchase, warranty registration, product/service experience or other transactions.
@@ -260,7 +260,7 @@ const PrivacyPolicy = () => {
                 Change of Purpose
               </h2>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
-                We will only use Your Data for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason and that reason is compatible with the original purpose. If you wish to get an explanation as to how the processing for the new purpose is compatible with the original purpose, please email <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a>.
+                We will only use Your Data for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason and that reason is compatible with the original purpose. If you wish to get an explanation as to how the processing for the new purpose is compatible with the original purpose, please email <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a>.
               </p>
               <p className="font-serif text-base text-foreground leading-relaxed">
                 If we need to use Your Data for an unrelated purpose, we will notify you and we will explain the legal basis which allows us to do so.
@@ -309,7 +309,7 @@ const PrivacyPolicy = () => {
                 <li>Where we use providers based in the US, we may transfer data to them if they are part of the EU-US Privacy Shield Framework which requires them to provide similar protection to personal data shared between the Europe and the US.</li>
               </ul>
               <p className="font-serif text-base text-foreground leading-relaxed">
-                Please email <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a> if you would like further information on the specific mechanism used by us when transferring Your Data out of the EEA.
+                Please email <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a> if you would like further information on the specific mechanism used by us when transferring Your Data out of the EEA.
               </p>
             </div>
 
@@ -373,7 +373,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Withdraw consent</strong> at any time where we are relying on consent to process Your Data. However, this will not affect the lawfulness of any processing carried out before you withdraw your consent. If you withdraw your consent, we may not be able to provide certain products or services to you. We will advise you if this is the case at the time you withdraw your consent.</li>
               </ul>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
-                If you wish to exercise any of the rights set out above, please email <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a>.
+                If you wish to exercise any of the rights set out above, please email <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a>.
               </p>
               <div className="space-y-4 mt-6">
                 <div>
@@ -407,7 +407,7 @@ const PrivacyPolicy = () => {
                   <h3 className="font-serif text-xl font-bold text-primary mb-3">Lawful bases:</h3>
                   <ul className="space-y-3 font-serif text-base text-foreground">
                     <li>
-                      <strong>Legitimate Interest</strong> means the interest of our business in conducting and managing our business to enable us to give you the best service/product and the best and most secure experience. We make sure we consider and balance any potential impact on you (both positive and negative) and your rights before we process Your Data for our legitimate interests. We do not use Your Data for activities where our interests are overridden by the impact on you (unless we have your consent or are otherwise required or permitted to by law). You can obtain further information about how we assess our legitimate interests against any potential impact on you in respect of specific activities by emailing <a href="mailto:privacyofficer@greaterpacificcapital.com" className="text-primary underline hover:text-primary/80">privacyofficer@greaterpacificcapital.com</a>.
+                      <strong>Legitimate Interest</strong> means the interest of our business in conducting and managing our business to enable us to give you the best service/product and the best and most secure experience. We make sure we consider and balance any potential impact on you (both positive and negative) and your rights before we process Your Data for our legitimate interests. We do not use Your Data for activities where our interests are overridden by the impact on you (unless we have your consent or are otherwise required or permitted to by law). You can obtain further information about how we assess our legitimate interests against any potential impact on you in respect of specific activities by emailing <a href="mailto:lesley.whittle@forcegood.org" className="text-primary underline hover:text-primary/80">lesley.whittle@forcegood.org</a>.
                     </li>
                     <li>
                       <strong>Performance of the Contract</strong> means processing Your Data where in connection with our obligations under our contract of retainer to which you are a party or to take steps at your request before entering into such a contract.
