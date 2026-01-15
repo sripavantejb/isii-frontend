@@ -7,6 +7,7 @@ const Footer = () => {
     { label: "Mission", path: "/about/mission" },
     { label: "People", path: "/about/people" },
     { label: "Contact Us", path: "mailto:lesley.whittle@forcegood.org", isExternal: true },
+    { label: "Privacy Policy", path: "/privacy-policy" },
   ];
 
   const rightColumnLinks = [

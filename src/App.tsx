@@ -18,6 +18,7 @@ import SecuringSovereignty from "./pages/SecuringSovereignty";
 import MobilisingTransition from "./pages/MobilisingTransition";
 import SystemicIntervention from "./pages/SystemicIntervention";
 import Experience from "./pages/Experience";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/capabilities/strategic-counsel/mobilising-transition" element={<MobilisingTransition />} />
             <Route path="/capabilities/programmes" element={<SystemicIntervention />} />
             <Route path="/capabilities/experience" element={<Experience />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* Admin Routes */}
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin" element={<Dashboard />} />
