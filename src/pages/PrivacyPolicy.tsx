@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
             Client Privacy Policy
           </h1>
           <p className="font-serif text-base text-foreground animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Last updated: June 2018
+            Last updated: January 15, 2026
           </p>
         </div>
       </section>
@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
             {/* Introduction */}
             <div className="mb-12 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
-                Institute for Strategic Intelligence and Intervention ("ISII", "we" or "us" "our") respects your privacy and is committed to protecting your personal data (Your Data). This notice is to help you understand what data we collect, why we collect it and what we do with Your Data when you instruct us to provide our services to you.
+                Institute for Strategic Intelligence and Intervention ("ISII", "we" or "us" "our") respects your privacy and is committed to protecting your personal data (Your Data). This notice, last updated on January 15, 2026, is to help you understand what data we collect, why we collect it and what we do with Your Data when you instruct us to provide our services to you.
               </p>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
                 It is important that you read this notice together with any other privacy policy we may provide on specific occasions when we are collecting or processing Your Data so that you are fully aware of how and why we are using Your Data. This notice supplements the other notices or policies and is not intended to override them.
@@ -90,7 +90,7 @@ const PrivacyPolicy = () => {
                 Changes to the notice and your duty to inform us of the changes
               </h2>
               <p className="font-serif text-base text-foreground leading-relaxed mb-4">
-                This version was last updated in June 2018.
+                This version was last updated on January 15, 2026.
               </p>
               <p className="font-serif text-base text-foreground leading-relaxed">
                 It is important that the personal data we hold about you is accurate and current. Please keep us informed if Your Data changes during your relationship with us.
