@@ -56,7 +56,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="admin@isii.com"
+                placeholder="admin@isii.global"
                 style={{ borderColor: '#001429' }}
               />
             </div>
