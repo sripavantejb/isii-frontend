@@ -1,7 +1,9 @@
-// Always use www.isii.global backend for production
-const API_URL = 'https://www.isii.global/api';
+// API URL configuration
+// Use environment variable if set, otherwise fallback to Vercel backend
+// For production with custom domain, set VITE_API_URL in environment variables
+const API_URL = import.meta.env.VITE_API_URL || 'https://isii-backend.vercel.app/api';
 
-// Log API URL for debugging (remove in production)
+// Log API URL for debugging
 if (import.meta.env.DEV) {
   console.log('🌐 API URL:', API_URL);
 }
