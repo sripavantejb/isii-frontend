@@ -1,5 +1,5 @@
-// Always use isii.global backend for production
-const API_URL = 'https://isii.global/api';
+// Always use www.isii.global backend for production
+const API_URL = 'https://www.isii.global/api';
 
 // Log API URL for debugging (remove in production)
 if (import.meta.env.DEV) {
