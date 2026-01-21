@@ -14,7 +14,7 @@ const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
 const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
 // Default banner for featured article section
-const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png"; // White House at night
+const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 
 interface Article {
   _id: string;
@@ -192,11 +192,11 @@ const Index = () => {
         <section className="mt-6 md:mt-10">
           <div className="container-custom section-padding">
             <div className="relative flex items-center h-[640px] md:h-auto md:min-h-[384px] rounded-lg overflow-hidden">
-              {/* Banner Background Image */}
+              {/* Banner Background Image - Use first article's banner image, fallback to default if not available */}
               <div 
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{ 
-                  backgroundImage: `url(${articles[0]?.bannerImageUrl || defaultArticleBanner})`,
+                  backgroundImage: `url(${(articles[0]?.bannerImageUrl && articles[0].bannerImageUrl.trim()) ? articles[0].bannerImageUrl : defaultArticleBanner})`,
                 }}
               />
               {/* Gradient Overlay for Text Readability */}
