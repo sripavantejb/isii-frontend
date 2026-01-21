@@ -13,12 +13,15 @@ const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v17682
 const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
 const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
 const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
+// Default banner for featured article section
+const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1766554226/White_House_2642x826_1_ck6dkk.png"; // White House at night
 
 interface Article {
   _id: string;
   title: string;
   date: string;
   imageUrl: string;
+  bannerImageUrl?: string;
   pdfUrl: string;
 }
 
@@ -185,63 +188,65 @@ const Index = () => {
       </section>
 
       {/* Featured Article Section */}
-      <section className="mt-6 md:mt-10">
-        <div className="container-custom section-padding">
-          <div className="relative flex items-center overflow-hidden h-[640px] md:h-auto md:min-h-[384px]">
-            {/* Mobile Banner Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center md:hidden"
-              style={{ 
-                backgroundImage: `url(${bannerImageMobile})`,
-                height: '100%',
-              }}
-            />
-            {/* Desktop Banner Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center hidden md:block"
-              style={{ 
-                backgroundImage: `url(${bannerImage})`,
-                height: '100%',
-              }}
-            />
-            <div className="relative z-10 w-full h-full flex items-center">
-              <div className="w-full py-16 md:py-20 px-6 md:px-8">
-                <div className="text-left flex flex-col" style={{ gap: '10px' }}>
-                  <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground tracking-wider w-fit font-bold">
-                    Our Latest Pivotal Thinking
-                  </span>
-                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground text-left leading-relaxed">
-                    <span className="md:hidden">
-                      America the Merchant Power, The National Security Strategy 2025
+      {articles.length > 0 && (
+        <section className="mt-6 md:mt-10">
+          <div className="container-custom section-padding">
+            <div className="relative flex items-center h-[640px] md:h-auto md:min-h-[384px] rounded-lg overflow-hidden">
+              {/* Banner Background Image */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center z-0"
+                style={{ 
+                  backgroundImage: `url(${articles[0]?.bannerImageUrl || defaultArticleBanner})`,
+                }}
+              />
+              {/* Gradient Overlay for Text Readability */}
+              <div 
+                className="absolute inset-0 z-[5]"
+                style={{
+                  background: 'linear-gradient(to right, rgba(0, 20, 41, 0.9) 0%, rgba(0, 51, 102, 0.7) 20%, rgba(0, 51, 102, 0.5) 50%, rgba(0, 77, 153, 0.3) 100%)'
+                }}
+              />
+              <div className="relative z-10 w-full h-full flex items-center">
+                <div className="w-full py-16 md:py-20 px-6 md:px-8">
+                  <div className="text-left flex flex-col" style={{ gap: '10px' }}>
+                    <span className="inline-block bg-primary px-4 py-1.5 text-xs text-primary-foreground tracking-wider w-fit font-bold">
+                      Our Latest Pivotal Thinking
                     </span>
-                    <span className="hidden md:block">
-                      America the Merchant Power,<br />
-                      <span style={{ display: 'block', marginTop: '0.5rem' }}>The National Security Strategy 2025</span>
-                    </span>
-                  </h2>
-                  <div className="text-left">
-                    {articles.length > 0 && articles[0]?.pdfUrl ? (
-                      <Button variant="outline-light" asChild>
-                        <a 
-                          href={articles[0].pdfUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          Read More
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button variant="outline-light" asChild>
-                        <Link to="/capabilities/pivotal-thinking">Read More</Link>
-                      </Button>
-                    )}
+                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-white text-left leading-relaxed">
+                      {articles[0]?.title || (
+                        <>
+                          <span className="md:hidden">America the Merchant Power, The National Security Strategy 2025</span>
+                          <span className="hidden md:block">
+                            America the Merchant Power,<br />
+                            <span style={{ display: 'block', marginTop: '0.5rem' }}>The National Security Strategy 2025</span>
+                          </span>
+                        </>
+                      )}
+                    </h2>
+                    <div className="text-left">
+                      {articles[0]?.pdfUrl ? (
+                        <Button variant="outline-light" asChild>
+                          <a 
+                            href={articles[0].pdfUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            Read More
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button variant="outline-light" asChild>
+                          <Link to="/capabilities/pivotal-thinking">Read More</Link>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Pivotal Thinking Cards Section */}
       {articles.length > 1 && (

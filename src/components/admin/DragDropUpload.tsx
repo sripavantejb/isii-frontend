@@ -9,6 +9,7 @@ interface DragDropUploadProps {
   value?: File | null;
   onChange: (file: File | null) => void;
   previewUrl?: string;
+  dimensions?: string; // Recommended dimensions (e.g., "1200x675px")
 }
 
 const DragDropUpload = ({
@@ -18,6 +19,7 @@ const DragDropUpload = ({
   value,
   onChange,
   previewUrl,
+  dimensions,
 }: DragDropUploadProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -169,6 +171,9 @@ const DragDropUpload = ({
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 {accept} (max {maxSize}MB)
+                {dimensions && accept.includes('image') && (
+                  <span className="block mt-1">Recommended: {dimensions}</span>
+                )}
               </p>
             </div>
           </div>

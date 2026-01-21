@@ -29,12 +29,15 @@ const ArticleForm = () => {
     title: '',
     date: '',
     imageUrl: '',
+    bannerImageUrl: '',
     pdfUrl: '',
   });
 
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [bannerImageFile, setBannerImageFile] = useState<File | null>(null);
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
+  const [bannerImagePreview, setBannerImagePreview] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   useEffect(() => {
@@ -51,9 +54,11 @@ const ArticleForm = () => {
         title: article.title,
         date: article.date,
         imageUrl: article.imageUrl,
+        bannerImageUrl: article.bannerImageUrl || '',
         pdfUrl: article.pdfUrl,
       });
       setImagePreview(article.imageUrl);
+      setBannerImagePreview(article.bannerImageUrl || '');
       
       // Parse existing date string to Date object
       if (article.date) {
@@ -87,23 +92,39 @@ const ArticleForm = () => {
     }
   };
 
+  const handleBannerImageChange = (file: File | null) => {
+    setBannerImageFile(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBannerImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setBannerImagePreview(formData.bannerImageUrl);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       let imageUrl = formData.imageUrl;
+      let bannerImageUrl = formData.bannerImageUrl;
       let pdfUrl = formData.pdfUrl;
 
       // Upload files if new ones are selected
-      if (imageFile || pdfFile) {
+      if (imageFile || bannerImageFile || pdfFile) {
         console.log('📤 Uploading files to S3...', {
           hasImage: !!imageFile,
+          hasBannerImage: !!bannerImageFile,
           hasPdf: !!pdfFile,
         });
         
         const uploadResult = await uploadAPI.uploadMultiple(
           imageFile || undefined,
+          bannerImageFile || undefined,
           pdfFile || undefined
         );
 
@@ -112,6 +133,10 @@ const ArticleForm = () => {
         if (uploadResult.imageUrl) {
           imageUrl = uploadResult.imageUrl;
           console.log('📷 Image URL:', imageUrl);
+        }
+        if (uploadResult.bannerImageUrl) {
+          bannerImageUrl = uploadResult.bannerImageUrl;
+          console.log('🖼️ Banner Image URL:', bannerImageUrl);
         }
         if (uploadResult.pdfUrl) {
           pdfUrl = uploadResult.pdfUrl;
@@ -138,6 +163,7 @@ const ArticleForm = () => {
         title: formData.title,
         date: formattedDate,
         imageUrl: imageUrl || '',
+        bannerImageUrl: bannerImageUrl || '',
         pdfUrl,
       };
 
@@ -145,8 +171,10 @@ const ArticleForm = () => {
         title: articleData.title,
         date: articleData.date,
         imageUrl: articleData.imageUrl || '(empty)',
+        bannerImageUrl: articleData.bannerImageUrl || '(empty)',
         pdfUrl: articleData.pdfUrl,
         hasImageUrl: !!articleData.imageUrl,
+        hasBannerImageUrl: !!articleData.bannerImageUrl,
         hasPdfUrl: !!articleData.pdfUrl,
       });
       console.log('📤 Full payload:', JSON.stringify(articleData, null, 2));
@@ -350,15 +378,26 @@ const ArticleForm = () => {
               <DragDropUpload
                 accept="image/jpeg,image/jpg,image/png"
                 maxSize={5}
-                label="Article Image"
+                label="Pivotal Card Image"
                 value={imageFile}
                 onChange={handleImageChange}
                 previewUrl={imagePreview}
+                dimensions="16:9 aspect ratio"
+              />
+
+              <DragDropUpload
+                accept="image/jpeg,image/jpg,image/png"
+                maxSize={5}
+                label="Featured Banner Image"
+                value={bannerImageFile}
+                onChange={handleBannerImageChange}
+                previewUrl={bannerImagePreview}
+                dimensions="3:1 aspect ratio"
               />
 
               <DragDropUpload
                 accept="application/pdf"
-                maxSize={10}
+                maxSize={4.5}
                 label="PDF Document *"
                 value={pdfFile}
                 onChange={setPdfFile}

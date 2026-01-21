@@ -16,6 +16,7 @@ interface Article {
   title: string;
   date: string;
   imageUrl: string;
+  bannerImageUrl?: string;
   pdfUrl: string;
 }
 

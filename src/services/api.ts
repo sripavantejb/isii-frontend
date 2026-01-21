@@ -58,13 +58,13 @@ export const articlesAPI = {
   getById: async (id: string) => {
     return apiRequest(`/articles/${id}`);
   },
-  create: async (data: { title: string; date: string; imageUrl: string; pdfUrl: string }) => {
+  create: async (data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
     return apiRequest('/articles', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   },
-  update: async (id: string, data: { title: string; date: string; imageUrl: string; pdfUrl: string }) => {
+  update: async (id: string, data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
     return apiRequest(`/articles/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -110,7 +110,7 @@ export const uploadAPI = {
 
     return response.json();
   },
-  uploadMultiple: async (image?: File, pdf?: File) => {
+  uploadMultiple: async (image?: File, bannerImage?: File, pdf?: File) => {
     const token = getToken();
     
     if (!token) {
@@ -120,9 +120,10 @@ export const uploadAPI = {
     const formData = new FormData();
     
     if (image) formData.append('image', image);
+    if (bannerImage) formData.append('bannerImage', bannerImage);
     if (pdf) formData.append('pdf', pdf);
 
-    if (!image && !pdf) {
+    if (!image && !bannerImage && !pdf) {
       throw new Error('Please select at least one file to upload.');
     }
 
