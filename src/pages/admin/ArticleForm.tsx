@@ -46,19 +46,58 @@ const ArticleForm = () => {
     }
   }, [id]);
 
+
   const fetchArticle = async () => {
     try {
       setFetching(true);
       const article = await articlesAPI.getById(id!);
+      
+      // Debug logging to verify bannerImageUrl is being fetched
+      console.log('📥 Fetched article data:', {
+        id: article._id,
+        title: article.title,
+        imageUrl: article.imageUrl,
+        bannerImageUrl: article.bannerImageUrl,
+        hasBannerImageUrl: !!article.bannerImageUrl,
+        bannerImageUrlType: typeof article.bannerImageUrl,
+        bannerImageUrlLength: article.bannerImageUrl ? article.bannerImageUrl.length : 0,
+      });
+      
+      // Ensure bannerImageUrl is preserved (don't overwrite with empty string)
+      const fetchedBannerImageUrl = article.bannerImageUrl || '';
+      
       setFormData({
         title: article.title,
         date: article.date,
         imageUrl: article.imageUrl,
-        bannerImageUrl: article.bannerImageUrl || '',
+        bannerImageUrl: fetchedBannerImageUrl,
         pdfUrl: article.pdfUrl,
       });
       setImagePreview(article.imageUrl);
-      setBannerImagePreview(article.bannerImageUrl || '');
+      
+      // Handle banner image preview - check for empty string, null, or undefined
+      const bannerUrl = fetchedBannerImageUrl && typeof fetchedBannerImageUrl === 'string' && fetchedBannerImageUrl.trim() 
+        ? fetchedBannerImageUrl.trim() 
+        : '';
+      console.log('🖼️ Setting banner image preview:', {
+        original: article.bannerImageUrl,
+        fetched: fetchedBannerImageUrl,
+        processed: bannerUrl,
+        isEmpty: !bannerUrl,
+        length: bannerUrl ? bannerUrl.length : 0,
+        willSetPreview: !!bannerUrl
+      });
+      
+      // Always set the preview, even if empty, to ensure state is updated
+      setBannerImagePreview(bannerUrl);
+      
+      // Force a re-render by updating state again after a brief delay (handles async state updates)
+      if (bannerUrl) {
+        setTimeout(() => {
+          console.log('🔄 Verifying banner preview is set:', bannerUrl);
+          setBannerImagePreview(bannerUrl);
+        }, 50);
+      }
       
       // Parse existing date string to Date object
       if (article.date) {
@@ -101,7 +140,11 @@ const ArticleForm = () => {
       };
       reader.readAsDataURL(file);
     } else {
-      setBannerImagePreview(formData.bannerImageUrl);
+      // Restore preview from formData, handling empty strings and null values
+      const bannerUrl = formData.bannerImageUrl && formData.bannerImageUrl.trim() 
+        ? formData.bannerImageUrl 
+        : '';
+      setBannerImagePreview(bannerUrl);
     }
   };
 
@@ -120,6 +163,7 @@ const ArticleForm = () => {
           hasImage: !!imageFile,
           hasBannerImage: !!bannerImageFile,
           hasPdf: !!pdfFile,
+          currentBannerImageUrl: bannerImageUrl || '(none)',
         });
 
         if (imageFile) {
@@ -131,7 +175,10 @@ const ArticleForm = () => {
         if (bannerImageFile) {
           const bannerUpload = await uploadAPI.uploadFile(bannerImageFile, 'image');
           bannerImageUrl = bannerUpload.url;
-          console.log('🖼️ Banner Image URL:', bannerImageUrl);
+          console.log('🖼️ Banner Image URL uploaded:', bannerImageUrl);
+        } else {
+          // Preserve existing bannerImageUrl if no new file is uploaded
+          console.log('🖼️ Preserving existing banner image URL:', bannerImageUrl || '(none)');
         }
 
         if (pdfFile) {
@@ -155,12 +202,12 @@ const ArticleForm = () => {
         formattedDate = format(selectedDate, 'MMMM yyyy');
       }
 
-      // Save article
+      // Save article - preserve existing bannerImageUrl if not uploading new one
       const articleData = {
         title: formData.title,
         date: formattedDate,
         imageUrl: imageUrl || '',
-        bannerImageUrl: bannerImageUrl || '',
+        bannerImageUrl: bannerImageUrl || (isEdit ? formData.bannerImageUrl : ''),
         pdfUrl,
       };
 
@@ -176,12 +223,49 @@ const ArticleForm = () => {
       });
       console.log('📤 Full payload:', JSON.stringify(articleData, null, 2));
 
-      if (isEdit) {
-        await articlesAPI.update(id!, articleData);
-        toast.success('Article updated successfully');
-      } else {
-        await articlesAPI.create(articleData);
-        toast.success('Article created successfully');
+      let savedArticle;
+      try {
+        if (isEdit) {
+          savedArticle = await articlesAPI.update(id!, articleData);
+          console.log('✅ Article updated. Response:', {
+            id: savedArticle._id,
+            title: savedArticle.title,
+            bannerImageUrl: savedArticle.bannerImageUrl,
+            hasBannerImageUrl: !!savedArticle.bannerImageUrl,
+            bannerImageUrlLength: savedArticle.bannerImageUrl ? savedArticle.bannerImageUrl.length : 0,
+          });
+          
+          // Verify bannerImageUrl was saved correctly
+          if (articleData.bannerImageUrl && !savedArticle.bannerImageUrl) {
+            console.error('⚠️ WARNING: bannerImageUrl was not saved correctly!', {
+              sent: articleData.bannerImageUrl,
+              received: savedArticle.bannerImageUrl,
+            });
+            toast.error('Banner image may not have been saved. Please check and try again.');
+          } else if (articleData.bannerImageUrl && savedArticle.bannerImageUrl) {
+            console.log('✅ Banner image URL saved successfully:', savedArticle.bannerImageUrl);
+          }
+          
+          toast.success('Article updated successfully');
+        } else {
+          savedArticle = await articlesAPI.create(articleData);
+          console.log('✅ Article created. Response:', {
+            id: savedArticle._id,
+            title: savedArticle.title,
+            bannerImageUrl: savedArticle.bannerImageUrl,
+            hasBannerImageUrl: !!savedArticle.bannerImageUrl,
+            bannerImageUrlLength: savedArticle.bannerImageUrl ? savedArticle.bannerImageUrl.length : 0,
+          });
+          toast.success('Article created successfully');
+        }
+      } catch (saveError: any) {
+        console.error('❌ Error saving article:', saveError);
+        console.error('   Error details:', {
+          message: saveError.message,
+          response: saveError.response,
+          data: articleData,
+        });
+        throw saveError; // Re-throw to be caught by outer catch block
       }
 
       navigate('/admin');

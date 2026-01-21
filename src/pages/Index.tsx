@@ -192,11 +192,15 @@ const Index = () => {
         <section className="mt-6 md:mt-10">
           <div className="container-custom section-padding">
             <div className="relative flex items-center h-[640px] md:h-auto md:min-h-[384px] rounded-lg overflow-hidden">
-              {/* Banner Background Image - Use first article's banner image, fallback to default if not available */}
+              {/* Banner Background Image - Prefer bannerImageUrl, fallback to card image, then default */}
               <div 
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{ 
-                  backgroundImage: `url(${(articles[0]?.bannerImageUrl && articles[0].bannerImageUrl.trim()) ? articles[0].bannerImageUrl : defaultArticleBanner})`,
+                  backgroundImage: `url(${
+                    (articles[0]?.bannerImageUrl && articles[0].bannerImageUrl.trim())
+                      || (articles[0]?.imageUrl && articles[0].imageUrl.trim())
+                      || defaultArticleBanner
+                  })`,
                 }}
               />
               {/* Gradient Overlay for Text Readability */}

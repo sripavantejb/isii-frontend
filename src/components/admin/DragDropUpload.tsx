@@ -118,14 +118,21 @@ const DragDropUpload = ({
           className="hidden"
         />
 
-        {value || previewUrl ? (
+        {value || (previewUrl && previewUrl.trim()) ? (
           <div className="space-y-4">
-            {previewUrl && accept.includes('image') ? (
+            {previewUrl && previewUrl.trim() && accept.includes('image') ? (
               <div className="relative inline-block">
                 <img
-                  src={previewUrl}
+                  src={previewUrl.trim()}
                   alt="Preview"
                   className="max-h-32 sm:max-h-40 md:max-h-48 rounded-lg"
+                  onError={(e) => {
+                    console.error('❌ Failed to load preview image:', previewUrl);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log('✅ Preview image loaded successfully:', previewUrl);
+                  }}
                 />
                 <Button
                   type="button"
