@@ -114,32 +114,29 @@ const ArticleForm = () => {
       let bannerImageUrl = formData.bannerImageUrl;
       let pdfUrl = formData.pdfUrl;
 
-      // Upload files if new ones are selected
+      // Upload files if new ones are selected (sequential to avoid Vercel body limits)
       if (imageFile || bannerImageFile || pdfFile) {
-        console.log('📤 Uploading files to S3...', {
+        console.log('📤 Uploading files to S3 individually...', {
           hasImage: !!imageFile,
           hasBannerImage: !!bannerImageFile,
           hasPdf: !!pdfFile,
         });
-        
-        const uploadResult = await uploadAPI.uploadMultiple(
-          imageFile || undefined,
-          bannerImageFile || undefined,
-          pdfFile || undefined
-        );
 
-        console.log('✅ Upload result:', uploadResult);
-
-        if (uploadResult.imageUrl) {
-          imageUrl = uploadResult.imageUrl;
+        if (imageFile) {
+          const imageUpload = await uploadAPI.uploadFile(imageFile, 'image');
+          imageUrl = imageUpload.url;
           console.log('📷 Image URL:', imageUrl);
         }
-        if (uploadResult.bannerImageUrl) {
-          bannerImageUrl = uploadResult.bannerImageUrl;
+
+        if (bannerImageFile) {
+          const bannerUpload = await uploadAPI.uploadFile(bannerImageFile, 'image');
+          bannerImageUrl = bannerUpload.url;
           console.log('🖼️ Banner Image URL:', bannerImageUrl);
         }
-        if (uploadResult.pdfUrl) {
-          pdfUrl = uploadResult.pdfUrl;
+
+        if (pdfFile) {
+          const pdfUpload = await uploadAPI.uploadFile(pdfFile, 'pdf');
+          pdfUrl = pdfUpload.url;
           console.log('📄 PDF URL:', pdfUrl);
         }
       }
