@@ -233,7 +233,7 @@ const SystemicIntervention = () => {
               </div>
               <div className="flex-1">
                 <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  Mobilising Local Mission Impossible Forces: Tackling Society's Toughest Challenges with Bold Solutions Mobilised by Local Task Forces
+                  Mobilising Local Mission Impossible Forces: Tackling Society's Toughest Challenges with Bold Solutions Mobilized by Local Task Forces
                 </p>
               </div>
             </div>
