@@ -8,17 +8,17 @@ const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/
 const interventionCards = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763688/ead4e33e-a90d-4395-bdbb-145bd9cf8f70_ldxss9.jpg",
+    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1769153348/d6748c4d-3deb-467e-9c54-856f765c9fbc_qar1fs.jpg",
     alt: "Mass Financial Inclusion",
-    heading: "Mass financial inclusion services, focused on the financial systems layer, and internationalisation of mass inclusion",
-    description: "A.I. enabled growth (development) bank through the roll-up of NBFCs to build a global financial institution through targeted acquisitions and partnerships beginning in India to roll out of mass financial inclusion platforms and solutions"
+    heading: "Mass Financial Inclusion",
+    description: "Focused on the transition of low income to middle income populations through the internationalisation of mass inclusion through direct services, intermediation of the financial systems layer, and the roll-out of technological platforms for mass inclusion and provision"
   },
   {
     id: 2,
     image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
-    alt: "Digital Technologies for Mass Liberation",
-    heading: "Digital technologies focused on the cognitive systems layer, unlocking human potential through experiences, education, enlightenment",
-    description: "Delivering mass education, experiences and enlightenment to liberate minds and raise human consciousness, the enlightenment of the 21st century combining eastern and western definitions"
+    alt: "Digital Technologies for Unlocking Human Performance",
+    heading: "Digital Technologies for Unlocking Human Performance",
+    description: "Focused on technologies for mass adoption of education, experiences, and higher levels of human performance, using multiple technologies to liberate minds and raise human consciousness, combining eastern and western definitions of enlightenment"
   }
 ];
 
@@ -105,17 +105,17 @@ const SystemicIntervention = () => {
                 }}
               >
                 <div className="flex flex-col md:flex-row items-start" style={{ gap: '32px' }}>
-                  {/* Image - Left side - Fixed dimensions */}
-                  <div className="flex-shrink-0 w-full md:w-[397.33px]">
-                    <div 
+                  {/* Image - Left side - Smaller square */}
+                  <div className="flex-shrink-0 w-full md:w-[220px]" style={{ maxWidth: '220px' }}>
+                    <div
                       className="rounded-lg overflow-hidden"
-                      style={{ 
+                      style={{
                         width: '100%',
-                        height: '202px'
+                        aspectRatio: '1 / 1', // square image container
                       }}
                     >
-                      <img 
-                        src={card.image} 
+                      <img
+                        src={card.image}
                         alt={card.alt}
                         className="w-full h-full rounded-lg"
                         style={{ objectFit: 'cover' }}
@@ -155,47 +155,87 @@ const SystemicIntervention = () => {
         <div className="container-custom section-padding">
           <div className="border-b border-border py-4 md:py-6 pt-8 md:pt-12">
             <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
-              Pipeline Programmes
+              Prioritised Shared Programs
             </h2>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <div className="flex" style={{ gap: '0.5em' }}>
-              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">1.</span>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
-                The National Transition Project: Transitioning the Nation to the Information Era
-              </p>
+            <div className="flex items-start" style={{ gap: '1em' }}>
+              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                <img
+                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080679/8_q9sc80.png"
+                  alt="The Transition Project"
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                  The Transition Project: Transitioning Nations and Blocs of Nations to the Information Era Collaborating on A.l. and Technologies of the Future
+                </p>
+              </div>
             </div>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <div className="flex" style={{ gap: '0.5em' }}>
-              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">2.</span>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
-                The Prosperity Initiative: Building Engines of Enterprise, Growth and Share
-              </p>
+            <div className="flex items-center" style={{ gap: '1em' }}>
+              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                <img
+                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080694/7_nowhdb.png"
+                  alt="The National Sovereignty Security Programme"
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                  The National Sovereignty Security Programme: Guarding and Protecting Sovereignty Across All Domains
+                </p>
+              </div>
             </div>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <div className="flex" style={{ gap: '0.5em' }}>
-              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">3.</span>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
-                The National Sovereignty Security Programme: Guarding and Protecting Sovereignty Across All Domains
-              </p>
+            <div className="flex items-start" style={{ gap: '1em' }}>
+              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                <img
+                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080705/9_l3nieb.png"
+                  alt="The Prosperity Initiative, The World Investment Plan"
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                  The Prosperity Initiative, The World Investment Plan: Building Engines of Enterprise, Growth and Shared Prosperity Leading to a Global Investment Boom by Turning Needs into Opportunities
+                </p>
+              </div>
             </div>
           </div>
           <div className="border-b border-border py-4 md:py-6">
-            <div className="flex" style={{ gap: '0.5em' }}>
-              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">4.</span>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
-                The World Investment Plan: Creating a Global Investment Boom by Turning Needs into Opportunities via Systems of Enterprise, Growth and Shared Prosperity
-              </p>
+            <div className="flex items-start" style={{ gap: '1em' }}>
+              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                <img
+                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080782/10_chuwsh.png"
+                  alt="Rethinking the World Order and Multilateralism"
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                  Rethinking the World Order and Multilateralism: Redesigning the world system using principles from complex adaptive and antifragile systems, realism, resilience, natural and constitutional law, and human security
+                </p>
+              </div>
             </div>
           </div>
           <div className="border-t border-border py-4 md:py-6">
-            <div className="flex" style={{ gap: '0.5em' }}>
-              <span className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold flex-shrink-0">5.</span>
-              <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0 }}>
-                Intractable Problems: Tackling Society's Toughest Challenges Requiring Bold, Cross-Sector, System-Level Solutions
-              </p>
+            <div className="flex items-start" style={{ gap: '1em' }}>
+              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                <img
+                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080785/11_zcan9r.png"
+                  alt="Mobilizing Local Mission Impossible Forces"
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                  Mobilising Local Mission Impossible Forces: Tackling Society's Toughest Challenges with Bold Solutions Mobilised by Local Task Forces
+                </p>
+              </div>
             </div>
           </div>
         </div>

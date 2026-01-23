@@ -23,7 +23,7 @@ const Mission = () => {
           <div className="absolute inset-0 flex items-center bg-black/40">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-serif text-2xl font-bold">
-                Our Mission
+                Mission and Purpose
               </h1>
             </div>
           </div>
@@ -42,30 +42,35 @@ const Mission = () => {
           <div className="absolute inset-0 flex items-center bg-black/40">
             <div className="container-custom section-padding w-full">
               <h1 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-bold">
-                Our Mission
+                Mission and Purpose
               </h1>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="pt-16 pb-4 bg-background">
+      {/* Mission and Purpose */}
+      <section className="pt-16 pb-12 md:pb-15 bg-background">
         <div className="container-custom section-padding">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Mission Statement
+          <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            Mission
           </h2>
           
           <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            The Institute for Strategic Intelligence and Intervention (ISII) aims to understand and support in shaping and responding to system-level transitions, major events, and strategic turning points affecting nations, regions, and global structures. Its mission is to generate the strategic intelligence required for high-stakes decision-making, and to design and execute interventions that stabilise environments, reposition sovereigns, mobilise capital and technology, and enable societies to transition securely and prosperously into the Information Era.
+            To generate the strategic intelligence and ideas required to understand, shape, and respond and, where possible, pre-empt system-level transitions, major events, and points of strategic consequence shaping the future of nations, regions, and global institutions and enterprises
           </p>
           
-          <br />
-          <br />
+          <div className="border-t border-gray-300 my-6 md:my-8"></div>
           
-          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in mb-0" style={{ willChange: "opacity, transform" }}>
-            The Institute for Strategic Intelligence and Intervention is an initiative of the F4G Group.
-          </p>
+          <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            Purpose
+          </h2>
+          
+          <ul className="font-serif text-base text-foreground leading-relaxed animate-fade-in list-disc list-inside space-y-4" style={{ willChange: "opacity, transform" }}>
+            <li>To enable high-stakes decision-making at moments of strategic consequence</li>
+            <li>To design and execute interventions that stabilise environments and strengthen sovereignty</li>
+            <li>To mobilise capital, solutions, and technology to support peace, prosperity, and freedom in the transition to the Information Era</li>
+          </ul>
         </div>
       </section>
     </Layout>

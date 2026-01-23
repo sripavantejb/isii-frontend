@@ -6,7 +6,7 @@ import MandateCard from "@/components/MandateCard";
 const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295396/Strategic_Counsel_7_j3ou44.png";
 const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295398/1_3_h04dcl.png";
 const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763191/45b069aa-f21e-4757-a97f-429e4850d21a_wggjd4.png";
-const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767769363/4_quwrrz.png";
+const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1769082442/5_1_qtrdmf.png";
 const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763200/e83f258e-eafe-4cd0-ac50-c1b2ede86f8a_tjst81.png";
 
 const StrategicCounsel = () => {
@@ -15,7 +15,7 @@ const StrategicCounsel = () => {
       image: mandateImage1,
       title: (
         <>
-          <span className="font-bold">Growth and prosperity</span>, and capital allocation for global themes
+          <span className="font-bold">Building Growth, Prosperity,</span> and Systems of Enterprise and Global Thematic Capital Allocation
         </>
       ),
       description: "",
@@ -25,7 +25,7 @@ const StrategicCounsel = () => {
       image: mandateImage2,
       title: (
         <>
-          <span className="font-bold">Sovereignty, AI, strategic technologies,</span> and strategic international coalitions
+          <span className="font-bold">Securing Sovereignty</span> in the new era of digital and physical colonisation
         </>
       ),
       description: "",
@@ -35,7 +35,7 @@ const StrategicCounsel = () => {
       image: mandateImage3,
       title: (
         <>
-          <span className="font-bold">Strategy and mobilisation</span> for the transition to the Information Era
+          <span className="font-bold">Mobilising the Transition to the Information Era</span> through Upheaval and Wealth Explosion
         </>
       ),
       description: "",
@@ -92,7 +92,7 @@ const StrategicCounsel = () => {
       <section className="pt-10 md:pt-11 pb-8" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="container-custom section-padding">
           <h2 className="font-sans text-lg md:text-xl text-primary mb-4 md:mb-8 font-bold">
-            Key Areas of Counsel
+            Focus of Mandated Programs
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -108,10 +108,10 @@ const StrategicCounsel = () => {
         <div className="container-custom section-padding">
           <div className="border-t border-b border-border py-4 md:py-6">
             <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold mb-4">
-              Intractable Problems
+              Focus of Intractable Problems Engagements
             </p>
             <p className="font-sans text-base md:text-lg text-primary leading-relaxed">
-              The Institute draws on its team's unusual thinking and extensive networks to address seemingly intractable problems on a case-by-case basis. Previous issues handled by the team have spanned national security, media, strategy, finance and environment. These tend to address sensitive and mission critical matters.
+              The Institute draws on its team's unusual thinking, experience and extensive networks to address seemingly intractable problems on a case-by-case basis; previous issues handled by the team have spanned national security, media, strategy, finance and environmental matters of a sensitive and mission critical nature
             </p>
           </div>
         </div>

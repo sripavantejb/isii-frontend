@@ -4,7 +4,7 @@ import Logo from "@/components/Logo";
 const Footer = () => {
   const leftColumnLinks = [
     { label: "Home", path: "/" },
-    { label: "Mission", path: "/about/mission" },
+    { label: "Mission and Purpose", path: "/about/mission" },
     { label: "People", path: "/about/people" },
     { label: "Contact Us", path: "mailto:lesley.whittle@forcegood.org", isExternal: true },
     { label: "Privacy Policy", path: "/privacy-policy" },

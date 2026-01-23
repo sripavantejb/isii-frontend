@@ -9,10 +9,10 @@ import { articlesAPI } from "@/services/api";
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 const bannerImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile banner
 // Hero section images for different screen sizes
-const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294568/V2_5_obypvm.png"; // Large screens
+const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159197/1430_f0bmcv.png"; // Large screens
 const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
-const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294575/Tab_yck0mg.png"; // Tablet screens
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294576/Mobile_kcomws.png"; // Mobile
+const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159204/V2_6_z2k75x.png"; // Tablet screens
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159205/V2_7_vxhupt.png"; // Mobile
 // Default banner for featured article section
 const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 

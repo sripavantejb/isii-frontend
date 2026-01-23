@@ -33,8 +33,9 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       label: "About Us", 
       path: "/about/mission",
       dropdown: [
-        { label: "Mission", path: "/about/mission" },
+        { label: "Mission and Purpose", path: "/about/mission" },
         { label: "People", path: "/about/people" },
+        { label: "Context", path: "/about/context" },
       ]
     },
     { 
