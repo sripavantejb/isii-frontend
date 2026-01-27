@@ -57,7 +57,7 @@ const Mission = () => {
           </h2>
           
           <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            To generate the strategic intelligence and ideas required to understand, shape, and respond and, where possible, pre-empt system-level transitions, major events, and points of strategic consequence shaping the future of nations, regions, and global institutions and enterprises
+            To generate the strategic intelligence and foresight required to understand, anticipate, and respond to system-level transitions, major events, and points of strategic consequence affecting the future of nations, regions, and global institutions and enterprises.
           </p>
           
           <div className="border-t border-gray-300 my-6 md:my-8"></div>
@@ -68,8 +68,8 @@ const Mission = () => {
           
           <ul className="font-serif text-base text-foreground leading-relaxed animate-fade-in list-disc list-inside space-y-4" style={{ willChange: "opacity, transform" }}>
             <li>To enable high-stakes decision-making at moments of strategic consequence</li>
-            <li>To design and execute interventions that stabilise environments and strengthen sovereignty</li>
-            <li>To mobilise capital, solutions, and technology to support peace, prosperity, and freedom in the transition to the Information Era</li>
+            <li>To shape and support interventions that strengthen sovereignty and agency</li>
+            <li>To catalyse the mobilisation of capital, technology, and solutions in support of peace, prosperity, and freedom in the transition to the Information Era</li>
           </ul>
         </div>
       </section>

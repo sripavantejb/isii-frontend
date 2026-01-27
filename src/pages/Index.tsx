@@ -171,12 +171,15 @@ const Index = () => {
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-accent mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               ISII
             </h1>
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-foreground mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
               Institute for Strategic Intelligence<br />
               and Intervention
             </h2>
+            <p className="text-lg md:text-xl text-primary-foreground/90 mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+              Strategic intelligence for consequential decisions
+            </p>
             <p className="text-primary-foreground/90 leading-relaxed mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-              The Institute for Strategic Intelligence and Intervention (ISII) aims to understand and support in shaping and responding to system-level transitions, major events, and strategic turning points affecting nations, regions, and global structures. Its mission is to generate the strategic intelligence required for high-stakes decision-making, and to design and execute interventions that stabilise environments, reposition sovereigns, mobilise capital and technology, and enable societies to transition securely and prosperously into the Information Era.
+              The Institute for Strategic Intelligence and Intervention operates at moments of systemic transition and strategic consequence, generating strategic intelligence at the intersection of geopolitics, technology, and capital to inform high-stakes decision-making and support interventions that stabilise environments, strengthen sovereignty and agency, and enable secure and prosperous transition into the Information Era.
             </p>
             <div className="animate-fade-in" style={{ willChange: "opacity, transform" }}>
               <Button variant="hero" size="lg" className="text-primary font-bold hover:bg-accent" asChild>

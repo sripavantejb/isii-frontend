@@ -77,7 +77,7 @@ const About = () => {
           </h2>
           
           <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            The Institute for Strategic Intelligence and Intervention (ISII) aims to understand and support in shaping and responding to system-level transitions, major events, and strategic turning points affecting nations, regions, and global structures. Its mission is to generate the strategic intelligence required for high-stakes decision-making, and to design and execute interventions that stabilise environments, reposition sovereigns, mobilise capital and technology, and enable societies to transition securely and prosperously into the Information Era.
+            The Institute for Strategic Intelligence and Intervention operates at moments of systemic transition and strategic consequence, generating strategic intelligence at the intersection of geopolitics, technology, and capital to inform high-stakes decision-making and support interventions that stabilise environments, strengthen sovereignty and agency, and enable secure and prosperous transition into the Information Era.
           </p>
         </div>
       </section>

@@ -202,6 +202,19 @@ const ArticleForm = () => {
         formattedDate = format(selectedDate, 'MMMM yyyy');
       }
 
+      // Validate date is provided (required field)
+      if (!formattedDate || formattedDate.trim() === '') {
+        console.error('❌ Missing date:', { 
+          selectedDate, 
+          formDataDate: formData.date, 
+          formattedDate,
+          selectedDateString: selectedDate ? format(selectedDate, 'MMMM yyyy') : 'undefined'
+        });
+        toast.error('Please select a date using the date picker');
+        setLoading(false);
+        return;
+      }
+
       // Save article - preserve existing bannerImageUrl if not uploading new one
       const articleData = {
         title: formData.title,
@@ -413,16 +426,26 @@ const ArticleForm = () => {
                     <Calendar
                       mode="single"
                       selected={selectedDate}
+                      defaultMonth={selectedDate || new Date()}
                       onSelect={(date) => {
-                        setSelectedDate(date);
+                        console.log('📅 Calendar onSelect called:', date);
                         if (date) {
-                          setFormData({ ...formData, date: format(date, 'MMMM yyyy') });
+                          const formatted = format(date, 'MMMM yyyy');
+                          console.log('📅 Setting date to:', formatted);
+                          setSelectedDate(date);
+                          setFormData({ ...formData, date: formatted });
                         }
                       }}
                       onMonthChange={(date) => {
-                        // When month/year changes via dropdown, update the selected date
-                        setSelectedDate(date);
-                        setFormData({ ...formData, date: format(date, 'MMMM yyyy') });
+                        // When month/year changes via dropdown, set to first day of that month
+                        console.log('📅 Calendar onMonthChange called:', date);
+                        if (date) {
+                          const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                          const formatted = format(firstDayOfMonth, 'MMMM yyyy');
+                          console.log('📅 Setting date to first day of month:', formatted);
+                          setSelectedDate(firstDayOfMonth);
+                          setFormData({ ...formData, date: formatted });
+                        }
                       }}
                       captionLayout="dropdown-buttons"
                       fromYear={1990}
