@@ -97,22 +97,22 @@ const Index = () => {
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762856/835eebcd-2fca-4b77-810e-cd5ed443293a_zjmxv6.jpg",
       title: "Pivotal Thinking",
-      description: "Generating strategic intelligence to understand transitions, shocks, inflection points across geopolitics, technology, economics, climate and society.",
+      description: "Critical insights and foresights as the world struggles with a dangerous historic civilizational transition.",
       buttonText: "All Pivotal Thinking",
       buttonLink: "/capabilities/pivotal-thinking",
     },
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767769363/4_quwrrz.png",
       title: "Strategic Counsel",
-      description: "Supporting governments, blocs and institutions as they navigate structural change.",
+      description: "Strategies for prosperity and wealth creation, sovereignty and agency and the systemic transition to the next era.",
       buttonText: "See Our Mandates",
       buttonLink: "/capabilities/strategic-counsel",
     },
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
-      title: "Programmes",
-      description: "Executing interventions to stabilise environments, mobilise capital and technology, and convert gaps into engines of prosperity.",
-      buttonText: "Explore Programmes",
+      title: "Programmes & Interventions",
+      description: "Interventions that mobilise strategies for leveraging alliances, technology and solutions, and capital flows at scale.",
+      buttonText: "Explore Programmes & Interventions",
       buttonLink: "/capabilities/programmes",
     },
   ];
@@ -275,14 +275,14 @@ const Index = () => {
         </section>
       )}
 
-      {/* Programmes Section */}
+      {/* Programmes & Interventions Section */}
       <section
         className="pt-8 md:pt-12 pb-16 md:pb-24"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="container-custom section-padding">
           <h2 className="font-serif text-3xl md:text-4xl text-primary text-center mb-4 md:mb-8 font-bold">
-            Our Capabilities
+            Key Activities
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">

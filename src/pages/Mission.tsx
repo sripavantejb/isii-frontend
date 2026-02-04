@@ -66,10 +66,13 @@ const Mission = () => {
             Purpose
           </h2>
           
+          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in mb-4" style={{ willChange: "opacity, transform" }}>
+            To enable high-stakes decision-making at moments of strategic consequence through strategic intelligence and intervention planning for
+          </p>
           <ul className="font-serif text-base text-foreground leading-relaxed animate-fade-in list-disc list-inside space-y-4" style={{ willChange: "opacity, transform" }}>
-            <li>To enable high-stakes decision-making at moments of strategic consequence</li>
-            <li>To shape and support interventions that strengthen sovereignty and agency</li>
-            <li>To catalyse the mobilisation of capital, technology, and solutions in support of peace, prosperity, and freedom in the transition to the Information Era</li>
+            <li>Prosperity and wealth creation and in a time of large-scale disruptive change</li>
+            <li>Sovereignty and agency amid geopolitical, technological and economic challenges.</li>
+            <li>Systemic change to the information age securing peace, prosperity, and freedom in the transition</li>
           </ul>
         </div>
       </section>
