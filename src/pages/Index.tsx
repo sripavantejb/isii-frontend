@@ -282,7 +282,7 @@ const Index = () => {
       >
         <div className="container-custom section-padding">
           <h2 className="font-serif text-3xl md:text-4xl text-primary text-center mb-4 md:mb-8 font-bold">
-            Key Activities
+            Our Capabilities 
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
