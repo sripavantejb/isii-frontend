@@ -77,14 +77,14 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
             {navItems.map((item) => (
               item.dropdown ? (
                 <DropdownMenu key={item.path}>
-                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-foreground font-semibold transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-foreground font-medium" : ""}`}>
+                  <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-primary font-semibold transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-primary font-medium" : ""}`}>
                     {item.label}
                     <ChevronDown className="w-4 h-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-card border-border">
                     {item.dropdown.map((subItem) => (
-                      <DropdownMenuItem key={subItem.path} asChild className="focus:bg-transparent hover:bg-transparent focus:text-foreground">
-                        <Link to={subItem.path} className="cursor-pointer text-foreground no-underline font-semibold">
+                      <DropdownMenuItem key={subItem.path} asChild className="focus:bg-transparent hover:bg-transparent focus:text-primary">
+                        <Link to={subItem.path} className="cursor-pointer text-primary no-underline font-semibold">
                           {subItem.label}
                         </Link>
                       </DropdownMenuItem>
@@ -95,18 +95,18 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-sm text-foreground font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-foreground font-medium" : ""}`}
+                  className={`text-sm text-primary font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
                 >
                   {item.label}
                 </Link>
               )
             ))}
-            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-foreground hover:bg-transparent hover:text-foreground font-semibold text-sm tracking-normal">
+            <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-primary hover:bg-transparent hover:text-primary font-semibold text-sm tracking-normal">
               <a href="mailto:lesley.whittle@forcegood.org">Contact Us</a>
             </Button>
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-foreground hover:text-foreground/80 transition-colors p-0"
+              className="text-primary hover:text-primary/80 transition-colors p-0"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />

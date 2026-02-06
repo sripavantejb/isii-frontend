@@ -1,8 +1,8 @@
 import Layout from "@/components/Layout";
 import ParticipationBanner from "@/components/ParticipationBanner";
 
-const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295236/Systemic_Interventions_and_Investments_2_mbzgbc.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295238/2_2_tqljlo.png";
+const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372546/Systemic_Interventions_and_Investments_3_xejyih.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375856/1922_evdf29.png";
 
 // Card data array
 const interventionCards = [
@@ -132,7 +132,7 @@ const SystemicIntervention = () => {
                   >
                     <h2 
                       className="font-serif text-xl md:text-2xl font-bold leading-tight"
-                      style={{ color: '#001429', margin: 0 }}
+                      style={{ color: '#01002A', margin: 0 }}
                     >
                       {card.heading}
                     </h2>

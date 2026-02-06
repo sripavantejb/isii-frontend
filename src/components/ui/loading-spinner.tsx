@@ -17,7 +17,7 @@ const LoadingSpinner = ({ className, text, size = "md" }: LoadingSpinnerProps) =
     <div className={cn("flex flex-col items-center justify-center gap-3", className)}>
       <div
         className={cn(
-          "animate-spin rounded-full border-2 border-[#001429]/20 border-t-[#001429]",
+          "animate-spin rounded-full border-2 border-[#01002A]/20 border-t-[#01002A]",
           sizeClasses[size]
         )}
         role="status"
@@ -26,7 +26,7 @@ const LoadingSpinner = ({ className, text, size = "md" }: LoadingSpinnerProps) =
         <span className="sr-only">Loading...</span>
       </div>
       {text && (
-        <p className="text-sm font-medium" style={{ color: '#001429' }}>
+        <p className="text-sm font-medium" style={{ color: '#01002A' }}>
           {text}
         </p>
       )}

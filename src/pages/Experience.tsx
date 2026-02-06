@@ -1,8 +1,8 @@
 import Layout from "@/components/Layout";
 
 // Strategic Counsel banner images (mobile / desktop)
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295396/Strategic_Counsel_7_j3ou44.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295398/1_3_h04dcl.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372589/Strategic_Counsel_8_ydkel5.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375901/1921_t2dsja.png";
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
@@ -45,7 +45,7 @@ const Experience = () => {
           className="block md:hidden w-full relative"
           style={{
             backgroundImage: `url(${heroImageMobile})`,
-            backgroundColor: '#001429',
+            backgroundColor: '#01002A',
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -65,7 +65,7 @@ const Experience = () => {
           className="hidden md:block w-full relative"
           style={{
             backgroundImage: `url(${heroImage})`,
-            backgroundColor: '#001429',
+            backgroundColor: '#01002A',
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

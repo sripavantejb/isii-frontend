@@ -9,10 +9,10 @@ import { articlesAPI } from "@/services/api";
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 const bannerImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile banner
 // Hero section images for different screen sizes
-const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159197/1430_f0bmcv.png"; // Large screens
-const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294570/1440_ugbkfr.png"; // Small monitor
-const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159204/V2_6_z2k75x.png"; // Tablet screens
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1769159205/V2_7_vxhupt.png"; // Mobile
+const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372149/1920_aiorj9.png"; // Large screens (1920)
+const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372252/1440_1_qknuh7.png"; // 1440px
+const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372260/Tab_1_diqfl3.png"; // Tablet
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372262/Mobile_1_gbog00.png"; // Mobile
 // Default banner for featured article section
 const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 
@@ -120,7 +120,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden" style={{ backgroundColor: '#001429' }}>
+      <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden" style={{ backgroundColor: '#01002A' }}>
         {/* Mobile - default (below 768px) */}
         <div 
           className="absolute inset-0 bg-cover bg-center md:hidden"

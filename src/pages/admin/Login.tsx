@@ -37,17 +37,17 @@ const Login = () => {
         <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
         <div className="w-full max-w-md p-4 sm:p-6 md:p-8" style={{ backgroundColor: '#ffffff' }}>
           <div className="mb-8">
-            <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#001429' }}>
+            <h1 className="font-serif text-3xl font-bold mb-2" style={{ color: '#01002A' }}>
               Admin Login
             </h1>
-            <p className="text-sm" style={{ color: '#001429' }}>
+            <p className="text-sm" style={{ color: '#01002A' }}>
               Sign in to manage content
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" style={{ color: '#001429' }}>
+              <Label htmlFor="email" style={{ color: '#01002A' }}>
                 Email
               </Label>
               <Input
@@ -57,12 +57,12 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="admin@isii.global"
-                style={{ borderColor: '#001429' }}
+                style={{ borderColor: '#01002A' }}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" style={{ color: '#001429' }}>
+              <Label htmlFor="password" style={{ color: '#01002A' }}>
                 Password
               </Label>
               <Input
@@ -72,13 +72,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Enter your password"
-                style={{ borderColor: '#001429' }}
+                style={{ borderColor: '#01002A' }}
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-[#001429] text-white hover:bg-[#001429]/90 hover:text-white"
+              className="w-full bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white"
               disabled={loading}
             >
               {loading ? 'Logging in...' : 'Login'}

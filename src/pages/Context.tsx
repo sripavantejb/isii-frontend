@@ -1,12 +1,12 @@
 import Layout from "@/components/Layout";
 
 // Cloudinary URLs for banner images - same as Mission page
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295137/Our_Mission_1_hkd0kr.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768295139/3_1_ancnmk.png";
+const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372479/Our_Mission_2_ag9sgv.png";
+const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770373042/3_2_ndtwij.png";
 
 // Cloudinary URLs for globe images
-const globeImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1769084674/1_4_vknuef.png";
-const globeImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1769084675/2_4_mdspn1.png";
+const globeImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1770386526/1925_v7zozq.png";
+const globeImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1770386536/1926_q4rq4q.png";
 const globeImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1769084678/image_2_zfw9mn.png";
 const geopoliticsImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770198726/Frame_1707483195_ae3e0x.png";
 const technologyImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770198764/Frame_1707483195_2_mz7yjs.png";
@@ -163,11 +163,11 @@ const Context = () => {
         <div className="w-1.5 flex-shrink-0 bg-[#F0F8FF]" aria-hidden />
         <div className="flex-1 container-custom section-padding min-w-0">
           <div className="w-full max-w-[1083px] mx-auto mb-12 md:mb-14 space-y-4 text-left">
-            <h2 className="font-serif text-[32px] font-bold leading-[1.4] tracking-normal text-[#333333]">
+            <h2 className="font-serif text-[32px] font-bold leading-[1.4] tracking-normal text-primary">
               Arena of Consequential Decisions Facing Leaders
             </h2>
-            <p className="font-sans text-xs md:text-sm text-[#555555] leading-relaxed whitespace-nowrap">
-              The most <strong className="font-bold text-black">consequential decisions</strong> of this era now require understanding and operating within a complex arena <strong className="font-bold text-black">shaped by</strong> the interaction of <strong className="font-bold text-black">geopolitics, technology, and capital</strong>
+            <p className="font-sans text-xs md:text-sm text-foreground leading-relaxed whitespace-nowrap">
+              The most <strong className="font-bold text-foreground">consequential decisions</strong> of this era now require understanding and operating within a complex arena <strong className="font-bold text-foreground">shaped by</strong> the interaction of <strong className="font-bold text-foreground">geopolitics, technology, and capital</strong>
             </p>
           </div>
 
@@ -187,8 +187,8 @@ const Context = () => {
                 />
               </div>
               <div className="flex flex-col gap-4 min-w-0 flex-none overflow-visible">
-                <h3 className="font-sans text-lg font-bold text-[#1A2F6B]">Geopolitics</h3>
-                <p className="font-sans text-[15px] text-[#5C708A] leading-[1.35] overflow-visible">
+                <h3 className="font-sans text-lg font-bold text-primary">Geopolitics</h3>
+                <p className="font-sans text-[15px] text-foreground leading-[1.35] overflow-visible">
                   The context is being redefined as America's strategy and actions compel rivals, allies, and others to reassess their strategies and assumptions about sovereignty
                 </p>
               </div>
@@ -208,8 +208,8 @@ const Context = () => {
                 />
               </div>
               <div className="flex flex-col gap-4 min-w-0 flex-none overflow-visible">
-                <h3 className="font-sans text-lg font-bold text-[#1A2F6B]">Technology</h3>
-                <p className="font-sans text-[15px] text-[#5C708A] leading-[1.35] overflow-visible">
+                <h3 className="font-sans text-lg font-bold text-primary">Technology</h3>
+                <p className="font-sans text-[15px] text-foreground leading-[1.35] overflow-visible">
                   Technology is increasingly assuming a central role in shaping power and wealth, and has become a key determinant of the preservation or erosion of sovereignty
                 </p>
               </div>
@@ -229,15 +229,15 @@ const Context = () => {
                 />
               </div>
               <div className="flex flex-col gap-4 min-w-0 flex-none overflow-visible">
-                <h3 className="font-sans text-lg font-bold text-[#1A2F6B]">Capital</h3>
-                <p className="font-sans text-[15px] text-[#5C708A] leading-[1.35] overflow-visible">
+                <h3 className="font-sans text-lg font-bold text-primary">Capital</h3>
+                <p className="font-sans text-[15px] text-foreground leading-[1.35] overflow-visible">
                   Capital allocation, currently deepening economic inequality, is essential to building prosperity today and financing nations' transition to the future era
                 </p>
               </div>
             </div>
           </div>
 
-          <p className="font-sans text-sm md:text-base font-bold text-[#333333] text-left w-full max-w-[1083px] mx-auto mt-12">
+          <p className="font-sans text-sm md:text-base font-bold text-foreground text-left w-full max-w-[1083px] mx-auto mt-12">
             Addressing issues of prosperity, sovereignty and civilisational transition require these to be navigated
           </p>
         </div>
