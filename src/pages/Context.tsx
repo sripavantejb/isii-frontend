@@ -339,10 +339,6 @@ const Context = () => {
             </div>
           </div>
 
-          <p className="font-sans text-sm md:text-base font-bold text-foreground text-left w-full max-w-[1083px] mx-auto mt-12">
-            Addressing issues of prosperity, sovereignty and civilisational transition require these to be navigated
-          </p>
-
         </div>
       </section>
 
