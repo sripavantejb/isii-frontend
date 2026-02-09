@@ -2,14 +2,6 @@ import Layout from "@/components/Layout";
 import PersonCard from "@/components/PersonCard";
 
 const About = () => {
-  const aboutTabs = [
-    { label: "Context", href: "/about/context#context" },
-    { label: "Distinctiveness", href: "/about/context#distinctiveness" },
-    { label: "Strategic Intervention Logic", href: "/about/context#strategic-intervention-logic" },
-    { label: "Consequential Decisions", href: "/about/context#consequential-decisions" },
-    { label: "Etymology", href: "#etymology" },
-  ];
-
   const people = [
     {
       category: "Peace and Social Transition",
@@ -77,20 +69,15 @@ const About = () => {
         </div>
       </section>
 
-
       {/* Mission Statement */}
       <section className="pt-16 pb-24 bg-background">
         <div className="container-custom section-padding">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            ISII
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            Mission Statement
           </h2>
-
-          <p className="font-serif text-xl md:text-2xl font-bold text-primary mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Enabling consequential decisions at the intersection of geopolitics, technology and capital
-          </p>
           
           <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            The Institute for Strategic Intelligence and Intervention operates at moments of systemic transition and strategic consequence, generating strategic insight at the intersection of geopolitics, technology, and capital to inform high-stakes decision-making and support interventions that stabilise environments, strengthen sovereignty and agency, and enable secure and prosperous transition into the Information Era.
+            The Institute for Strategic Intelligence and Intervention operates at moments of systemic transition and strategic consequence, generating strategic intelligence at the intersection of geopolitics, technology, and capital to inform high-stakes decision-making and support interventions that stabilise environments, strengthen sovereignty and agency, and enable secure and prosperous transition into the Information Era.
           </p>
         </div>
       </section>
@@ -119,7 +106,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
     </Layout>
   );
 };
