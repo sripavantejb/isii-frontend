@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
 
 // Cloudinary URLs for banner images - same as Mission page
@@ -13,81 +12,7 @@ const geopoliticsImage = "https://res.cloudinary.com/dqataciy5/image/upload/v177
 const technologyImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770198764/Frame_1707483195_2_mz7yjs.png";
 const capitalImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770198768/Frame_1707483195_3_kausk6.png";
 
-const ABOUT_TABS = [
-  { id: "context", label: "Context", href: "#context" },
-  { id: "distinctiveness", label: "Distinctiveness", href: "#distinctiveness" },
-  { id: "strategic-intervention-logic", label: "Strategic Intervention Logic", href: "#strategic-intervention-logic" },
-  { id: "consequential-decisions", label: "Consequential Decisions", href: "#consequential-decisions" },
-  { id: "etymology", label: "Etymology", href: "#etymology" },
-] as const;
-
-const NAVBAR_HEIGHT = 80;
-
 const Context = () => {
-  const [activeTab, setActiveTab] = useState("context");
-  const [isTabsPinned, setIsTabsPinned] = useState(false);
-  const [tabsHeight, setTabsHeight] = useState(0);
-  const tabsSentinelRef = useRef<HTMLDivElement | null>(null);
-  const tabsBarRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const sentinel = tabsSentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsTabsPinned(!entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0,
-        rootMargin: `-${NAVBAR_HEIGHT}px 0px 0px 0px`,
-      },
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const tabsBar = tabsBarRef.current;
-    if (!tabsBar) return;
-
-    const updateHeight = () => setTabsHeight(tabsBar.offsetHeight);
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver(updateHeight);
-    resizeObserver.observe(tabsBar);
-
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, []);
-
-  useEffect(() => {
-    const stickyOffset = NAVBAR_HEIGHT + tabsHeight + 24;
-
-    const updateActiveTab = () => {
-      const scrollPosition = window.scrollY + stickyOffset;
-      let currentSection = "context";
-
-      for (const tab of ABOUT_TABS) {
-        const section = document.getElementById(tab.id);
-        if (section && section.offsetTop <= scrollPosition) {
-          currentSection = tab.id;
-        }
-      }
-
-      setActiveTab(currentSection);
-    };
-
-    updateActiveTab();
-    window.addEventListener("scroll", updateActiveTab, { passive: true });
-    return () => window.removeEventListener("scroll", updateActiveTab);
-  }, [tabsHeight]);
-
   return (
     <Layout>
       {/* Hero Section - Banner */}
@@ -132,35 +57,8 @@ const Context = () => {
         </div>
       </section>
 
-      {/* In-Page Navigation Tabs */}
-      <div ref={tabsSentinelRef} className="h-0" aria-hidden />
-      <section
-        ref={tabsBarRef}
-        className={`${isTabsPinned ? "fixed inset-x-0 top-[80px] z-40" : "relative"} w-full bg-background border-b border-border shadow-sm`}
-      >
-        <div className="container-custom section-padding py-4 overflow-x-auto">
-          <nav className="flex min-w-max flex-nowrap gap-3 md:gap-4" aria-label="About sections">
-            {ABOUT_TABS.map((tab) => (
-              <a
-                key={tab.label}
-                href={tab.href}
-                className={`font-serif text-sm md:text-base no-underline hover:no-underline px-1.5 py-1 rounded-md transition-colors duration-200 ${
-                  activeTab === tab.id
-                    ? "text-blue-700 bg-blue-50 font-semibold"
-                    : "text-primary hover:text-blue-700 hover:bg-blue-50"
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </section>
-      {isTabsPinned ? <div aria-hidden style={{ height: tabsHeight }} /> : null}
-
       {/* Context Section */}
-      <section id="context" className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background">
+      <section className="pt-16 pb-16 md:pb-20 bg-background">
         <div className="container-custom section-padding">
           <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
             {/* Globe image on the left */}
@@ -196,7 +94,7 @@ const Context = () => {
       </section>
 
       {/* Distinctiveness Section */}
-      <section id="distinctiveness" className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-muted">
+      <section className="pt-16 pb-16 md:pb-20 bg-muted">
         <div className="container-custom section-padding">
           <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
             {/* Globe image on the left */}
@@ -229,7 +127,7 @@ const Context = () => {
       </section>
 
       {/* ISII's Strategic Intervention Logic Section */}
-      <section id="strategic-intervention-logic" className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background">
+      <section className="pt-16 pb-16 md:pb-20 bg-background">
         <div className="container-custom section-padding">
           <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
             {/* Globe image on the left */}
@@ -260,7 +158,7 @@ const Context = () => {
       </section>
 
       {/* Arena of Consequential Decisions Section - exact match to design */}
-      <section id="consequential-decisions" className="scroll-mt-44 flex pt-16 pb-16 md:pb-20 bg-[#F2F5F7]">
+      <section className="flex pt-16 pb-16 md:pb-20 bg-[#F2F5F7]">
         {/* Pale blue vertical strip along left edge */}
         <div className="w-1.5 flex-shrink-0 bg-[#F0F8FF]" aria-hidden />
         <div className="flex-1 container-custom section-padding min-w-0">
@@ -339,18 +237,8 @@ const Context = () => {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* Etymology Section */}
-      <section id="etymology" className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background">
-        <div className="container-custom section-padding">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Etymology
-          </h2>
-
-          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            The name ISII draws, lightly and intentionally, from the ancient Indic idea of the seer (/ˈɪ.si/) - one who perceives emerging reality before it becomes obvious. Used metaphorically, it reflects the view that strategy begins with clarity of seeing, from which foresight flows.
+          <p className="font-sans text-sm md:text-base font-bold text-foreground text-left w-full max-w-[1083px] mx-auto mt-12">
+            Addressing issues of prosperity, sovereignty and civilisational transition require these to be navigated
           </p>
         </div>
       </section>
