@@ -4,26 +4,18 @@
   "description": "Understanding and shaping system-level transitions and strategic turning points affecting nations, regions, and global structures.",
   "start_url": "/",
   "display": "browser",
-  "theme_color": "#070440",
-  "background_color": "#070440",
   "icons": [
     {
-      "src": "/isii-homescreen-120-v3.png",
-      "sizes": "120x120",
+      "src": "https://res.cloudinary.com/dqataciy5/image/upload/v1770382261/Group_7_1_uh9qfb.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/isii-homescreen-192-v2.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/isii-homescreen-512-v2.png",
+      "src": "https://res.cloudinary.com/dqataciy5/image/upload/v1770382261/Group_7_1_uh9qfb.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
