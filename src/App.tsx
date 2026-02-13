@@ -44,8 +44,6 @@ const App = () => (
             <Route path="/about/people/:slug" element={<PersonProfile />} />
             <Route path="/capabilities/pivotal-thinking" element={<PivotalThinking />} />
             <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
-            <Route path="/capabilities/perspectives" element={<Perspectives />} />
-            <Route path="/capabilities/perspectives/content-library" element={<PerspectivesContentLibrary />} />
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />
             <Route path="/capabilities/strategic-counsel/growth-and-prosperity" element={<GrowthAndProsperity />} />
             <Route path="/capabilities/strategic-counsel/securing-sovereignty" element={<SecuringSovereignty />} />
@@ -56,11 +54,8 @@ const App = () => (
             {/* Admin Routes */}
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin" element={<Dashboard />} />
-            <Route path="/admin/reports" element={<ReportsDashboard />} />
             <Route path="/admin/articles/new" element={<ArticleForm />} />
             <Route path="/admin/articles/edit/:id" element={<ArticleForm />} />
-            <Route path="/admin/reports/new" element={<ReportForm />} />
-            <Route path="/admin/reports/edit/:id" element={<ReportForm />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
