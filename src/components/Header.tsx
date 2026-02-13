@@ -43,6 +43,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       path: "/capabilities/pivotal-thinking",
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
+        { label: "Content Library", path: "/capabilities/pivotal-thinking/content-library" },
         { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
         { label: "Programmes & Interventions", path: "/capabilities/programmes" },
         { label: "Projects and Intervention", path: "/capabilities/experience" },
