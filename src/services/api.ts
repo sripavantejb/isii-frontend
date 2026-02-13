@@ -1,12 +1,6 @@
 // API URL configuration
 // Always use Vercel backend URL
-// API URL configuration
-const API_URL =
-  import.meta.env.VITE_API_URL || "https://isii-backend.vercel.app/api";
-
-if (import.meta.env.DEV) {
-  console.log("🌐 API URL:", API_URL);
-}
+const API_URL = 'https://isii-backend.vercel.app/api';
 
 
 // Log API URL for debugging
@@ -79,34 +73,6 @@ export const articlesAPI = {
   },
   delete: async (id: string) => {
     return apiRequest(`/articles/${id}`, {
-      method: 'DELETE',
-    });
-  },
-};
-
-// Reports API (Perspectives)
-// Same fields/behavior as Articles API
-export const reportsAPI = {
-  getAll: async () => {
-    return apiRequest('/reports');
-  },
-  getById: async (id: string) => {
-    return apiRequest(`/reports/${id}`);
-  },
-  create: async (data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
-    return apiRequest('/reports', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
-  },
-  update: async (id: string, data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
-    return apiRequest(`/reports/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-    });
-  },
-  delete: async (id: string) => {
-    return apiRequest(`/reports/${id}`, {
       method: 'DELETE',
     });
   },
