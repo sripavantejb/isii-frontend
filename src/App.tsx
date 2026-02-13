@@ -13,8 +13,6 @@ import Context from "./pages/Context";
 import PersonProfile from "./pages/PersonProfile";
 import PivotalThinking from "./pages/PivotalThinking";
 import ContentLibrary from "./pages/ContentLibrary";
-import Perspectives from "./pages/Perspectives";
-import PerspectivesContentLibrary from "./pages/PerspectivesContentLibrary";
 import StrategicCounsel from "./pages/StrategicCounsel";
 import GrowthAndProsperity from "./pages/GrowthAndProsperity";
 import SecuringSovereignty from "./pages/SecuringSovereignty";
@@ -26,8 +24,6 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import ArticleForm from "./pages/admin/ArticleForm";
-import ReportsDashboard from "./pages/admin/ReportsDashboard";
-import ReportForm from "./pages/admin/ReportForm";
 
 const queryClient = new QueryClient();
 
