@@ -20,6 +20,7 @@ import Layout from '@/components/Layout';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import ArticleLoader from '@/components/ArticleLoader';
 import SEOHead from '@/components/SEOHead';
+import AdminDashboardTabs from '@/components/admin/AdminDashboardTabs';
 
 interface Article {
   _id: string;
@@ -142,20 +143,14 @@ const Dashboard = () => {
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
               <div>
                 <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#01002A' }}>
-                  Admin Dashboard
+                  Pivotal Thinking Dashboard
                 </h1>
                 <p className="text-sm" style={{ color: '#01002A' }}>
                   Manage Pivotal Thinking articles
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                <Button
-                  onClick={() => navigate('/admin/articles/new')}
-                  className="w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white"
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  New Article
-                </Button>
+                <AdminDashboardTabs activeTab="pivotal-thinking" />
                 <Button
                   variant="outline"
                   onClick={handleLogout}
@@ -165,6 +160,16 @@ const Dashboard = () => {
                   Logout
                 </Button>
               </div>
+            </div>
+
+            <div className="flex justify-end mb-6">
+              <Button
+                onClick={() => navigate('/admin/articles/new')}
+                className="w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white"
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                New Article
+              </Button>
             </div>
 
             {loading ? (
@@ -253,4 +258,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
