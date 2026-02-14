@@ -43,6 +43,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
       path: "/capabilities/pivotal-thinking",
       dropdown: [
         { label: "Pivotal Thinking", path: "/capabilities/pivotal-thinking" },
+        // { label: "Perspectives", path: "/capabilities/perspectives" },
         { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
         { label: "Programmes & Interventions", path: "/capabilities/programmes" },
         { label: "Projects and Intervention", path: "/capabilities/experience" },
@@ -59,20 +60,13 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
     return location.pathname.startsWith("/about");
   };
 
-  const bgClass = variant === "transparent" 
-    ? "bg-white" 
-    : "bg-white";
+  const bgClass = variant === "transparent" ? "bg-white" : "bg-white";
 
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
-      {/* Main header */}
       <div className={`${bgClass} py-4 border-b border-border`}>
         <div className="container-custom section-padding flex items-center justify-between">
-          <Link to="/">
-            <Logo variant="dark" />
-          </Link>
-
-          {/* Desktop Navigation */}
+          <Link to="/"><Logo variant="dark" /></Link>
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               item.dropdown ? (
@@ -84,19 +78,13 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
                   <DropdownMenuContent className="bg-card border-border">
                     {item.dropdown.map((subItem) => (
                       <DropdownMenuItem key={subItem.path} asChild className="focus:bg-transparent hover:bg-transparent focus:text-primary">
-                        <Link to={subItem.path} className="cursor-pointer text-primary no-underline font-semibold">
-                          {subItem.label}
-                        </Link>
+                        <Link to={subItem.path} className="cursor-pointer text-primary no-underline font-semibold">{subItem.label}</Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`text-sm text-primary font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
-                >
+                <Link key={item.path} to={item.path} className={`text-sm text-primary font-semibold transition-colors no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}>
                   {item.label}
                 </Link>
               )
@@ -104,88 +92,48 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
             <Button variant="default" size="sm" asChild className="bg-transparent border-0 shadow-none px-0 text-primary hover:bg-transparent hover:text-primary font-semibold text-sm tracking-normal">
               <a href="mailto:lesley.whittle@forcegood.org">Contact Us</a>
             </Button>
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="text-primary hover:text-primary/80 transition-colors p-0"
-              aria-label="Search"
-            >
+            <button onClick={() => setSearchOpen(true)} className="text-primary hover:text-primary/80 transition-colors p-0" aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-primary p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
+          <button className="md:hidden text-primary p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
-        {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-border">
             <nav className="container-custom section-padding py-4 flex flex-col">
               {navItems.map((item, index) => (
                 item.dropdown ? (
-                  <Collapsible 
-                    key={item.path} 
-                    open={item.label === "About Us" ? aboutUsOpen : capabilitiesOpen} 
-                    onOpenChange={item.label === "About Us" ? setAboutUsOpen : setCapabilitiesOpen}
-                  >
+                  <Collapsible key={item.path} open={item.label === "About Us" ? aboutUsOpen : capabilitiesOpen} onOpenChange={item.label === "About Us" ? setAboutUsOpen : setCapabilitiesOpen}>
                     <CollapsibleTrigger className="flex items-center justify-between w-full py-3 text-primary font-semibold transition-colors border-b border-border no-underline hover:no-underline">
                       <span>{item.label}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform ${(item.label === "About Us" ? aboutUsOpen : capabilitiesOpen) ? "rotate-180" : ""}`} />
                     </CollapsibleTrigger>
                     <CollapsibleContent className="pl-4">
                       {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.path}
-                          to={subItem.path}
-                          className="block py-3 text-primary transition-colors no-underline hover:no-underline font-semibold"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
+                        <Link key={subItem.path} to={subItem.path} className="block py-3 text-primary transition-colors no-underline hover:no-underline font-semibold" onClick={() => setMobileMenuOpen(false)}>
                           {subItem.label}
                         </Link>
                       ))}
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`py-3 text-primary font-semibold transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-border'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
+                  <Link key={item.path} to={item.path} className={`py-3 text-primary font-semibold transition-colors ${index === navItems.length - 1 ? '' : 'border-b border-border'} no-underline hover:no-underline ${isActive(item.path) ? "text-primary font-medium" : ""}`} onClick={() => setMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 )
               ))}
-              {/* Search for Mobile */}
-              <button
-                onClick={() => {
-                  setSearchOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className="py-3 text-primary font-semibold transition-colors border-t border-border text-left"
-              >
+              <button onClick={() => { setSearchOpen(true); setMobileMenuOpen(false); }} className="py-3 text-primary font-semibold transition-colors border-t border-border text-left">
                 Search
               </button>
-              {/* Contact Us for Mobile */}
-              <a
-                href="mailto:lesley.whittle@forcegood.org"
-                className="py-3 text-primary font-semibold transition-colors border-t border-border no-underline hover:no-underline"
-                onClick={() => setMobileMenuOpen(false)}
-              >
+              <a href="mailto:lesley.whittle@forcegood.org" className="py-3 text-primary font-semibold transition-colors border-t border-border no-underline hover:no-underline" onClick={() => setMobileMenuOpen(false)}>
                 Contact Us
               </a>
             </nav>
           </div>
         )}
       </div>
-      
-      {/* Search Component */}
       <SearchComponent isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );

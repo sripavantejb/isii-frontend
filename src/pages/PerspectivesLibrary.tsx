@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
-import { articlesAPI } from "@/services/api";
+import { perspectivesAPI } from "@/services/api"; // Use perspectivesAPI
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ArrowRight } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface Article {
   _id: string;
@@ -27,8 +20,7 @@ const parseDate = (dateStr: string): Date => {
     const trimmed = dateStr.trim().toLowerCase();
     const parts = trimmed.split(/\s+/);
     if (parts.length !== 2) return new Date(0);
-    const monthName = parts[0];
-    const month = months[monthName];
+    const month = months[parts[0]];
     const year = parseInt(parts[1], 10);
     if (month === undefined || isNaN(year) || year < 1900 || year > 2100) return new Date(0);
     return new Date(year, month, 1);
@@ -39,9 +31,6 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
   return [...articles].sort((a, b) => {
     const dateA = parseDate(a.date);
     const dateB = parseDate(b.date);
-    if (dateA.getTime() === 0 && dateB.getTime() === 0) return 0;
-    if (dateA.getTime() === 0) return 1;
-    if (dateB.getTime() === 0) return -1;
     return dateB.getTime() - dateA.getTime();
   });
 };
@@ -67,7 +56,7 @@ const getUniqueYears = (articles: Article[]): string[] => {
   return Array.from(years).sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
 };
 
-const ContentLibrary = () => {
+const PerspectivesLibrary = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState<string>('all');
@@ -75,11 +64,11 @@ const ContentLibrary = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const data = await articlesAPI.getAll(); // Uses articlesAPI
+        const data = await perspectivesAPI.getAll(); // Use perspectivesAPI
         const sortedArticles = sortArticlesByDate(data);
         setArticles(sortedArticles);
       } catch (error) {
-        console.error('Failed to fetch articles:', error);
+        console.error('Failed to fetch perspectives:', error);
       } finally {
         setLoading(false);
       }
@@ -98,7 +87,7 @@ const ContentLibrary = () => {
         <div className="container-custom section-padding">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-4">
             <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary">
-              Selected Pivotal Thinking
+              Selected Perspectives
             </h1>
             <div className="w-full md:w-auto md:min-w-[120px]">
               <Select value={selectedYear} onValueChange={setSelectedYear}>
@@ -115,7 +104,7 @@ const ContentLibrary = () => {
             <div className="flex justify-center py-12"><LoadingSpinner text="Loading..." /></div>
           ) : filteredArticles.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">{selectedYear === 'all' ? 'No articles available yet.' : `No articles found for ${selectedYear}.`}</p>
+              <p className="text-muted-foreground">{selectedYear === 'all' ? 'No perspectives available yet.' : `No perspectives found for ${selectedYear}.`}</p>
             </div>
           ) : (
             <div className="space-y-0">
@@ -137,4 +126,4 @@ const ContentLibrary = () => {
   );
 };
 
-export default ContentLibrary;
+export default PerspectivesLibrary;

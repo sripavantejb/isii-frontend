@@ -2,7 +2,6 @@
 // Always use Vercel backend URL
 const API_URL = 'https://isii-backend.vercel.app/api';
 
-
 // Log API URL for debugging
 if (import.meta.env.DEV) {
   console.log('🌐 API URL:', API_URL);
@@ -51,7 +50,7 @@ export const authAPI = {
   },
 };
 
-// Articles API
+// Articles API (Pivotal Thinking)
 export const articlesAPI = {
   getAll: async () => {
     return apiRequest('/articles');
@@ -78,6 +77,34 @@ export const articlesAPI = {
   },
 };
 
+// Perspectives API (uses /reports endpoint)
+export const perspectivesAPI = {
+  getAll: async () => {
+    return apiRequest('/reports');
+  },
+  getById: async (id: string) => {
+    return apiRequest(`/reports/${id}`);
+  },
+  create: async (data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
+    return apiRequest('/reports', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+  update: async (id: string, data: { title: string; date: string; imageUrl: string; bannerImageUrl?: string; pdfUrl: string }) => {
+    return apiRequest(`/reports/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+  delete: async (id: string) => {
+    return apiRequest(`/reports/${id}`, {
+      method: 'DELETE',
+    });
+  },
+};
+
+
 // Upload API
 export const uploadAPI = {
   uploadFile: async (file: File, type: 'image' | 'pdf') => {
@@ -100,7 +127,6 @@ export const uploadAPI = {
 
     if (!response.ok) {
       if (response.status === 401) {
-        // Clear invalid token and redirect to login
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         throw new Error('Your session has expired. Please log in again.');
@@ -133,14 +159,12 @@ export const uploadAPI = {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
-          // Don't set Content-Type - let browser set it with boundary for FormData
         },
         body: formData,
       });
 
       if (!response.ok) {
         if (response.status === 401) {
-          // Clear invalid token and redirect to login
           localStorage.removeItem('token');
           localStorage.removeItem('user');
           throw new Error('Your session has expired. Please log in again.');
@@ -151,7 +175,6 @@ export const uploadAPI = {
 
       return response.json();
     } catch (error: any) {
-      // Handle CORS and network errors
       if (error.name === 'TypeError' && error.message.includes('fetch')) {
         if (error.message.includes('CORS') || error.message.includes('Access-Control-Allow-Origin')) {
           throw new Error('CORS error: The server is not allowing requests from this origin. Please check server configuration or try again later.');

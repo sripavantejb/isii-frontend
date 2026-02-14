@@ -13,6 +13,8 @@ import Context from "./pages/Context";
 import PersonProfile from "./pages/PersonProfile";
 import PivotalThinking from "./pages/PivotalThinking";
 import ContentLibrary from "./pages/ContentLibrary";
+import Perspectives from "./pages/Perspectives";
+import PerspectivesLibrary from "./pages/PerspectivesLibrary";
 import StrategicCounsel from "./pages/StrategicCounsel";
 import GrowthAndProsperity from "./pages/GrowthAndProsperity";
 import SecuringSovereignty from "./pages/SecuringSovereignty";
@@ -23,7 +25,9 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
+import ReportsDashboard from "./pages/admin/ReportsDashboard"; // New
 import ArticleForm from "./pages/admin/ArticleForm";
+import ReportForm from "./pages/admin/ReportForm"; // New
 
 const queryClient = new QueryClient();
 
@@ -44,6 +48,8 @@ const App = () => (
             <Route path="/about/people/:slug" element={<PersonProfile />} />
             <Route path="/capabilities/pivotal-thinking" element={<PivotalThinking />} />
             <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
+            <Route path="/capabilities/perspectives" element={<Perspectives />} />
+            <Route path="/capabilities/perspectives/content-library" element={<PerspectivesLibrary />} />
             <Route path="/capabilities/strategic-counsel" element={<StrategicCounsel />} />
             <Route path="/capabilities/strategic-counsel/growth-and-prosperity" element={<GrowthAndProsperity />} />
             <Route path="/capabilities/strategic-counsel/securing-sovereignty" element={<SecuringSovereignty />} />
@@ -51,12 +57,21 @@ const App = () => (
             <Route path="/capabilities/programmes" element={<SystemicIntervention />} />
             <Route path="/capabilities/experience" element={<Experience />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            
             {/* Admin Routes */}
             <Route path="/admin/login" element={<Login />} />
+            
+            {/* Pivotal Thinking Admin */}
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/articles/new" element={<ArticleForm />} />
             <Route path="/admin/articles/edit/:id" element={<ArticleForm />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+            {/* Perspectives (Reports) Admin */}
+            <Route path="/admin/reports" element={<ReportsDashboard />} />
+            <Route path="/admin/reports/new" element={<ReportForm />} />
+            <Route path="/admin/reports/edit/:id" element={<ReportForm />} />
+
+            {/* CATCH-ALL ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

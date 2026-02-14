@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { articlesAPI } from '@/services/api';
+import { perspectivesAPI } from '@/services/api'; // Use perspectives API
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -22,7 +22,7 @@ import ArticleLoader from '@/components/ArticleLoader';
 import SEOHead from '@/components/SEOHead';
 import AdminDashboardTabs from '@/components/admin/AdminDashboardTabs';
 
-interface Article {
+interface Report {
   _id: string;
   title: string;
   date: string;
@@ -31,16 +31,16 @@ interface Article {
   pdfUrl: string;
 }
 
-const Dashboard = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
+const ReportsDashboard = () => {
+  const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [articleToDelete, setArticleToDelete] = useState<string | null>(null);
+  const [reportToDelete, setReportToDelete] = useState<string | null>(null);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchArticles();
+    fetchReports();
   }, []);
 
   const parseDate = (dateStr: string): Date => {
@@ -58,47 +58,44 @@ const Dashboard = () => {
     } catch (error) { return new Date(0); }
   };
 
-  const sortArticlesByDate = (articles: Article[]): Article[] => {
-    return [...articles].sort((a, b) => {
+  const sortReportsByDate = (reports: Report[]): Report[] => {
+    return [...reports].sort((a, b) => {
       const dateA = parseDate(a.date);
       const dateB = parseDate(b.date);
-      if (dateA.getTime() === 0 && dateB.getTime() === 0) return 0;
-      if (dateA.getTime() === 0) return 1;
-      if (dateB.getTime() === 0) return -1;
       return dateB.getTime() - dateA.getTime();
     });
   };
 
-  const fetchArticles = async () => {
+  const fetchReports = async () => {
     try {
       setLoading(true);
-      const data = await articlesAPI.getAll();
-      const sortedArticles = sortArticlesByDate(data);
-      setArticles(sortedArticles);
+      const data = await perspectivesAPI.getAll();
+      const sortedReports = sortReportsByDate(data);
+      setReports(sortedReports);
     } catch (error: any) {
-      toast.error(error.message || 'Failed to fetch articles');
+      toast.error(error.message || 'Failed to fetch perspectives');
     } finally {
       setLoading(false);
     }
   };
 
   const handleDeleteClick = (id: string) => {
-    setArticleToDelete(id);
+    setReportToDelete(id);
     setDeleteDialogOpen(true);
   };
 
   const handleDeleteConfirm = async () => {
-    if (!articleToDelete) return;
+    if (!reportToDelete) return;
     try {
-      await articlesAPI.delete(articleToDelete);
-      toast.success('Article deleted successfully');
+      await perspectivesAPI.delete(reportToDelete);
+      toast.success('Perspective deleted successfully');
       setDeleteDialogOpen(false);
-      setArticleToDelete(null);
-      fetchArticles();
+      setReportToDelete(null);
+      fetchReports();
     } catch (error: any) {
-      toast.error(error.message || 'Failed to delete article');
+      toast.error(error.message || 'Failed to delete perspective');
       setDeleteDialogOpen(false);
-      setArticleToDelete(null);
+      setReportToDelete(null);
     }
   };
 
@@ -117,14 +114,14 @@ const Dashboard = () => {
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
               <div>
                 <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#01002A' }}>
-                  Pivotal Thinking Dashboard
+                  Perspectives Dashboard
                 </h1>
                 <p className="text-sm" style={{ color: '#01002A' }}>
-                  Manage Pivotal Thinking articles
+                  Manage Perspectives
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                <AdminDashboardTabs activeTab="pivotal-thinking" />
+                <AdminDashboardTabs activeTab="perspectives" />
                 <Button variant="outline" onClick={handleLogout} className="w-full sm:w-auto border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
@@ -133,40 +130,40 @@ const Dashboard = () => {
             </div>
 
             <div className="flex justify-end mb-6">
-              <Button onClick={() => navigate('/admin/articles/new')} className="w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
+              <Button onClick={() => navigate('/admin/reports/new')} className="w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
                 <Plus className="h-4 w-4 mr-2" />
-                New Article
+                New Report
               </Button>
             </div>
 
             {loading ? (
               <ArticleLoader count={6} columns={3} />
-            ) : articles.length === 0 ? (
+            ) : reports.length === 0 ? (
               <Card style={{ backgroundColor: '#ffffff' }}>
                 <CardContent className="py-12 text-center">
-                  <p className="text-muted-foreground mb-4">No articles found</p>
-                  <Button onClick={() => navigate('/admin/articles/new')} className="bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
+                  <p className="text-muted-foreground mb-4">No perspectives found</p>
+                  <Button onClick={() => navigate('/admin/reports/new')} className="bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
                     <Plus className="h-4 w-4 mr-2" />
-                    Create First Article
+                    Create First Perspective
                   </Button>
                 </CardContent>
               </Card>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {articles.map((article) => (
-                  <Card key={article._id} style={{ backgroundColor: '#ffffff' }}>
+                {reports.map((report) => (
+                  <Card key={report._id} style={{ backgroundColor: '#ffffff' }}>
                     <CardHeader>
-                      <div className="aspect-video overflow-hidden rounded-lg mb-4"><img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover"/></div>
-                      <CardTitle className="text-lg line-clamp-2" style={{ color: '#01002A' }}>{article.title}</CardTitle>
-                      <p className="text-sm text-muted-foreground">{article.date}</p>
+                      <div className="aspect-video overflow-hidden rounded-lg mb-4"><img src={report.imageUrl} alt={report.title} className="w-full h-full object-cover"/></div>
+                      <CardTitle className="text-lg line-clamp-2" style={{ color: '#01002A' }}>{report.title}</CardTitle>
+                      <p className="text-sm text-muted-foreground">{report.date}</p>
                     </CardHeader>
                     <CardContent>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => navigate(`/admin/articles/edit/${article._id}`)} className="flex-1 border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
+                        <Button variant="outline" size="sm" onClick={() => navigate(`/admin/reports/edit/${report._id}`)} className="flex-1 border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
                           <Edit className="h-4 w-4 mr-2" />
                           Edit
                         </Button>
-                        <Button variant="destructive" size="sm" onClick={() => handleDeleteClick(article._id)}>
+                        <Button variant="destructive" size="sm" onClick={() => handleDeleteClick(report._id)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
@@ -182,10 +179,10 @@ const Dashboard = () => {
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-              <AlertDialogDescription>This action cannot be undone. This will permanently delete the article.</AlertDialogDescription>
+              <AlertDialogDescription>This action cannot be undone. This will permanently delete the perspective.</AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={() => setArticleToDelete(null)}>Cancel</AlertDialogCancel>
+              <AlertDialogCancel onClick={() => setReportToDelete(null)}>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={handleDeleteConfirm} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
                 Delete
               </AlertDialogAction>
@@ -197,4 +194,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ReportsDashboard;

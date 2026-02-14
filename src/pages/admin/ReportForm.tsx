@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { articlesAPI, uploadAPI } from '@/services/api';
+import { perspectivesAPI, uploadAPI } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import SEOHead from '@/components/SEOHead';
 
-const ArticleForm = () => {
+const ReportForm = () => {
   const { id } = useParams();
   const isEdit = !!id;
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const ArticleForm = () => {
   const fetchItem = async () => {
     try {
       setFetching(true);
-      const item = await articlesAPI.getById(id!);
+      const item = await perspectivesAPI.getById(id!);
       setFormData({ title: item.title, date: item.date, imageUrl: item.imageUrl, bannerImageUrl: item.bannerImageUrl || '', pdfUrl: item.pdfUrl });
       setImagePreview(item.imageUrl);
       setBannerImagePreview(item.bannerImageUrl || '');
@@ -49,8 +49,8 @@ const ArticleForm = () => {
         if (!isNaN(parsedDate.getTime())) setSelectedDate(parsedDate);
       }
     } catch (error: any) {
-      toast.error(error.message || 'Failed to fetch article');
-      navigate('/admin');
+      toast.error(error.message || 'Failed to fetch perspective');
+      navigate('/admin/reports');
     } finally {
       setFetching(false);
     }
@@ -96,15 +96,15 @@ const ArticleForm = () => {
       const itemData = { title: formData.title, date: formattedDate, imageUrl: imageUrl || '', bannerImageUrl: bannerImageUrl || '', pdfUrl };
 
       if (isEdit) {
-        await articlesAPI.update(id!, itemData);
-        toast.success(`Article updated successfully`);
+        await perspectivesAPI.update(id!, itemData);
+        toast.success(`Perspective updated successfully`);
       } else {
-        await articlesAPI.create(itemData);
-        toast.success(`Article created successfully`);
+        await perspectivesAPI.create(itemData);
+        toast.success(`Perspective created successfully`);
       }
-      navigate('/admin');
+      navigate('/admin/reports');
     } catch (error: any) {
-      toast.error(error.message || `Failed to save article`);
+      toast.error(error.message || `Failed to save perspective`);
     } finally {
       setLoading(false);
     }
@@ -116,7 +116,7 @@ const ArticleForm = () => {
         <SEOHead robots="noindex, nofollow" />
         <Layout>
           <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#F3F5F7' }}>
-            <LoadingSpinner text="Loading article..." size="lg" />
+            <LoadingSpinner text="Loading perspective..." size="lg" />
           </div>
         </Layout>
       </ProtectedRoute>
@@ -130,18 +130,18 @@ const ArticleForm = () => {
         <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
           <div className="container-custom section-padding py-10">
             <div className="mb-8">
-              <Button variant="ghost" onClick={() => navigate('/admin')} className="mb-4 text-[#01002A] hover:text-white hover:bg-[#01002A]">
+              <Button variant="ghost" onClick={() => navigate('/admin/reports')} className="mb-4 text-[#01002A] hover:text-white hover:bg-[#01002A]">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back to Dashboard
               </Button>
               <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#01002A' }}>
-                {isEdit ? 'Edit Pivotal Thinking' : 'New Pivotal Thinking'}
+                {isEdit ? 'Edit Report' : 'New Report'}
               </h1>
             </div>
 
             <form onSubmit={handleSubmit} className="max-w-2xl space-y-6 p-4 md:p-6 lg:p-8 rounded-lg" style={{ backgroundColor: '#ffffff' }}>
               <div className="space-y-2">
                 <Label htmlFor="title" style={{ color: '#01002A' }}>Title *</Label>
-                <Input id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} required placeholder="Article title" style={{ borderColor: '#01002A' }}/>
+                <Input id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} required placeholder="Perspective title" style={{ borderColor: '#01002A' }}/>
               </div>
 
               <div className="space-y-2">
@@ -166,9 +166,9 @@ const ArticleForm = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button type="submit" disabled={loading} className="flex-1 w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
                   <Save className="h-4 w-4 mr-2" />
-                  {loading ? 'Saving...' : isEdit ? 'Update Article' : 'Create Article'}
+                  {loading ? 'Saving...' : isEdit ? 'Update Perspective' : 'Create Perspective'}
                 </Button>
-                <Button type="button" variant="outline" onClick={() => navigate('/admin')} className="w-full sm:w-auto border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
+                <Button type="button" variant="outline" onClick={() => navigate('/admin/reports')} className="w-full sm:w-auto border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
                   Cancel
                 </Button>
               </div>
@@ -180,4 +180,4 @@ const ArticleForm = () => {
   );
 };
 
-export default ArticleForm;
+export default ReportForm;
