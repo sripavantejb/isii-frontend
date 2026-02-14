@@ -145,16 +145,135 @@ const ArticleForm = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="date" style={{ color: '#01002A' }}>Date *</Label>
+                <Label htmlFor="date" style={{ color: '#01002A' }}>
+                  Date *
+                </Label>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="outline" className={cn("w-full justify-start text-left font-normal border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white", !selectedDate && "text-muted-foreground")}>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white",
+                        !selectedDate && "text-muted-foreground"
+                      )}
+                    >
                       <CalendarIcon className="mr-2 h-4 w-4" />
                       {selectedDate ? format(selectedDate, 'MMMM yyyy') : <span>Pick a month and year</span>}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} captionLayout="dropdown-buttons" fromYear={1990} toYear={2030} initialFocus />
+                  <PopoverContent className="w-auto p-6" align="start">
+                    <style>{`
+                      .rdp-dropdown {
+                        height: 2.5rem;
+                        border-radius: 0.375rem;
+                        border: 1px solid hsl(var(--input));
+                        background-color: hsl(var(--background));
+                        padding: 0.5rem 1rem;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                        transition: all 0.2s;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        cursor: pointer;
+                        margin: 0;
+                      }
+                      .rdp-dropdown:hover {
+                        background-color: hsl(var(--accent));
+                        color: hsl(var(--accent-foreground));
+                      }
+                      .rdp-dropdown:focus {
+                        outline: none;
+                        ring: 2px;
+                        ring-color: hsl(var(--ring));
+                        ring-offset: 2px;
+                      }
+                      .rdp-dropdown_month {
+                        min-width: 140px;
+                        width: 140px;
+                      }
+                      .rdp-dropdown_year {
+                        min-width: 100px;
+                        width: 100px;
+                      }
+                      .rdp-caption {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 1rem;
+                        padding: 0;
+                        margin: 0;
+                        width: 100%;
+                      }
+                      .rdp-caption_dropdowns {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 1rem;
+                        width: 100%;
+                      }
+                      .rdp-month {
+                        margin: 0;
+                        padding: 0;
+                      }
+                      .rdp-months {
+                        margin: 0;
+                        padding: 0;
+                      }
+                    `}</style>
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      defaultMonth={selectedDate || new Date()}
+                      onSelect={(date) => {
+                        console.log('📅 Calendar onSelect called:', date);
+                        if (date) {
+                          const formatted = format(date, 'MMMM yyyy');
+                          console.log('📅 Setting date to:', formatted);
+                          setSelectedDate(date);
+                          setFormData({ ...formData, date: formatted });
+                        }
+                      }}
+                      onMonthChange={(date) => {
+                        // When month/year changes via dropdown, set to first day of that month
+                        console.log('📅 Calendar onMonthChange called:', date);
+                        if (date) {
+                          const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                          const formatted = format(firstDayOfMonth, 'MMMM yyyy');
+                          console.log('📅 Setting date to first day of month:', formatted);
+                          setSelectedDate(firstDayOfMonth);
+                          setFormData({ ...formData, date: formatted });
+                        }
+                      }}
+                      captionLayout="dropdown-buttons"
+                      fromYear={1990}
+                      toYear={2030}
+                      initialFocus
+                      classNames={{
+                        months: "flex flex-col m-0 p-0",
+                        month: "space-y-0 m-0 p-0",
+                        caption: "flex justify-center items-center gap-4 p-0 m-0 w-full",
+                        caption_label: "hidden",
+                        nav: "hidden",
+                        nav_button: "hidden",
+                        nav_button_previous: "hidden",
+                        nav_button_next: "hidden",
+                        table: "hidden",
+                        head_row: "hidden",
+                        head_cell: "hidden",
+                        row: "hidden",
+                        cell: "hidden",
+                        day: "hidden",
+                        day_range_end: "hidden",
+                        day_selected: "hidden",
+                        day_today: "hidden",
+                        day_outside: "hidden",
+                        day_disabled: "hidden",
+                        day_range_middle: "hidden",
+                        day_hidden: "hidden",
+                      }}
+                    />
                   </PopoverContent>
                 </Popover>
               </div>
