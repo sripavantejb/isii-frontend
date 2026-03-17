@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
@@ -55,7 +55,11 @@ const App = () => (
             <Route path="/capabilities/strategic-counsel/securing-sovereignty" element={<SecuringSovereignty />} />
             <Route path="/capabilities/strategic-counsel/mobilising-transition" element={<MobilisingTransition />} />
             <Route path="/capabilities/programmes" element={<SystemicIntervention />} />
-            <Route path="/capabilities/experience" element={<Experience />} />
+            <Route path="/capabilities/projects-and-intervention" element={<Experience />} />
+            <Route
+              path="/capabilities/experience"
+              element={<Navigate to="/capabilities/projects-and-intervention" replace />}
+            />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             
             {/* Admin Routes */}
