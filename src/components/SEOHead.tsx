@@ -4,11 +4,12 @@ interface SEOHeadProps {
   robots?: string;
   title?: string;
   description?: string;
+  canonical?: string;
   ogUrl?: string;
   twitterUrl?: string;
 }
 
-const SEOHead = ({ robots, title, description, ogUrl, twitterUrl }: SEOHeadProps) => {
+const SEOHead = ({ robots, title, description, canonical, ogUrl, twitterUrl }: SEOHeadProps) => {
   useEffect(() => {
     // Handle robots meta tag
     if (robots) {
@@ -35,6 +36,17 @@ const SEOHead = ({ robots, title, description, ogUrl, twitterUrl }: SEOHeadProps
         document.head.appendChild(descMeta);
       }
       descMeta.setAttribute('content', description);
+    }
+
+    // Handle canonical link tag
+    if (canonical) {
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', canonical);
     }
 
     // Handle og:url meta tag
@@ -64,7 +76,7 @@ const SEOHead = ({ robots, title, description, ogUrl, twitterUrl }: SEOHeadProps
       // Note: We don't remove the meta tags on cleanup to avoid flickering
       // The next page will set its own values
     };
-  }, [robots, title, description, ogUrl, twitterUrl]);
+  }, [robots, title, description, canonical, ogUrl, twitterUrl]);
 
   return null;
 };
