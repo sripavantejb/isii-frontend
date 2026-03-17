@@ -1,21 +1,17 @@
 User-agent: *
 Allow: /
 Disallow: /admin
-Disallow: /admin/
-Disallow: /admin/login
-Disallow: /admin/articles/
-Disallow: /admin/reports/
+Disallow: /privacy-policy
 
-# AI and search agents: allow public pages, restrict the legal page
+# Exclusive access to most common AI and search agents
+
 User-agent: GPTBot
 User-agent: ChatGPT-User
-User-agent: OAI-SearchBot
 User-agent: Google-Extended
 User-agent: ClaudeBot
 User-agent: anthropic-ai
 User-agent: PerplexityBot
-User-agent: Bytespider
-Allow: /
-Disallow: /privacy-policy
 
 Sitemap: https://www.isii.global/sitemap.xml
+
+
