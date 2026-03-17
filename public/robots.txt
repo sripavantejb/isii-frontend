@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /privacy-policy
+
+# Exclusive access to most common AI and search agents
+
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+
+Sitemap: https://www.isii.global/sitemap.xml
+
+
