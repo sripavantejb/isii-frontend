@@ -1,84 +1,41 @@
-import { useEffect } from 'react';
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+import { SEO_CONFIG } from "@/seoConfig";
 
 interface SEOHeadProps {
   robots?: string;
-  title?: string;
-  description?: string;
-  canonical?: string;
-  ogUrl?: string;
-  twitterUrl?: string;
 }
 
-const SEOHead = ({ robots, title, description, canonical, ogUrl, twitterUrl }: SEOHeadProps) => {
-  useEffect(() => {
-    // Handle robots meta tag
-    if (robots) {
-      let robotsMeta = document.querySelector('meta[name="robots"]');
-      if (!robotsMeta) {
-        robotsMeta = document.createElement('meta');
-        robotsMeta.setAttribute('name', 'robots');
-        document.head.appendChild(robotsMeta);
-      }
-      robotsMeta.setAttribute('content', robots);
-    }
+const normalizePath = (pathname: string) => {
+  if (pathname === "/") return "/";
+  return pathname.replace(/\/+$/, "");
+};
 
-    // Handle title
-    if (title) {
-      document.title = title;
-    }
+const SEOHead = ({ robots }: SEOHeadProps) => {
+  const location = useLocation();
+  const path = normalizePath(location.pathname);
+  const seo = SEO_CONFIG[path];
 
-    // Handle description meta tag
-    if (description) {
-      let descMeta = document.querySelector('meta[name="description"]');
-      if (!descMeta) {
-        descMeta = document.createElement('meta');
-        descMeta.setAttribute('name', 'description');
-        document.head.appendChild(descMeta);
-      }
-      descMeta.setAttribute('content', description);
-    }
+  const canonicalPath = seo?.canonicalPath || path;
+  const canonical =
+    seo && typeof window !== "undefined"
+      ? `${window.location.origin}${canonicalPath}`
+      : undefined;
 
-    // Handle canonical link tag
-    if (canonical) {
-      let canonicalLink = document.querySelector('link[rel="canonical"]');
-      if (!canonicalLink) {
-        canonicalLink = document.createElement('link');
-        canonicalLink.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonicalLink);
-      }
-      canonicalLink.setAttribute('href', canonical);
-    }
+  if (!seo && !robots) {
+    return null;
+  }
 
-    // Handle og:url meta tag
-    if (ogUrl) {
-      let ogUrlMeta = document.querySelector('meta[property="og:url"]');
-      if (!ogUrlMeta) {
-        ogUrlMeta = document.createElement('meta');
-        ogUrlMeta.setAttribute('property', 'og:url');
-        document.head.appendChild(ogUrlMeta);
-      }
-      ogUrlMeta.setAttribute('content', ogUrl);
-    }
-
-    // Handle twitter:url meta tag
-    if (twitterUrl) {
-      let twitterUrlMeta = document.querySelector('meta[name="twitter:url"]');
-      if (!twitterUrlMeta) {
-        twitterUrlMeta = document.createElement('meta');
-        twitterUrlMeta.setAttribute('name', 'twitter:url');
-        document.head.appendChild(twitterUrlMeta);
-      }
-      twitterUrlMeta.setAttribute('content', twitterUrl);
-    }
-
-    // Cleanup function
-    return () => {
-      // Note: We don't remove the meta tags on cleanup to avoid flickering
-      // The next page will set its own values
-    };
-  }, [robots, title, description, canonical, ogUrl, twitterUrl]);
-
-  return null;
+  return (
+    <Helmet>
+      {seo?.title ? <title>{seo.title}</title> : null}
+      {seo?.description ? (
+        <meta name="description" content={seo.description} />
+      ) : null}
+      {canonical ? <link rel="canonical" href={canonical} /> : null}
+      {robots ? <meta name="robots" content={robots} /> : null}
+    </Helmet>
+  );
 };
 
 export default SEOHead;
