@@ -110,7 +110,7 @@ const Index = () => {
     },
     {
       image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
-      title: "Programmes & Interventions",
+      title: "Intervention Programmes",
       description: "Interventions that mobilise strategies for leveraging alliances, technology and solutions, and capital flows at scale.",
       buttonText: "Explore Programmes & Interventions",
       buttonLink: "/capabilities/programmes",

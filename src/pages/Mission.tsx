@@ -74,6 +74,44 @@ const Mission = () => {
             <li>Sovereignty and agency amid geopolitical, technological and economic challenges.</li>
             <li>Systemic change to the information age securing peace, prosperity, and freedom in the transition</li>
           </ul>
+
+          <div className="border-t border-gray-300 my-6 md:my-8"></div>
+
+          <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            The Challenge
+          </h2>
+
+          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            Power is being redistributed through the capture of economic systems, cognitive infrastructure, and the rules that govern the new era - not only through military force.
+          </p>
+
+          <div className="border-t border-gray-300 my-6 md:my-8"></div>
+
+          <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            The Stakes
+          </h2>
+
+          <p className="font-serif text-base text-foreground leading-relaxed animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            Where human agency erodes - through failure to deliver prosperity, loss of sovereignty to foreign capture, or lagging in technological transition - nations lose the capacity to govern, corporations to compete, and individuals to choose.
+          </p>
+
+          <div className="border-t border-gray-300 my-6 md:my-8"></div>
+
+          <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-6 animate-fade-in" style={{ willChange: "opacity, transform" }}>
+            The Three Levels
+          </h2>
+
+          <ul className="font-serif text-base text-foreground leading-relaxed animate-fade-in list-disc list-inside space-y-4" style={{ willChange: "opacity, transform" }}>
+            <li>
+              <span className="font-bold">Nations</span> - to deliver prosperity, defend sovereignty, and lead their own transition
+            </li>
+            <li>
+              <span className="font-bold">Corporations</span> - to compete and create value without capture by monopolies or rivals
+            </li>
+            <li>
+              <span className="font-bold">Individuals</span> - to make free choices and live with dignity
+            </li>
+          </ul>
         </div>
       </section>
     </Layout>

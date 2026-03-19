@@ -464,17 +464,19 @@ const Context = () => {
                   institutions, and&nbsp;enterprises
                 </li>
                 <li>
-                  <strong>Provides unusual thinking and ideas</strong> on matters
-                  of critical consequence for effective response and and aims at
-                  pre-emption
+                  <strong>Provides distinctive thinking and ideas</strong> on
+                  matters of critical consequence for effective response and and
+                  aims at pre-emption
                 </li>
                 <li>
-                  <strong>Integrates intelligence, strategy, and intervention</strong>,
-                  creating readiness for execution
+                  <strong>
+                    Integrates intelligence, strategy, and intervention
+                  </strong>
+                  , creating readiness for execution
                 </li>
                 <li>
                   <strong>Focuses on system-level transitions</strong>, not
-                  discrete policy issues, projects, or sectors
+                  narrow view of policy issues, projects, or sectors
                 </li>
                 <li>
                   <strong>
@@ -489,11 +491,27 @@ const Context = () => {
                   , enabling solutions that no single actor can deliver alone
                 </li>
                 <li>
-                  <strong>Combines long-term foresight with near-term action</strong>,
-                  aligning decades-long transitions with immediate decision
+                  <strong>
+                    Combines long-term foresight with intervention strategies
+                  </strong>
+                  , aligning decades-long transitions with immediate decision
                   windows
                 </li>
               </ul>
+
+              <p
+                className="font-serif text-base text-foreground leading-relaxed animate-fade-in mt-8"
+                style={{ willChange: "opacity, transform" }}
+              >
+                <strong>
+                  Today's system-level disruptive transitions demand an
+                  institution that combines strategic intelligence, strategy
+                  formulation, and execution across sovereign, institutional,
+                  and market boundaries - capabilities that think tanks,
+                  consultancies, NGOs, bank research units, and investment
+                  firms are not designed to integrate
+                </strong>
+              </p>
             </div>
           </div>
         </div>

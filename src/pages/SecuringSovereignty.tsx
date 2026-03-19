@@ -45,7 +45,7 @@ const SecuringSovereignty = () => {
                   <p className="font-sans text-base md:text-lg font-bold text-black">
                     Core question:
                   </p>
-                  <p className="font-sans text-base md:text-lg text-black leading-relaxed">
+                  <p className="font-sans text-base md:text-lg text-black leading-relaxed italic font-semibold">
                     How does the nation protect itself from subordination and build the capabilities and alliances to shape the global order?
                   </p>
                 </div>
@@ -53,16 +53,26 @@ const SecuringSovereignty = () => {
                 {/* Focus of Strategic Counsel */}
                 <div className="space-y-3">
                   <p className="font-sans text-base md:text-lg font-bold text-black">
-                    We provide strategic counsel on the agenda for:
+                    We provide strategic counsel on:
                   </p>
-                  <ul className="space-y-2.5 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
-                    <li>AI sovereignty, retaining autonomy and avoiding cognitive capture</li>
-                    <li>Energy, resource, space, cyber, and critical-infrastructure security</li>
-                    <li>Resilient supply chains and financial sovereignty</li>
-                    <li>The alliance web to defend position, buy scale, and advance national agenda</li>
-                    <li>Leading in foundational technologies and commanding strategic resources and information ecosystems</li>
-                    <li>Building a new multilateralism</li>
-                  </ul>
+                  <ol className="space-y-4 font-sans text-base md:text-lg text-black leading-relaxed list-decimal list-outside pl-6">
+                    <li>
+                      <span className="font-bold">AI and State Sovereignty.</span>{" "}
+                      The US and China dominate AI across five key metrics of technological power and are positioned to set the terms for all other nations who effectively forfeit sovereignty.
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        Energy, Resource, and Infrastructure Security.
+                      </span>{" "}
+                      Every major conflict since 1973 has triggered an oil price spike and inflation shock; energy and resources are prerequisites for national independence.
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        Alliances in the New Multilateralism.
+                      </span>{" "}
+                      The 2025 US National Security Strategy makes the use of US power explicit transactional levers against allies and rivals.
+                    </li>
+                  </ol>
                 </div>
 
                 {/* Why this is imperative */}
@@ -71,7 +81,7 @@ const SecuringSovereignty = () => {
                     Why this is imperative:
                   </p>
                   <p className="font-sans text-base md:text-lg text-black leading-relaxed">
-                    Sovereignty today is at threat from allies, rivals and technology platforms.
+                    Sovereignty today is at threat from allies, rivals and technology platforms
                   </p>
                 </div>
               </div>
