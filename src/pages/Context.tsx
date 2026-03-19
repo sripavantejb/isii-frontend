@@ -334,18 +334,18 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
             {/* Globe image on the left */}
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start">
               <img
                 src={globeImage1}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
             {/* Content on the right */}
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}
@@ -435,18 +435,18 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-muted"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
             {/* Globe image on the left */}
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start">
               <img
                 src={globeImage2}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
             {/* Content on the right */}
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}
@@ -523,16 +523,16 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
-            <div className="flex justify-center md:justify-start">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
+            <div className="flex justify-start">
               <img
                 src={globeImage3}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}
