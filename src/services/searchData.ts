@@ -124,7 +124,7 @@ const pageContent = [
   {
     title: "Projects and Intervention",
     description: "Experience in projects and interventions across various domains",
-    url: "/capabilities/experience",
+    url: "/capabilities/projects-and-intervention",
     content: "Projects and Intervention SELECTED PROJECTS & INTERVENTIONS Highly sensitive state-level challenges, creating stabilising frameworks across security, governance, climate, and regional systems. Transition architectures, guiding sovereign shifts into the Information Era across major world powers. Sovereign and private capital allocation strategy, mass capital allocation strategies based on thematics. AI and Technology strategy, converting development gaps into profitable, scalable engines of prosperity. Economic and industrial systems, strengthening national competitiveness, productivity, and long-term growth across continents. Human security and societal resilience, reshaping education, inclusion, and workforce adaptation for technological disruption.",
   },
   {
