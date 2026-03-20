@@ -22,6 +22,44 @@ const interventionCards = [
   }
 ];
 
+const sharedPrograms = [
+  {
+    id: 1,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/The+Cognitive+Sovereignty+Initiative.jpg",
+    alt: "The Cognitive Sovereignty Initiative",
+    heading: "The Cognitive Sovereignty Initiative",
+    description: "Securing the capacity of nations, institutions, and individuals to govern, compete, and choose freely in the face of cognitive capture in the rising tech-enabled Age of Systems."
+  },
+  {
+    id: 2,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/Industrial-Societal+Transition%2C+AI+Trust+Labs.png",
+    alt: "Industrial-Societal Transition, AI Trust Labs",
+    heading: "Industrial-Societal Transition, AI Trust Labs",
+    description: "Designing the institutional, industrial, and social architectures that allow nations to transition constructively into the information era without fracture or subordination."
+  },
+  {
+    id: 3,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/National+Prosperity+and+Growth%C2%A0.jpg",
+    alt: "National Prosperity and Growth",
+    heading: "National Prosperity and Growth",
+    description: "Building the systems of enterprise, growth, and wealth creation that deliver the prosperity without which no nation can sustain stability, sovereignty, or freedom."
+  },
+  {
+    id: 4,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/Large+Scale+Thematic+Capital%C2%A0Allocation.jpg",
+    alt: "Large Scale Thematic Capital Allocation",
+    heading: "Large Scale Thematic Capital Allocation",
+    description: "Mobilising and directing capital toward the transitions, technologies, and sovereignties that will determine the distribution of power and wealth in the next era."
+  },
+  {
+    id: 5,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/mass_financial_inclusion.jpg",
+    alt: "Mass Financial Inclusion",
+    heading: "Mass Financial Inclusion",
+    description: "The spread of mass financial inclusion in the conversion of low to middle income populations through technology, financial, and policy change."
+  }
+];
+
 const SystemicIntervention = () => {
   return (
     <Layout>
@@ -158,86 +196,30 @@ const SystemicIntervention = () => {
               Prioritised Shared Programs
             </h2>
           </div>
-          <div className="border-b border-border py-4 md:py-6">
-            <div className="flex items-start" style={{ gap: '1em' }}>
-              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
-                <img
-                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080679/8_q9sc80.png"
-                  alt="The Transition Project"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  The Transition Project: Transitioning Nations and Blocs of Nations to the Information Era Collaborating on A.l. and Technologies of the Future
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-b border-border py-4 md:py-6">
-            <div className="flex items-center" style={{ gap: '1em' }}>
-              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
-                <img
-                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080694/7_nowhdb.png"
-                  alt="The National Sovereignty Security Programme"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  The National Sovereignty Security Programme: Guarding and Protecting Sovereignty Across All Domains
-                </p>
+          {sharedPrograms.map((program, index) => (
+            <div
+              key={program.id}
+              className={index === sharedPrograms.length - 1 ? "border-t border-border py-4 md:py-6" : "border-b border-border py-4 md:py-6"}
+            >
+              <div className="flex items-start" style={{ gap: '1em' }}>
+                <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                  <img
+                    src={program.image}
+                    alt={program.alt}
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                    {program.heading}
+                  </p>
+                  <p className="mt-2 text-sm md:text-base leading-relaxed text-foreground" style={{ marginBottom: 0, textAlign: 'left' }}>
+                    {program.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="border-b border-border py-4 md:py-6">
-            <div className="flex items-start" style={{ gap: '1em' }}>
-              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
-                <img
-                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080705/9_l3nieb.png"
-                  alt="The Prosperity Initiative, The World Investment Plan"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  The Prosperity Initiative, The World Investment Plan: Building Engines of Enterprise, Growth and Shared Prosperity Leading to a Global Investment Boom by Turning Needs into Opportunities
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-b border-border py-4 md:py-6">
-            <div className="flex items-start" style={{ gap: '1em' }}>
-              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
-                <img
-                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080782/10_chuwsh.png"
-                  alt="Rethinking the World Order and Multilateralism"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  Rethinking the World Order and Multilateralism: Redesigning the world system using principles from complex adaptive and antifragile systems, realism, resilience, natural and constitutional law, and human security
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-border py-4 md:py-6">
-            <div className="flex items-start" style={{ gap: '1em' }}>
-              <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
-                <img
-                  src="https://res.cloudinary.com/dqataciy5/image/upload/v1769080785/11_zcan9r.png"
-                  alt="Mobilizing Local Mission Impossible Forces"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
-                  Mobilising Local Mission Impossible Forces: Tackling Society's Toughest Challenges with Bold Solutions Mobilized by Local Task Forces
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
