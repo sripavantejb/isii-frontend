@@ -334,18 +334,18 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
             {/* Globe image on the left */}
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start">
               <img
                 src={globeImage1}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
             {/* Content on the right */}
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}
@@ -435,18 +435,18 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-muted"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
             {/* Globe image on the left */}
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start">
               <img
                 src={globeImage2}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
             {/* Content on the right */}
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}
@@ -464,17 +464,19 @@ const Context = () => {
                   institutions, and&nbsp;enterprises
                 </li>
                 <li>
-                  <strong>Provides unusual thinking and ideas</strong> on matters
-                  of critical consequence for effective response and and aims at
-                  pre-emption
+                  <strong>Provides distinctive thinking and ideas</strong> on
+                  matters of critical consequence for effective response and and
+                  aims at pre-emption
                 </li>
                 <li>
-                  <strong>Integrates intelligence, strategy, and intervention</strong>,
-                  creating readiness for execution
+                  <strong>
+                    Integrates intelligence, strategy, and intervention
+                  </strong>
+                  , creating readiness for execution
                 </li>
                 <li>
                   <strong>Focuses on system-level transitions</strong>, not
-                  discrete policy issues, projects, or sectors
+                  narrow view of policy issues, projects, or sectors
                 </li>
                 <li>
                   <strong>
@@ -489,11 +491,27 @@ const Context = () => {
                   , enabling solutions that no single actor can deliver alone
                 </li>
                 <li>
-                  <strong>Combines long-term foresight with near-term action</strong>,
-                  aligning decades-long transitions with immediate decision
+                  <strong>
+                    Combines long-term foresight with intervention strategies
+                  </strong>
+                  , aligning decades-long transitions with immediate decision
                   windows
                 </li>
               </ul>
+
+              <p
+                className="font-serif text-base text-foreground leading-relaxed animate-fade-in mt-8"
+                style={{ willChange: "opacity, transform" }}
+              >
+                <strong>
+                  Today's system-level disruptive transitions demand an
+                  institution that combines strategic intelligence, strategy
+                  formulation, and execution across sovereign, institutional,
+                  and market boundaries - capabilities that think tanks,
+                  consultancies, NGOs, bank research units, and investment
+                  firms are not designed to integrate
+                </strong>
+              </p>
             </div>
           </div>
         </div>
@@ -505,16 +523,16 @@ const Context = () => {
         className="scroll-mt-44 pt-16 pb-16 md:pb-20 bg-background"
       >
         <div className="container-custom section-padding">
-          <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
-            <div className="flex justify-center md:justify-start">
+          <div className="grid grid-cols-[108px_minmax(0,1fr)] gap-4 md:grid-cols-[auto_1fr] md:gap-8 items-start md:items-center">
+            <div className="flex justify-start">
               <img
                 src={globeImage3}
                 alt="Globe"
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[108px] sm:max-w-[132px] md:max-w-[300px] h-auto object-contain"
               />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h2
                 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 animate-fade-in"
                 style={{ willChange: "opacity, transform" }}

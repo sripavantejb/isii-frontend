@@ -37,7 +37,7 @@ const GrowthAndProsperity = () => {
               <div className="h-full space-y-6">
                 {/* Main Topic */}
                 <h2 className="font-sans text-xl md:text-2xl font-bold text-black">
-                   Building Growth, Prosperity, and Systems of Enterprise and Global Thematic Capital Allocation
+                  Building Growth, Prosperity, and Systems of Enterprise and Global Thematic Capital Allocation
                 </h2>
 
                 {/* Core Question */}
@@ -45,7 +45,7 @@ const GrowthAndProsperity = () => {
                   <p className="font-sans text-base md:text-lg font-bold text-black">
                     Core question:
                   </p>
-                  <p className="font-sans text-base md:text-lg text-black leading-relaxed">
+                  <p className="font-sans text-base md:text-lg text-black leading-relaxed italic font-semibold">
                     How does the nation renew its economic engine, broaden prosperity, and create a system of enterprise for prosperity at home and abroad?
                   </p>
                 </div>
@@ -53,18 +53,34 @@ const GrowthAndProsperity = () => {
                 {/* Focus of Strategic Counsel */}
                 <div className="space-y-3">
                   <p className="font-sans text-base md:text-lg font-bold text-black">
-                    We provide strategic counsel on the agenda for:
+                    We provide strategic counsel on:
                   </p>
-                  <ul className="space-y-2.5 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
-                    <li>A vision and mission that can galvanise the public</li>
-                    <li>A 100-day plan of 100 initiatives to drive national prosperity</li>
-                    <li>Transition of mass populations to middle-class prosperity</li>
-                    <li>Democratised finance and capital mobilisation</li>
-                    <li>Entrepreneurism and SME ecosystem development</li>
-                    <li>Modern industrial and resources strategy</li>
-                    <li>Human, social and environmental capital and security</li>
-                    <li>A World Investment Plan to drive domestic & international growth and prosperity</li>
-                  </ul>
+                  <ol className="space-y-4 font-sans text-base md:text-lg text-black leading-relaxed list-decimal list-outside pl-6">
+                    <li>
+                      <span className="font-bold">
+                        National Growth and Prosperity Plan and Blueprint.
+                      </span>{" "}
+                      <span className="italic">
+                        High inequality makes a democracy up to seven times more likely to fall to a populist.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        Design of a System of Enterprise for National Wealth Creation.
+                      </span>{" "}
+                      <span className="italic">
+                        Open systems of enterprise generate incomes up to seven times higher than restricted ones.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        Thematical Capital Allocation for a Complex and Rapidly Changing World.
+                      </span>{" "}
+                      <span className="italic">
+                        Standard allocation models cannot price risks of geopolitical fragmentation, conflict, and technological disruption - estimated to reduce global output by up to 7%.
+                      </span>
+                    </li>
+                  </ol>
                 </div>
 
                 {/* Why this is imperative */}
@@ -73,7 +89,7 @@ const GrowthAndProsperity = () => {
                     Why this is imperative:
                   </p>
                   <p className="font-sans text-base md:text-lg text-black leading-relaxed">
-                    Nations that do not deliver growth and prosperity cannot delivery stability or preserve their freedoms.
+                    Nations that do not deliver growth and prosperity cannot delivery stability or preserve their freedoms
                   </p>
                 </div>
               </div>

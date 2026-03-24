@@ -45,7 +45,7 @@ const MobilisingTransition = () => {
                   <p className="font-sans text-base md:text-lg font-bold text-black">
                     Core question:
                   </p>
-                  <p className="font-sans text-base md:text-lg text-black leading-relaxed">
+                  <p className="font-sans text-base md:text-lg text-black leading-relaxed italic font-semibold">
                     How does a nation or group rebuild its systems - technology, energy, infrastructure, finance, institutions - to function and lead in the Information Age?
                   </p>
                 </div>
@@ -53,16 +53,34 @@ const MobilisingTransition = () => {
                 {/* Focus of Strategic Counsel */}
                 <div className="space-y-3">
                   <p className="font-sans text-base md:text-lg font-bold text-black">
-                    We provide strategic counsel on the agenda for:
+                    We provide strategic counsel on:
                   </p>
-                  <ul className="space-y-2.5 font-sans text-base md:text-lg text-black leading-relaxed" style={{ listStyleType: 'square', paddingLeft: '1.5rem' }}>
-                    <li>Transitioning from industrial to information-era systems</li>
-                    <li>AI and breakthrough technologies strategy (19 core techs)</li>
-                    <li>AI strategy for value, growth, and development</li>
-                    <li>Industrial transition for all sectors</li>
-                    <li>Energy, supply chains, and national infrastructure security</li>
-                    <li>Adapting institutions for the transition</li>
-                  </ul>
+                  <ol className="space-y-4 font-sans text-base md:text-lg text-black leading-relaxed list-decimal list-outside pl-6">
+                    <li>
+                      <span className="font-bold">
+                        Strategy for Transitioning from Industrial to Information Era.
+                      </span>{" "}
+                      <span className="italic">
+                        The old political, economic, industrial and social structure is set to be destroyed and replaced with a new one.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        AI and Core Systemic Technology Development & Acquisition Strategy.
+                      </span>{" "}
+                      <span className="italic">
+                        The US and China dominate AI and core future systemic technologies and positioned to set the terms for all others
+                      </span>
+                    </li>
+                    <li>
+                      <span className="font-bold">
+                        Tech Wealth and Value Creation Strategies.
+                      </span>{" "}
+                      <span className="italic">
+                        Global GDP potentially reaching US$350 trillion by 2060, 19 core technologies projected to create value of US$61 trillion by 2030.
+                      </span>
+                    </li>
+                  </ol>
                 </div>
 
                 {/* Why this is imperative */}
@@ -71,7 +89,7 @@ const MobilisingTransition = () => {
                     Why this is imperative:
                   </p>
                   <p className="font-sans text-base md:text-lg text-black leading-relaxed">
-                    Each nation stands to lose every political, social and economic power structure and delivery system in transition.
+                    Each nation stands to lose every political, social and economic power structure and delivery system in the transition
                   </p>
                 </div>
               </div>
