@@ -16,6 +16,7 @@ const Footer = () => {
     { label: "Strategic Counsel", path: "/capabilities/strategic-counsel" },
     { label: "Programmes & Interventions", path: "/capabilities/programmes" },
     { label: "Projects and Intervention", path: "/capabilities/projects-and-intervention" },
+    // { label: "News", path: "/press-and-news" },
   ];
 
   return (

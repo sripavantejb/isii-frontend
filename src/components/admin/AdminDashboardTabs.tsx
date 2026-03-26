@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export type AdminTab = 'pivotal-thinking' | 'perspectives';
+export type AdminTab = 'pivotal-thinking' | 'press-news' | 'perspectives';
 
 interface AdminDashboardTabsProps {
   activeTab?: AdminTab;
@@ -20,13 +20,20 @@ const AdminDashboardTabs = ({ activeTab }: AdminDashboardTabsProps) => {
     );
 
   return (
-    <div className="flex w-full sm:w-auto gap-2">
+    <div className="grid w-full grid-cols-3 gap-2 sm:w-auto">
       <Button
         variant="outline"
         onClick={() => navigate('/admin')}
         className={getTabClassName(activeTab === 'pivotal-thinking')}
       >
         Pivotal Thinking
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() => navigate('/admin/news-articles')}
+        className={getTabClassName(activeTab === 'press-news')}
+      >
+        Press & News
       </Button>
       <Button
         variant="outline"

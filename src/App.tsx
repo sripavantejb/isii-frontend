@@ -13,6 +13,7 @@ import People from "./pages/People";
 import Context from "./pages/Context";
 import PersonProfile from "./pages/PersonProfile";
 import PivotalThinking from "./pages/PivotalThinking";
+import PressNews from "./pages/PressNews";
 import ContentLibrary from "./pages/ContentLibrary";
 import Perspectives from "./pages/Perspectives";
 import PerspectivesLibrary from "./pages/PerspectivesLibrary";
@@ -26,8 +27,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
+import NewsDashboard from "./pages/admin/NewsDashboard";
 import ReportsDashboard from "./pages/admin/ReportsDashboard"; // New
 import ArticleForm from "./pages/admin/ArticleForm";
+import NewsForm from "./pages/admin/NewsForm";
 import ReportForm from "./pages/admin/ReportForm"; // New
 
 const queryClient = new QueryClient();
@@ -49,6 +52,7 @@ const App = () => (
             <Route path="/about/context" element={<Context />} />
             <Route path="/about/people/:slug" element={<PersonProfile />} />
             <Route path="/capabilities/pivotal-thinking" element={<PivotalThinking />} />
+            <Route path="/press-and-news" element={<PressNews />} />
             <Route path="/capabilities/pivotal-thinking/content-library" element={<ContentLibrary />} />
             <Route path="/capabilities/perspectives" element={<Perspectives />} />
             <Route path="/capabilities/perspectives/content-library" element={<PerspectivesLibrary />} />
@@ -71,6 +75,14 @@ const App = () => (
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/articles/new" element={<ArticleForm />} />
             <Route path="/admin/articles/edit/:id" element={<ArticleForm />} />
+
+            {/* Press & News Admin */}
+            <Route path="/admin/news-articles" element={<NewsDashboard />} />
+            <Route path="/admin/news-articles/new" element={<NewsForm />} />
+            <Route path="/admin/news-articles/edit/:id" element={<NewsForm />} />
+            <Route path="/admin/news" element={<Navigate to="/admin/news-articles" replace />} />
+            <Route path="/admin/news/new" element={<Navigate to="/admin/news-articles/new" replace />} />
+            <Route path="/admin/news/edit/:id" element={<Navigate to="/admin/news-articles" replace />} />
 
             {/* Perspectives (Reports) Admin */}
             <Route path="/admin/reports" element={<ReportsDashboard />} />

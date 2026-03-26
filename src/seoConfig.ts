@@ -65,6 +65,11 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description:
       "Browse the Pivotal Thinking content library featuring insights on geopolitics, strategy, technology, and global transitions.",
   },
+  "/press-and-news": {
+    title: "Press & News | ISII",
+    description:
+      "news updates",
+  },
   "/capabilities/perspectives": {
     title: "Perspectives | Reports & Strategic Insights | ISII",
     description:

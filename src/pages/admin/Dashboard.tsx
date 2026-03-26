@@ -15,12 +15,12 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
-import { Plus, Edit, Trash2, LogOut } from 'lucide-react';
+import { Edit, Plus, Trash2 } from 'lucide-react';
 import Layout from '@/components/Layout';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import ArticleLoader from '@/components/ArticleLoader';
 import SEOHead from '@/components/SEOHead';
-import AdminDashboardTabs from '@/components/admin/AdminDashboardTabs';
+import AdminDashboardHeader from '@/components/admin/AdminDashboardHeader';
 
 interface Article {
   _id: string;
@@ -114,30 +114,14 @@ const Dashboard = () => {
       <Layout>
         <div className="min-h-screen" style={{ backgroundColor: '#F3F5F7' }}>
           <div className="container-custom section-padding py-6 md:py-10">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
-              <div>
-                <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ color: '#01002A' }}>
-                  Pivotal Thinking Dashboard
-                </h1>
-                <p className="text-sm" style={{ color: '#01002A' }}>
-                  Manage Pivotal Thinking articles
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                <AdminDashboardTabs activeTab="pivotal-thinking" />
-                <Button variant="outline" onClick={handleLogout} className="w-full sm:w-auto border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex justify-end mb-6">
-              <Button onClick={() => navigate('/admin/articles/new')} className="w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
-                <Plus className="h-4 w-4 mr-2" />
-                New Article
-              </Button>
-            </div>
+            <AdminDashboardHeader
+              activeTab="pivotal-thinking"
+              title="Pivotal Thinking Dashboard"
+              description="Manage Pivotal Thinking articles"
+              newLabel="New Article"
+              onNew={() => navigate('/admin/articles/new')}
+              onLogout={handleLogout}
+            />
 
             {loading ? (
               <ArticleLoader count={6} columns={3} />
