@@ -37,7 +37,7 @@ const PressNews = () => {
 
   return (
     <Layout>
-      <section className="relative bg-primary py-12">
+      <section className="relative flex min-h-[180px] items-center bg-primary py-12">
         <img
           src={PRESS_NEWS_HERO_IMAGE}
           alt="Press & News banner"
