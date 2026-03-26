@@ -14,7 +14,7 @@ interface NewsItem {
 
 const PRESS_NEWS_HERO_IMAGE =
   import.meta.env.VITE_PRESS_NEWS_BANNER_URL ||
-  "https://isii-v2.s3.ap-south-1.amazonaws.com/press-new.jpeg";
+  "https://isii-v2.s3.ap-south-1.amazonaws.com/images/ChatGPT+Image+Mar+25%2C+2026%2C+10_49_16+PM+(1)+(1).png";
 
 const PressNews = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
@@ -37,26 +37,24 @@ const PressNews = () => {
 
   return (
     <Layout>
-      <section className="relative flex min-h-[180px] items-center bg-primary md:min-h-[220px]">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${PRESS_NEWS_HERO_IMAGE})`,
-            backgroundPosition: "center center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
+      <section className="relative bg-primary py-12">
+        <img
+          src={PRESS_NEWS_HERO_IMAGE}
+          alt="Press & News banner"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+          loading="eager"
+          decoding="async"
         />
         <div
           className="absolute inset-0 z-[1]"
           style={{
             background:
-              "linear-gradient(90deg, rgba(1,0,42,0.88) 0%, rgba(1,0,42,0.62) 42%, rgba(1,0,42,0.28) 100%)",
+              "linear-gradient(90deg, rgba(1,0,42,0.58) 0%, rgba(1,0,42,0.32) 42%, rgba(1,0,42,0.12) 100%)",
           }}
         />
         <div className="relative z-10 w-full">
-          <div className="container-custom section-padding w-full py-10 md:py-12">
-            <h1 className="font-serif text-3xl font-bold text-primary-foreground md:text-4xl">
+          <div className="container-custom section-padding w-full">
+            <h1 className="mb-4 font-serif text-3xl font-bold text-primary-foreground md:text-4xl">
               Press & News
             </h1>
           </div>
