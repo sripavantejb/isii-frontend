@@ -89,35 +89,70 @@ const PivotalThinking = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-12 bg-primary relative">
+      <section className="relative w-full overflow-hidden">
         {/* Mobile background image */}
-        <div 
-          className="md:hidden absolute inset-0 z-0"
+        <div
+          className="block md:hidden w-full relative"
           style={{
-            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1770375937/Frame_1707483159_2_z3ycdd.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundImage:
+              "url(https://res.cloudinary.com/dqataciy5/image/upload/v1770375937/Frame_1707483159_2_z3ycdd.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "180px",
           }}
-        />
+        >
+          <div className="absolute inset-0 flex items-center bg-black/40">
+            <div className="container-custom section-padding w-full">
+              <div className="max-w-3xl">
+                <h1
+                  className="mb-2 font-serif text-2xl font-bold text-primary-foreground animate-fade-in"
+                  style={{ willChange: "opacity, transform" }}
+                >
+                  Pivotal Thinking
+                </h1>
+                <p
+                  className="text-xs leading-5 text-primary-foreground/80 animate-fade-in"
+                  style={{ willChange: "opacity, transform" }}
+                >
+                  Generating strategic intelligence to understand transitions,
+                  shocks, and inflection points across geopolitics, technology,
+                  economics, climate and society.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Desktop background image */}
-        <div 
-          className="hidden md:block absolute inset-0 z-0"
+        <div
+          className="hidden md:block w-full relative"
           style={{
-            backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1770372554/Pivotal_Thinking_3_feszon.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundImage:
+              "url(https://res.cloudinary.com/dqataciy5/image/upload/v1770372554/Pivotal_Thinking_3_feszon.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "180px",
           }}
-        />
-        <div className="container-custom section-padding relative z-10">
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Pivotal Thinking
-          </h1>
-          
-          <p className="text-primary-foreground/80 animate-fade-in" style={{ willChange: "opacity, transform" }}>
-            Generating strategic intelligence to understand transitions, shocks, and inflection points across geopolitics, technology, economics, climate and society.
-          </p>
+        >
+          <div className="absolute inset-0 flex items-center bg-black/40">
+            <div className="container-custom section-padding w-full">
+              <div className="max-w-none">
+                <h1
+                  className="mb-2 font-serif text-2xl font-bold text-primary-foreground animate-fade-in md:text-3xl lg:text-4xl"
+                  style={{ willChange: "opacity, transform" }}
+                >
+                  Pivotal Thinking
+                </h1>
+                <p
+                  className="animate-fade-in whitespace-nowrap text-sm leading-5 text-primary-foreground/80 md:text-sm lg:text-base"
+                  style={{ willChange: "opacity, transform" }}
+                >
+                  Generating strategic intelligence to understand transitions, shocks, and inflection points across geopolitics, technology, economics, climate and society.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
