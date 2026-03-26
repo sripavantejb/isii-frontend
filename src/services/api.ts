@@ -77,6 +77,48 @@ export const articlesAPI = {
   },
 };
 
+// News API (Press & News)
+export const newsAPI = {
+  getAll: async () => {
+    return apiRequest('/news');
+  },
+  getById: async (id: string) => {
+    return apiRequest(`/news/${id}`);
+  },
+  create: async (data: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    articleURL: string;
+    publishedAt: string;
+  }) => {
+    return apiRequest('/news', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
+  update: async (
+    id: string,
+    data: {
+      title: string;
+      description: string;
+      imageUrl: string;
+      articleURL: string;
+      publishedAt: string;
+    }
+  ) => {
+    return apiRequest(`/news/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+  delete: async (id: string) => {
+    return apiRequest(`/news/${id}`, {
+      method: 'DELETE',
+    });
+  },
+};
+
 // Perspectives API (uses /reports endpoint)
 export const perspectivesAPI = {
   getAll: async () => {
