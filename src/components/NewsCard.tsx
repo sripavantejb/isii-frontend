@@ -23,7 +23,7 @@ const NewsCard = ({
 
       <div className="pt-5">
         <h3
-          className="overflow-hidden text-[18px] font-medium leading-[1.4] text-[#1B1B1B] md:text-[20px]"
+          className="overflow-hidden text-[18px] font-semibold leading-[1.4] text-[#1B1B1B] md:text-[20px]"
           style={{
             display: "-webkit-box",
             WebkitLineClamp: 3,
