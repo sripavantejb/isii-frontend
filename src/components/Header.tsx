@@ -49,7 +49,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
         { label: "Projects and Intervention", path: "/capabilities/projects-and-intervention" },
       ]
     },
-    { label: "News", path: "/press-and-news" },
+    { label: "Press & News", path: "/press-and-news" },
   ];
 
   const isActive = (path: string) => {
