@@ -71,6 +71,7 @@ const NewsForm = () => {
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(isEdit);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [articleFile, setArticleFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState("");
   const [isPublishedPickerOpen, setIsPublishedPickerOpen] = useState(false);
   const [publishedDate, setPublishedDate] = useState<Date | undefined>(undefined);
@@ -80,6 +81,7 @@ const NewsForm = () => {
     description: "",
     imageUrl: "",
     articleURL: "",
+    articleFileUrl: "",
   });
 
   useEffect(() => {
@@ -106,6 +108,8 @@ const NewsForm = () => {
       "EEEE, dd MMM yyyy 'at' h:mm a"
     );
   }, [publishedDate, publishedTime]);
+  const hasExternalArticleUrl = formData.articleURL.trim().length > 0;
+  const hasUploadedArticleFile = !!articleFile || formData.articleFileUrl.trim().length > 0;
 
   const fetchNewsItem = async () => {
     try {
@@ -116,7 +120,8 @@ const NewsForm = () => {
         title: item.title,
         description: item.description,
         imageUrl: item.imageUrl,
-        articleURL: item.articleURL,
+        articleURL: item.articleURL || "",
+        articleFileUrl: item.articleFileUrl || "",
       });
       setImagePreview(item.imageUrl);
 
@@ -145,6 +150,15 @@ const NewsForm = () => {
   const handleImageChange = (file: File | null) => {
     setImageFile(file);
     setImagePreview(file ? URL.createObjectURL(file) : formData.imageUrl);
+  };
+
+  const handleArticleFileChange = (file: File | null) => {
+    setArticleFile(file);
+    setFormData((current) => ({
+      ...current,
+      articleURL: file ? "" : current.articleURL,
+      articleFileUrl: file ? current.articleFileUrl : "",
+    }));
   };
 
   const updatePublishedTime = (field: keyof TimeState, value: string) => {
@@ -182,6 +196,12 @@ const NewsForm = () => {
         return;
       }
 
+      if (!publishedDate) {
+        toast.error("Please select a published date and time.");
+        setLoading(false);
+        return;
+      }
+
       let imageUrl = formData.imageUrl;
 
       if (imageFile) {
@@ -194,16 +214,34 @@ const NewsForm = () => {
         return;
       }
 
-      const finalPublishedAt = publishedDate
-        ? combineDateAndTime(publishedDate, publishedTime)
-        : null;
+      let uploadedArticleFileUrl = formData.articleFileUrl.trim();
+      const trimmedArticleURL = formData.articleURL.trim();
+
+      if (articleFile) {
+        uploadedArticleFileUrl = (await uploadAPI.uploadFile(articleFile, "file")).url;
+      }
+
+      if (trimmedArticleURL && uploadedArticleFileUrl) {
+        toast.error("Please use either an external URL or an uploaded file, not both.");
+        setLoading(false);
+        return;
+      }
+
+      if (!trimmedArticleURL && !uploadedArticleFileUrl) {
+        toast.error("Please provide either an external URL or upload a file.");
+        setLoading(false);
+        return;
+      }
+
+      const finalPublishedAt = combineDateAndTime(publishedDate, publishedTime);
 
       const payload = {
         title: formData.title.trim(),
         description: formData.description.trim(),
         imageUrl,
-        articleURL: formData.articleURL.trim(),
-        publishedAt: finalPublishedAt ? finalPublishedAt.toISOString() : null,
+        articleURL: trimmedArticleURL,
+        articleFileUrl: uploadedArticleFileUrl,
+        publishedAt: finalPublishedAt.toISOString(),
       };
 
       if (isEdit) {
@@ -256,7 +294,7 @@ const NewsForm = () => {
                 className="font-serif text-3xl font-bold md:text-4xl"
                 style={{ color: "#01002A" }}
               >
-                {isEdit ? "" : ""}
+                {isEdit ? "Edit News" : "New News"}
               </h1>
             </div>
 
@@ -313,27 +351,45 @@ const NewsForm = () => {
 
               <div className="space-y-2">
                 <Label htmlFor="articleURL" style={{ color: "#01002A" }}>
-                  Article URL *
+                  External URL
                 </Label>
                 <Input
                   id="articleURL"
                   type="url"
                   value={formData.articleURL}
+                  disabled={hasUploadedArticleFile}
                   onChange={(event) =>
                     setFormData((current) => ({
                       ...current,
                       articleURL: event.target.value,
                     }))
                   }
-                  required
                   placeholder="https://example.com/article"
                   style={{ borderColor: "#01002A" }}
                 />
+                <p className="text-xs text-muted-foreground">
+                  Add an external link, or leave this empty and upload a file below.
+                </p>
               </div>
 
-              {/* <div className="space-y-2">
+              <div className="space-y-2">
+                <DragDropUpload
+                  accept="*/*"
+                  maxSize={10}
+                  label="Upload File"
+                  value={articleFile}
+                  onChange={handleArticleFileChange}
+                  previewUrl={formData.articleFileUrl}
+                  disabled={hasExternalArticleUrl}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Upload any file to AWS for the Read More action. If a file is uploaded, the external URL is disabled.
+                </p>
+              </div>
+
+              <div className="space-y-2">
                 <Label style={{ color: "#01002A" }}>
-                  Published Date & Time
+                  Published Date & Time *
                 </Label>
                 <div className="relative">
                   <Button
@@ -463,9 +519,9 @@ const NewsForm = () => {
                   ) : null}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Add a publishing time if you want to schedule or record it. This uses your current local timezone.
+                  The selected date and time use your current local timezone.
                 </p>
-              </div> */}
+              </div>
 
               <DragDropUpload
                 accept="image/jpeg,image/jpg,image/png"

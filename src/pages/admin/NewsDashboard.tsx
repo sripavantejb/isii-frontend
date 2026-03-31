@@ -28,8 +28,9 @@ interface NewsItem {
   title: string;
   description: string;
   imageUrl: string;
-  articleURL: string;
-  publishedAt?: string | null;
+  articleURL?: string;
+  articleFileUrl?: string;
+  publishedAt: string;
 }
 
 const NewsDashboard = () => {
@@ -124,11 +125,9 @@ const NewsDashboard = () => {
                           className="h-full w-full object-cover"
                         />
                       </div>
-                      {newsItem.publishedAt ? (
-                        <p className="text-sm text-muted-foreground">
-                          {format(new Date(newsItem.publishedAt), "dd MMM yyyy, h:mm a")}
-                        </p>
-                      ) : null}
+                      <p className="text-sm text-muted-foreground">
+                        {format(new Date(newsItem.publishedAt), "dd MMM yyyy, h:mm a")}
+                      </p>
                       <CardTitle
                         className="line-clamp-2 text-lg"
                         style={{ color: "#01002A" }}

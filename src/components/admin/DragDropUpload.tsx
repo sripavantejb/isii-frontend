@@ -10,6 +10,7 @@ interface DragDropUploadProps {
   onChange: (file: File | null) => void;
   previewUrl?: string;
   dimensions?: string; // Recommended dimensions (e.g., "1200x675px")
+  disabled?: boolean;
 }
 
 const DragDropUpload = ({
@@ -20,16 +21,43 @@ const DragDropUpload = ({
   onChange,
   previewUrl,
   dimensions,
+  disabled = false,
 }: DragDropUploadProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const matchesAccept = (file: File): boolean => {
+    if (!accept || accept === "*" || accept === "*/*") {
+      return true;
+    }
+
+    return accept.split(",").some((rawType) => {
+      const type = rawType.trim().toLowerCase();
+      const fileName = file.name.toLowerCase();
+      const mimeType = (file.type || "").toLowerCase();
+
+      if (type === "*" || type === "*/*") {
+        return true;
+      }
+
+      if (type.startsWith(".")) {
+        return fileName.endsWith(type);
+      }
+
+      if (type.endsWith("/*")) {
+        return mimeType.startsWith(type.replace("*", ""));
+      }
+
+      return mimeType === type;
+    });
+  };
+
   const validateFile = (file: File): boolean => {
     setError(null);
 
     // Check file type
-    if (!accept.split(',').some(type => file.type.match(type.trim()))) {
+    if (!matchesAccept(file)) {
       setError(`Invalid file type. Please upload ${accept}`);
       return false;
     }
@@ -50,23 +78,27 @@ const DragDropUpload = ({
   };
 
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
+    if (disabled) return;
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(true);
   };
 
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    if (disabled) return;
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
   };
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    if (disabled) return;
     e.preventDefault();
     e.stopPropagation();
   };
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+    if (disabled) return;
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
@@ -104,16 +136,22 @@ const DragDropUpload = ({
         onDrop={handleDrop}
         className={`
           border-2 border-dashed rounded-lg p-4 md:p-6 text-center cursor-pointer transition-colors
+          ${disabled ? 'cursor-not-allowed opacity-60' : ''}
           ${isDragging ? 'border-primary bg-primary/5' : 'border-gray-300 hover:border-primary/50'}
           ${error ? 'border-red-500' : ''}
         `}
         style={{ backgroundColor: isDragging ? 'rgba(27, 49, 91, 0.05)' : '#ffffff' }}
-        onClick={() => fileInputRef.current?.click()}
+        onClick={() => {
+          if (!disabled) {
+            fileInputRef.current?.click();
+          }
+        }}
       >
         <input
           ref={fileInputRef}
           type="file"
           accept={accept}
+          disabled={disabled}
           onChange={handleFileInput}
           className="hidden"
         />
@@ -150,7 +188,7 @@ const DragDropUpload = ({
             ) : (
               <div className="flex items-center justify-center gap-2">
                 <p className="text-sm" style={{ color: '#01002A' }}>
-                  {value?.name || 'File selected'}
+                  {value?.name || (previewUrl ? decodeURIComponent(previewUrl.split('/').pop() || '') : 'File selected')}
                 </p>
                 <Button
                   type="button"
@@ -177,7 +215,7 @@ const DragDropUpload = ({
                 Drag and drop or click to upload
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                {accept} (max {maxSize}MB)
+                {(accept === "*/*" ? "Any file type" : accept)} (max {maxSize}MB)
                 {dimensions && accept.includes('image') && (
                   <span className="block mt-1">Recommended: {dimensions}</span>
                 )}
