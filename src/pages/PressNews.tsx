@@ -9,7 +9,9 @@ interface NewsItem {
   title: string;
   description: string;
   imageUrl: string;
-  articleURL: string;
+  articleURL?: string;
+  articleFileUrl?: string;
+  publishedAt: string;
 }
 
 const PRESS_NEWS_HERO_IMAGE =
@@ -24,7 +26,12 @@ const PressNews = () => {
     const fetchNewsItems = async () => {
       try {
         const data = await newsAPI.getAll();
-        setNewsItems(data);
+        const sortedNewsItems = [...data].sort((firstItem, secondItem) => {
+          const firstTimestamp = new Date(firstItem.publishedAt).getTime();
+          const secondTimestamp = new Date(secondItem.publishedAt).getTime();
+          return secondTimestamp - firstTimestamp;
+        });
+        setNewsItems(sortedNewsItems);
       } catch (error) {
         console.error("Failed to fetch news:", error);
       } finally {
@@ -77,7 +84,7 @@ const PressNews = () => {
                     image={newsItem.imageUrl}
                     title={newsItem.title}
                     description={newsItem.description}
-                    articleURL={newsItem.articleURL}
+                    articleURL={newsItem.articleURL || newsItem.articleFileUrl || "#"}
                   />
                 </div>
               ))}

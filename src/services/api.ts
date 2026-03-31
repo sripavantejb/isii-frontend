@@ -1,7 +1,6 @@
 // API URL configuration
 // Always use Vercel backend URL
 const API_URL = 'https://isii-backend.vercel.app/api';
-
 // Log API URL for debugging
 if (import.meta.env.DEV) {
   console.log('🌐 API URL:', API_URL);
@@ -89,7 +88,8 @@ export const newsAPI = {
     title: string;
     description: string;
     imageUrl: string;
-    articleURL: string;
+    articleURL?: string;
+    articleFileUrl?: string;
     publishedAt: string;
   }) => {
     return apiRequest('/news', {
@@ -103,7 +103,8 @@ export const newsAPI = {
       title: string;
       description: string;
       imageUrl: string;
-      articleURL: string;
+      articleURL?: string;
+      articleFileUrl?: string;
       publishedAt: string;
     }
   ) => {
@@ -149,7 +150,7 @@ export const perspectivesAPI = {
 
 // Upload API
 export const uploadAPI = {
-  uploadFile: async (file: File, type: 'image' | 'pdf') => {
+  uploadFile: async (file: File, type: 'image' | 'pdf' | 'file') => {
     const token = getToken();
     
     if (!token) {
