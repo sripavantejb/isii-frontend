@@ -383,7 +383,7 @@ const NewsForm = () => {
                   disabled={hasExternalArticleUrl}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Upload any file to AWS for the Read More action. If a file is uploaded, the external URL is disabled.
+                  Upload any file to Database for the Read More action. If a file is uploaded, the external URL is disabled.
                 </p>
               </div>
 
