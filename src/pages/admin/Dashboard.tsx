@@ -118,7 +118,7 @@ const Dashboard = () => {
               activeTab="pivotal-thinking"
               title="Pivotal Thinking Dashboard"
               description="Manage Pivotal Thinking articles"
-              newLabel="New Article"
+              newLabel="New Item"
               onNew={() => navigate('/admin/articles/new')}
               onLogout={handleLogout}
             />

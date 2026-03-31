@@ -134,7 +134,7 @@ const ArticleForm = () => {
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back to Dashboard
               </Button>
               <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#01002A' }}>
-                {isEdit ? 'Edit Pivotal Thinking' : 'New Pivotal Thinking'}
+                {isEdit ? 'Edit Pivotal Thinking' : 'New Pivotal Thinking Card'}
               </h1>
             </div>
 
@@ -279,13 +279,13 @@ const ArticleForm = () => {
               </div>
 
               <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Card Image" value={imageFile} onChange={handleImageChange} previewUrl={imagePreview} dimensions="16:9 aspect ratio" />
-              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Featured Banner Image" value={bannerImageFile} onChange={handleBannerImageChange} previewUrl={bannerImagePreview} dimensions="3:1 aspect ratio" />
+              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Homepage-Banner Image" value={bannerImageFile} onChange={handleBannerImageChange} previewUrl={bannerImagePreview} dimensions="3:1 aspect ratio" />
               <DragDropUpload accept="application/pdf" maxSize={4.5} label="PDF Document *" value={pdfFile} onChange={setPdfFile} />
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button type="submit" disabled={loading} className="flex-1 w-full sm:w-auto bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white">
                   <Save className="h-4 w-4 mr-2" />
-                  {loading ? 'Saving...' : isEdit ? 'Update Article' : 'Create Article'}
+                  {loading ? 'Saving...' : isEdit ? 'Update Article' : 'Create Card'}
                 </Button>
                 <Button type="button" variant="outline" onClick={() => navigate('/admin')} className="w-full sm:w-auto border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white">
                   Cancel

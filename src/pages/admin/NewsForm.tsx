@@ -174,11 +174,6 @@ const NewsForm = () => {
     setPublishedTime(getTimeStateFromDate(now));
   };
 
-  const handleClearPublishedAt = () => {
-    setPublishedDate(undefined);
-    setPublishedTime(getDefaultTimeState());
-  };
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
@@ -294,7 +289,7 @@ const NewsForm = () => {
                 className="font-serif text-3xl font-bold md:text-4xl"
                 style={{ color: "#01002A" }}
               >
-                {isEdit ? "Edit News" : "New News"}
+                {isEdit ? "Edit News Item" : "New News Item"}
               </h1>
             </div>
 
@@ -351,7 +346,7 @@ const NewsForm = () => {
 
               <div className="space-y-2">
                 <Label htmlFor="articleURL" style={{ color: "#01002A" }}>
-                  External URL
+                  Article URL
                 </Label>
                 <Input
                   id="articleURL"
@@ -383,7 +378,7 @@ const NewsForm = () => {
                   disabled={hasExternalArticleUrl}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Upload any file to Database for the Read More action. If a file is uploaded, the external URL is disabled.
+                  Upload any file to Database for the Read More action. If a file is uploaded, the Article URL field gets disabled.
                 </p>
               </div>
 
@@ -485,7 +480,7 @@ const NewsForm = () => {
                             </p>
                           </div>
 
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex items-end justify-between gap-2 pt-2">
                             <Button
                               type="button"
                               variant="outline"
@@ -494,15 +489,6 @@ const NewsForm = () => {
                               className="border-[#01002A] text-[#01002A] hover:bg-[#01002A] hover:text-white"
                             >
                               Use Now
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="sm"
-                              onClick={handleClearPublishedAt}
-                              className="text-[#01002A] hover:bg-[#01002A]/10"
-                            >
-                              Clear
                             </Button>
                             <Button
                               type="button"
@@ -540,7 +526,7 @@ const NewsForm = () => {
                   className="w-full flex-1 bg-[#01002A] text-white hover:bg-[#01002A]/90 hover:text-white sm:w-auto"
                 >
                   <Save className="mr-2 h-4 w-4" />
-                  {loading ? "Saving..." : isEdit ? "Update News" : "Create News"}
+                  {loading ? "Saving..." : isEdit ? "Update News" : "Create New Item"}
                 </Button>
                 <Button
                   type="button"
