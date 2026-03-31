@@ -94,7 +94,7 @@ const NewsDashboard = () => {
               activeTab="press-news"
               title="Press & News Dashboard"
               description="Manage Press & News items"
-              newLabel=""
+              newLabel="New Item"
               onNew={() => navigate("/admin/news-articles/new")}
               onLogout={handleLogout}
             />

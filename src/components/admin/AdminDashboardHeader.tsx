@@ -53,7 +53,6 @@ const AdminDashboardHeader = ({
         >
           <Plus className="mr-2 h-4 w-4" />
           {newLabel}
-          New
         </Button>
       </div>
     </div>
