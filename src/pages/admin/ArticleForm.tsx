@@ -76,7 +76,13 @@ const ArticleForm = () => {
 
       if (imageFile) imageUrl = (await uploadAPI.uploadFile(imageFile, 'image')).url;
       if (bannerImageFile) bannerImageUrl = (await uploadAPI.uploadFile(bannerImageFile, 'image')).url;
-      if (pdfFile) pdfUrl = (await uploadAPI.uploadFile(pdfFile, 'pdf')).url;
+      if (pdfFile) {
+        pdfUrl = (
+          await uploadAPI.uploadFile(pdfFile, 'pdf', {
+            uploadScope: 'pivotal-thinking',
+          })
+        ).url;
+      }
       
       if (!pdfUrl) {
         toast.error('Please upload a PDF file.');
