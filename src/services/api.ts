@@ -149,8 +149,14 @@ export const perspectivesAPI = {
 
 
 // Upload API
+type UploadScope = 'pivotal-thinking' | 'press-and-news';
+
 export const uploadAPI = {
-  uploadFile: async (file: File, type: 'image' | 'pdf' | 'file') => {
+  uploadFile: async (
+    file: File,
+    type: 'image' | 'pdf' | 'file',
+    options?: { uploadScope?: UploadScope }
+  ) => {
     const token = getToken();
     
     if (!token) {
@@ -159,8 +165,13 @@ export const uploadAPI = {
 
     const formData = new FormData();
     formData.append('file', file);
+    const endpoint = new URL(`${API_URL}/upload`);
 
-    const response = await fetch(`${API_URL}/upload`, {
+    if (options?.uploadScope) {
+      endpoint.searchParams.set('uploadScope', options.uploadScope);
+    }
+
+    const response = await fetch(endpoint.toString(), {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -180,7 +191,12 @@ export const uploadAPI = {
 
     return response.json();
   },
-  uploadMultiple: async (image?: File, bannerImage?: File, pdf?: File) => {
+  uploadMultiple: async (
+    image?: File,
+    bannerImage?: File,
+    pdf?: File,
+    options?: { uploadScope?: UploadScope }
+  ) => {
     const token = getToken();
     
     if (!token) {
@@ -198,7 +214,13 @@ export const uploadAPI = {
     }
 
     try {
-      const response = await fetch(`${API_URL}/upload/multiple`, {
+      const endpoint = new URL(`${API_URL}/upload/multiple`);
+
+      if (options?.uploadScope) {
+        endpoint.searchParams.set('uploadScope', options.uploadScope);
+      }
+
+      const response = await fetch(endpoint.toString(), {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

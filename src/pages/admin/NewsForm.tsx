@@ -213,7 +213,11 @@ const NewsForm = () => {
       const trimmedArticleURL = formData.articleURL.trim();
 
       if (articleFile) {
-        uploadedArticleFileUrl = (await uploadAPI.uploadFile(articleFile, "file")).url;
+        uploadedArticleFileUrl = (
+          await uploadAPI.uploadFile(articleFile, "file", {
+            uploadScope: "press-and-news",
+          })
+        ).url;
       }
 
       if (trimmedArticleURL && uploadedArticleFileUrl) {
