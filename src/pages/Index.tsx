@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
 import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
 const bannerImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile banner
@@ -233,7 +234,7 @@ const Index = () => {
                       {articles[0]?.pdfUrl ? (
                         <Button variant="outline-light" asChild>
                           <a 
-                            href={articles[0].pdfUrl} 
+                            href={getMaskedFileUrl(articles[0].pdfUrl)} 
                             target="_blank" 
                             rel="noopener noreferrer"
                           >
@@ -265,7 +266,7 @@ const Index = () => {
                     image={article.imageUrl}
                     date={article.date}
                     title={article.title}
-                    link={article.pdfUrl}
+                    link={getMaskedFileUrl(article.pdfUrl)}
                   />
                 </div>
               ))}

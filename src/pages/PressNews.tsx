@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import NewsCard from "@/components/NewsCard";
 import ArticleLoader from "@/components/ArticleLoader";
 import { newsAPI } from "@/services/api";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface NewsItem {
   _id: string;
@@ -84,7 +85,7 @@ const PressNews = () => {
                     image={newsItem.imageUrl}
                     title={newsItem.title}
                     description={newsItem.description}
-                    articleURL={newsItem.articleURL || newsItem.articleFileUrl || "#"}
+                    articleURL={newsItem.articleURL || getMaskedFileUrl(newsItem.articleFileUrl || "") || "#"}
                   />
                 </div>
               ))}
