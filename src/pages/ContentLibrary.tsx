@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ArrowRight } from "lucide-react";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface Article {
   _id: string;
@@ -123,7 +124,7 @@ const ContentLibrary = () => {
                 <div key={article._id} className={`py-6 ${index < filteredArticles.length - 1 ? 'border-b border-border' : ''}`}>
                   <div className="mb-2"><p className="text-xs italic text-muted-foreground">{article.date}</p></div>
                   <div className="mb-3">
-                    <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer" className="font-serif text-xl md:text-2xl font-bold text-primary leading-tight hover:text-primary/80 transition-colors no-underline hover:underline">
+                    <a href={getMaskedFileUrl(article.pdfUrl)} target="_blank" rel="noopener noreferrer" className="font-serif text-xl md:text-2xl font-bold text-primary leading-tight hover:text-primary/80 transition-colors no-underline hover:underline">
                       {article.title}
                     </a>
                   </div>

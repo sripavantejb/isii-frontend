@@ -5,6 +5,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface Article {
   _id: string;
@@ -174,7 +175,7 @@ const PivotalThinking = () => {
                       image={article.imageUrl}
                       date={article.date}
                       title={article.title}
-                      link={article.pdfUrl}
+                      link={getMaskedFileUrl(article.pdfUrl)}
                     />
                   </div>
                 ))}

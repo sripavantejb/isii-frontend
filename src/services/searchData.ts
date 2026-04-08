@@ -1,3 +1,5 @@
+import { getMaskedFileUrl } from "@/lib/fileUrls";
+
 // Search data service - aggregates all searchable content from the website
 
 export interface SearchResult {
@@ -175,7 +177,7 @@ export const getArticleSearchResults = (articles: Article[]): SearchResult[] => 
     type: 'article' as const,
     title: article.title,
     description: article.date,
-    url: article.pdfUrl,
+    url: getMaskedFileUrl(article.pdfUrl),
     metadata: {
       date: article.date,
       image: article.imageUrl,
@@ -230,4 +232,3 @@ export const searchContent = (query: string, searchIndex: SearchResult[]): Searc
   // Return all results without limits
   return results;
 };
-

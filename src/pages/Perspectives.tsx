@@ -5,6 +5,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { perspectivesAPI } from "@/services/api";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface Article {
   _id: string;
@@ -84,7 +85,7 @@ const Perspectives = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 {articles.slice(0, 6).map((article) => (
                   <div key={article._id} className="h-full">
-                    <ArticleCard image={article.imageUrl} date={article.date} title={article.title} link={article.pdfUrl} />
+                    <ArticleCard image={article.imageUrl} date={article.date} title={article.title} link={getMaskedFileUrl(article.pdfUrl)} />
                   </div>
                 ))}
               </div>
