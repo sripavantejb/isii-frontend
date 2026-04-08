@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import NewsCard from "@/components/NewsCard";
 import ArticleLoader from "@/components/ArticleLoader";
 import { newsAPI } from "@/services/api";
-import { getMaskedFileUrl } from "@/lib/fileUrls";
+import { getPressNewsMaskedFileUrl } from "@/lib/fileUrls";
 
 interface NewsItem {
   _id: string;
@@ -18,6 +18,11 @@ interface NewsItem {
 const PRESS_NEWS_HERO_IMAGE =
   import.meta.env.VITE_PRESS_NEWS_BANNER_URL ||
   "https://isii-v2.s3.ap-south-1.amazonaws.com/images/ChatGPT+Image+Mar+25%2C+2026%2C+10_49_16+PM+(1)+(1).png";
+
+const getNewsItemArticleUrl = (newsItem: NewsItem) =>
+  getPressNewsMaskedFileUrl(newsItem.articleURL || "") ||
+  getPressNewsMaskedFileUrl(newsItem.articleFileUrl || "") ||
+  "#";
 
 const PressNews = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
@@ -85,7 +90,7 @@ const PressNews = () => {
                     image={newsItem.imageUrl}
                     title={newsItem.title}
                     description={newsItem.description}
-                    articleURL={newsItem.articleURL || getMaskedFileUrl(newsItem.articleFileUrl || "") || "#"}
+                    articleURL={getNewsItemArticleUrl(newsItem)}
                   />
                 </div>
               ))}
