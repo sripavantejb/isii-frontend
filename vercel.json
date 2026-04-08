@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/files/press-and-news/:path*",
-      "destination": "https://isii-v2.s3.ap-south-1.amazonaws.com/news/:path*"
+      "destination": "https://isii-v2.s3.ap-south-1.amazonaws.com/press-and-news/:path*"
     },
     {
       "source": "/files/:path*",
