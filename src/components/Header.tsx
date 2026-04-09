@@ -71,7 +71,7 @@ const Header = ({ variant = "solid" }: HeaderProps) => {
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               item.dropdown ? (
-                <DropdownMenu key={item.path}>
+                <DropdownMenu key={item.path} modal={false}>
                   <DropdownMenuTrigger className={`flex items-center gap-1 text-sm text-primary font-semibold transition-colors no-underline hover:no-underline border-0 outline-none focus:outline-none focus:ring-0 focus:border-0 focus-visible:outline-none focus-visible:ring-0 bg-transparent hover:bg-transparent focus:bg-transparent ${(item.label === "About Us" ? isAboutUsActive() : isActive(item.path)) ? "text-primary font-medium" : ""}`}>
                     {item.label}
                     <ChevronDown className="w-4 h-4" />
