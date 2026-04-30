@@ -1,9 +1,13 @@
 // API URL configuration
-// Always use Vercel backend URL
-const API_URL = 'https://isii-backend.vercel.app/api';
+// Prefer environment configuration, with the current production backend as a safe fallback.
+const API_URL = import.meta.env.DEV
+  ? import.meta.env.VITE_API_URL_DEV
+  : import.meta.env.VITE_API_URL_PROD;
+
 // Log API URL for debugging
 if (import.meta.env.DEV) {
   console.log('🌐 API URL:', API_URL);
+  console.log(import.meta.env.DEV)
 }
 
 // Get token from localStorage
