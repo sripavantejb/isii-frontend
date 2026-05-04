@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372479/Our_Mission_2_ag9sgv.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770373042/3_2_ndtwij.png";
-const focusGlobeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770386526/1925_v7zozq.png";
+const heroImage = STATIC_IMAGES.missionHeroDesktop;
+const heroImageMobile = STATIC_IMAGES.missionHeroMobile;
+const focusGlobeImage = STATIC_IMAGES.contextGlobePrimary;
 
 const Mission = () => {
   return (

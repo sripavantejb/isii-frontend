@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import PersonCard from "@/components/PersonCard";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 const About = () => {
   const aboutTabs = [
@@ -15,7 +16,7 @@ const About = () => {
       category: "Peace and Social Transition",
       name: "Garry Jacobs",
       title: "Advisory Council, Member",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
+      image: STATIC_IMAGES.aboutGarryJacobs,
       drawingOn: [
         "800 leading scientists and scholars",
         "5 key programmes of peaceful social change"
@@ -25,7 +26,7 @@ const About = () => {
       category: "Global Transition Architecture",
       name: "Ketan Patel",
       title: "Chairman, and Advisory Council Chair",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
+      image: STATIC_IMAGES.aboutKetanPatel,
       drawingOn: [
         "100 leading financial institutions strategies",
         "125 leading technology company strategies"
@@ -35,7 +36,7 @@ const About = () => {
       category: "Media & Technology Transition",
       name: "Jon Miller",
       title: "Advisory Council, Member",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
+      image: STATIC_IMAGES.aboutJonMiller,
       drawingOn: [
         "Major mass mobilisation platforms",
         "Leading new media platforms"
@@ -45,7 +46,7 @@ const About = () => {
       category: "Tech Security Transition",
       name: "Glenn Gaffney",
       title: "Senior Innovation Fellow, NobleReach Foundation",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768293957/Glenn_jogrhw.jpg",
+      image: STATIC_IMAGES.aboutGlennGaffney,
       drawingOn: [
         "Major US science and technology labs and experts",
         "International network of science and tech expertise"
@@ -55,7 +56,7 @@ const About = () => {
       category: "Development Transition",
       name: "Shaurya Doval",
       title: "Co-founder, India Foundation\nDirector, India Foundation\nSenior Team Member, Greater Pacific Capital\nFounder and Managing Director, Torch Investments",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
+      image: STATIC_IMAGES.aboutShauryaDoval,
       drawingOn: [
         "Development and social economics work",
         "Asia and Middle East network"

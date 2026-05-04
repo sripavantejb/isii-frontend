@@ -5,6 +5,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { articlesAPI } from "@/services/api";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface Article {
@@ -95,8 +96,7 @@ const PivotalThinking = () => {
         <div
           className="block md:hidden w-full relative"
           style={{
-            backgroundImage:
-              "url(https://res.cloudinary.com/dqataciy5/image/upload/v1770375937/Frame_1707483159_2_z3ycdd.png)",
+            backgroundImage: `url(${STATIC_IMAGES.perspectivesHeroMobile})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -128,8 +128,7 @@ const PivotalThinking = () => {
         <div
           className="hidden md:block w-full relative"
           style={{
-            backgroundImage:
-              "url(https://res.cloudinary.com/dqataciy5/image/upload/v1770372554/Pivotal_Thinking_3_feszon.png)",
+            backgroundImage: `url(${STATIC_IMAGES.perspectivesHeroDesktop})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

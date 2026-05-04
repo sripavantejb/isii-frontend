@@ -1,12 +1,13 @@
 import Layout from "@/components/Layout";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Strategic Counsel banner images (mobile / desktop)
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372589/Strategic_Counsel_8_ydkel5.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375901/1921_t2dsja.png";
+const heroImage = STATIC_IMAGES.strategicCounselHeroDesktop;
+const heroImageMobile = STATIC_IMAGES.strategicCounselHeroMobile;
 
 // Placeholder for the dark spherical globe/maze image - update with actual Cloudinary URL or image path
 // The image should show a dark spherical object with intricate maze/labyrinth pattern
-const globeImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768367927/Atlas_ThnikingPic_lypsyh.jpg";
+const globeImage = STATIC_IMAGES.experienceGlobe;
 
 const Experience = () => {
   const projects = [

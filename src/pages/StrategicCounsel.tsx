@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import MandateCard from "@/components/MandateCard";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Cloudinary URLs for images
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372589/Strategic_Counsel_8_ydkel5.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375901/1921_t2dsja.png";
-const mandateImage1 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763191/45b069aa-f21e-4757-a97f-429e4850d21a_wggjd4.png";
-const mandateImage2 = "https://res.cloudinary.com/dqataciy5/image/upload/v1769082442/5_1_qtrdmf.png";
-const mandateImage3 = "https://res.cloudinary.com/dqataciy5/image/upload/v1767763200/e83f258e-eafe-4cd0-ac50-c1b2ede86f8a_tjst81.png";
+const heroImage = STATIC_IMAGES.strategicCounselHeroDesktop;
+const heroImageMobile = STATIC_IMAGES.strategicCounselHeroMobile;
+const mandateImage1 = STATIC_IMAGES.strategicCounselMandateGrowth;
+const mandateImage2 = STATIC_IMAGES.strategicCounselMandateSovereignty;
+const mandateImage3 = STATIC_IMAGES.strategicCounselMandateMobilising;
 
 const StrategicCounsel = () => {
   const mandates = [
@@ -121,4 +122,3 @@ const StrategicCounsel = () => {
 };
 
 export default StrategicCounsel;
-

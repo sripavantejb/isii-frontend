@@ -1,25 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "@/components/Layout";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Cloudinary URLs for banner images - same as Mission page
-const heroImage =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770372479/Our_Mission_2_ag9sgv.png";
-const heroImageMobile =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770373042/3_2_ndtwij.png";
+const heroImage = STATIC_IMAGES.missionHeroDesktop;
+const heroImageMobile = STATIC_IMAGES.missionHeroMobile;
 
 // Cloudinary URLs for globe images
-const globeImage1 =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770386526/1925_v7zozq.png";
-const globeImage2 =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770386536/1926_q4rq4q.png";
-const globeImage3 =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1769084678/image_2_zfw9mn.png";
-const geopoliticsImage =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770198726/Frame_1707483195_ae3e0x.png";
-const technologyImage =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770198764/Frame_1707483195_2_mz7yjs.png";
-const capitalImage =
-  "https://res.cloudinary.com/dqataciy5/image/upload/v1770198768/Frame_1707483195_3_kausk6.png";
+const globeImage1 = STATIC_IMAGES.contextGlobePrimary;
+const globeImage2 = STATIC_IMAGES.contextGlobeSecondary;
+const globeImage3 = STATIC_IMAGES.contextGlobeTertiary;
+const geopoliticsImage = STATIC_IMAGES.contextGeopolitics;
+const technologyImage = STATIC_IMAGES.contextTechnology;
+const capitalImage = STATIC_IMAGES.contextCapital;
 
 const ABOUT_TABS = [
   { id: "context", label: "Context", href: "#context" },

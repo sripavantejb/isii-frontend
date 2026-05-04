@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Placeholder for Earth image - update with actual Cloudinary URL or image path
 // The image should show Earth from space with Europe, Africa, and Asia visible
-const earthImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1769086628/9d79d5d0-c58c-4ef0-9ea9-030fcc716cd6_er6gdv.jpg";
+const earthImage = STATIC_IMAGES.securingSovereigntyEarth;
 
 const SecuringSovereignty = () => {
   return (
@@ -94,4 +95,3 @@ const SecuringSovereignty = () => {
 };
 
 export default SecuringSovereignty;
-

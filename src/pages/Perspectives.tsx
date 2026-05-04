@@ -5,6 +5,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { perspectivesAPI } from "@/services/api";
 import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface Article {
@@ -60,8 +61,8 @@ const Perspectives = () => {
   return (
     <Layout>
       <section className="py-12 bg-primary relative">
-        <div className="md:hidden absolute inset-0 z-0" style={{ backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1770375937/Frame_1707483159_2_z3ycdd.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-        <div className="hidden md:block absolute inset-0 z-0" style={{ backgroundImage: `url(https://res.cloudinary.com/dqataciy5/image/upload/v1770372554/Pivotal_Thinking_3_feszon.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+        <div className="md:hidden absolute inset-0 z-0" style={{ backgroundImage: `url(${STATIC_IMAGES.perspectivesHeroMobile})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+        <div className="hidden md:block absolute inset-0 z-0" style={{ backgroundImage: `url(${STATIC_IMAGES.perspectivesHeroDesktop})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
         <div className="container-custom section-padding relative z-10">
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4 animate-fade-in">
             Perspectives

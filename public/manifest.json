@@ -9,13 +9,13 @@
   "background_color": "#000000",
   "icons": [
   {
-    "src": "https://res.cloudinary.com/dja7l3iq8/image/upload/c_fill,g_center,w_192,h_192/v1770873331/Screenshot_2026-02-11_183122_hwu2qj.png",
+    "src": "https://isii-v2.s3.ap-south-1.amazonaws.com/isii-static/static/meta/icons/manifest-192.png",
     "sizes": "192x192",
     "type": "image/png",
     "purpose": "any"
   },
   {
-    "src": "https://res.cloudinary.com/dja7l3iq8/image/upload/c_fill,g_center,w_512,h_512/v1770873331/Screenshot_2026-02-11_183122_hwu2qj.png",
+    "src": "https://isii-v2.s3.ap-south-1.amazonaws.com/isii-static/static/meta/icons/manifest-512.png",
     "sizes": "512x512",
     "type": "image/png",
     "purpose": "any"

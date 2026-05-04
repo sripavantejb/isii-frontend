@@ -4,18 +4,19 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
 import ArticleCard from "@/components/ArticleCard";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 import { articlesAPI } from "@/services/api";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
 
-const bannerImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
-const bannerImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1768320216/2_3_kzpn34.png"; // Mobile banner
+const bannerImage = STATIC_IMAGES.homeBanner;
+const bannerImageMobile = STATIC_IMAGES.homeBannerMobile; // Mobile banner
 // Hero section images for different screen sizes
-const heroImageLarge = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372149/1920_aiorj9.png"; // Large screens (1920)
-const heroImageSmallMonitor = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372252/1440_1_qknuh7.png"; // 1440px
-const heroImageTablet = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372260/Tab_1_diqfl3.png"; // Tablet
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372262/Mobile_1_gbog00.png"; // Mobile
+const heroImageLarge = STATIC_IMAGES.homeHeroDesktopLarge; // Large screens (1920)
+const heroImageSmallMonitor = STATIC_IMAGES.homeHeroDesktopMedium; // 1440px
+const heroImageTablet = STATIC_IMAGES.homeHeroTablet; // Tablet
+const heroImageMobile = STATIC_IMAGES.homeHeroMobile; // Mobile
 // Default banner for featured article section
-const defaultArticleBanner = "https://res.cloudinary.com/dqataciy5/image/upload/v1768294682/2_1_zagbfj.png";
+const defaultArticleBanner = STATIC_IMAGES.homeBanner;
 
 interface Article {
   _id: string;
@@ -96,21 +97,21 @@ const Index = () => {
 
   const capabilities = [
     {
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762856/835eebcd-2fca-4b77-810e-cd5ed443293a_zjmxv6.jpg",
+      image: STATIC_IMAGES.homeCapabilityPivotalThinking,
       title: "Pivotal Thinking",
       description: "Critical insights and foresights as the world struggles with a dangerous historic civilizational transition.",
       buttonText: "All Pivotal Thinking",
       buttonLink: "/capabilities/pivotal-thinking",
     },
     {
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767769363/4_quwrrz.png",
+      image: STATIC_IMAGES.homeCapabilityStrategicCounsel,
       title: "Strategic Counsel",
       description: "Strategies for prosperity and wealth creation, sovereignty and agency and the systemic transition to the next era.",
       buttonText: "See Our Mandates",
       buttonLink: "/capabilities/strategic-counsel",
     },
     {
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767762861/65e9eeed-8441-41e9-a7d6-2d19643f86be_x3kheg.jpg",
+      image: STATIC_IMAGES.homeCapabilityIntervention,
       title: "Intervention Programmes",
       description: "Interventions that mobilise strategies for leveraging alliances, technology and solutions, and capital flows at scale.",
       buttonText: "Explore Programmes & Interventions",

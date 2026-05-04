@@ -8,13 +8,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // This should match the people data from People.tsx
 const peopleData = [
   {
     name: "Ketan Patel",
     title: "Chair, Force for Good\nCEO, Greater Pacific Capital\nFormer Head, Strategic Group, Goldman Sachs",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
+    image: STATIC_IMAGES.aboutKetanPatel,
     slug: "ketan-patel",
     category: "Global Transition Architecture",
     drawingOn: [
@@ -26,7 +27,7 @@ const peopleData = [
   {
     name: "Glenn Gaffney",
     title: "Former Director, Science and Technology, CIA\nEVP, IQT\nFounder NobleReach",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_18_a1swd8.png",
+    image: STATIC_IMAGES.peopleGlennGaffney,
     slug: "glenn-gaffney",
     category: "Tech Security Transition",
     drawingOn: [
@@ -38,7 +39,7 @@ const peopleData = [
   {
     name: "Jon Miller",
     title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
+    image: STATIC_IMAGES.aboutJonMiller,
     slug: "jon-miller",
     category: "Media & Technology Transition",
     drawingOn: [
@@ -50,7 +51,7 @@ const peopleData = [
   {
     name: "Garry Jacobs",
     title: "President, CEO, World Academy of Art & Science\nChairman, World University Consortium",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
+    image: STATIC_IMAGES.aboutGarryJacobs,
     slug: "garry-jacobs",
     category: "Peace and Social Transition",
     drawingOn: [
@@ -62,7 +63,7 @@ const peopleData = [
   {
     name: "Shaurya Doval",
     title: "Co-founder & Director, India Foundation\nSenior Team Member, GPC\nFounder and MD, Torch Investments",
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
+    image: STATIC_IMAGES.aboutShauryaDoval,
     slug: "shaurya-doval",
     category: "Development Transition",
     drawingOn: [

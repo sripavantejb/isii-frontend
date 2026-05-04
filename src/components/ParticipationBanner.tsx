@@ -1,6 +1,4 @@
 const ParticipationBanner = () => {
-  const iconUrl = "https://res.cloudinary.com/dqataciy5/image/upload/v1767882344/Frame_1707483199_ywq4kx.png";
-
   return (
     <div className="w-full flex justify-center bg-background py-3 md:py-4">
       {/* <div 
@@ -41,4 +39,3 @@ const ParticipationBanner = () => {
 };
 
 export default ParticipationBanner;
-

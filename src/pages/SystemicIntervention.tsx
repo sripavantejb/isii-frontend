@@ -1,21 +1,22 @@
 import Layout from "@/components/Layout";
 import ParticipationBanner from "@/components/ParticipationBanner";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
-const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372546/Systemic_Interventions_and_Investments_3_xejyih.png";
-const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375856/1922_evdf29.png";
+const heroBackground = STATIC_IMAGES.systemicInterventionHeroDesktop;
+const heroBackgroundMobile = STATIC_IMAGES.systemicInterventionHeroMobile;
 
 // Card data array
 const interventionCards = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1769153348/d6748c4d-3deb-467e-9c54-856f765c9fbc_qar1fs.jpg",
+    image: STATIC_IMAGES.systemicInterventionCardFinancialInclusion,
     alt: "Mass Financial Inclusion",
     heading: "Mass Financial Inclusion",
     description: "Focused on the transition of low income to middle income populations through the internationalisation of mass inclusion through direct services, intermediation of the financial systems layer, and the roll-out of technological platforms for mass inclusion and provision"
   },
   {
     id: 2,
-    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
+    image: STATIC_IMAGES.systemicInterventionCardHumanPerformance,
     alt: "Digital Technologies for Unlocking Human Performance",
     heading: "Digital Technologies for Unlocking Human Performance",
     description: "Focused on technologies for mass adoption of education, experiences, and higher levels of human performance, using multiple technologies to liberate minds and raise human consciousness, combining eastern and western definitions of enlightenment"
@@ -230,4 +231,3 @@ const SystemicIntervention = () => {
 };
 
 export default SystemicIntervention;
-

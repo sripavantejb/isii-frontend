@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
 import PersonCard from "@/components/PersonCard";
+import { STATIC_IMAGES } from "@/lib/staticAssets";
 
 // Cloudinary URLs for banner images - update these with actual image URLs
-const heroImage = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372479/Our_Mission_2_ag9sgv.png";
-const heroImageMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770373042/3_2_ndtwij.png";
+const heroImage = STATIC_IMAGES.missionHeroDesktop;
+const heroImageMobile = STATIC_IMAGES.missionHeroMobile;
 
 const People = () => {
   const people = [
@@ -11,7 +12,7 @@ const People = () => {
       name: "Ketan Patel",
       roleTitle: "Chair and Director",
       title: "Chair, Force for Good\nCEO, Greater Pacific Capital\nFormer Head, Strategic Group, Goldman Sachs",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874523/image_17_ib3vam.png",
+      image: STATIC_IMAGES.aboutKetanPatel,
       slug: "ketan-patel",
       category: "Global Transition Architecture",
       drawingOn: [
@@ -23,7 +24,7 @@ const People = () => {
       name: "Glenn Gaffney",
       roleTitle: "Director",
       title: "Former Director, Science and Technology, CIA\nEVP, IQT\nFounder NobleReach",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_18_a1swd8.png",
+      image: STATIC_IMAGES.peopleGlennGaffney,
       slug: "glenn-gaffney",
       category: "Tech Security Transition",
       drawingOn: [
@@ -35,7 +36,7 @@ const People = () => {
       name: "Jon Miller",
       roleTitle: "Director",
       title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874514/image_20_jqhgll.png",
+      image: STATIC_IMAGES.aboutJonMiller,
       slug: "jon-miller",
       category: "Media & Technology Transition",
       drawingOn: [
@@ -47,7 +48,7 @@ const People = () => {
       name: "Garry Jacobs",
       roleTitle: "Director",
       title: "President, CEO, World Academy of Art & Science\nChairman, World University Consortium",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1768300215/2066_fsynfy.png",
+      image: STATIC_IMAGES.aboutGarryJacobs,
       slug: "garry-jacobs",
       category: "Peace and Social Transition",
       drawingOn: [
@@ -59,7 +60,7 @@ const People = () => {
       name: "Shaurya Doval",
       roleTitle: "Director",
       title: "Co-founder & Director, India Foundation\nSenior Team Member, GPC\nFounder and MD, Torch Investments",
-      image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767874516/image_26_b0ilzr.png",
+      image: STATIC_IMAGES.aboutShauryaDoval,
       slug: "shaurya-doval",
       category: "Development Transition",
       drawingOn: [
@@ -135,4 +136,3 @@ const People = () => {
 };
 
 export default People;
-
