@@ -1,25 +1,33 @@
-const S3_BUCKET_HOST = "isii-v2.s3.ap-south-1.amazonaws.com";
-const PRESS_NEWS_S3_PREFIX = "news/";
-const PRESS_NEWS_PUBLIC_PREFIX = "press-and-news/";
+const CLOUDFRONT_BASE_URL = "https://www.isii.global";
+const MASKED_FILE_PREFIXES = new Set(["files", "dev", "staging"]);
 
-const isLocalHost = (hostname: string) =>
-  hostname === "localhost" ||
-  hostname === "127.0.0.1" ||
-  hostname === "::1";
-
-const shouldBypassMasking = () =>
-  typeof window !== "undefined" && isLocalHost(window.location.hostname);
-
-const getRuntimeOrigin = () => {
-  if (typeof window === "undefined") {
-    return "https://www.isii.global";
-  }
-
-  return window.location.origin;
+const S3_HOST_TO_PREFIX: Record<string, string> = {
+  "isii-v2.s3.ap-south-1.amazonaws.com": "files",
+  "isii-dev.s3.ap-south-1.amazonaws.com": "dev",
+  "isii-staging.s3.ap-south-1.amazonaws.com": "staging",
 };
 
-const buildMaskedFileUrl = (path: string) =>
-  `${getRuntimeOrigin()}/files/${path}`;
+const buildMaskedFileUrl = (prefix: string, path: string) =>
+  `${CLOUDFRONT_BASE_URL}/${prefix}/${path}`;
+
+const getPathPrefixForMaskedUrl = (value = "") => {
+  try {
+    const parsedUrl = new URL(value);
+
+    if (parsedUrl.origin !== CLOUDFRONT_BASE_URL) {
+      return null;
+    }
+
+    const [prefix] = parsedUrl.pathname.replace(/^\/+/, "").split("/");
+    return prefix && MASKED_FILE_PREFIXES.has(prefix) ? prefix : null;
+  } catch {
+    return null;
+  }
+};
+
+const isAlreadyMaskedFileUrl = (value = "") => {
+  return Boolean(getPathPrefixForMaskedUrl(value));
+};
 
 const getNormalizedS3Path = (value = "") => {
   if (!value) {
@@ -28,12 +36,16 @@ const getNormalizedS3Path = (value = "") => {
 
   try {
     const parsedUrl = new URL(value);
+    const prefix = S3_HOST_TO_PREFIX[parsedUrl.hostname];
 
-    if (parsedUrl.hostname !== S3_BUCKET_HOST) {
+    if (!prefix) {
       return null;
     }
 
-    return parsedUrl.pathname.replace(/^\/+/, "");
+    return {
+      prefix,
+      path: parsedUrl.pathname.replace(/^\/+/, ""),
+    };
   } catch {
     return null;
   }
@@ -44,42 +56,15 @@ export const getMaskedFileUrl = (value = "") => {
     return value;
   }
 
-  if (shouldBypassMasking()) {
+  if (isAlreadyMaskedFileUrl(value)) {
     return value;
   }
 
-  const normalizedPath = getNormalizedS3Path(value);
+  const normalizedS3Url = getNormalizedS3Path(value);
 
-  if (!normalizedPath) {
+  if (!normalizedS3Url) {
     return value;
   }
 
-  return buildMaskedFileUrl(normalizedPath);
-};
-
-export const getPressNewsMaskedFileUrl = (value = "") => {
-  if (!value) {
-    return value;
-  }
-
-  if (shouldBypassMasking()) {
-    return value;
-  }
-
-  const normalizedPath = getNormalizedS3Path(value);
-
-  if (!normalizedPath) {
-    return value;
-  }
-
-  if (!normalizedPath.startsWith(PRESS_NEWS_S3_PREFIX)) {
-    return buildMaskedFileUrl(normalizedPath);
-  }
-
-  const pressNewsPath = normalizedPath.replace(
-    PRESS_NEWS_S3_PREFIX,
-    PRESS_NEWS_PUBLIC_PREFIX
-  );
-
-  return buildMaskedFileUrl(pressNewsPath);
+  return buildMaskedFileUrl(normalizedS3Url.prefix, normalizedS3Url.path);
 };

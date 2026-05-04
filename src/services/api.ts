@@ -1,13 +1,12 @@
-// API URL configuration
-// Prefer environment configuration, with the current production backend as a safe fallback.
-const API_URL = import.meta.env.DEV
-  ? import.meta.env.VITE_API_URL_DEV
-  : import.meta.env.VITE_API_URL_PROD;
+const API_URL = import.meta.env.VITE_API_URL;
+const APP_ENV = import.meta.env.VITE_APP_ENV || import.meta.env.MODE;
 
-// Log API URL for debugging
+if (!API_URL) {
+  throw new Error('Missing VITE_API_URL. Check the active frontend environment file.');
+}
 if (import.meta.env.DEV) {
   console.log('🌐 API URL:', API_URL);
-  console.log(import.meta.env.DEV)
+  console.log('🧭 App environment:', APP_ENV);
 }
 
 // Get token from localStorage
