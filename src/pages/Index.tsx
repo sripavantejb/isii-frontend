@@ -79,7 +79,7 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
 
 const Index = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-
+  // console.log(articles)
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -201,9 +201,11 @@ const Index = () => {
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{ 
                   backgroundImage: `url(${
-                    (articles[0]?.bannerImageUrl && articles[0].bannerImageUrl.trim())
-                      || (articles[0]?.imageUrl && articles[0].imageUrl.trim())
-                      || defaultArticleBanner
+                    getMaskedFileUrl(
+                      (articles[0]?.bannerImageUrl && articles[0].bannerImageUrl.trim())
+                        || (articles[0]?.imageUrl && articles[0].imageUrl.trim())
+                        || defaultArticleBanner
+                    )
                   })`,
                 }}
               />
@@ -262,7 +264,9 @@ const Index = () => {
           <div className="container-custom section-padding">
             <div className="grid md:grid-cols-3 gap-8">
               {articles.slice(1, 4).map((article) => (
+                
                 <div key={article._id} className="h-full">
+                  
                   <ArticleCard 
                     image={article.imageUrl}
                     date={article.date}

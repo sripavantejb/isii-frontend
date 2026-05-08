@@ -1,470 +1,504 @@
-# Frontend Deployment Guide
+# Frontend AWS Deployment and CI/CD Guide
 
-This document explains how the frontend is deployed in this project using Amazon S3 and CloudFront.
+This document explains the current frontend deployment model for ISII, how the CI/CD pipeline works, which AWS services are involved, and what must exist in GitHub environments for staging and production.
 
-It has been updated to reflect the actual deployment flow currently being used:
-
-1. build locally with Vite
-2. sync the `dist/` files to S3 using AWS CLI
-3. invalidate CloudFront cache
+It reflects the current frontend setup in this repository.
 
 ## Overview
 
-The frontend is a Vite-based React single-page application (SPA).
-
-It is deployed as static files.
+The frontend is a Vite-built React SPA.
 
 The deployment flow is:
 
-1. build the frontend into `dist/`
-2. upload the build files to an S3 bucket
-3. serve the bucket through CloudFront
-4. invalidate CloudFront after redeployment so users receive the latest files
+1. GitHub Actions checks out the frontend repository.
+2. It installs dependencies with `npm ci`.
+3. It builds the correct frontend mode:
+   - `npm run build:staging`
+   - `npm run build:production`
+4. It assumes an AWS IAM role using GitHub OIDC.
+5. It uploads the generated `dist/` files to an S3 bucket.
+6. It invalidates CloudFront so the new frontend becomes live.
 
 ## Services Used
 
-### 1. Amazon S3
+The frontend CI/CD pipeline uses these services:
 
-Amazon S3 stores the frontend build output.
+- `GitHub Actions`
+  - runs the automated deployment workflow
+- `GitHub Environments`
+  - stores environment-specific variables and secrets such as bucket name, distribution ID, and role ARN
+- `AWS IAM`
+  - provides the GitHub-assumable deploy role
+- `AWS STS`
+  - issues temporary credentials via `AssumeRoleWithWebIdentity`
+- `Amazon S3`
+  - stores the built frontend files
+- `Amazon CloudFront`
+  - serves the frontend and caches it globally
 
-Examples of files stored there:
-
-- `index.html`
-- JavaScript bundles
-- CSS bundles
-- static assets
-
-### 2. Amazon CloudFront
-
-CloudFront sits in front of S3 and serves the frontend to users.
-
-It is responsible for:
-
-- CDN delivery
-- caching
-- HTTPS delivery
-- routing support for the SPA when configured correctly
-
-### 3. AWS CLI
-
-AWS CLI is used from the local machine to automate deployment.
-
-It is used for:
-
-- syncing build files to S3
-- invalidating CloudFront cache
-
-### 4. AWS Certificate Manager and DNS
-
-If a custom domain or subdomain is used, SSL/TLS and DNS are handled through:
-
-- AWS Certificate Manager
-- Route 53 or another DNS provider
-
-## Current Frontend Build Setup
-
-This frontend is not SSR.
-
-It is a static SPA built with Vite.
-
-Relevant project details:
-
-- production build command: `npm run build:production`
-- staging build command: `npm run build:staging`
-- output folder: `dist/`
-
-From [`package.json`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii-aws/isii-frontend/package.json):
-
-```json
-"scripts": {
-  "build:staging": "vite build --mode staging",
-  "build:production": "vite build --mode production"
-}
-```
-
-## Environment Files
-
-### Production
-
-File:
-
-[`isii-frontend/.env.production`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii-aws/isii-frontend/.env.production)
-
-Current values:
-
-```env
-VITE_API_URL=https://w69a5y16ae.execute-api.ap-south-1.amazonaws.com/api
-VITE_APP_ENV=production
-```
+## Current Architecture
 
 ### Staging
 
-File:
+The current staging setup uses:
 
-[`isii-frontend/.env.staging`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii-aws/isii-frontend/.env.staging)
+- frontend S3 bucket:
+  - `isii-frontend-staging-639920117892`
+- CloudFront distribution:
+  - `E35PX9JBYDU87M`
+- CloudFront domain:
+  - `https://d1gbpolz5fkmu.cloudfront.net`
 
-Current values:
+This distribution is reused for two concerns:
 
-```env
-VITE_API_URL=https://m1e5w84k38.execute-api.ap-south-1.amazonaws.com/api
-VITE_APP_ENV=staging
+1. `Default (*)`
+   - serves the staging frontend bucket
+2. `/files/*`
+   - serves uploaded content files from the shared files bucket through the CloudFront file-rewrite flow
+
+That means the same distribution currently handles:
+
+- frontend app hosting
+- public content file delivery
+
+### Production
+
+The production workflow is also ready, but it depends on the production GitHub environment values you configure.
+
+Production deployment targets are not hardcoded in the workflow. They come from:
+
+- `S3_BUCKET_NAME`
+- `CLOUDFRONT_DISTRIBUTION_ID`
+- `AWS_ROLE_ARN`
+
+## Workflow Files
+
+The frontend CI/CD pipeline is defined in:
+
+- [deploy-staging.yml](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.github/workflows/deploy-staging.yml)
+- [deploy-production.yml](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.github/workflows/deploy-production.yml)
+
+### Staging workflow
+
+Triggered by:
+
+- push to `staging`
+- manual `workflow_dispatch`
+
+Build command:
+
+```bash
+npm run build:staging
 ```
 
-## Architecture
+### Production workflow
+
+Triggered by:
+
+- push to `main`
+- manual `workflow_dispatch`
+
+Build command:
+
+```bash
+npm run build:production
+```
+
+## How the Pipeline Works
+
+The staging and production workflows follow the same structure.
+
+### 1. Checkout repository
+
+GitHub Actions checks out the frontend code.
+
+### 2. Setup Node.js
+
+Node.js 20 is installed.
+
+### 3. Install dependencies
+
+The workflow runs:
+
+```bash
+npm ci
+```
+
+### 4. Build the frontend
+
+The workflow runs the environment-specific Vite build:
+
+- staging:
+  - `npm run build:staging`
+- production:
+  - `npm run build:production`
+
+This produces the static build output in:
 
 ```text
-Local machine
-    ->
-Vite build
-    ->
-dist/ generated
-    ->
-AWS CLI sync to S3
-    ->
-CloudFront serves files from S3
-    ->
-CloudFront invalidation refreshes cached content
-    ->
-Users get updated frontend
+dist/
 ```
 
-## Why This Deployment Model Is Used
+### 5. Configure AWS credentials
 
-This approach fits the current frontend because:
+The workflow uses:
 
-- the app becomes static after build
-- no server-side runtime is needed
-- S3 is simple for static hosting
-- CloudFront handles caching and public delivery
-- CLI deployment is easier to repeat than manual uploads
-
-## Prerequisites
-
-Before deployment, these are needed:
-
-- AWS CLI installed
-- AWS CLI configured with valid credentials
-- S3 bucket already created
-- CloudFront distribution already created
-- correct environment file for the target deployment
-- successful frontend build
-
-## AWS CLI Prerequisites
-
-### Install AWS CLI
-
-Example check:
-
-```bash
-aws --version
+```text
+aws-actions/configure-aws-credentials@v4
 ```
 
-### Configure AWS CLI
+It assumes the IAM role provided in:
 
-Run:
-
-```bash
-aws configure
+```text
+AWS_ROLE_ARN
 ```
 
-You will need:
+This is done using GitHub OIDC, so there are no long-lived AWS access keys stored in GitHub.
 
-- AWS Access Key ID
-- AWS Secret Access Key
-- default region: `ap-south-1`
-- default output format: `json`
+### 6. Upload to S3
 
-### Verify access
-
-Run:
+The workflow runs:
 
 ```bash
-aws s3 ls
+aws s3 sync dist/ "s3://${S3_BUCKET_NAME}" --delete
 ```
 
-If this works, the CLI is correctly configured for S3 access.
+This uploads the frontend build to the target bucket and removes stale files that are no longer present in `dist/`.
 
-## Deployment Modes
+### 7. Invalidate CloudFront
 
-There are two main deployment modes in this project:
-
-- production deployment
-- staging deployment
-
-The difference is mainly:
-
-- which env file is used during build
-- which S3 bucket or target path is used
-- which CloudFront distribution is invalidated
-
-## Production Deployment Flow
-
-### Step 1. Confirm production environment values
-
-Check:
-
-[`isii-frontend/.env.production`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii-aws/isii-frontend/.env.production)
-
-Make sure `VITE_API_URL` points to the correct production backend.
-
-### Step 2. Build production
-
-Run:
+The workflow runs:
 
 ```bash
-npm run build:production
+aws cloudfront create-invalidation --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" --paths "/*"
 ```
 
-This creates the `dist/` folder using production variables.
+This clears the old cached frontend files from CloudFront so users receive the latest deployment.
 
-### Step 3. Sync build files to S3
+## GitHub Environment Values
 
-Example:
+The workflows depend on GitHub environment-scoped variables and secrets.
 
-```bash
-aws s3 sync dist/ s3://isii-frontend
+### Staging environment
+
+In the `isii-frontend` GitHub repository, under:
+
+- `Settings`
+- `Environments`
+- `staging`
+
+set:
+
+#### Secret
+
+```text
+AWS_ROLE_ARN=<arn:aws:iam::639920117892:role/isii-frontend-staging-role>
 ```
 
-This:
+#### Variables
 
-- uploads new files
-- updates changed files
-- keeps old files if `--delete` is not used
-
-If you want a cleaner deployment, you can use:
-
-```bash
-aws s3 sync dist/ s3://isii-frontend --delete
+```text
+AWS_REGION=us-east-1
+S3_BUCKET_NAME=isii-frontend-staging-639920117892
+CLOUDFRONT_DISTRIBUTION_ID=E35PX9JBYDU87M
 ```
 
-This also removes old files from the bucket that no longer exist in `dist/`.
+### Production environment
 
-### Step 4. Invalidate CloudFront
+In the same GitHub repository, under:
 
-Example:
+- `Settings`
+- `Environments`
+- `production`
 
-```bash
-aws cloudfront create-invalidation --distribution-id E2TERZH6D4DU9W --paths "/*"
+set:
+
+#### Secret
+
+```text
+AWS_ROLE_ARN=<frontend production deploy role arn>
 ```
 
-This clears the CloudFront cache for the distribution so users receive the newest files from S3.
+#### Variables
 
-### Step 5. Test the deployed frontend
-
-After deployment, verify:
-
-- homepage loads
-- CSS loads
-- images load
-- deep links load
-- API calls work
-
-## Staging Deployment Flow
-
-### Step 1. Confirm staging environment values
-
-Check:
-
-[`isii-frontend/.env.staging`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii-aws/isii-frontend/.env.staging)
-
-Make sure `VITE_API_URL` points to the correct staging backend.
-
-### Step 2. Build staging
-
-Run:
-
-```bash
-npm run build:staging
+```text
+AWS_REGION=us-east-1
+S3_BUCKET_NAME=<production frontend bucket name>
+CLOUDFRONT_DISTRIBUTION_ID=<production frontend distribution id>
 ```
 
-This creates the `dist/` folder using staging variables.
+## Why the GitHub Environment Matters
 
-### Step 3. Sync staging build files to the staging target
+The workflow file reads values like:
 
-Use the staging S3 bucket or staging deployment path.
-
-Example pattern:
-
-```bash
-aws s3 sync dist/ s3://YOUR_STAGING_BUCKET
+```yaml
+AWS_REGION: ${{ vars.AWS_REGION }}
+S3_BUCKET_NAME: ${{ vars.S3_BUCKET_NAME }}
+CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
 ```
 
-### Step 4. Invalidate the staging CloudFront distribution
+So if the values are placed in the wrong GitHub environment:
 
-Example pattern:
+- the workflow still starts
+- but AWS setup fails because the values are empty
+
+That is why:
+
+- staging workflow must use values from the `staging` environment
+- production workflow must use values from the `production` environment
+
+## Frontend Build Environments
+
+The frontend already uses Vite environment files.
+
+### Shared defaults
+
+File:
+
+- [`.env`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.env)
+
+Shared values live here, such as:
+
+- `VITE_STATIC_ASSET_BASE_URL`
+- `VITE_PUBLIC_FILES_BASE_URL`
+
+### Development
+
+File:
+
+- [`.env.development`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.env.development)
+
+Used by:
 
 ```bash
-aws cloudfront create-invalidation --distribution-id YOUR_STAGING_DISTRIBUTION_ID --paths "/*"
-```
-
-### Important note about staging
-
-Staging is only deployed if all of the following are true:
-
-- `npm run build:staging` was used
-- the generated `dist/` came from `.env.staging`
-- files were synced to the staging target
-- the staging CloudFront distribution was invalidated
-
-Invalidating CloudFront alone does not mean staging is deployed.
-
-## Recommended Command Flow
-
-### Production
-
-```bash
-cd "/Users/home/Desktop/sai teja's vs code/mern/isii-aws/isii-frontend"
-npm run build:production
-aws s3 sync dist/ s3://isii-frontend
-aws cloudfront create-invalidation --distribution-id E2TERZH6D4DU9W --paths "/*"
-```
-
-### Production with cleanup
-
-```bash
-cd "/Users/home/Desktop/sai teja's vs code/mern/isii-aws/isii-frontend"
-npm run build:production
-aws s3 sync dist/ s3://isii-frontend --delete
-aws cloudfront create-invalidation --distribution-id E2TERZH6D4DU9W --paths "/*"
+npm run dev
 ```
 
 ### Staging
 
+File:
+
+- [`.env.staging`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.env.staging)
+
+Used by:
+
 ```bash
-cd "/Users/home/Desktop/sai teja's vs code/mern/isii-aws/isii-frontend"
 npm run build:staging
-aws s3 sync dist/ s3://YOUR_STAGING_BUCKET
-aws cloudfront create-invalidation --distribution-id YOUR_STAGING_DISTRIBUTION_ID --paths "/*"
 ```
 
-## What `aws s3 sync` Does
+### Production
 
-Command example:
+File:
+
+- [`.env.production`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.env.production)
+
+Used by:
 
 ```bash
-aws s3 sync dist/ s3://isii-frontend
+npm run build:production
 ```
 
-This command compares the local `dist/` folder with the target S3 bucket and uploads differences.
+## Current Frontend Environment Resolution
 
-Without `--delete`, old files remain in the bucket.
+### Development
 
-With `--delete`, old files are removed if they no longer exist locally.
+Uses:
 
-## What CloudFront Invalidation Does
+- `.env`
+- `.env.development`
 
-Command example:
+### Staging
+
+Uses:
+
+- `.env`
+- `.env.staging`
+
+### Production
+
+Uses:
+
+- `.env`
+- `.env.production`
+
+The mode-specific file overrides shared defaults from `.env`.
+
+## Static Assets vs Content Files
+
+There are two different asset flows in the frontend.
+
+### 1. Static design assets
+
+Examples:
+
+- hero backgrounds
+- people page images
+- icons and metadata images
+
+These currently use raw S3 URLs from the new bucket base:
+
+```text
+https://s3.ap-south-2.amazonaws.com/www.isii.global/prod/isii-static
+```
+
+These values are built from:
+
+- [staticAssets.ts](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/src/lib/staticAssets.ts)
+- `VITE_STATIC_ASSET_BASE_URL`
+
+### 2. Uploaded content files
+
+Examples:
+
+- article images
+- news images
+- PDFs
+- uploaded content files
+
+These are intentionally served through CloudFront `/files/...` URLs, not raw S3.
+
+Examples:
+
+```text
+https://www.isii.global/files/press-and-news/example.pdf
+https://www.isii.global/files/staging/images/example.jpg
+```
+
+These values are handled through:
+
+- [fileUrls.ts](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/src/lib/fileUrls.ts)
+
+## IAM Role Requirements
+
+Each frontend environment needs a GitHub-assumable IAM role.
+
+For staging, the role trust policy should allow:
+
+```text
+repo:sripavantejb/isii-frontend:environment:staging
+```
+
+For production:
+
+```text
+repo:sripavantejb/isii-frontend:environment:production
+```
+
+The role permissions should allow:
+
+- `s3:ListBucket`
+- `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
+- `cloudfront:CreateInvalidation`
+- `cloudfront:GetDistribution`
+- `cloudfront:ListDistributions`
+
+## Staging-Specific Notes
+
+The current staging frontend deploy target is:
+
+```text
+s3://isii-frontend-staging-639920117892
+```
+
+and it is served from:
+
+```text
+https://d1gbpolz5fkmu.cloudfront.net
+```
+
+Because the existing CloudFront distribution is reused, the staging frontend and `/files/*` content delivery currently share the same distribution.
+
+## Production-Specific Notes
+
+Before production frontend deployment, make sure:
+
+- the production frontend bucket exists
+- the production CloudFront distribution ID is known
+- the production GitHub environment values are set
+- [`.env.production`](/Users/home/Desktop/sai%20teja's%20vs%20code/mern/isii/isii-frontend/.env.production) points to the correct production backend API
+
+## Manual Deployment Fallback
+
+If GitHub Actions is unavailable, you can still deploy manually.
+
+### Staging
 
 ```bash
-aws cloudfront create-invalidation --distribution-id E2TERZH6D4DU9W --paths "/*"
+npm run build:staging
+aws s3 sync dist/ s3://isii-frontend-staging-639920117892 --delete --profile new-aws
+aws cloudfront create-invalidation --distribution-id E35PX9JBYDU87M --paths "/*" --profile new-aws
 ```
 
-This does not change files in S3.
+### Production
 
-It tells CloudFront to clear cached copies so the next requests pull fresh files from S3.
-
-This is especially useful after redeploying updated frontend files.
-
-## Why Invalidation Is Important
-
-CloudFront caches files.
-
-Without invalidation:
-
-- users may continue to receive old cached files
-- new UI changes may not appear immediately
-- updated `index.html` may not be served right away
-
-With invalidation:
-
-- CloudFront fetches fresh files on the next request
-- updated frontend changes appear sooner
-
-## SPA Routing Requirement
-
-This frontend uses client-side routing.
-
-CloudFront must support SPA fallback for deep links such as:
-
-- `/about`
-- `/press-and-news`
-- `/admin/login`
-
-This is usually configured with:
-
-- `403 -> /index.html` with `200`
-- `404 -> /index.html` with `200`
-
-## Cache Recommendation
-
-For best frontend behavior:
-
-- hashed assets can be cached longer
-- `index.html` should be refreshed more often
-
-This helps users receive the latest asset references after each deployment.
+```bash
+npm run build:production
+aws s3 sync dist/ s3://YOUR_PROD_FRONTEND_BUCKET --delete --profile new-aws
+aws cloudfront create-invalidation --distribution-id YOUR_PROD_DISTRIBUTION_ID --paths "/*" --profile new-aws
+```
 
 ## Troubleshooting
 
-### Problem: `aws` command not found
+### Error: `Input required and not supplied: aws-region`
 
-Cause:
+Reason:
 
-- AWS CLI is not installed
-
-Fix:
-
-- install AWS CLI and run `aws configure`
-
-### Problem: `AccessDenied` on CloudFront invalidation
-
-Cause:
-
-- IAM user or role does not have `cloudfront:CreateInvalidation`
+- the workflow is running under one GitHub environment
+- but the required variables were added to a different environment
 
 Fix:
 
-- request CloudFront invalidation permission for the target distribution
+- add the variables to the correct environment:
+  - `staging` for staging workflow
+  - `production` for production workflow
 
-### Problem: frontend does not look updated after redeploy
+### Build succeeds but site does not update
 
-Cause:
+Reason:
 
-- CloudFront is still serving cached files
-
-Fix:
-
-- run a CloudFront invalidation
-
-### Problem: wrong backend is being called
-
-Cause:
-
-- wrong env file was used during build
+- CloudFront is still serving cached frontend files
 
 Fix:
 
-- rebuild with the correct mode:
-  - `npm run build:staging`
-  - `npm run build:production`
+- check that the invalidation step completed successfully
 
-### Problem: direct route refresh fails
+### Static images still show old bucket URL
 
-Cause:
+Reason:
 
-- SPA fallback is missing in CloudFront
+- an older frontend bundle is still deployed or cached
 
 Fix:
 
-- map `403` and `404` to `/index.html`
+1. rebuild the frontend
+2. upload `dist/`
+3. invalidate CloudFront
 
-## Simple Summary
+### Uploaded content images use CloudFront while static images use raw S3
 
-The current frontend deployment process is:
+This is expected.
 
-- build locally with Vite
-- sync the `dist/` files to S3 with AWS CLI
-- invalidate CloudFront cache
-- test the deployed site
+- static design assets use raw S3
+- uploaded content uses the `/files/...` CloudFront path
 
-Production and staging use the same deployment pattern, but different env files and usually different deployment targets.
+## Summary
+
+The frontend CI/CD pipeline is built around:
+
+- GitHub Actions
+- GitHub OIDC
+- IAM role assumption
+- S3 static hosting
+- CloudFront invalidation
+
+Staging and production use the same deployment logic, but differ in:
+
+- GitHub environment values
+- target S3 bucket
+- target CloudFront distribution
+- Vite build mode
+
+This keeps the frontend deployment automated, repeatable, and environment-safe without storing long-lived AWS credentials in GitHub.

@@ -1,3 +1,5 @@
+import { getMaskedFileUrl } from "@/lib/fileUrls";
+
 interface NewsCardProps {
   image: string;
   title: string;
@@ -11,11 +13,13 @@ const NewsCard = ({
   description,
   articleURL,
 }: NewsCardProps) => {
+  const imageSrc = getMaskedFileUrl(image);
+
   return (
     <article className="flex h-full flex-col">
       <div className="aspect-[16/10] shrink-0 overflow-hidden bg-muted">
         <img
-          src={image}
+          src={imageSrc}
           alt={title}
           className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
         />

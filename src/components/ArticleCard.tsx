@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 interface ArticleCardProps {
   image: string;
@@ -8,6 +9,8 @@ interface ArticleCardProps {
 }
 
 const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
+  const imageSrc = getMaskedFileUrl(image);
+
   return (
     <a
       href={link}
@@ -18,7 +21,7 @@ const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
     >
       <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
         <img 
-          src={image} 
+          src={imageSrc} 
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
