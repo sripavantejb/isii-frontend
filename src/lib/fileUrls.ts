@@ -18,12 +18,6 @@ const PUBLIC_FILES_BASE_PATH = (() => {
 })();
 const MASKED_FILE_PREFIXES = new Set(["files", "dev", "staging", "prod"]);
 
-const LEGACY_S3_HOST_TO_PREFIX: Record<string, string> = {
-  "isii-v2.s3.ap-south-1.amazonaws.com": "files",
-  "isii-dev.s3.ap-south-1.amazonaws.com": "dev",
-  "isii-staging.s3.ap-south-1.amazonaws.com": "staging",
-};
-
 const NEW_RAW_S3_PREFIX = "https://s3.ap-south-2.amazonaws.com/www.isii.global/";
 
 const buildMaskedFileUrl = (path: string) =>
@@ -86,24 +80,7 @@ const getNormalizedS3Path = (value = "") => {
     return normalizePrefixedPath(relativePath);
   }
 
-  try {
-    const parsedUrl = new URL(value);
-    const prefix = LEGACY_S3_HOST_TO_PREFIX[parsedUrl.hostname];
-
-    if (!prefix) {
-      return null;
-    }
-
-    const normalizedPath = parsedUrl.pathname.replace(/^\/+/, "");
-
-    if (prefix === "files") {
-      return normalizePrefixedPath(normalizedPath);
-    }
-
-    return `${prefix}/${normalizedPath}`;
-  } catch {
-    return null;
-  }
+  return null;
 };
 
 export const getMaskedFileUrl = (value = "") => {
