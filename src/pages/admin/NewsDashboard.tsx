@@ -8,6 +8,7 @@ import ProtectedRoute from "@/components/admin/ProtectedRoute";
 import ArticleLoader from "@/components/ArticleLoader";
 import SEOHead from "@/components/SEOHead";
 import AdminDashboardHeader from "@/components/admin/AdminDashboardHeader";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 import { useAuth } from "@/contexts/AuthContext";
 import { newsAPI } from "@/services/api";
 import { Button } from "@/components/ui/button";
@@ -120,7 +121,7 @@ const NewsDashboard = () => {
                     <CardHeader>
                       <div className="mb-4 aspect-video overflow-hidden rounded-lg">
                         <img
-                          src={newsItem.imageUrl}
+                          src={getMaskedFileUrl(newsItem.imageUrl)}
                           alt={newsItem.title}
                           className="h-full w-full object-cover"
                         />

@@ -21,6 +21,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { newsAPI, uploadAPI } from "@/services/api";
+import { getMaskedFileUrl } from "@/lib/fileUrls";
 
 const TITLE_MAX_LENGTH = 120;
 const DESCRIPTION_MAX_LENGTH = 750;
@@ -378,7 +379,7 @@ const NewsForm = () => {
                   label="Upload File"
                   value={articleFile}
                   onChange={handleArticleFileChange}
-                  previewUrl={formData.articleFileUrl}
+                  previewUrl={getMaskedFileUrl(formData.articleFileUrl)}
                   disabled={hasExternalArticleUrl}
                 />
                 <p className="text-xs text-muted-foreground">
@@ -519,7 +520,7 @@ const NewsForm = () => {
                 label="News Image *"
                 value={imageFile}
                 onChange={handleImageChange}
-                previewUrl={imagePreview}
+                previewUrl={getMaskedFileUrl(imagePreview)}
                 dimensions="16:9 aspect ratio"
               />
 

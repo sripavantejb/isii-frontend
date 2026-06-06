@@ -1,5 +1,5 @@
 const DEFAULT_STATIC_ASSET_BASE_URL =
-  "https://s3.ap-south-2.amazonaws.com/www.isii.global/prod/isii-static";
+  "https://d1gbpolz5fkmu.cloudfront.net/files/isii-static";
 
 const STATIC_ASSET_BASE_URL = (
   import.meta.env.VITE_STATIC_ASSET_BASE_URL || DEFAULT_STATIC_ASSET_BASE_URL

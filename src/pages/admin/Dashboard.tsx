@@ -21,6 +21,7 @@ import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import ArticleLoader from '@/components/ArticleLoader';
 import SEOHead from '@/components/SEOHead';
 import AdminDashboardHeader from '@/components/admin/AdminDashboardHeader';
+import { getMaskedFileUrl } from '@/lib/fileUrls';
 
 interface Article {
   _id: string;
@@ -140,7 +141,7 @@ const Dashboard = () => {
                 {articles.map((article) => (
                   <Card key={article._id} style={{ backgroundColor: '#ffffff' }}>
                     <CardHeader>
-                      <div className="aspect-video overflow-hidden rounded-lg mb-4"><img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover"/></div>
+                      <div className="aspect-video overflow-hidden rounded-lg mb-4"><img src={getMaskedFileUrl(article.imageUrl)} alt={article.title} className="w-full h-full object-cover"/></div>
                       <CardTitle className="text-lg line-clamp-2" style={{ color: '#01002A' }}>{article.title}</CardTitle>
                       <p className="text-sm text-muted-foreground">{article.date}</p>
                     </CardHeader>

@@ -1,13 +1,7 @@
 const DEFAULT_PUBLIC_FILES_BASE_URL = "https://www.isii.global/files";
 const PUBLIC_FILES_BASE_URL =
   import.meta.env.VITE_PUBLIC_FILES_BASE_URL || DEFAULT_PUBLIC_FILES_BASE_URL;
-const PUBLIC_FILES_ORIGIN = (() => {
-  try {
-    return new URL(PUBLIC_FILES_BASE_URL).origin;
-  } catch {
-    return "https://www.isii.global";
-  }
-})();
+
 const PUBLIC_FILES_BASE_PATH = (() => {
   try {
     const normalizedPath = new URL(PUBLIC_FILES_BASE_URL).pathname.replace(/\/+$/, "");
@@ -16,87 +10,95 @@ const PUBLIC_FILES_BASE_PATH = (() => {
     return "/files";
   }
 })();
-const MASKED_FILE_PREFIXES = new Set(["files", "dev", "staging", "prod"]);
 
-const NEW_RAW_S3_PREFIX = "https://s3.ap-south-2.amazonaws.com/www.isii.global/";
+// Legacy env folders from the old single-bucket layout (www.isii.global/<env>/...).
+// The buckets are now segregated (isii-files-<env>) with content at the root, so any
+// stored URL that still carries one of these leading folders must have it stripped.
+const LEGACY_ENV_PREFIXES = ["dev/", "staging/", "prod/"];
 
-const buildMaskedFileUrl = (path: string) =>
-  `${PUBLIC_FILES_BASE_URL.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
+const trimLeadingSlashes = (value: string) => value.replace(/^\/+/, "");
 
-const getPathPrefixForMaskedUrl = (value = "") => {
+const stripLegacyEnvPrefix = (key: string) => {
+  const cleaned = trimLeadingSlashes(key);
+  for (const prefix of LEGACY_ENV_PREFIXES) {
+    if (cleaned.startsWith(prefix)) {
+      return cleaned.slice(prefix.length);
+    }
+  }
+  return cleaned;
+};
+
+const buildMaskedFileUrl = (key: string) =>
+  `${PUBLIC_FILES_BASE_URL.replace(/\/+$/, "")}/${trimLeadingSlashes(key)}`;
+
+// Detects an already-masked "/files/..." URL on ANY host (the current env distribution
+// or an older one) and returns the object key after the base path. Returns null otherwise.
+const getKeyFromMaskedUrl = (value: string): string | null => {
   try {
-    const parsedUrl = new URL(value);
+    const parsed = new URL(value);
+    const basePath = trimLeadingSlashes(PUBLIC_FILES_BASE_PATH);
+    const path = trimLeadingSlashes(parsed.pathname);
 
-    if (parsedUrl.origin !== PUBLIC_FILES_ORIGIN) {
-      return null;
+    if (path === basePath) return "";
+    if (path.startsWith(`${basePath}/`)) {
+      return path.slice(basePath.length + 1);
     }
-
-    const normalizedBasePath = PUBLIC_FILES_BASE_PATH.replace(/^\/+/, "");
-    const normalizedPath = parsedUrl.pathname.replace(/^\/+/, "");
-
-    if (!normalizedPath.startsWith(normalizedBasePath)) {
-      return null;
-    }
-
-    const relativePath = normalizedPath.slice(normalizedBasePath.length).replace(/^\/+/, "");
-    const [prefix] = relativePath.split("/");
-    return prefix && MASKED_FILE_PREFIXES.has(prefix) ? prefix : null;
+    return null;
   } catch {
     return null;
   }
 };
 
-const isAlreadyMaskedFileUrl = (value = "") => {
-  return Boolean(getPathPrefixForMaskedUrl(value));
-};
-
-const normalizePrefixedPath = (value = "") => {
-  if (!value) {
+// Detects a raw S3 URL (path-style or virtual-hosted) and returns the object key.
+//   path-style:      https://s3.<region>.amazonaws.com/<bucket>/<key>
+//   virtual-hosted:  https://<bucket>.s3.<region>.amazonaws.com/<key>
+const getKeyFromRawS3Url = (value: string): string | null => {
+  let parsed: URL;
+  try {
+    parsed = new URL(value);
+  } catch {
     return null;
   }
 
-  if (value.startsWith("prod/")) {
-    return value.slice("prod/".length);
+  const host = parsed.hostname;
+  const path = trimLeadingSlashes(parsed.pathname);
+
+  // path-style: first path segment is the bucket, drop it.
+  if (/^s3([.-][a-z0-9-]+)?\.amazonaws\.com$/.test(host)) {
+    const slash = path.indexOf("/");
+    return slash === -1 ? null : path.slice(slash + 1);
   }
 
-  if (value.startsWith("staging/")) {
-    return value;
-  }
-
-  if (value.startsWith("dev/")) {
-    return value;
-  }
-
-  return `prod/${value}`;
-};
-
-const getNormalizedS3Path = (value = "") => {
-  if (!value) {
-    return null;
-  }
-
-  if (value.startsWith(NEW_RAW_S3_PREFIX)) {
-    const relativePath = value.slice(NEW_RAW_S3_PREFIX.length);
-    return normalizePrefixedPath(relativePath);
+  // virtual-hosted: bucket is in the host, the whole path is the key.
+  if (/\.s3([.-][a-z0-9-]+)?\.amazonaws\.com$/.test(host)) {
+    return path;
   }
 
   return null;
 };
 
+/**
+ * Normalizes any stored file URL to the current environment's masked CloudFront URL.
+ *
+ * Handles, in order:
+ *  1. Already-masked "/files/..." URLs (any distribution) → re-point onto the current
+ *     env distribution and drop any leftover dev/ staging/ prod/ folder.
+ *  2. Raw S3 URLs (old shared bucket or new per-env bucket) → extract the object key,
+ *     drop any legacy env folder, and mask onto the current distribution.
+ *  3. Anything else (external links, already-correct URLs, relative paths) → unchanged.
+ */
 export const getMaskedFileUrl = (value = "") => {
-  if (!value) {
-    return value;
+  if (!value) return value;
+
+  const maskedKey = getKeyFromMaskedUrl(value);
+  if (maskedKey !== null) {
+    return buildMaskedFileUrl(stripLegacyEnvPrefix(maskedKey));
   }
 
-  if (isAlreadyMaskedFileUrl(value)) {
-    return value;
+  const s3Key = getKeyFromRawS3Url(value);
+  if (s3Key !== null) {
+    return buildMaskedFileUrl(stripLegacyEnvPrefix(s3Key));
   }
 
-  const normalizedPath = getNormalizedS3Path(value);
-
-  if (!normalizedPath) {
-    return value;
-  }
-
-  return buildMaskedFileUrl(normalizedPath);
+  return value;
 };

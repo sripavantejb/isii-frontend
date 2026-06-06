@@ -15,6 +15,7 @@ import DragDropUpload from '@/components/admin/DragDropUpload';
 import { cn } from '@/lib/utils';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import SEOHead from '@/components/SEOHead';
+import { getMaskedFileUrl } from '@/lib/fileUrls';
 
 const ArticleForm = () => {
   const { id } = useParams();
@@ -284,8 +285,8 @@ const ArticleForm = () => {
                 </Popover>
               </div>
 
-              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Card Image" value={imageFile} onChange={handleImageChange} previewUrl={imagePreview} dimensions="16:9 aspect ratio" />
-              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Homepage-Banner Image" value={bannerImageFile} onChange={handleBannerImageChange} previewUrl={bannerImagePreview} dimensions="3:1 aspect ratio" />
+              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Card Image" value={imageFile} onChange={handleImageChange} previewUrl={getMaskedFileUrl(imagePreview)} dimensions="16:9 aspect ratio" />
+              <DragDropUpload accept="image/jpeg,image/jpg,image/png" maxSize={5} label="Homepage-Banner Image" value={bannerImageFile} onChange={handleBannerImageChange} previewUrl={getMaskedFileUrl(bannerImagePreview)} dimensions="3:1 aspect ratio" />
               <DragDropUpload accept="application/pdf" maxSize={4.5} label="PDF Document *" value={pdfFile} onChange={setPdfFile} />
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
