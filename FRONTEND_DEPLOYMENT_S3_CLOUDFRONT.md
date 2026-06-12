@@ -376,13 +376,13 @@ Each frontend environment needs a GitHub-assumable IAM role.
 For staging, the role trust policy should allow:
 
 ```text
-repo:sripavantejb/isii-frontend:environment:staging
+repo:Nxtwave-Platform/isii-frontend:environment:staging
 ```
 
 For production:
 
 ```text
-repo:sripavantejb/isii-frontend:environment:production
+repo:Nxtwave-Platform/isii-frontend:environment:production
 ```
 
 The role permissions should allow:
