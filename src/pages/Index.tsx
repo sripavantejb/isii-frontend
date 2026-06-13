@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import CapabilityCard from "@/components/CapabilityCard";
@@ -7,6 +6,7 @@ import ArticleCard from "@/components/ArticleCard";
 import { STATIC_IMAGES } from "@/lib/staticAssets";
 import { articlesAPI } from "@/services/api";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
+import { useStaleWhileRevalidate } from "@/hooks/useStaleWhileRevalidate";
 
 const bannerImage = STATIC_IMAGES.homeBanner;
 const bannerImageMobile = STATIC_IMAGES.homeBannerMobile; // Mobile banner
@@ -78,22 +78,14 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
 };
 
 const Index = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  // console.log(articles)
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const data = await articlesAPI.getAll();
-        // Sort articles by date (latest first) as a fallback
-        const sortedArticles = sortArticlesByDate(data);
-        setArticles(sortedArticles);
-      } catch (error) {
-        console.error('Failed to fetch articles:', error);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  const { data: articles } = useStaleWhileRevalidate<Article[]>({
+    storageKey: "isii-cache:articles",
+    initialData: [],
+    fetcher: async () => {
+      const data = await articlesAPI.getAll();
+      return sortArticlesByDate(data);
+    },
+  });
 
   const capabilities = [
     {

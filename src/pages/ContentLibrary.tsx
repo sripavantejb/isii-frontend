@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import { articlesAPI } from "@/services/api";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
@@ -9,8 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowRight } from "lucide-react";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
+import { useStaleWhileRevalidate } from "@/hooks/useStaleWhileRevalidate";
 
 interface Article {
   _id: string;
@@ -69,24 +69,15 @@ const getUniqueYears = (articles: Article[]): string[] => {
 };
 
 const ContentLibrary = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState<string>('all');
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const data = await articlesAPI.getAll(); // Uses articlesAPI
-        const sortedArticles = sortArticlesByDate(data);
-        setArticles(sortedArticles);
-      } catch (error) {
-        console.error('Failed to fetch articles:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchArticles();
-  }, []);
+  const { data: articles, isLoading } = useStaleWhileRevalidate<Article[]>({
+    storageKey: "isii-cache:articles",
+    initialData: [],
+    fetcher: async () => {
+      const data = await articlesAPI.getAll();
+      return sortArticlesByDate(data);
+    },
+  });
 
   const uniqueYears = getUniqueYears(articles);
   const filteredArticles = selectedYear === 'all'
@@ -112,7 +103,7 @@ const ContentLibrary = () => {
             </div>
           </div>
 
-          {loading ? (
+          {isLoading ? (
             <div className="flex justify-center py-12"><LoadingSpinner text="Loading..." /></div>
           ) : filteredArticles.length === 0 ? (
             <div className="text-center py-12">

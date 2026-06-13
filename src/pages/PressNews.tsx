@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import NewsCard from "@/components/NewsCard";
 import ArticleLoader from "@/components/ArticleLoader";
 import { newsAPI } from "@/services/api";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
+import { useStaleWhileRevalidate } from "@/hooks/useStaleWhileRevalidate";
 
 interface NewsItem {
   _id: string;
@@ -25,28 +25,18 @@ const getNewsItemArticleUrl = (newsItem: NewsItem) =>
   "#";
 
 const PressNews = () => {
-  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNewsItems = async () => {
-      try {
-        const data = await newsAPI.getAll();
-        const sortedNewsItems = [...data].sort((firstItem, secondItem) => {
-          const firstTimestamp = new Date(firstItem.publishedAt).getTime();
-          const secondTimestamp = new Date(secondItem.publishedAt).getTime();
-          return secondTimestamp - firstTimestamp;
-        });
-        setNewsItems(sortedNewsItems);
-      } catch (error) {
-        console.error("Failed to fetch news:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNewsItems();
-  }, []);
+  const { data: newsItems, isLoading: loading } = useStaleWhileRevalidate<NewsItem[]>({
+    storageKey: "isii-cache:news",
+    initialData: [],
+    fetcher: async () => {
+      const data = await newsAPI.getAll();
+      return [...data].sort((firstItem, secondItem) => {
+        const firstTimestamp = new Date(firstItem.publishedAt).getTime();
+        const secondTimestamp = new Date(secondItem.publishedAt).getTime();
+        return secondTimestamp - firstTimestamp;
+      });
+    },
+  });
 
   return (
     <Layout>
