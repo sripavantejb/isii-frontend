@@ -1,6 +1,11 @@
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+
+const DEFAULT_STATIC_ASSET_BASE_URL =
+  "https://d1gbpolz5fkmu.cloudfront.net/files/isii-static";
+
+const normalizeBaseUrl = (value: string) => value.replace(/\/+$/, "");
 
 // Production: allow crawling + point to the sitemap.
 const PRODUCTION_ROBOTS = `User-agent: *
@@ -40,16 +45,71 @@ const robotsTxtPlugin = (mode: string): Plugin => ({
   },
 });
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), robotsTxtPlugin(mode)],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+const buildManifest = (staticAssetBaseUrl: string) =>
+  JSON.stringify(
+    {
+      name: "ISII | Institute for Strategic Intelligence and Intervention",
+      short_name: "ISII",
+      description:
+        "Understanding and shaping system-level transitions and strategic turning points affecting nations, regions, and global structures.",
+      start_url: "/",
+      scope: "/",
+      display: "standalone",
+      theme_color: "#000000",
+      background_color: "#000000",
+      icons: [
+        {
+          src: `${staticAssetBaseUrl}/static/meta/icons/manifest-192.png`,
+          sizes: "192x192",
+          type: "image/png",
+          purpose: "any",
+        },
+        {
+          src: `${staticAssetBaseUrl}/static/meta/icons/manifest-512.png`,
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any",
+        },
+      ],
     },
+    null,
+    2,
+  );
+
+const manifestPlugin = (staticAssetBaseUrl: string): Plugin => ({
+  name: "generate-manifest-json",
+  configureServer(server) {
+    server.middlewares.use("/manifest.json", (_request, response) => {
+      response.setHeader("Content-Type", "application/manifest+json");
+      response.end(buildManifest(staticAssetBaseUrl));
+    });
   },
-}));
+  generateBundle() {
+    this.emitFile({
+      type: "asset",
+      fileName: "manifest.json",
+      source: buildManifest(staticAssetBaseUrl),
+    });
+  },
+});
+
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const staticAssetBaseUrl = normalizeBaseUrl(
+    env.VITE_STATIC_ASSET_BASE_URL || DEFAULT_STATIC_ASSET_BASE_URL,
+  );
+
+  return {
+    server: {
+      host: "::",
+      port: 8080,
+    },
+    plugins: [react(), robotsTxtPlugin(mode), manifestPlugin(staticAssetBaseUrl)],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  };
+});
