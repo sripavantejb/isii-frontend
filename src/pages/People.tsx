@@ -33,7 +33,7 @@ const People = () => {
       ],
     },
     {
-      name: "Annika Monari",
+      name: "Annika Rao Monari",
       roleTitle: "Director",
       title: "CEO, Chairman & Co-Founder, CleeAI\nFormer Co-Founder, Aventus Protocol Network",
       image: STATIC_IMAGES.aboutAnnikaMonari,
