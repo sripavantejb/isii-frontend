@@ -33,15 +33,15 @@ const People = () => {
       ],
     },
     {
-      name: "Jon Miller",
+      name: "Annika Monari",
       roleTitle: "Director",
-      title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
-      image: STATIC_IMAGES.aboutJonMiller,
-      slug: "jon-miller",
-      category: "Media & Technology Transition",
+      title: "CEO, Chairman & Co-Founder, CleeAI\nFormer Co-Founder, Aventus Protocol Network",
+      image: STATIC_IMAGES.aboutAnnikaMonari,
+      slug: "annika-monari",
+      category: "AI Governance & Digital Trust",
       drawingOn: [
-        "Major mass mobilisation platforms",
-        "Leading new media platforms"
+        "Secure semantic reasoning and AI governance infrastructure",
+        "Privacy-preserving AI deployment and digital trust"
       ],
     },
     {
@@ -66,6 +66,18 @@ const People = () => {
       drawingOn: [
         "Development and social economics work",
         "Asia and Middle East network"
+      ],
+    },
+    {
+      name: "Jon Miller",
+      roleTitle: "Director",
+      title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
+      image: STATIC_IMAGES.aboutJonMiller,
+      slug: "jon-miller",
+      category: "Media & Technology Transition",
+      drawingOn: [
+        "Major mass mobilisation platforms",
+        "Leading new media platforms"
       ],
     },
   ];
