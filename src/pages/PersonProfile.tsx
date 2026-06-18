@@ -46,7 +46,7 @@ const peopleData = [
       "Secure semantic reasoning and AI governance infrastructure",
       "Privacy-preserving AI deployment and digital trust"
     ],
-    biography: "Annika Monari is a deep-technology founder and AI systems architect specialising in secure semantic reasoning, AI governance infrastructure, and the mitigation of systemic risks arising from large-scale digital systems.\n\nHer work sits across artificial intelligence, distributed systems, and human-centred infrastructure design. With a Master's degree in Particle Physics from Imperial College London, she began her career applying deep learning and semantic reconstruction techniques to complex signal environments at CERN, improving detection accuracy in high-noise systems. This background informs her current approach to AI: designing architectures capable of distinguishing signal from distortion in large-scale information environments.\n\nMonari has founded and scaled multiple technology ventures, including Artos Systems and the Aventus Protocol, an early blockchain network that pioneered token governance models and decentralised trust architectures. Across these initiatives, her consistent focus has been on building infrastructure that is mathematically rigorous, scalable, and aligned with long-term public interest.\n\nHer more recent research collaborations have explored agentic AI coordination and alignment, neural circuit tracing in large language models, structured reasoning frameworks using contextual multigraph isomorphism, and infrastructure models for privacy-preserving AI deployment.\n\nThrough CleeAI, she is advancing AI systems designed not merely for performance optimisation, but for societal coherence, epistemic stability, and digital trust restoration.",
+    biography: "Annika Monari is a deep-technology founder and AI systems architect specialising in secure semantic reasoning, AI governance infrastructure, and the mitigation of systemic risks arising from large-scale digital systems.\n\nHer work sits across artificial intelligence, distributed systems, and human-centred infrastructure design. With a Master's degree in Particle Physics from Imperial College London, she began her career applying deep learning and semantic reconstruction techniques to complex signal environments at CERN, improving detection accuracy in high-noise systems. This background informs her current approach to AI: designing architectures capable of distinguishing signal from distortion in large-scale information environments.\n\nMonari has founded and scaled multiple technology ventures, including Artos Systems and the Aventus Protocol, an early blockchain network that pioneered token governance models and decentralised trust architectures. Across these initiatives, her consistent focus has been on building infrastructure that is mathematically rigorous, scalable, and aligned with long-term public interest.\n\nHer more recent research collaborations have explored:\n- Agentic AI coordination and alignment\n- Neural circuit tracing in large language models\n- Structured reasoning frameworks using contextual multigraph isomorphism\n- Infrastructure models for privacy-preserving AI deployment\n\nThrough CleeAI, she is advancing AI systems designed not merely for performance optimisation, but for societal coherence, epistemic stability, and digital trust restoration.",
   },
   {
     name: "Jon Miller",
@@ -97,6 +97,37 @@ const PersonProfile = () => {
   // Get other team members (exclude current person)
   const otherMembers = peopleData.filter(p => p.slug !== slug);
 
+  const renderBiographyBlock = (paragraph: string, index: number) => {
+    const trimmedParagraph = paragraph.trim();
+
+    if (!trimmedParagraph) {
+      return null;
+    }
+
+    const lines = trimmedParagraph.split('\n');
+    const introLines = lines.filter(line => !line.trim().startsWith('- '));
+    const bulletLines = lines
+      .filter(line => line.trim().startsWith('- '))
+      .map(line => line.trim().replace(/^- /, ''));
+
+    if (bulletLines.length === 0) {
+      return <p key={index}>{trimmedParagraph}</p>;
+    }
+
+    return (
+      <div key={index} className="space-y-3">
+        {introLines.map((line, lineIndex) => (
+          <p key={lineIndex}>{line.trim()}</p>
+        ))}
+        <ul className="list-disc space-y-2 pl-6">
+          {bulletLines.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <Layout>
       <section className="pt-8 md:pt-16 pb-16 min-h-screen" style={{ backgroundColor: '#f4f5f7' }}>
@@ -143,11 +174,7 @@ const PersonProfile = () => {
               {/* Biography */}
               {person.biography && (
                 <div className="text-sm md:text-base text-foreground leading-relaxed space-y-4">
-                  {person.biography.split('\n\n').map((paragraph, index) => (
-                    paragraph.trim() && (
-                      <p key={index}>{paragraph.trim()}</p>
-                    )
-                  ))}
+                  {person.biography.split('\n\n').map(renderBiographyBlock)}
                 </div>
               )}
             </div>
