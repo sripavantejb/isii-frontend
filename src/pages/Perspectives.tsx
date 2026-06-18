@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import ArticleCard from "@/components/ArticleCard";
@@ -6,7 +7,6 @@ import ArticleLoader from "@/components/ArticleLoader";
 import { ArrowRight } from "lucide-react";
 import { STATIC_IMAGES } from "@/lib/staticAssets";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
-import { useStaleWhileRevalidate } from "@/hooks/useStaleWhileRevalidate";
 
 interface Article {
   _id: string;
@@ -39,14 +39,24 @@ const sortArticlesByDate = (articles: Article[]): Article[] => {
 };
 
 const Perspectives = () => {
-  const { data: articles, isLoading: loading } = useStaleWhileRevalidate<Article[]>({
-    storageKey: "isii-cache:perspectives",
-    initialData: [],
-    fetcher: async () => {
-      const data = await perspectivesAPI.getAll();
-      return sortArticlesByDate(data);
-    },
-  });
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const data = await perspectivesAPI.getAll();
+        const sortedArticles = sortArticlesByDate(data);
+        setArticles(sortedArticles);
+      } catch (error) {
+        console.error('Failed to fetch perspectives:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   return (
     <Layout>

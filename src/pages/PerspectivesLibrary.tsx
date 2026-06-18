@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import { perspectivesAPI } from "@/services/api"; // Use perspectivesAPI
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getMaskedFileUrl } from "@/lib/fileUrls";
-import { useStaleWhileRevalidate } from "@/hooks/useStaleWhileRevalidate";
 
 interface Article {
   _id: string;
@@ -59,15 +58,24 @@ const getUniqueYears = (articles: Article[]): string[] => {
 };
 
 const PerspectivesLibrary = () => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState<string>('all');
-  const { data: articles, isLoading: loading } = useStaleWhileRevalidate<Article[]>({
-    storageKey: "isii-cache:perspectives",
-    initialData: [],
-    fetcher: async () => {
-      const data = await perspectivesAPI.getAll();
-      return sortArticlesByDate(data);
-    },
-  });
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const data = await perspectivesAPI.getAll(); // Use perspectivesAPI
+        const sortedArticles = sortArticlesByDate(data);
+        setArticles(sortedArticles);
+      } catch (error) {
+        console.error('Failed to fetch perspectives:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticles();
+  }, []);
 
   const uniqueYears = getUniqueYears(articles);
   const filteredArticles = selectedYear === 'all'
