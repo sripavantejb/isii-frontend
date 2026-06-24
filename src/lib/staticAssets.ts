@@ -12,6 +12,7 @@ const STATIC_ASSET_PATHS = {
   aboutGarryJacobs: "static/about/people/garry-jacobs.png",
   aboutKetanPatel: "static/about/people/ketan-patel.png",
   aboutJonMiller: "static/about/people/jon-miller.png",
+  aboutAnnikaMonari: "static/about/people/annika-monari.png",
   aboutGlennGaffney: "static/about/people/glenn-gaffney.png",
   aboutShauryaDoval: "static/about/people/shaurya-doval.png",
   contextCapital: "static/about/context/capital.png",

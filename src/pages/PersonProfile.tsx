@@ -37,6 +37,18 @@ const peopleData = [
     biography: "NobleReach Foundation is a non-profit working at the intersection of government, academia, and industry to tackle the nation's most pressing security challenges by addressing gaps in U.S. tech and talent. NobleReach is a nonprofit foundation bringing the speed and impact of innovation to scale and purpose, fueling economic growth and strengthening national security. We work across academia, industry, and government to connect top talent to emerging opportunities in technology, science, and innovation. Our goal is to inspire a commitment to public service and build a sustainable pipeline of talent and innovation.\n\nGlenn Gaffney joined the NobleReach team in January 2023 when Emerge was spun out from IQT and merged with NobleReach. He was a co-founder of Emerge while serving as an EVP at In-Q-Tel – a strategic investor in ready soon technology benefiting both the US economy and National Security. Mr Gaffney served at IQT from 2017-2022 and cofounded Emerge in 2021.\n\nEmerge's mission is to establish and maintain the connection between government research and industry, providing the network and commercialization expertise needed to take research from the lab into customer's hands. Working with government-funded researchers and early-stage startups, Emerge facilitates catalytic funding, provides commercialization assistance, and helps recruit experienced entrepreneurs to provide exponential growth.\n\nBefore joining the private sector, Mr. Gaffney served US Intelligence Community for 31 years. His government service included senior positions as the Director of Science and Technology for the Central Intelligence Agency, the Deputy Director of National Intelligence for Collection, and the Associate Director of CIA for Talent. Throughout his career he has led new endeavors in tech development, operations, and analysis to address critical national security challenges.",
   },
   {
+    name: "Annika Rao Monari",
+    title: "CEO, Chairman & Co-Founder, CleeAI\nFormer Co-Founder, Aventus Protocol Network",
+    image: STATIC_IMAGES.aboutAnnikaMonari,
+    slug: "annika-monari",
+    category: "AI Governance & Digital Trust",
+    drawingOn: [
+      "Secure semantic reasoning and AI governance infrastructure",
+      "Privacy-preserving AI deployment and digital trust"
+    ],
+    biography: "Annika Monari is a deep-technology founder and AI systems architect specialising in secure semantic reasoning, AI governance infrastructure, and the mitigation of systemic risks arising from large-scale digital systems.\n\nHer work sits across artificial intelligence, distributed systems, and human-centred infrastructure design. With a Master's degree in Particle Physics from Imperial College London, she began her career applying deep learning and semantic reconstruction techniques to complex signal environments at CERN, improving detection accuracy in high-noise systems. This background informs her current approach to AI: designing architectures capable of distinguishing signal from distortion in large-scale information environments.\n\nMonari has founded and scaled multiple technology ventures, including Artos Systems and the Aventus Protocol, an early blockchain network that pioneered token governance models and decentralised trust architectures. Across these initiatives, her consistent focus has been on building infrastructure that is mathematically rigorous, scalable, and aligned with long-term public interest.\n\nHer more recent research collaborations have explored:\n- Agentic AI coordination and alignment\n- Neural circuit tracing in large language models\n- Structured reasoning frameworks using contextual multigraph isomorphism\n- Infrastructure models for privacy-preserving AI deployment\n\nThrough CleeAI, she is advancing AI systems designed not merely for performance optimisation, but for societal coherence, epistemic stability, and digital trust restoration.",
+  },
+  {
     name: "Jon Miller",
     title: "CEO of Integrated Media\nFormer Chairman and CEO of AOL\nNewsCorp Online Media Group",
     image: STATIC_IMAGES.aboutJonMiller,
@@ -85,6 +97,37 @@ const PersonProfile = () => {
   // Get other team members (exclude current person)
   const otherMembers = peopleData.filter(p => p.slug !== slug);
 
+  const renderBiographyBlock = (paragraph: string, index: number) => {
+    const trimmedParagraph = paragraph.trim();
+
+    if (!trimmedParagraph) {
+      return null;
+    }
+
+    const lines = trimmedParagraph.split('\n');
+    const introLines = lines.filter(line => !line.trim().startsWith('- '));
+    const bulletLines = lines
+      .filter(line => line.trim().startsWith('- '))
+      .map(line => line.trim().replace(/^- /, ''));
+
+    if (bulletLines.length === 0) {
+      return <p key={index}>{trimmedParagraph}</p>;
+    }
+
+    return (
+      <div key={index} className="space-y-3">
+        {introLines.map((line, lineIndex) => (
+          <p key={lineIndex}>{line.trim()}</p>
+        ))}
+        <ul className="list-disc space-y-2 pl-6">
+          {bulletLines.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <Layout>
       <section className="pt-8 md:pt-16 pb-16 min-h-screen" style={{ backgroundColor: '#f4f5f7' }}>
@@ -131,11 +174,7 @@ const PersonProfile = () => {
               {/* Biography */}
               {person.biography && (
                 <div className="text-sm md:text-base text-foreground leading-relaxed space-y-4">
-                  {person.biography.split('\n\n').map((paragraph, index) => (
-                    paragraph.trim() && (
-                      <p key={index}>{paragraph.trim()}</p>
-                    )
-                  ))}
+                  {person.biography.split('\n\n').map(renderBiographyBlock)}
                 </div>
               )}
             </div>

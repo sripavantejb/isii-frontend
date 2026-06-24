@@ -40,6 +40,11 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description:
       "Profile of Glenn Gaffney, former CIA Director of Science and Technology and EVP at IQT, with expertise in national security and technology.",
   },
+  "/about/people/annika-monari": {
+    title: "Annika Monari | CEO, Chairman & Co-Founder, CleeAI | ISII",
+    description:
+      "Profile of Annika Monari, deep-technology founder and AI systems architect focused on secure semantic reasoning, AI governance, and digital trust.",
+  },
   "/about/people/jon-miller": {
     title: "Jon Miller | CEO, Integrated Media & Former AOL CEO | ISII",
     description:
